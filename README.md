@@ -1,5 +1,8 @@
 Description coming soon.
 
+## Changelog
+Currently no releases are available, but there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
+
 ## Requirements (for compiling)
  * zlib
 </br>Best and recommended way to obtain it is to use [vcpkg](https://github.com/Microsoft/vcpkg) C++ Library Manager.
@@ -12,7 +15,7 @@ Description coming soon.
  * The exe will crash when trying to load a sound file that is both: not 1411kbs and is stereo (fixed in Woo; fix will be brought over soon)
 
 ## Special Thanks
-WishMakers - for making Danmakufu Woo and helping me out
+WishMakers - for making Danmakufu Woo and helping me with this project
 
 ## Contributions
 Unlike the original source(s), this version is in active development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
