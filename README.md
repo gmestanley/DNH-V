@@ -1,35 +1,5 @@
 Description coming soon.
 
-Changelog:
-
-###### [0.5]
- * Function naming simplified
- 	- "TCP" removed from the Data functions
-	
-###### [0.4]
- * Changed ReceiveTCPData
- 	- The function now returns saved data instead of nothing, allowing the example script to actually work
- * Added a functional logging system
- 	- Functions will write what happens to the WindowLog
-
-###### [0.3]
- * Changed ReceiveTCPData
-	- The function now deletes saved data before receiving instead of after
- * Fixed the data saving system
- 	- SendTCPData now actually returns saved data instead of nothing
-
-###### [0.2]
- * Changed RunNetplay's first argument to "server", bool
-	- Removed UDP support to focus on TCP
-
-###### [0.1]
- * Added RunNetplay(mode, port, address)
-	- Runs the Netplay module in TCP server, client or UDP client mode, with the appropriate port and address
- * Added ReceiveTCPData(delete)
-	- Receives data from the other person in the connection, deleting the data received or not
- * Added SendTCPData(data, direct)
-	- Sends data to the other person in the connection, either custom or directly any saved data
-
 ## Requirements (for compiling)
  * zlib
 </br>Best and recommended way to obtain it is to use [vcpkg](https://github.com/Microsoft/vcpkg) C++ Library Manager.
@@ -45,7 +15,7 @@ Changelog:
 WishMakers - for making Danmakufu Woo and helping me out
 
 ## Contributions
-Unlike the original source(s), this version is in the border of active and inactive development so pull requests are absolutely accepted, provided they don't break the game. Though bear in mind that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or is very outdated in execution.
+Unlike the original source(s), this version is in active development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
 
 ## License
 zlib library has its own license, please check zlib.h in the repo for that information.</br></br>
