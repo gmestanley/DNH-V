@@ -33,6 +33,7 @@ public:
 	};
 
 public:
+	void InputLog(std::wstring message);
 	DirectInput();
 	virtual ~DirectInput();
 	static DirectInput* GetBase() { return thisBase_; }

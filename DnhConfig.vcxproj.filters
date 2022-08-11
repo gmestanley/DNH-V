@@ -116,6 +116,51 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhConfig\WinMain.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\adler32.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\compress.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\crc32.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\deflate.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\gzclose.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\gzlib.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\gzread.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\gzwrite.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\infback.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\inffast.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\inflate.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\inftrees.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\trees.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\uncompr.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GcLib\zlib\zutil.c">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -235,6 +280,17 @@
     <ClInclude Include="source\TouhouDanmakufu\DnhConfig\MainWindow.hpp">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="source\GcLib\zlib\crc32.h" />
+    <ClInclude Include="source\GcLib\zlib\deflate.h" />
+    <ClInclude Include="source\GcLib\zlib\gzguts.h" />
+    <ClInclude Include="source\GcLib\zlib\inffast.h" />
+    <ClInclude Include="source\GcLib\zlib\inffixed.h" />
+    <ClInclude Include="source\GcLib\zlib\inflate.h" />
+    <ClInclude Include="source\GcLib\zlib\inftrees.h" />
+    <ClInclude Include="source\GcLib\zlib\trees.h" />
+    <ClInclude Include="source\GcLib\zlib\zconf.h" />
+    <ClInclude Include="source\GcLib\zlib\zlib.h" />
+    <ClInclude Include="source\GcLib\zlib\zutil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhConfig\DnhConfig.rc">

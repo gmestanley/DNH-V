@@ -7,6 +7,9 @@ using namespace directx;
 //DirectInput
 **********************************************************/
 DirectInput* DirectInput::thisBase_ = NULL;
+void DirectInput::InputLog(std::wstring message) {
+	Logger::WriteTop(L"DirectInput：" + message);
+}
 DirectInput::DirectInput()
 {
 	hWnd_ = NULL;
