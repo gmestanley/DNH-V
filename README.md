@@ -1,29 +1,7 @@
-# Touhou Danmakufu ph3.5 0.4 ~ Netplay Edition
-This version of Danmakufu is made for implementing Netplay in it; see WishMakers' repository for a link to the original download. <b>The master branch version of this repo is completely backwards compatible with ph3 (and has the original readme). This branch contains functions that are not in original PH3. If something doesn't work as expected, refer to the contact info in Woo (the repo original to this one).</b> Most of the stuff there also applies here.
+Description coming soon.
 
-###### [0.4]
- * Changed ReceiveTCPData
- 	- The function now returns saved data instead of nothing, allowing the example script to actually work
- * Added a functional logging system
- 	- Functions will write what happens to the WindowLog
-
-###### [0.3]
- * Changed ReceiveTCPData
-	- The function now deletes saved data before receiving instead of after
- * Fixed the data saving system
- 	- SendTCPData now actually returns saved data instead of nothing
-
-###### [0.2]
- * Changed RunNetplay's first argument to "server", bool
-	- Removed UDP support to focus on TCP
-
-###### [0.1]
- * Added RunNetplay(mode, port, address)
-	- Runs the Netplay module in TCP server, client or UDP client mode, with the appropriate port and address
- * Added ReceiveTCPData(delete)
-	- Receives data from the other person in the connection, deleting the data received or not
- * Added SendTCPData(data, direct)
-	- Sends data to the other person in the connection, either custom or directly any saved data
+## Changelog
+Currently no releases are available, but there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
 
 ## Requirements (for compiling)
  * zlib
@@ -34,13 +12,13 @@ This version of Danmakufu is made for implementing Netplay in it; see WishMakers
 
 ## Known Issues
  * Wine 4.12.1 (confirmed on macOS at least) suffers some scaling problems with the window size, being 9 pixels too wide and 7 pixels too tall.  This causes some nasty scaling on in-game assets, possibly a result of old Windows size calls not being 100% compatible with Wine releases.
- * The exe will crash when trying to load a sound file that is both: not 1411kbs and is stereo
+ * The exe will crash when trying to load a sound file that is both: not 1411kbs and is stereo (fixed in Woo; fix will be brought over soon)
 
 ## Special Thanks
-WishMakers - for making Danmakufu Woo and helping me out
+WishMakers - for making Danmakufu Woo and helping me with this project
 
 ## Contributions
-Unlike the original source(s), this version is in the border of active and inactive development so pull requests are absolutely accepted, provided they don't break the game. Though bear in mind that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or is very outdated in execution.
+Unlike the original source(s), this version is in active development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
 
 ## License
 zlib library has its own license, please check zlib.h in the repo for that information.</br></br>
