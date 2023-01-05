@@ -6,8 +6,7 @@ WinMain
 int APIENTRY wWinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPWSTR lpCmdLine,
-	int nCmdShow)
-{
+	int nCmdShow) {
 	gstd::DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		DnhConfiguration* config = DnhConfiguration::CreateInstance();
@@ -18,10 +17,12 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
 		EApplication* app = EApplication::CreateInstance();
 		app->Initialize();
 		app->Run();
-	} catch (std::exception& e) {
+	}
+	catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
-	} catch (gstd::wexception& e) {
+	}
+	catch (gstd::wexception& e) {
 		Logger::WriteTop(e.what());
 	}
 	// catch(...) {
@@ -34,4 +35,4 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
 	DnhConfiguration::DeleteInstance();
 
 	return 0;
-}
+};

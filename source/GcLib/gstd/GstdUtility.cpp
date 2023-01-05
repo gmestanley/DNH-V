@@ -4,13 +4,12 @@ using namespace gstd;
 
 //================================================================
 //DebugUtility
-void DebugUtility::DumpMemoryLeaksOnExit()
-{
-#ifdef _DEBUG
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	// _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF);
-	// if (!_CrtCheckMemory())
-#endif
+void DebugUtility::DumpMemoryLeaksOnExit() {
+	#ifdef _DEBUG
+		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+		// _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF);
+		// if (!_CrtCheckMemory())
+	#endif
 }
 
 //================================================================
