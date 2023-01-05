@@ -3,7 +3,7 @@
 /**********************************************************
 WinMain
 **********************************************************/
-int APIENTRY wWinMain(HINSTANCE hInstance,
+int main(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPWSTR lpCmdLine,
 	int nCmdShow) {
