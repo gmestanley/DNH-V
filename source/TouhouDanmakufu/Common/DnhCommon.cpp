@@ -409,12 +409,13 @@ DnhConfiguration::DnhConfiguration()
 	sizeWindow_ = WINDOW_SIZE_640x480;
 	fpsType_ = FPS_NORMAL;
 
-	//Windows版キー登録/Windows ver. Key Registration
+	//キー登録/Key Registration
 	padIndex_ = 0;
-	mapKey_[EDirectInput::KEY_LEFT] = new VirtualKey(DIK_LEFT, 0, 0); //キーボード「←」とジョイパッド「←」を登録
-	mapKey_[EDirectInput::KEY_RIGHT] = new VirtualKey(DIK_RIGHT, 0, 1); //キーボード「→」とジョイパッド「→」を登録
-	mapKey_[EDirectInput::KEY_UP] = new VirtualKey(DIK_UP, 0, 2); //キーボード「↑」とジョイパッド「↑」を登録
-	mapKey_[EDirectInput::KEY_DOWN] = new VirtualKey(DIK_DOWN, 0, 3); //キーボード「↓」とジョイパッド「↓」を登録
+	//Windows版/Windows ver.
+	mapKey_[EDirectInput::KEY_LEFT] = new VirtualKey(DIK_LEFT, 0, 0); //キーボードとジョイパッド「←」を登録/Register Keyboard and Joypad "←"
+	mapKey_[EDirectInput::KEY_RIGHT] = new VirtualKey(DIK_RIGHT, 0, 1); //キーボードとジョイパッド「→」を登録/Register Keyboard and Joypad "→"
+	mapKey_[EDirectInput::KEY_UP] = new VirtualKey(DIK_UP, 0, 2); //キーボードとジョイパッド「↑」を登録/Register Keyboard and Joypad "↑"
+	mapKey_[EDirectInput::KEY_DOWN] = new VirtualKey(DIK_DOWN, 0, 3); //キーボードとジョイパッド「↓」を登録/Register Keyboard and Joypad "↓"
 
 	mapKey_[EDirectInput::KEY_OK] = new VirtualKey(DIK_Z, 0, 5);
 	mapKey_[EDirectInput::KEY_CANCEL] = new VirtualKey(DIK_X, 0, 6);
