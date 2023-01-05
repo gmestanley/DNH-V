@@ -465,8 +465,7 @@ bool DnhConfiguration::_LoadDefintionFile()
 
 	return true;
 }
-bool DnhConfiguration::LoadConfigFile()
-{
+bool DnhConfiguration::LoadConfigFile() {
 	std::wstring path = PathProperty::GetModuleDirectory() + L"config.dat";
 	RecordBuffer record;
 	bool res = record.ReadFromFile(path);
