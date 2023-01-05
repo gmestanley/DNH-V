@@ -409,7 +409,7 @@ DnhConfiguration::DnhConfiguration()
 	sizeWindow_ = WINDOW_SIZE_640x480;
 	fpsType_ = FPS_NORMAL;
 
-	//キー登録
+	//Windows版キー登録/Windows ver. Key Registration
 	padIndex_ = 0;
 	mapKey_[EDirectInput::KEY_LEFT] = new VirtualKey(DIK_LEFT, 0, 0); //キーボード「←」とジョイパッド「←」を登録
 	mapKey_[EDirectInput::KEY_RIGHT] = new VirtualKey(DIK_RIGHT, 0, 1); //キーボード「→」とジョイパッド「→」を登録
