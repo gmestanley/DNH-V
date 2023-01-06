@@ -56,51 +56,6 @@
     <ClCompile Include="source\GcLib\gstd\Window.cpp">
       <Filter>source\GcLib\gstd</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DirectGraphics.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DirectInput.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DirectSound.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DxScript.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DxText.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DxUtility.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\DxWindow.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\ElfreinaMesh.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\EventScript.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\MetasequoiaMesh.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\RenderObject.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\ScriptManager.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\Shader.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\Texture.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GcLib\directx\TransitionEffect.cpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClCompile>
     <ClCompile Include="source\TouhouDanmakufu\Common\DnhCommon.cpp">
       <Filter>source\Common</Filter>
     </ClCompile>
@@ -265,58 +220,7 @@
     <ClInclude Include="source\GcLib\gstd\Window.hpp">
       <Filter>source\GcLib\gstd</Filter>
     </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DirectGraphics.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DirectInput.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DirectSound.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DxConstant.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DxLib.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DxScript.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DxText.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DxUtility.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\DxWindow.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\ElfreinaMesh.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\EventScript.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\HLSL.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\MetasequoiaMesh.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\RenderObject.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\ScriptManager.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\Shader.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\Texture.hpp">
-      <Filter>source\GcLib\directx</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GcLib\directx\TransitionEffect.hpp">
+    <ClInclude Include="source\GcLib\opengl\OgLib.hpp">
       <Filter>source\GcLib\directx</Filter>
     </ClInclude>
     <ClInclude Include="source\GcLib\GcLib.hpp">

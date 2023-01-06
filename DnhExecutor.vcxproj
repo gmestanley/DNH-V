@@ -170,21 +170,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\GcLib\directx\DirectGraphics.cpp" />
-    <ClCompile Include="source\GcLib\directx\DirectInput.cpp" />
-    <ClCompile Include="source\GcLib\directx\DirectSound.cpp" />
-    <ClCompile Include="source\GcLib\directx\DxScript.cpp" />
-    <ClCompile Include="source\GcLib\directx\DxText.cpp" />
-    <ClCompile Include="source\GcLib\directx\DxUtility.cpp" />
-    <ClCompile Include="source\GcLib\directx\DxWindow.cpp" />
-    <ClCompile Include="source\GcLib\directx\ElfreinaMesh.cpp" />
-    <ClCompile Include="source\GcLib\directx\EventScript.cpp" />
-    <ClCompile Include="source\GcLib\directx\MetasequoiaMesh.cpp" />
-    <ClCompile Include="source\GcLib\directx\RenderObject.cpp" />
-    <ClCompile Include="source\GcLib\directx\ScriptManager.cpp" />
-    <ClCompile Include="source\GcLib\directx\Shader.cpp" />
-    <ClCompile Include="source\GcLib\directx\Texture.cpp" />
-    <ClCompile Include="source\GcLib\directx\TransitionEffect.cpp" />
     <ClCompile Include="source\GcLib\gstd\Application.cpp" />
     <ClCompile Include="source\GcLib\gstd\File.cpp" />
     <ClCompile Include="source\GcLib\gstd\FpsController.cpp" />
@@ -238,24 +223,7 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\GcLib\directx\DirectGraphics.hpp" />
-    <ClInclude Include="source\GcLib\directx\DirectInput.hpp" />
-    <ClInclude Include="source\GcLib\directx\DirectSound.hpp" />
-    <ClInclude Include="source\GcLib\directx\DxConstant.hpp" />
-    <ClInclude Include="source\GcLib\directx\DxLib.hpp" />
-    <ClInclude Include="source\GcLib\directx\DxScript.hpp" />
-    <ClInclude Include="source\GcLib\directx\DxText.hpp" />
-    <ClInclude Include="source\GcLib\directx\DxUtility.hpp" />
-    <ClInclude Include="source\GcLib\directx\DxWindow.hpp" />
-    <ClInclude Include="source\GcLib\directx\ElfreinaMesh.hpp" />
-    <ClInclude Include="source\GcLib\directx\EventScript.hpp" />
-    <ClInclude Include="source\GcLib\directx\HLSL.hpp" />
-    <ClInclude Include="source\GcLib\directx\MetasequoiaMesh.hpp" />
-    <ClInclude Include="source\GcLib\directx\RenderObject.hpp" />
-    <ClInclude Include="source\GcLib\directx\ScriptManager.hpp" />
-    <ClInclude Include="source\GcLib\directx\Shader.hpp" />
-    <ClInclude Include="source\GcLib\directx\Texture.hpp" />
-    <ClInclude Include="source\GcLib\directx\TransitionEffect.hpp" />
+    <ClInclude Include="source\GcLib\opengl\OgLib.hpp" />
     <ClInclude Include="source\GcLib\GcLib.hpp" />
     <ClInclude Include="source\GcLib\gstd\Application.hpp" />
     <ClInclude Include="source\GcLib\gstd\File.hpp" />
