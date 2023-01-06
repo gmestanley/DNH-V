@@ -4,9 +4,9 @@
 WinMain
 **********************************************************/
 int APIENTRY wWinMain(HINSTANCE hInstance,
-	HINSTANCE hPrevInstance,
-	LPWSTR lpCmdLine,
-	int nCmdShow) {
+					  HINSTANCE hPrevInstance,
+				      LPWSTR lpCmdLine,
+					  int nCmdShow) {
 	gstd::DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		DnhConfiguration* config = DnhConfiguration::CreateInstance();
