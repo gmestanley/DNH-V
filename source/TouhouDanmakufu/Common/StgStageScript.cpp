@@ -4,8 +4,8 @@
 #include "StgShot.hpp"
 #include "StgSystem.hpp"
 #include "Networking.hpp"
-#include "gstd/Logger.hpp"
-#include "gstd/Script.hpp"
+//#include "gstd/Logger.hpp"
+//#include "gstd/Script.hpp"
 
 /**********************************************************
 //StgStageScriptManager
@@ -1860,6 +1860,8 @@ gstd::value StgStageScript::Func_GetShotIdInCircleA2(gstd::script_machine* machi
 }
 gstd::value StgStageScript::Func_GetShotCount(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	StgShotManager* shotManager = stageController->GetShotManager();
 
 	int target = (int)argv[0].as_real();
@@ -1881,6 +1883,8 @@ gstd::value StgStageScript::Func_GetShotCount(gstd::script_machine* machine, int
 }
 gstd::value StgStageScript::Func_SetShotAutoDeleteClip(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	ref_count_ptr<StgStageInformation> infoStage = stageController->GetStageInformation();
 
 	RECT rect;
@@ -1894,6 +1898,8 @@ gstd::value StgStageScript::Func_SetShotAutoDeleteClip(gstd::script_machine* mac
 }
 gstd::value StgStageScript::Func_GetShotDataInfoA1(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	ref_count_ptr<StgStageInformation> infoStage = stageController->GetStageInformation();
 
 	int idShot = (int)argv[0].as_real();
@@ -1975,6 +1981,8 @@ gstd::value StgStageScript::Func_GetShotDataInfoA1(gstd::script_machine* machine
 }
 gstd::value StgStageScript::Func_StartShotScript(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	StgStageScriptManager* scriptManager = stageController->GetScriptManagerP();
 
 	if (scriptManager->GetShotScriptID() != StgControlScriptManager::ID_INVALID)

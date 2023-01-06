@@ -14,14 +14,14 @@ EApplication::~EApplication()
 bool EApplication::_Initialize()
 {
 	ELogger* logger = ELogger::GetInstance();
-	Logger::WriteTop(L"アプリケーション初期化/Application initialization");
+	Logger::WriteTop(L"アプリケーション初期化/Application Initialization");
 
 	EFileManager* fileManager = EFileManager::CreateInstance();
 	fileManager->Initialize();
 
 	EFpsController* fpsController = EFpsController::CreateInstance();
 
-	std::wstring appName = L"DNH Netplay Edition";
+	std::wstring appName = L"DNH-V";
 	appName += DNH_VERSION;
 
 	DnhConfiguration* config = DnhConfiguration::CreateInstance();
@@ -98,7 +98,7 @@ bool EApplication::_Initialize()
 	SystemController* systemController = SystemController::CreateInstance();
 	systemController->Reset();
 
-	Logger::WriteTop(L"アプリケーション初期化完了/Application initialization finished");
+	Logger::WriteTop(L"アプリケーション初期化完了/Application Initialization Finished");
 
 	return true;
 }
