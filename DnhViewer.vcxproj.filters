@@ -173,6 +173,9 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhViewer\WinMain.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\TouhouDanmakufu\Common\Networking.cpp">
+      <Filter>source\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -348,6 +351,9 @@
     </ClInclude>
     <ClInclude Include="source\TouhouDanmakufu\DnhViewer\ScriptSelect.hpp">
       <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp">
+      <Filter>source\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

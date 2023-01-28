@@ -190,6 +190,7 @@
     <ClCompile Include="source\TouhouDanmakufu\Common\DnhGcLibImpl.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\Common\DnhReplay.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\Common\DnhScript.cpp" />
+    <ClCompile Include="source\TouhouDanmakufu\Common\Networking.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\Common\StgCommon.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\Common\StgControlScript.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\Common\StgEnemy.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="source\TouhouDanmakufu\Common\DnhGcLibImpl.hpp" />
     <ClInclude Include="source\TouhouDanmakufu\Common\DnhReplay.hpp" />
     <ClInclude Include="source\TouhouDanmakufu\Common\DnhScript.hpp" />
+    <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp" />
     <ClInclude Include="source\TouhouDanmakufu\Common\StgCommon.hpp" />
     <ClInclude Include="source\TouhouDanmakufu\Common\StgControlScript.hpp" />
     <ClInclude Include="source\TouhouDanmakufu\Common\StgEnemy.hpp" />
