@@ -28,7 +28,7 @@ bool MainWindow::Initialize()
 	wcex.hIconSm = NULL;
 	::RegisterClassEx(&wcex);
 
-	std::wstring appName = L"DnhViewer ph3 ";
+	std::wstring appName = L"DnhViewer DNH-V ";
 	appName += DNH_VERSION;
 	hWnd_ = ::CreateWindow(wcex.lpszClassName,
 		appName.c_str(),
