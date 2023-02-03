@@ -2286,31 +2286,28 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
 gstd::value StgStageScript::Func_GetNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
-	Netplay::wchar = Netplay::convertToWString(Netplay::in);
-	return value(machine->get_engine()->get_string_type(), (std::wstring)Netplay::wchar);
+	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
+	return value(machine->get_engine()->get_string_type(), (std::wstring)Netplay::wcharBuffer);
 }
 gstd::value StgStageScript::Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	std::size_t received;
 	std::fill_n(Netplay::in, sizeof(Netplay::in), 0);
 	if (Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
 		return value();
-	Netplay::wchar = Netplay::convertToWString(Netplay::in);
-	Logger::WriteTop(L"Message received from the server: \"");
-	Logger::WriteTop(Netplay::wchar);
-	Logger::WriteTop(L"\"");
+	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
+	Logger::WriteTop(L"Message received from the server: \"" + Netplay::wcharBuffer + L"\"");
 	return value();
 }
 gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	char* vstring;
-	if (argv[1].as_boolean() == false) {
+	if (!argv[1].as_boolean()) {
 		vstring = Netplay::in;
 	}
 	else {
 		vstring = Netplay::convertToChar(argv[0].as_char(), sizeof(argv[0].as_char()));
 	}
-	if (Netplay::tcpSocket.send(vstring, sizeof(vstring)) != sf::Socket::Done) {
-		return value();
-	}
+	Netplay::tcpSocket.send(vstring, sizeof(vstring));
+	Logger::WriteTop(L"Message \"" + Netplay::wcharBuffer + L"\" sent to the other machine connected");
 	return value();
 }
 /*gstd::value StgStageScript::Func_ReceiveUDPData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
@@ -2352,24 +2349,20 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 		}
 	}
 	long double currentPort = std::stod(Netplay::port);
-	if (!(bool)argv[0].as_boolean()) {
+	if (!argv[0].as_boolean()) {
 		// Create a server socket to accept new connections
 		sf::TcpListener listener;
 
 		// Listen to the given port for incoming connections
 		if (listener.listen(currentPort) != sf::Socket::Done)
 			return value();
-		Logger::WriteTop(L"Server is listening to port ");
-		Logger::WriteTop(std::to_wstring(currentPort));
-		Logger::WriteTop(L", waiting for connections...\n");
+		Logger::WriteTop(L"Server is listening to port " + std::to_wstring(currentPort) + L", waiting for connections...");
 
 		// Wait for a connection
 		if (listener.accept(Netplay::tcpSocket) != sf::Socket::Done)
 			return value();
 		sf::IpAddress net = Netplay::tcpSocket.getRemoteAddress();
-		Logger::WriteTop(L"Client connected: ");
-		Logger::WriteTop(std::to_wstring(net.toInteger()));
-		Logger::WriteTop(L"\n");
+		Logger::WriteTop(L"Client connected: " + std::to_wstring(net.toInteger()));
 	}
 	else if ((bool)argv[0].as_boolean()) {
 		sf::IpAddress server = actualAddress;
@@ -2383,9 +2376,7 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 		sf::Socket::Status status = Netplay::tcpSocket.connect(server, currentPort);
 		if (status != sf::Socket::Done)
 			return value();
-		Logger::WriteTop(L"Connected to server ");
-		Logger::WriteTop(std::to_wstring(server.toInteger()));
-		Logger::WriteTop(L"\n");
+		Logger::WriteTop(L"Connected to server " + std::to_wstring(server.toInteger()));
 	}
 	/*else if ((int)argv[0].as_real() == 2) {
 		if (Netplay::u_socket.bind(port) != sf::Socket::Done)
