@@ -4,7 +4,7 @@
 class Netplay {
 public:
 	static std::string port;
-	static std::wstring wchar;
+	static std::wstring inWChar;
 	static sf::TcpSocket tcpSocket;
 	//static sf::UdpSocket u_socket;
 	static char in[128];

@@ -2286,23 +2286,23 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
 gstd::value StgStageScript::Func_GetNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
-	Netplay::wchar = Netplay::convertToWString(Netplay::in);
-	return value(machine->get_engine()->get_string_type(), (std::wstring)Netplay::wchar);
+	Netplay::inWChar = Netplay::convertToWString(Netplay::in);
+	return value(machine->get_engine()->get_string_type(), (std::wstring)Netplay::inWChar);
 }
 gstd::value StgStageScript::Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	std::size_t received;
 	std::fill_n(Netplay::in, sizeof(Netplay::in), 0);
 	if (Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
 		return value();
-	Netplay::wchar = Netplay::convertToWString(Netplay::in);
+	Netplay::inWChar = Netplay::convertToWString(Netplay::in);
 	Logger::WriteTop(L"Message received from the server: \"");
-	Logger::WriteTop(Netplay::wchar);
+	Logger::WriteTop(Netplay::inWChar);
 	Logger::WriteTop(L"\"");
 	return value();
 }
 gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	char* vstring;
-	if (argv[1].as_boolean() == false) {
+	if (!argv[1].as_boolean()) {
 		vstring = Netplay::in;
 	}
 	else {
