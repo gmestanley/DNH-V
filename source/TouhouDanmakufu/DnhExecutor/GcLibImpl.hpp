@@ -1,5 +1,5 @@
-#ifndef __TOUHOUDANMAKUFU_EXE_GCLIBIMPL__
-#define __TOUHOUDANMAKUFU_EXE_GCLIBIMPL__
+#ifndef __TOUHOUDANMAKUFU_LIN_GCLIBIMPL__
+#define __TOUHOUDANMAKUFU_LIN_GCLIBIMPL__
 
 #include "../Common/DnhGcLibImpl.hpp"
 #include "Constant.hpp"

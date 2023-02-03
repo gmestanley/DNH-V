@@ -1860,6 +1860,8 @@ gstd::value StgStageScript::Func_GetShotIdInCircleA2(gstd::script_machine* machi
 }
 gstd::value StgStageScript::Func_GetShotCount(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	StgShotManager* shotManager = stageController->GetShotManager();
 
 	int target = (int)argv[0].as_real();
@@ -1881,6 +1883,8 @@ gstd::value StgStageScript::Func_GetShotCount(gstd::script_machine* machine, int
 }
 gstd::value StgStageScript::Func_SetShotAutoDeleteClip(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	ref_count_ptr<StgStageInformation> infoStage = stageController->GetStageInformation();
 
 	RECT rect;
@@ -1894,6 +1898,8 @@ gstd::value StgStageScript::Func_SetShotAutoDeleteClip(gstd::script_machine* mac
 }
 gstd::value StgStageScript::Func_GetShotDataInfoA1(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	ref_count_ptr<StgStageInformation> infoStage = stageController->GetStageInformation();
 
 	int idShot = (int)argv[0].as_real();
@@ -1975,6 +1981,8 @@ gstd::value StgStageScript::Func_GetShotDataInfoA1(gstd::script_machine* machine
 }
 gstd::value StgStageScript::Func_StartShotScript(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
+	StgStageScript* script = (StgStageScript*)machine->data;
+	StgStageController* stageController = script->stageController_;
 	StgStageScriptManager* scriptManager = stageController->GetScriptManagerP();
 
 	if (scriptManager->GetShotScriptID() != StgControlScriptManager::ID_INVALID)
@@ -2284,7 +2292,7 @@ gstd::value StgStageScript::Func_GetNetData(gstd::script_machine* machine, int a
 gstd::value StgStageScript::Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	std::size_t received;
 	std::fill_n(Netplay::in, sizeof(Netplay::in), 0);
-	if (Netplay::t_socket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
+	if (Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
 		return value();
 	Netplay::wchar = Netplay::convertToWString(Netplay::in);
 	Logger::WriteTop(L"Message received from the server: \"");
@@ -2300,7 +2308,7 @@ gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int 
 	else {
 		vstring = Netplay::convertToChar(argv[0].as_char(), sizeof(argv[0].as_char()));
 	}
-	if (Netplay::t_socket.send(vstring, sizeof(vstring)) != sf::Socket::Done) {
+	if (Netplay::tcpSocket.send(vstring, sizeof(vstring)) != sf::Socket::Done) {
 		return value();
 	}
 	return value();
@@ -2337,13 +2345,13 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 			}
 		}
 		if (sw) {
-			Netplay::p[i] = a[i];
+			Netplay::port[i] = a[i];
 		}
 		else {
 			s[i] = a[i];
 		}
 	}
-	long double port = std::stod(Netplay::p);
+	long double port = std::stod(Netplay::port);
 	if (!(bool)argv[0].as_boolean()) {
 		// Create a server socket to accept new connections
 		sf::TcpListener listener;
@@ -2356,9 +2364,9 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 		Logger::WriteTop(L", waiting for connections...\n");
 
 		// Wait for a connection
-		if (listener.accept(Netplay::t_socket) != sf::Socket::Done)
+		if (listener.accept(Netplay::tcpSocket) != sf::Socket::Done)
 			return value();
-		sf::IpAddress net = Netplay::t_socket.getRemoteAddress();
+		sf::IpAddress net = Netplay::tcpSocket.getRemoteAddress();
 		Logger::WriteTop(L"Client connected: ");
 		Logger::WriteTop(std::to_wstring(net.toInteger()));
 		Logger::WriteTop(L"\n");
@@ -2372,7 +2380,7 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 		}
 
 		// Connect to the server
-		sf::Socket::Status status = Netplay::t_socket.connect(server, port);
+		sf::Socket::Status status = Netplay::tcpSocket.connect(server, port);
 		if (status != sf::Socket::Done)
 			return value();
 		Logger::WriteTop(L"Connected to server ");

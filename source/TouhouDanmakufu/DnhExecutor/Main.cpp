@@ -3,10 +3,10 @@
 /**********************************************************
 WinMain
 **********************************************************/
-int main(HINSTANCE hInstance,
+int main(/*HINSTANCE hInstance,
 		HINSTANCE hPrevInstance,
 		LPWSTR lpCmdLine,
-		int nCmdShow) {
+		int nCmdShow*/) {
 	gstd::DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		DnhConfiguration* config = DnhConfiguration::CreateInstance();
