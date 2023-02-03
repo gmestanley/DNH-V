@@ -2295,7 +2295,7 @@ gstd::value StgStageScript::Func_ReceiveNetData(gstd::script_machine* machine, i
 	if (Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
 		return value();
 	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
-	Logger::WriteTop(L"Message received from the server: \"" + Netplay::wcharBuffer+ L"\"");
+	Logger::WriteTop(L"Message received from the server: \"" + Netplay::wcharBuffer + L"\"");
 	return value();
 }
 gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
@@ -2306,9 +2306,8 @@ gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int 
 	else {
 		vstring = Netplay::convertToChar(argv[0].as_char(), sizeof(argv[0].as_char()));
 	}
-	if (Netplay::tcpSocket.send(vstring, sizeof(vstring)) != sf::Socket::Done) {
-		return value();
-	}
+	Netplay::tcpSocket.send(vstring, sizeof(vstring));
+	Logger::WriteTop(L"Message \"" + Netplay::wcharBuffer + L"\" sent to the other machine connected");
 	return value();
 }
 /*gstd::value StgStageScript::Func_ReceiveUDPData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
