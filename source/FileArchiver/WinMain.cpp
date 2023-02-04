@@ -7,8 +7,7 @@ WinMain
 int APIENTRY wWinMain(HINSTANCE hInstance,
 	                  HINSTANCE hPrevInstance,
 	                  LPWSTR lpCmdLine,
-	                  int nCmdShow)
-{
+	                  int nCmdShow) {
 	DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		ELogger::CreateInstance();
