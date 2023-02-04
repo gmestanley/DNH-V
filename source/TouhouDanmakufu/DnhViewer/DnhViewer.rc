@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 日本語 resources
+// Japanese (Japan) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
-#ifdef _WIN32
 LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
 #pragma code_page(932)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -27,18 +25,18 @@ LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -52,83 +50,22 @@ END
 // Menu
 //
 
-IDR_MENU_MAIN MENU DISCARDABLE 
+IDR_MENU_MAIN MENU
 BEGIN
-    POPUP "ﾌｧｲﾙ(&F)"
+    POPUP "̧��(&F)"
     BEGIN
-        MENUITEM "終了(&E)\tALT+F4",            ID_MENUITEM_MAIN_EXIT
+        MENUITEM "�I��(&E)\tALT+F4",              ID_MENUITEM_MAIN_EXIT
     END
-    POPUP "表示(&V)"
+    POPUP "�\��(&V)"
     BEGIN
-        MENUITEM "ログウィンドウ(&L)",          ID_MENUITEM_MAIN_LOGWINDOW
-        MENUITEM "デバッグウィンドウ(&D)",      ID_MENUITEM_MAIN_DEBUGWINDOW
+        MENUITEM "���O�E�B���h�E(&L)",                 ID_MENUITEM_MAIN_LOGWINDOW
+        MENUITEM "�f�o�b�O�E�B���h�E(&D)",               ID_MENUITEM_MAIN_DEBUGWINDOW
         MENUITEM SEPARATOR
-        MENUITEM "領域を640x480に固定(&F)",     ID_MENUITEM_MAIN_FIXEDAREA
+        MENUITEM "�̈��640x480�ɌŒ�(&F)",           ID_MENUITEM_MAIN_FIXEDAREA
     END
 END
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-/*
-IDD_DIALOG_SELECT_SCRIPT DIALOGEX 0, 0, 242, 153
-STYLE WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
-CAPTION "スクリプト選択"
-FONT 9, "ＭＳ Ｐゴシック"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,128,132,50,14
-    PUSHBUTTON      "ｷｬﾝｾﾙ",IDCANCEL,185,132,50,14
-    CONTROL         "List1",IDC_LIST_SELECT_SCRIPT,"SysListView32",
-                    LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | 
-                    LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,7,69,228,57,
-                    WS_EX_CLIENTEDGE
-    GROUPBOX        "フィルタ",IDC_STATIC,7,28,228,34
-    LTEXT           "種別",IDC_STATIC,15,41,19,10
-    COMBOBOX        IDC_COMBO_TYPE_SCRIPT,33,39,82,14,CBS_DROPDOWNLIST | 
-                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "再読み込み",IDC_BUTTON_RELOAD_SCRIPT,7,7,50,14
-END
-
-IDD_DIALOG_DEBUG DIALOGEX 0, 0, 111, 51
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-EXSTYLE WS_EX_TOOLWINDOW
-CAPTION "デバッグ操作パネル"
-FONT 9, "ＭＳ Ｐゴシック", 0, 0, 0x1
-BEGIN
-    CONTROL         "自機無敵( I )",IDC_CHECK_PLAYER_INVINCIBILITY,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,7,54,10
-END
-*/
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
-BEGIN
-    IDD_DIALOG_SELECT_SCRIPT, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 235
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 146
-    END
-
-    IDD_DIALOG_DEBUG, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 104
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 44
-    END
-END
-#endif    // APSTUDIO_INVOKED
-
-#endif    // 日本語 resources
+#endif    // Japanese (Japan) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
