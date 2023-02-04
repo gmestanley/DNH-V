@@ -10,7 +10,7 @@ MainWindow::MainWindow()
 }
 MainWindow::~MainWindow()
 {
-	//コンパイル中なら停止
+	//コンパイル中なら停止/Stop if it's compiling
 	Stop();
 	Join();
 }
@@ -26,7 +26,7 @@ bool MainWindow::Initialize()
 	this->Attach(hWnd_);
 	ShowWindow(hWnd_, SW_HIDE);
 
-	//Windowを画面の中央に移動
+	//Windowを画面の中央に移動/Move the window to the center of the screen
 	SetBounds(0, 0, 640, 480);
 	SetWindowText(hWnd_, WINDOW_TITLE.c_str());
 
@@ -38,11 +38,11 @@ bool MainWindow::Initialize()
 	int top = drect.bottom / 2 - (mrect.bottom - mrect.top) / 2;
 	::MoveWindow(hWnd_, left, top, mrect.right - mrect.left, mrect.bottom - mrect.top, TRUE);
 
-	//逆コンパイルボタン
+	//逆コンパイルボタン/Reverse Compile Button
 	buttonDecompile_.Attach(GetDlgItem(hWnd_, IDC_BUTTON_DECOMPILE));
 	buttonDecompile_.SetWindowEnable(false);
 
-	//リスト
+	//リスト/List
 	HWND hList = GetDlgItem(hWnd_, IDC_LIST_FILE);
 	DWORD dwStyle = ListView_GetExtendedListViewStyle(hList);
 	dwStyle |= LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES;
@@ -52,13 +52,13 @@ bool MainWindow::Initialize()
 	wndListFile_.AddColumn(160, COL_DIRECTORY, L"Directory");
 	wndListFile_.AddColumn(256, COL_FULLPATH, L"Path");
 
-	//ステータスバー
+	//ステータスバー/Status Bar
 	wndStatus_.Create(hWnd_);
 	std::vector<int> sizeStatus;
 	sizeStatus.push_back(1600);
 	wndStatus_.SetPartsSize(sizeStatus);
 
-	//設定読み込み
+	//設定読み込み/Loading of Settings
 	_LoadEnvironment();
 
 	DragAcceptFiles(hWnd_, TRUE);
@@ -89,7 +89,7 @@ LRESULT MainWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 		break;
 	}
 	case WM_DESTROY: {
-		//設定保存
+		//設定保存/Saving Settings
 		_SaveEnvironment();
 		::PostQuitMessage(0);
 		break;
@@ -98,7 +98,7 @@ LRESULT MainWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 	case WM_COMMAND: {
 		int id = wParam & 0xffff;
 		switch (id) {
-		case IDCANCEL: //閉じるボタン
+		case IDCANCEL: //閉じるボタン/Close Button
 		case ID_MENUITEM_EXIT:
 			::DestroyWindow(hWnd);
 			break;
@@ -202,12 +202,12 @@ void MainWindow::_AddFileFromDialog()
 	wchar_t* endstr = wcschr(outFileName, '\0');
 	wchar_t* nextstr = endstr + 1;
 
-	if (*(nextstr) == L'\0') //選択したファイルが１つ
+	if (*(nextstr) == L'\0') //選択したファイルが１つ/Chosen file is only one
 	{
 		std::wstring path = outFileName;
 		std::wstring dirBase = PathProperty::GetFileDirectory(path);
 		_AddFile(dirBase, path);
-	} else //複数選択
+	} else //複数選択/Select multiple
 	{
 		while (*(nextstr) != L'\0') {
 			endstr = wcschr(nextstr, L'\0');
