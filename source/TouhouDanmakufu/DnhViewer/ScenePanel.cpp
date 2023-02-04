@@ -79,7 +79,7 @@ void ScenePanel::LocateParts()
 			gHeight = gWidth * 3 / 4;
 			gHeight = gHeight > wHeight ? wHeight : gHeight;
 			gWidth = gHeight * 4 / 3;
-		} else { //
+		} else { //
 			gHeight = gWidth * 3 / 4;
 			gHeight = gHeight > wHeight ? wHeight : gHeight;
 			gWidth = gHeight * 4 / 3;
@@ -139,7 +139,7 @@ bool ScenePanel::StartStg()
 			infoStgSystem->SetMainScriptInformation(infoEnemy);
 			controller->Initialize(infoStgSystem);
 
-			//ƒXƒe[ƒW
+			//
 			controller->Start(infoPlayer, NULL);
 		}
 
@@ -163,13 +163,13 @@ bool ScenePanel::EndStg()
 void ScenePanel::SetStgState(bool bStart)
 {
 	if (bStart) {
-		buttonStart_.SetText(L"I—¹");
+		buttonStart_.SetText(L"");
 		buttonPause_.SetWindowEnable(true);
 
 		panelPathEnemy_->SetWindowEnable(false);
 		panelPathPlayer_->SetWindowEnable(false);
 	} else {
-		buttonStart_.SetText(L"ŠJŽn");
+		buttonStart_.SetText(L"");
 		buttonPause_.SetWindowEnable(false);
 		panelPathEnemy_->SetWindowEnable(true);
 		panelPathPlayer_->SetWindowEnable(true);
@@ -218,7 +218,7 @@ bool ScenePanel::ScriptPathPanel::Initialize(int type, HWND hParent)
 		editPath_.Create(hWnd_, styleEdit);
 
 		buttonPath_.Create(hWnd_, stylePath);
-		buttonPath_.SetText(L"‘I‘ð");
+		buttonPath_.SetText(L"");
 	}
 
 	labelPath_.SetBounds(8, 12, 72, 20);
