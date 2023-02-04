@@ -36,7 +36,7 @@ bool ScenePanel::Initialize(HWND hParent)
 	bFixedArea_ = false;
 
 	buttonStart_.Create(hWnd_);
-	buttonStart_.SetText(L"ŠJŽn");
+	buttonStart_.SetText(L"");
 
 	panelPathEnemy_ = new ScriptPathPanel();
 	panelPathEnemy_->Initialize(ScriptPathPanel::TYPE_ENEMY, hWnd_);
@@ -46,7 +46,7 @@ bool ScenePanel::Initialize(HWND hParent)
 	WButton::Style styleCheck;
 	styleCheck.SetStyle(WS_CHILD | WS_VISIBLE | BS_PUSHLIKE | BS_AUTOCHECKBOX);
 	buttonPause_.Create(hWnd_, styleCheck);
-	buttonPause_.SetText(L"’âŽ~");
+	buttonPause_.SetText(L"");
 	buttonPause_.SetWindowEnable(false);
 
 	GraphicsWindow* wndGraphics = MainWindow::GetInstance()->GetGraphicsWindow();
