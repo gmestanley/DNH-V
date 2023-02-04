@@ -74,12 +74,12 @@ void ScenePanel::LocateParts()
 
 	if (!bFixedArea_) {
 /*
-		if (gWidth > gHeight * 4 / 3) { //‰¡•‚ªL‚¢
+		if (gWidth > gHeight * 4 / 3) { //
 			gWidth = gHeight * 4 / 3;
 			gHeight = gWidth * 3 / 4;
 			gHeight = gHeight > wHeight ? wHeight : gHeight;
 			gWidth = gHeight * 4 / 3;
-		} else { //c•‚ªL‚¢
+		} else { //
 			gHeight = gWidth * 3 / 4;
 			gHeight = gHeight > wHeight ? wHeight : gHeight;
 			gWidth = gHeight * 4 / 3;
@@ -122,7 +122,7 @@ bool ScenePanel::StartStg()
 	try {
 		ref_count_ptr<ScriptInformation> infoEnemy = panelPathEnemy_->GetSelectedScriptInformation();
 		if (infoEnemy == NULL)
-			throw gstd::wexception(L"“GƒXƒNƒŠƒvƒg‚ª•s³‚Å‚·");
+			throw gstd::wexception(L"");
 
 		ref_count_ptr<StgControllerForViewer> controller = StgControllerForViewer::Create();
 		if (infoEnemy->GetType() == ScriptInformation::TYPE_PACKAGE) {
@@ -133,7 +133,7 @@ bool ScenePanel::StartStg()
 		} else {
 			ref_count_ptr<ScriptInformation> infoPlayer = panelPathPlayer_->GetSelectedScriptInformation();
 			if (infoPlayer == NULL)
-				throw gstd::wexception(L"©‹@ƒXƒNƒŠƒvƒg‚ª•s³‚Å‚·");
+				throw gstd::wexception(L"");
 
 			ref_count_ptr<StgSystemInformation> infoStgSystem = new StgSystemInformation();
 			infoStgSystem->SetMainScriptInformation(infoEnemy);
@@ -148,8 +148,8 @@ bool ScenePanel::StartStg()
 		ErrorDialog::ShowErrorDialog(e.what());
 		Logger::WriteTop(e.what());
 	} catch (...) {
-		MessageBox(hWnd_, L"ŠJn¸”s", L"error", MB_OK);
-		Logger::WriteTop(L"ŠJn¸”s");
+		MessageBox(hWnd_, L"", L"error", MB_OK);
+		Logger::WriteTop(L"");
 	}
 
 	return true;
@@ -211,9 +211,9 @@ bool ScenePanel::ScriptPathPanel::Initialize(int type, HWND hParent)
 	{
 		labelPath_.Create(hWnd_);
 		if (type == TYPE_ENEMY)
-			labelPath_.SetText(L"“GƒXƒNƒŠƒvƒg");
+			labelPath_.SetText(L"");
 		else
-			labelPath_.SetText(L"©‹@ƒXƒNƒŠƒvƒg");
+			labelPath_.SetText(L"");
 
 		editPath_.Create(hWnd_, styleEdit);
 
@@ -259,8 +259,8 @@ LRESULT ScenePanel::ScriptPathPanel::_WindowProcedure(HWND hWnd, UINT uMsg, WPAR
 				ofn.Flags = OFN_EXPLORER | OFN_HIDEREADONLY;
 				ofn.nFilterIndex = 1;
 				ofn.lpstrDefExt = ".txt";
-				ofn.lpstrFilter = "‘S‚Ä‚Ìƒtƒ@ƒCƒ‹";
-				ofn.lpstrTitle = "ƒXƒNƒŠƒvƒg‚ğŠJ‚­";
+				ofn.lpstrFilter = "";
+				ofn.lpstrTitle = "­";
 				if (GetOpenFileName(&ofn))
 					editPath_.SetText(path);
 */
