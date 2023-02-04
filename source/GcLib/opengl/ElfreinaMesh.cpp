@@ -988,9 +988,9 @@ gstd::ref_count_ptr<Matrices> ElfreinaMesh::CreateAnimationMatrix(std::wstring n
 	return matrix;
 }
 
-D3DXMATRIX ElfreinaMesh::GetAnimationMatrix(std::wstring nameAnime, double time, std::wstring nameBone)
+glm::mat4 ElfreinaMesh::GetAnimationMatrix(std::wstring nameAnime, double time, std::wstring nameBone)
 {
-	D3DXMATRIX res;
+	glm::mat4 res;
 	ElfreinaMeshData* data = (ElfreinaMeshData*)data_.GetPointer();
 	if (data->mapBoneNameIndex_.find(nameBone) != data->mapBoneNameIndex_.end()) {
 		int indexBone = data->mapBoneNameIndex_[nameBone];
@@ -1001,7 +1001,7 @@ D3DXMATRIX ElfreinaMesh::GetAnimationMatrix(std::wstring nameAnime, double time,
 			//ループ有無で時間を計算する
 			time = _CalcFrameToTime(time, anime);
 			gstd::ref_count_ptr<Matrices> matrix = anime->CreateBoneAnimationMatrix(time, data);
-			D3DXMATRIX matBone = matrix->GetMatrix(indexBone);
+			glm::mat4 matBone = matrix->GetMatrix(indexBone);
 
 			D3DXMATRIX matInv = data->bone_[indexBone]->matOffset_;
 			D3DXMatrixInverse(&matInv, NULL, &matInv);
@@ -1010,15 +1010,15 @@ D3DXMATRIX ElfreinaMesh::GetAnimationMatrix(std::wstring nameAnime, double time,
 			// D3DXMatrixTranslation(&matInv, pos.x, pos.y, pos.z);
 			res = matInv * matBone;
 
-			D3DXMATRIX matScale;
+			glm::mat4 matScale;
 			D3DXMatrixScaling(&matScale, scale_.x, scale_.y, scale_.z);
 			res = res * matScale;
 
-			D3DXMATRIX matRot;
+			glm::mat4 matRot;
 			D3DXMatrixRotationYawPitchRoll(&matRot, D3DXToRadian(angle_.y), D3DXToRadian(angle_.x), D3DXToRadian(angle_.z));
 			res = res * matRot;
 
-			D3DXMATRIX matTrans;
+			glm::mat4 matTrans;
 			D3DXMatrixTranslation(&matTrans, position_.x, position_.y, position_.z);
 			res = res * matTrans;
 		}

@@ -176,6 +176,9 @@
     <ClCompile Include="source\TouhouDanmakufu\Common\Networking.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\GcLib\opengl\ElfreinaMesh.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -314,6 +317,7 @@
     <ClInclude Include="source\GcLib\zlib\zlib.h" />
     <ClInclude Include="source\GcLib\zlib\zutil.h" />
     <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp" />
+    <ClInclude Include="source\GcLib\opengl\ElfreinaMesh.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">

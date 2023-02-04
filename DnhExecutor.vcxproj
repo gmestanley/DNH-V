@@ -181,6 +181,7 @@
     <ClCompile Include="source\GcLib\gstd\Task.cpp" />
     <ClCompile Include="source\GcLib\gstd\Thread.cpp" />
     <ClCompile Include="source\GcLib\gstd\Window.cpp" />
+    <ClCompile Include="source\GcLib\opengl\ElfreinaMesh.cpp" />
     <ClCompile Include="source\GcLib\zlib\adler32.c" />
     <ClCompile Include="source\GcLib\zlib\compress.c" />
     <ClCompile Include="source\GcLib\zlib\crc32.c" />
@@ -223,6 +224,7 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\GcLib\opengl\ElfreinaMesh.hpp" />
     <ClInclude Include="source\GcLib\opengl\OgLib.hpp" />
     <ClInclude Include="source\GcLib\GcLib.hpp" />
     <ClInclude Include="source\GcLib\gstd\Application.hpp" />
