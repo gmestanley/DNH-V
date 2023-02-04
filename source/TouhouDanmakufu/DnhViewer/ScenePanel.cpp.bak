@@ -260,7 +260,7 @@ LRESULT ScenePanel::ScriptPathPanel::_WindowProcedure(HWND hWnd, UINT uMsg, WPAR
 				ofn.nFilterIndex = 1;
 				ofn.lpstrDefExt = ".txt";
 				ofn.lpstrFilter = "‘S‚Ä‚Ìƒtƒ@ƒCƒ‹";
-				ofn.lpstrTitle = "ƒXƒNƒŠƒvƒg‚ğŠJ‚­";
+				ofn.lpstrTitle = "ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’é–‹ã";
 				if (GetOpenFileName(&ofn))
 					editPath_.SetText(path);
 */
