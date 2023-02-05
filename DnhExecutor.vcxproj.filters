@@ -318,6 +318,7 @@
     <ClInclude Include="source\GcLib\zlib\zutil.h" />
     <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp" />
     <ClInclude Include="source\GcLib\opengl\ElfreinaMesh.hpp" />
+    <ClInclude Include="source\GcLib\opengl\GLSL.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">

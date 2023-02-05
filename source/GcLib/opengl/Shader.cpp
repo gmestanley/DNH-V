@@ -1,5 +1,5 @@
 #include "Shader.hpp"
-#include "HLSL.hpp"
+#include "GLSL.hpp"
 
 using namespace gstd;
 using namespace directx;
@@ -44,7 +44,7 @@ bool ShaderManager::Initialize()
 	graphics->AddDirectGraphicsListener(this);
 
 	ref_count_ptr<Shader> shaderSkinedMesh = new Shader();
-	std::string sourceSkinedMesh = HLSL_DEFAULT_SKINED_MESH;
+	std::string sourceSkinedMesh = GLSL_DEFAULT_SKINED_MESH;
 	shaderSkinedMesh->CreateFromText(sourceSkinedMesh);
 	AddShader(NAME_DEFAULT_SKINNED_MESH, shaderSkinedMesh);
 

@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\opengl\ElfreinaMesh.hpp" />
+    <ClInclude Include="source\GcLib\opengl\GLSL.hpp" />
     <ClInclude Include="source\GcLib\opengl\OgLib.hpp" />
     <ClInclude Include="source\GcLib\GcLib.hpp" />
     <ClInclude Include="source\GcLib\gstd\Application.hpp" />
