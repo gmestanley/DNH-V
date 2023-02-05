@@ -293,12 +293,13 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 						engine_->SetSource(source);
 
 						std::wstring error;
-						error += L"New line is not found after #include.\r\n";
+						error += L"New line not found after #include.\r\n";
 						error += L"(#include後に改行がありません)";
 						_RaiseError(line, error);
 					}
 					scanner.SetCurrentPointer(posBeforeNewLine);
-				} else {
+				}
+				else {
 					// bNeedNewLine = true;
 				}
 				int posAfterInclude = scanner.GetCurrentPointer();
@@ -341,7 +342,7 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 					engine_->SetSource(source);
 
 					std::wstring error;
-					error += StringUtility::Format(L"#Include file is not found[%s].\r\n", wPath.c_str());
+					error += StringUtility::Format(L"File [%s] replacing through #include not found.\r\n", wPath.c_str());
 					error += StringUtility::Format(L"(#includeで置換するファイル[%s]が見つかりません)", wPath.c_str());
 					_RaiseError(line, error);
 				}
@@ -384,7 +385,8 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 						//再度scanしなおす
 						break;
 					}
-				} else {
+				}
+				else {
 					//読み込み対象がShiftJis
 					int newLineSize = bNeedNewLine ? 2 : 0;
 					placement.resize(reader->GetFileSize() + newLineSize);
@@ -438,7 +440,8 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 					if (encoding == Encoding::UTF16LE) {
 						file.Write(&strNewLineW[0], strNewLine.size() * sizeof(wchar_t));
 						file.Write(&strNewLineW[0], strNewLine.size() * sizeof(wchar_t));
-					} else {
+					}
+					else {
 						file.Write(&strNewLine[0], strNewLine.size());
 						file.Write(&strNewLine[0], strNewLine.size());
 					}
@@ -460,7 +463,8 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 							file.Write(&strLineStartOrg[0], strLineStartOrg.size() * sizeof(wchar_t));
 							file.Write(&strLineEndOrg[0], strLineEndOrg.size() * sizeof(wchar_t));
 							file.Write(&strNewLineW[0], strNewLineW.size() * sizeof(wchar_t));
-						} else {
+						}
+						else {
 							ScriptFileLineMap::Entry entry = (*itr);
 							std::string strPath = StringUtility::ConvertWideToMulti(entry.path_) + "\r\n";
 							std::string strLineStart = StringUtility::Format("  lineStart   :%4d\r\n", entry.lineStart_);
@@ -583,7 +587,7 @@ bool ScriptClientBase::Run(std::string target)
 		return false;
 	if (!machine_->has_event(target)) {
 		std::wstring error;
-		error += StringUtility::FormatToWide("@ not found[%s]", target.c_str());
+		error += StringUtility::FormatToWide("Events are not existing[%s]", target.c_str());
 		error += StringUtility::FormatToWide("(イベントが存在しません[%s])", target.c_str());
 		_RaiseError(0, error);
 	}
