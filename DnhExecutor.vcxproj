@@ -181,7 +181,21 @@
     <ClCompile Include="source\GcLib\gstd\Task.cpp" />
     <ClCompile Include="source\GcLib\gstd\Thread.cpp" />
     <ClCompile Include="source\GcLib\gstd\Window.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DirectGraphics.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DirectInput.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DirectSound.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DxScript.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DxText.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DxUtility.cpp" />
+    <ClCompile Include="source\GcLib\opengl\DxWindow.cpp" />
     <ClCompile Include="source\GcLib\opengl\ElfreinaMesh.cpp" />
+    <ClCompile Include="source\GcLib\opengl\EventScript.cpp" />
+    <ClCompile Include="source\GcLib\opengl\MetasequoiaMesh.cpp" />
+    <ClCompile Include="source\GcLib\opengl\RenderObject.cpp" />
+    <ClCompile Include="source\GcLib\opengl\ScriptManager.cpp" />
+    <ClCompile Include="source\GcLib\opengl\Shader.cpp" />
+    <ClCompile Include="source\GcLib\opengl\Texture.cpp" />
+    <ClCompile Include="source\GcLib\opengl\TransitionEffect.cpp" />
     <ClCompile Include="source\GcLib\zlib\adler32.c" />
     <ClCompile Include="source\GcLib\zlib\compress.c" />
     <ClCompile Include="source\GcLib\zlib\crc32.c" />
@@ -224,8 +238,18 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\GcLib\opengl\DirectGraphics.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DirectInput.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DirectSound.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DxConstant.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DxScript.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DxText.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DxUtility.hpp" />
+    <ClInclude Include="source\GcLib\opengl\DxWindow.hpp" />
     <ClInclude Include="source\GcLib\opengl\ElfreinaMesh.hpp" />
+    <ClInclude Include="source\GcLib\opengl\EventScript.hpp" />
     <ClInclude Include="source\GcLib\opengl\GLSL.hpp" />
+    <ClInclude Include="source\GcLib\opengl\MetasequoiaMesh.hpp" />
     <ClInclude Include="source\GcLib\opengl\OgLib.hpp" />
     <ClInclude Include="source\GcLib\GcLib.hpp" />
     <ClInclude Include="source\GcLib\gstd\Application.hpp" />
@@ -242,6 +266,11 @@
     <ClInclude Include="source\GcLib\gstd\Task.hpp" />
     <ClInclude Include="source\GcLib\gstd\Thread.hpp" />
     <ClInclude Include="source\GcLib\gstd\Window.hpp" />
+    <ClInclude Include="source\GcLib\opengl\RenderObject.hpp" />
+    <ClInclude Include="source\GcLib\opengl\ScriptManager.hpp" />
+    <ClInclude Include="source\GcLib\opengl\Shader.hpp" />
+    <ClInclude Include="source\GcLib\opengl\Texture.hpp" />
+    <ClInclude Include="source\GcLib\opengl\TransitionEffect.hpp" />
     <ClInclude Include="source\GcLib\zlib\crc32.h" />
     <ClInclude Include="source\GcLib\zlib\deflate.h" />
     <ClInclude Include="source\GcLib\zlib\gzguts.h" />
