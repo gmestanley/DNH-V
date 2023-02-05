@@ -265,6 +265,7 @@ public:
 	static gstd::value Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_RunNetplay(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Eval(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
 	//STG共通関数：移動オブジェクト操作
 	static gstd::value Func_ObjMove_SetX(gstd::script_machine* machine, int argc, gstd::value const* argv);
