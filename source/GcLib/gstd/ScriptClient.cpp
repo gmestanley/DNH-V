@@ -293,7 +293,7 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 						engine_->SetSource(source);
 
 						std::wstring error;
-						error += L"New line is not found after #include.\r\n";
+						error += L"New line not found after #include.\r\n";
 						error += L"(#include後に改行がありません)";
 						_RaiseError(line, error);
 					}
@@ -341,7 +341,7 @@ std::vector<char> ScriptClientBase::_Include(std::vector<char>& source)
 					engine_->SetSource(source);
 
 					std::wstring error;
-					error += StringUtility::Format(L"#Include file is not found[%s].\r\n", wPath.c_str());
+					error += StringUtility::Format(L"File [%s] replacing through #include not found.\r\n", wPath.c_str());
 					error += StringUtility::Format(L"(#includeで置換するファイル[%s]が見つかりません)", wPath.c_str());
 					_RaiseError(line, error);
 				}
@@ -583,7 +583,7 @@ bool ScriptClientBase::Run(std::string target)
 		return false;
 	if (!machine_->has_event(target)) {
 		std::wstring error;
-		error += StringUtility::FormatToWide("@ not found[%s]", target.c_str());
+		error += StringUtility::FormatToWide("Events are not existing[%s]", target.c_str());
 		error += StringUtility::FormatToWide("(イベントが存在しません[%s])", target.c_str());
 		_RaiseError(0, error);
 	}
