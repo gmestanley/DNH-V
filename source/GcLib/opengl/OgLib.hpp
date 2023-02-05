@@ -1,5 +1,5 @@
-//#ifndef __OPENGL_OGLIB__
-//#define __OPENGL_OGLIB__
+#ifndef __OPENGL_OGLIB__
+#define __OPENGL_OGLIB__
 
 #include "OgConstant.hpp"
 
