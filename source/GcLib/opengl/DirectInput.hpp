@@ -1,5 +1,5 @@
-#ifndef __SFML_DIRECTINPUT__
-#define __SFML_DIRECTINPUT__
+#ifndef __SFML_INPUT__
+#define __SFML_INPUT__
 
 #include "DxConstant.hpp"
 
