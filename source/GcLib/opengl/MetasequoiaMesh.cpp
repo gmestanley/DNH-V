@@ -38,7 +38,7 @@ bool MetasequoiaMeshData::CreateFromFileReader(gstd::ref_count_ptr<gstd::FileRea
 
 		res = true;
 	} catch (gstd::wexception& e) {
-		Logger::WriteTop(StringUtility::Format(L"MetasequoiaMeshData読み込み失敗 %s %d", e.what(), scanner.GetCurrentLine()));
+		Logger::WriteTop(StringUtility::Format(L"MetasequoiaMeshData読み込み失敗/Failed to load MetasequoiaMeshData %s %d", e.what(), scanner.GetCurrentLine()));
 		res = false;
 	}
 	return res;
@@ -355,13 +355,13 @@ bool MetasequoiaMesh::CreateFromFileReader(gstd::ref_count_ptr<gstd::FileReader>
 		data_ = _GetFromManager(name);
 		if (data_ == NULL) {
 			if (!reader->Open())
-				throw gstd::wexception(L"ファイルが開けません");
+				throw gstd::wexception(L"ファイルが開けません/Can't open file");
 			data_ = new MetasequoiaMeshData();
 			data_->SetName(name);
 			MetasequoiaMeshData* data = (MetasequoiaMeshData*)data_.GetPointer();
 			res = data->CreateFromFileReader(reader);
 			if (res) {
-				Logger::WriteTop(StringUtility::Format(L"メッシュを読み込みました[%s]", name.c_str()));
+				Logger::WriteTop(StringUtility::Format(L"メッシュを読み込みました[%s]/Loaded mesh [%s]", name.c_str()));
 				_AddManager(name, data_);
 			} else {
 				data_ = NULL;
