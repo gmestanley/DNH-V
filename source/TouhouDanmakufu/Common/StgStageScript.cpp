@@ -335,6 +335,7 @@ function const stgFunction[] = {
 	//{ "ReceiveUDPData", StgStageScript::Func_ReceiveUDPData, 0 },
 	//{ "SendUDPData", StgStageScript::Func_SendUDPData, 3 },
 	{ "RunNetplay", StgStageScript::Func_RunNetplay, 2 },
+	//{ "Eval", StgStageScript::Func_Eval, 1 },
 
 	//STG共通関数：移動オブジェクト操作
 	{ "ObjMove_SetX", StgStageScript::Func_ObjMove_SetX, 2 },
