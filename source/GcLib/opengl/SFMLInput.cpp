@@ -1,4 +1,4 @@
-#include "DirectInput.hpp"
+#include "SFMLInput.hpp"
 
 using namespace gstd;
 using namespace directx;

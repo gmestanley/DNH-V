@@ -182,7 +182,7 @@
     <ClCompile Include="source\GcLib\gstd\Thread.cpp" />
     <ClCompile Include="source\GcLib\gstd\Window.cpp" />
     <ClCompile Include="source\GcLib\opengl\DirectGraphics.cpp" />
-    <ClCompile Include="source\GcLib\opengl\DirectInput.cpp" />
+    <ClCompile Include="source\GcLib\opengl\SFMLInput.cpp" />
     <ClCompile Include="source\GcLib\opengl\DirectSound.cpp" />
     <ClCompile Include="source\GcLib\opengl\DxScript.cpp" />
     <ClCompile Include="source\GcLib\opengl\DxText.cpp" />
@@ -239,7 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\opengl\DirectGraphics.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DirectInput.hpp" />
+    <ClInclude Include="source\GcLib\opengl\SFMLInput.hpp" />
     <ClInclude Include="source\GcLib\opengl\DirectSound.hpp" />
     <ClInclude Include="source\GcLib\opengl\DxConstant.hpp" />
     <ClInclude Include="source\GcLib\opengl\DxScript.hpp" />

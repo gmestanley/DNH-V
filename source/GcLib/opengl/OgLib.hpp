@@ -18,7 +18,7 @@
 #include "ScriptManager.hpp"
 // #include"EventScript.hpp"
 
-//#include "OpenGLInput.hpp"
-//#include "OpenGLSound.hpp"
+#include "SFMLInput.hpp"
+#include "SFMLSound.hpp"
 
 #endif
