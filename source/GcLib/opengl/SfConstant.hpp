@@ -1,5 +1,5 @@
-#ifndef __DIRECTX_DXCONSTANT__
-#define __DIRECTX_DXCONSTANT__
+#ifndef __SFML_SFCONSTANT__
+#define __SFML_SFCONSTANT__
 
 #include "../gstd/GstdLib.hpp"
 
@@ -30,11 +30,8 @@
 #include <msacm.h> //for acm
 
 #include <basetsd.h>
-#include <d3d9.h>
-#include <d3dx9.h>
-#include <dinput.h>
-#include <dmusici.h>
-#include <dsound.h>
+#include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 #include <dxerr9.h>
 
 #include "../ext/codec.h"

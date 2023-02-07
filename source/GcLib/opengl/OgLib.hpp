@@ -1,7 +1,7 @@
 #ifndef __OPENGL_OGLIB__
 #define __OPENGL_OGLIB__
 
-#include "OgConstant.hpp"
+#include "SfConstant.hpp"
 
 #include "OgUtility.hpp"
 
