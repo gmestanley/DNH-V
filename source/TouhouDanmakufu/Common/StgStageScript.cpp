@@ -2334,7 +2334,7 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 	bool serverIsValid = false;
 	for (int i = 0; i < fullAddress.length(); i++) {
 		if (fullAddress[i] == ':') {
-			if (i < 7) {
+			if (i < 7 && bool(!argv[1])) {
 				script->RaiseError(L"Netplay Error: Not a valid server!");
 			}
 			else {
@@ -2359,12 +2359,11 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 		Logger::WriteTop(L"Server is listening to port " + std::to_wstring(currentPort) + L", waiting for connections...");
 
 		// Wait for a connection
-		if (listener.accept(Netplay::tcpSocket) != sf::Socket::Done)
-			return value();
+		listener.accept(Netplay::tcpSocket);
 		sf::IpAddress net = Netplay::tcpSocket.getRemoteAddress();
 		Logger::WriteTop(L"Client connected: " + std::to_wstring(net.toInteger()));
 	}
-	else if ((bool)argv[0].as_boolean()) {
+	else if (argv[0].as_boolean()) {
 		sf::IpAddress server = actualAddress;
 
 		// Ask for the server address
