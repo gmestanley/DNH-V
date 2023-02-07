@@ -261,7 +261,7 @@ public:
 	static gstd::value Func_StopSlow(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_IsIntersected_Line_Circle(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_IsIntersected_Obj_Obj(gstd::script_machine* machine, int argc, gstd::value const* argv);
-	static gstd::value Func_GetNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_GetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_RunNetplay(gstd::script_machine* machine, int argc, gstd::value const* argv);

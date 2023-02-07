@@ -329,7 +329,7 @@ function const stgFunction[] = {
 	{ "StopSlow", StgStageScript::Func_StopSlow, 1 },
 	{ "IsIntersected_Line_Circle", StgStageScript::Func_IsIntersected_Line_Circle, 8 },
 	{ "IsIntersected_Obj_Obj", StgStageScript::Func_IsIntersected_Obj_Obj, 2 },
-	{ "GetNetData", StgStageScript::Func_GetNetData, 0 },
+	{ "GetLocalNetData", StgStageScript::Func_GetLocalNetData, 0 },
 	{ "ReceiveNetData", StgStageScript::Func_ReceiveNetData, 0 },
 	{ "SendNetData", StgStageScript::Func_SendNetData, 2 },
 	//{ "ReceiveUDPData", StgStageScript::Func_ReceiveUDPData, 0 },
@@ -2286,15 +2286,14 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	}
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
-gstd::value StgStageScript::Func_GetNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+gstd::value StgStageScript::Func_GetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
 	return value(machine->get_engine()->get_string_type(), (std::wstring)Netplay::wcharBuffer);
 }
 gstd::value StgStageScript::Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	std::size_t received;
 	std::fill_n(Netplay::in, sizeof(Netplay::in), 0);
-	if (Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
-		return value();
+	Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received);
 	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
 	Logger::WriteTop(L"Message received from the server: \"" + Netplay::wcharBuffer + L"\"");
 	return value();
