@@ -1,11 +1,19 @@
-Description coming soon.
+# Touhou Danmakufu-V
+A fork of Danmakufu ph3.5 aiming to provide new features to the engine, such as general improvements and other functionalities, such as Netplay.<br>
+Multiplatform support is also planned for Windows, macOS and Linux; the [linux](https://github.com/gmestanley/DNH-V/tree/linux/) branch is in development and is set to be used for the last one, but is still a heavy work in progress. Currently only Windows is supported with the master branch.
 
 ## Changelog
-Currently no releases are available, but there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
+Aside from the current releases, there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
+
+###### [0.6.1]
+ * Versioning and branding updated
+ 	- Title was changed from "Netplay" to "DNH-V" and version was changed from 0.6 to 0.6.1.
+ * Translations of the Readme and adjacent documents provided (along with the original forms).
+ * Example script for Netplay functionality provided (misplaced in script/sample/).
 
 ## Requirements (for compiling)
  * zlib
-</br>Best and recommended way to obtain it is to use [vcpkg](https://github.com/Microsoft/vcpkg) C++ Library Manager.
+</br>(Quoted from Danmakufu Woo's repo) Best and recommended way to obtain it is to use [vcpkg](https://github.com/Microsoft/vcpkg) C++ Library Manager.
  * sfml
 </br>Get it here: https://sfml-dev.org
 </br>Also deserves credit because it was used to implement netplay in the first place.
