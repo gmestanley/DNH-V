@@ -659,17 +659,17 @@ public:
 	void AddMeshResource(std::wstring name, gstd::ref_count_ptr<DxMesh> mesh) { mapMesh_[name] = mesh; }
 	
 
-	//Dx関数：システム系
+	//Dx関数：システム系/Dx Functions: System-type
 	static gstd::value Func_InstallFont(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：音声系
+	//Dx関数：音声系/Dx Functions: Audio-type
 	static gstd::value Func_LoadSound(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_RemoveSound(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_PlayBGM(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_PlaySE(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_StopSound(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：キー系
+	//Dx関数：キー系/Dx Functions: Key-type
 	static gstd::value Func_GetKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetMouseX(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetMouseY(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -678,7 +678,7 @@ public:
 	static gstd::value Func_GetVirtualKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SetVirtualKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：描画系
+	//Dx関数：描画系/Dx Functions: Drawing-type
 	static gstd::value Func_GetScreenWidth(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetScreenHeight(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SetTextureRenderMethod(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -700,7 +700,7 @@ public:
 	static gstd::value Func_ResetShaderI(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_IsPixelShaderSupported(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：カメラ3D
+	//Dx関数：カメラ3D/Dx Functions: Camera 3D
 	static gstd::value Func_SetCameraFocusX(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SetCameraFocusY(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SetCameraFocusZ(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -727,7 +727,7 @@ public:
 
 	static gstd::value Func_SetCameraPerspectiveClip(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：カメラ2D
+	//Dx関数：カメラ2D/Dx Functions: Camera 2D
 	static gstd::value Func_Set2DCameraFocusX(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Set2DCameraFocusY(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Set2DCameraAngleZ(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -742,12 +742,12 @@ public:
 	static gstd::value Func_Get2DCameraRatioX(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Get2DCameraRatioY(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：その他
+	//Dx関数：その他/Dx Functions: Other
 	static gstd::value Func_GetObjectDistance(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetObject2dPosition(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Get2dPosition(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(共通)
+	//Dx関数：オブジェクト操作(共通)/Dx Functions: Object Operation (Common)
 	static gstd::value Func_Obj_Delete(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Obj_IsDeleted(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Obj_SetVisible(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -763,7 +763,7 @@ public:
 	static gstd::value Func_Obj_IsValueExists(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Obj_GetType(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(RenderObject)
+	//Dx関数：オブジェクト操作(RenderObject)/Dx Functions: Object Operation (RenderObject)
 	static gstd::value Func_ObjRender_SetX(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjRender_SetY(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjRender_SetZ(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -797,7 +797,7 @@ public:
 	static gstd::value Func_ObjRender_SetPermitCamera(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjRender_GetBlendType(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(ShaderObject)
+	//Dx関数：オブジェクト操作(ShaderObject)/Dx Functions: Object Operation (ShaderObject)
 	static gstd::value Func_ObjShader_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjShader_SetShaderF(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjShader_SetShaderO(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -810,7 +810,7 @@ public:
 	static gstd::value Func_ObjShader_SetFloatArray(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjShader_SetTexture(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(PrimitiveObject)
+	//Dx関数：オブジェクト操作(PrimitiveObject)/Dx Functions: Object Operation (PrimitiveObject)
 	static gstd::value Func_ObjPrimitive_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjPrimitive_SetPrimitiveType(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjPrimitive_SetVertexCount(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -823,12 +823,12 @@ public:
 	static gstd::value Func_ObjPrimitive_SetVertexAlpha(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjPrimitive_GetVertexPosition(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(Sprite2D)
+	//Dx関数：オブジェクト操作(Sprite2D)/Dx Functions: Object Operation (Sprite2D)
 	static gstd::value Func_ObjSprite2D_SetSourceRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSprite2D_SetDestRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSprite2D_SetDestCenter(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(SpriteList2D)
+	//Dx関数：オブジェクト操作(SpriteList2D)/Dx Functions: Object Operation (SpriteList2D)
 	static gstd::value Func_ObjSpriteList2D_SetSourceRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSpriteList2D_SetDestRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSpriteList2D_SetDestCenter(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -836,18 +836,18 @@ public:
 	static gstd::value Func_ObjSpriteList2D_CloseVertex(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSpriteList2D_ClearVertexCount(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(Sprite3D)
+	//Dx関数：オブジェクト操作(Sprite3D)/Dx Functions: Object Operation (Sprite3D)
 	static gstd::value Func_ObjSprite3D_SetSourceRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSprite3D_SetDestRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSprite3D_SetSourceDestRect(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSprite3D_SetBillboard(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(TrajectoryObject3D)
+	//Dx関数：オブジェクト操作(TrajectoryObject3D)/Dx Functions: Object Operation (TrajectoryObject3D)
 	static gstd::value Func_ObjTrajectory3D_SetInitialPoint(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjTrajectory3D_SetAlphaVariation(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjTrajectory3D_SetComplementCount(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：オブジェクト操作(DxMesh)
+	//Dx関数：オブジェクト操作(DxMesh)/Dx Functions: Object Operation (DxMesh)
 	static gstd::value Func_ObjMesh_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjMesh_Load(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjMesh_SetColor(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -856,7 +856,7 @@ public:
 	static gstd::value Func_ObjMesh_SetCoordinate2D(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjMesh_GetPath(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：テキスト操作(DxText)
+	//Dx関数：テキスト操作(DxText)/Dx Functions: Text Operation
 	static gstd::value Func_ObjText_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjText_SetText(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjText_SetFontType(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -882,7 +882,7 @@ public:
 	static gstd::value Func_ObjText_GetTotalWidth(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjText_GetTotalHeight(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：音声操作(DxSoundObject)
+	//Dx関数：音声操作(DxSoundObject)/Dx Functions: Audio Operation
 	static gstd::value Func_ObjSound_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSound_Load(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSound_Play(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -898,27 +898,27 @@ public:
 	static gstd::value Func_ObjSound_IsPlaying(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSound_GetVolumeRate(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：動画操作(DxVideoObject)
+	//Dx関数：動画操作(DxVideoObject)/Dx Functions: Video Operation
 	/*static gstd::value Func_ObjVideo_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjVideo_Load(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjVideo_Play(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjVideo_Stop(gstd::script_machine* machine, int argc, gstd::value const* argv);*/
 
-	//Dx関数：ファイル操作(DxFileObject)
+	//Dx関数：ファイル操作(DxFileObject)/Dx Functions: File Operation (DxFileObject)
 	static gstd::value Func_ObjFile_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFile_Open(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFile_OpenNW(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFile_Store(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFile_GetSize(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：ファイル操作(DxTextFileObject)
+	//Dx関数：ファイル操作(DxTextFileObject)/Dx Functions: File Operation (DxTextFileObject)
 	static gstd::value Func_ObjFileT_GetLineCount(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFileT_GetLineText(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFileT_SplitLineText(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFileT_AddLine(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFileT_ClearLine(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//Dx関数：ファイル操作(DxBinalyFileObject)
+	//Dx関数：ファイル操作(DxBinalyFileObject)/Dx Functions: File Operation (DxBinaryFileObject)
 	static gstd::value Func_ObjFileB_SetByteOrder(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFileB_SetCharacterCode(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFileB_GetPointer(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -935,7 +935,7 @@ public:
 protected:
 	gstd::ref_count_ptr<DxScriptObjectManager> objManager_;
 
-	//リソース
+	//リソース/Resource
 	std::map<std::wstring, gstd::ref_count_ptr<Texture>> mapTexture_;
 	std::map<std::wstring, gstd::ref_count_ptr<SoundPlayer>> mapSoundPlayer_;
 	std::map<std::wstring, gstd::ref_count_ptr<DxMesh>> mapMesh_;

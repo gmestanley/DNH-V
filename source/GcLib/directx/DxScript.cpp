@@ -1177,17 +1177,17 @@ void DxScriptObjectManager::SetFogParam(bool bEnable, D3DCOLOR fogColor, float s
 //DxScript
 **********************************************************/
 function const dxFunction[] = {
-	//Dx関数：システム系系
+	//Dx関数：システム系/Dx Functions: System-type
 	{ "InstallFont", DxScript::Func_InstallFont, 1 },
 
-	//Dx関数：音声系
+	//Dx関数：音声系/Dx Functions: Audio-type
 	{ "LoadSound", DxScript::Func_LoadSound, 1 },
 	{ "RemoveSound", DxScript::Func_RemoveSound, 1 },
 	{ "PlayBGM", DxScript::Func_PlayBGM, 3 },
 	{ "PlaySE", DxScript::Func_PlaySE, 1 },
 	{ "StopSound", DxScript::Func_StopSound, 1 },
 
-	//Dx関数：キー系
+	//Dx関数：キー系/Dx Functions: Key-type
 	{ "GetKeyState", DxScript::Func_GetKeyState, 1 },
 	{ "GetMouseX", DxScript::Func_GetMouseX, 0 },
 	{ "GetMouseY", DxScript::Func_GetMouseY, 0 },
@@ -1196,7 +1196,7 @@ function const dxFunction[] = {
 	{ "GetVirtualKeyState", DxScript::Func_GetVirtualKeyState, 1 },
 	{ "SetVirtualKeyState", DxScript::Func_SetVirtualKeyState, 2 },
 
-	//Dx関数：描画系
+	//Dx関数：描画系/Dx Functions: Drawing-type
 	{ "GetScreenWidth", DxScript::Func_GetScreenWidth, 0 },
 	{ "GetScreenHeight", DxScript::Func_GetScreenHeight, 0 },
 	{ "SetTextureRenderMethod", DxScript::Func_SetTextureRenderMethod, 1 },
@@ -1218,7 +1218,7 @@ function const dxFunction[] = {
 	{ "ResetShader", DxScript::Func_ResetShader, 2 },
 	{ "ResetShaderI", DxScript::Func_ResetShaderI, 2 },
 
-	//Dx関数：カメラ3D
+	//Dx関数：カメラ3D/Dx Functions: Camera 3D
 	{ "SetCameraFocusX", DxScript::Func_SetCameraFocusX, 1 },
 	{ "SetCameraFocusY", DxScript::Func_SetCameraFocusY, 1 },
 	{ "SetCameraFocusZ", DxScript::Func_SetCameraFocusZ, 1 },
@@ -1243,7 +1243,7 @@ function const dxFunction[] = {
 	{ "GetCameraRoll", DxScript::Func_GetCameraRoll, 0 },
 	{ "SetCameraPerspectiveClip", DxScript::Func_SetCameraPerspectiveClip, 2 },
 
-	//Dx関数：カメラ2D
+	//Dx関数：カメラ2D/Dx Functions: Camera 2D
 	{ "Set2DCameraFocusX", DxScript::Func_Set2DCameraFocusX, 1 },
 	{ "Set2DCameraFocusY", DxScript::Func_Set2DCameraFocusY, 1 },
 	{ "Set2DCameraAngleZ", DxScript::Func_Set2DCameraAngleZ, 1 },
@@ -1258,12 +1258,12 @@ function const dxFunction[] = {
 	{ "Get2DCameraRatioX", DxScript::Func_Get2DCameraRatioX, 0 },
 	{ "Get2DCameraRatioY", DxScript::Func_Get2DCameraRatioY, 0 },
 
-	//Dx関数：その他
+	//Dx関数：その他/Dx Functions: Other
 	{ "GetObjectDistance", DxScript::Func_GetObjectDistance, 2 },
 	{ "GetObject2dPosition", DxScript::Func_GetObject2dPosition, 1 },
 	{ "Get2dPosition", DxScript::Func_Get2dPosition, 3 },
 
-	//Dx関数：オブジェクト操作(共通)
+	//Dx関数：オブジェクト操作(共通)/Dx Functions: Object Operation (Common)
 	{ "Obj_Delete", DxScript::Func_Obj_Delete, 1 },
 	{ "Obj_IsDeleted", DxScript::Func_Obj_IsDeleted, 1 },
 	{ "Obj_SetVisible", DxScript::Func_Obj_SetVisible, 2 },
@@ -1279,7 +1279,7 @@ function const dxFunction[] = {
 	{ "Obj_IsValueExists", DxScript::Func_Obj_IsValueExists, 2 },
 	{ "Obj_GetType", DxScript::Func_Obj_GetType, 1 },
 
-	//Dx関数：オブジェクト操作(RenderObject)
+	//Dx関数：オブジェクト操作(RenderObject)/Dx Functions: Object Operation (RenderObject)
 	{ "ObjRender_SetX", DxScript::Func_ObjRender_SetX, 2 },
 	{ "ObjRender_SetY", DxScript::Func_ObjRender_SetY, 2 },
 	{ "ObjRender_SetZ", DxScript::Func_ObjRender_SetZ, 2 },
@@ -1313,7 +1313,7 @@ function const dxFunction[] = {
 	{ "ObjRender_SetPermitCamera", DxScript::Func_ObjRender_SetPermitCamera, 2 },
 	{ "ObjRender_GetBlendType", DxScript::Func_ObjRender_GetBlendType, 1 },
 
-	//Dx関数：オブジェクト操作(ShaderObject)
+	//Dx関数：オブジェクト操作(ShaderObject)/Dx Functions: Object Operation (ShaderObject)
 	{ "ObjShader_Create", DxScript::Func_ObjShader_Create, 0 },
 	{ "ObjShader_SetShaderF", DxScript::Func_ObjShader_SetShaderF, 2 },
 	{ "ObjShader_SetShaderO", DxScript::Func_ObjShader_SetShaderO, 2 },
@@ -1326,7 +1326,7 @@ function const dxFunction[] = {
 	{ "ObjShader_SetFloatArray", DxScript::Func_ObjShader_SetFloatArray, 3 },
 	{ "ObjShader_SetTexture", DxScript::Func_ObjShader_SetTexture, 3 },
 
-	//Dx関数：オブジェクト操作(PrimitiveObject)
+	//Dx関数：オブジェクト操作(PrimitiveObject)/Dx Functions: Object Operation (PrimitiveObject)
 	{ "ObjPrim_Create", DxScript::Func_ObjPrimitive_Create, 1 },
 	{ "ObjPrim_SetPrimitiveType", DxScript::Func_ObjPrimitive_SetPrimitiveType, 2 },
 	{ "ObjPrim_SetVertexCount", DxScript::Func_ObjPrimitive_SetVertexCount, 2 },
@@ -1339,12 +1339,12 @@ function const dxFunction[] = {
 	{ "ObjPrim_SetVertexAlpha", DxScript::Func_ObjPrimitive_SetVertexAlpha, 3 },
 	{ "ObjPrim_GetVertexPosition", DxScript::Func_ObjPrimitive_GetVertexPosition, 2 },
 
-	//Dx関数：オブジェクト操作(Sprite2D)
+	//Dx関数：オブジェクト操作(Sprite2D)/Dx Functions: Object Operation (Sprite2D)
 	{ "ObjSprite2D_SetSourceRect", DxScript::Func_ObjSprite2D_SetSourceRect, 5 },
 	{ "ObjSprite2D_SetDestRect", DxScript::Func_ObjSprite2D_SetDestRect, 5 },
 	{ "ObjSprite2D_SetDestCenter", DxScript::Func_ObjSprite2D_SetDestCenter, 1 },
 
-	//Dx関数：オブジェクト操作(SpriteList2D)
+	//Dx関数：オブジェクト操作(SpriteList2D)/Dx Functions: Object Operation (SpriteList2D)
 	{ "ObjSpriteList2D_SetSourceRect", DxScript::Func_ObjSpriteList2D_SetSourceRect, 5 },
 	{ "ObjSpriteList2D_SetDestRect", DxScript::Func_ObjSpriteList2D_SetDestRect, 5 },
 	{ "ObjSpriteList2D_SetDestCenter", DxScript::Func_ObjSpriteList2D_SetDestCenter, 1 },
@@ -1352,18 +1352,18 @@ function const dxFunction[] = {
 	{ "ObjSpriteList2D_CloseVertex", DxScript::Func_ObjSpriteList2D_CloseVertex, 1 },
 	{ "ObjSpriteList2D_ClearVertexCount", DxScript::Func_ObjSpriteList2D_ClearVertexCount, 1 },
 
-	//Dx関数：オブジェクト操作(Sprite3D)
+	//Dx関数：オブジェクト操作(Sprite3D)/Dx Functions: Object Operation (Sprite3D)
 	{ "ObjSprite3D_SetSourceRect", DxScript::Func_ObjSprite3D_SetSourceRect, 5 },
 	{ "ObjSprite3D_SetDestRect", DxScript::Func_ObjSprite3D_SetDestRect, 5 },
 	{ "ObjSprite3D_SetSourceDestRect", DxScript::Func_ObjSprite3D_SetSourceDestRect, 5 },
 	{ "ObjSprite3D_SetBillboard", DxScript::Func_ObjSprite3D_SetBillboard, 2 },
 
-	//Dx関数：オブジェクト操作(TrajectoryObject3D)
+	//Dx関数：オブジェクト操作(TrajectoryObject3D)/Dx Functions: Object Operation (TrajectoryObject3D)
 	{ "ObjTrajectory3D_SetInitialPoint", DxScript::Func_ObjTrajectory3D_SetInitialPoint, 7 },
 	{ "ObjTrajectory3D_SetAlphaVariation", DxScript::Func_ObjTrajectory3D_SetAlphaVariation, 2 },
 	{ "ObjTrajectory3D_SetComplementCount", DxScript::Func_ObjTrajectory3D_SetComplementCount, 2 },
 
-	//Dx関数：オブジェクト操作(DxMesh)
+	//Dx関数：オブジェクト操作(DxMesh)/Dx Functions: Object Operation (DxMesh)
 	{ "ObjMesh_Create", DxScript::Func_ObjMesh_Create, 0 },
 	{ "ObjMesh_Load", DxScript::Func_ObjMesh_Load, 2 },
 	{ "ObjMesh_SetColor", DxScript::Func_ObjMesh_SetColor, 4 },
@@ -1372,7 +1372,7 @@ function const dxFunction[] = {
 	{ "ObjMesh_SetCoordinate2D", DxScript::Func_ObjMesh_SetCoordinate2D, 2 },
 	{ "ObjMesh_GetPath", DxScript::Func_ObjMesh_GetPath, 1 },
 
-	//Dx関数：テキスト操作(DxText)
+	//Dx関数：テキスト操作(DxText)/Dx Functions: Text Operation
 	{ "ObjText_Create", DxScript::Func_ObjText_Create, 0 },
 	{ "ObjText_SetText", DxScript::Func_ObjText_SetText, 2 },
 	{ "ObjText_SetFontType", DxScript::Func_ObjText_SetFontType, 2 },
@@ -1398,7 +1398,7 @@ function const dxFunction[] = {
 	{ "ObjText_GetTotalWidth", DxScript::Func_ObjText_GetTotalWidth, 1 },
 	{ "ObjText_GetTotalHeight", DxScript::Func_ObjText_GetTotalHeight, 1 },
 
-	//Dx関数：音声操作(DxSoundObject)
+	//Dx関数：音声操作(DxSoundObject)/Dx Functions: Audio Operation
 	{ "ObjSound_Create", DxScript::Func_ObjSound_Create, 0 },
 	{ "ObjSound_Load", DxScript::Func_ObjSound_Load, 2 },
 	{ "ObjSound_Play", DxScript::Func_ObjSound_Play, 1 },
@@ -1414,28 +1414,27 @@ function const dxFunction[] = {
 	{ "ObjSound_IsPlaying", DxScript::Func_ObjSound_IsPlaying, 1 },
 	{ "ObjSound_GetVolumeRate", DxScript::Func_ObjSound_GetVolumeRate, 1 },
 
-	//Dx関数：動画操作(DxVideoObject)
-	//Dx Functions: Video Operation
+	//Dx関数：動画操作(DxVideoObject)/Dx Functions: Video Operation
 	/*{"ObjVideo_Create", DxScript::Func_ObjVideo_Create, 0},
 	{ "ObjVideo_Load", DxScript::Func_ObjVideo_Load, 2 },
 	{ "ObjVideo_Play", DxScript::Func_ObjVideo_Play, 1 },
 	{ "ObjVideo_Stop", DxScript::Func_ObjVideo_Stop, 1 },*/
 
-	//Dx関数：ファイル操作(DxFileObject)
+	//Dx関数：ファイル操作(DxFileObject)/Dx Functions: File Operation (
 	{ "ObjFile_Create", DxScript::Func_ObjFile_Create, 1 },
 	{ "ObjFile_Open", DxScript::Func_ObjFile_Open, 2 },
 	{ "ObjFile_OpenNW", DxScript::Func_ObjFile_OpenNW, 2 },
 	{ "ObjFile_Store", DxScript::Func_ObjFile_Store, 1 },
 	{ "ObjFile_GetSize", DxScript::Func_ObjFile_GetSize, 1 },
 
-	//Dx関数：ファイル操作(DxTextFileObject)
+	//Dx関数：ファイル操作(DxTextFileObject)/Dx Functions: File Operation (DxTextFileObject)
 	{ "ObjFileT_GetLineCount", DxScript::Func_ObjFileT_GetLineCount, 1 },
 	{ "ObjFileT_GetLineText", DxScript::Func_ObjFileT_GetLineText, 2 },
 	{ "ObjFileT_SplitLineText", DxScript::Func_ObjFileT_SplitLineText, 3 },
 	{ "ObjFileT_AddLine", DxScript::Func_ObjFileT_AddLine, 2 },
 	{ "ObjFileT_ClearLine", DxScript::Func_ObjFileT_ClearLine, 1 },
 
-	////Dx関数：ファイル操作(DxBinalyFileObject)
+	////Dx関数：ファイル操作(DxBinalyFileObject)/Dx Functions: File Operation (DxBinaryFileObject)
 	{ "ObjFileB_SetByteOrder", DxScript::Func_ObjFileB_SetByteOrder, 2 },
 	{ "ObjFileB_SetCharacterCode", DxScript::Func_ObjFileB_SetCharacterCode, 2 },
 	{ "ObjFileB_GetPointer", DxScript::Func_ObjFileB_GetPointer, 1 },
@@ -1449,7 +1448,7 @@ function const dxFunction[] = {
 	{ "ObjFileB_ReadDouble", DxScript::Func_ObjFileB_ReadDouble, 1 },
 	{ "ObjFileB_ReadString", DxScript::Func_ObjFileB_ReadString, 2 },
 
-	//定数
+	//定数/Constants
 	{ "ID_INVALID", constant<DxScript::ID_INVALID>::func, 0 },
 	{ "OBJ_PRIMITIVE_2D", constant<DxScript::OBJ_PRIMITIVE_2D>::func, 0 },
 	{ "OBJ_SPRITE_2D", constant<DxScript::OBJ_SPRITE_2D>::func, 0 },
@@ -1637,7 +1636,7 @@ function const dxFunction[] = {
 	{ "KEY_POWER", constant<DIK_POWER>::func, 0 },
 	{ "KEY_SLEEP", constant<DIK_SLEEP>::func, 0 },
 
-	//DirectX Constants
+	//DirectX定数/DirectX Constants
 
 	{ "D3DX_DEFAULT", constant<D3DX_DEFAULT>::func, 0 },
 	{ "D3DX_DEFAULT_NONPOW2", constant<D3DX_DEFAULT_NONPOW2>::func, 0 },
