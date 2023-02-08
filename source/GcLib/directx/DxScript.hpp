@@ -898,6 +898,12 @@ public:
 	static gstd::value Func_ObjSound_IsPlaying(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjSound_GetVolumeRate(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
+	//Dx関数：動画操作(DxVideoObject)
+	/*static gstd::value Func_ObjVideo_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_ObjVideo_Load(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_ObjVideo_Play(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_ObjVideo_Stop(gstd::script_machine* machine, int argc, gstd::value const* argv);*/
+
 	//Dx関数：ファイル操作(DxFileObject)
 	static gstd::value Func_ObjFile_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjFile_Open(gstd::script_machine* machine, int argc, gstd::value const* argv);

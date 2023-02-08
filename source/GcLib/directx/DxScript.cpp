@@ -1414,6 +1414,13 @@ function const dxFunction[] = {
 	{ "ObjSound_IsPlaying", DxScript::Func_ObjSound_IsPlaying, 1 },
 	{ "ObjSound_GetVolumeRate", DxScript::Func_ObjSound_GetVolumeRate, 1 },
 
+	//Dx関数：動画操作(DxVideoObject)
+	//Dx Functions: Video Operation
+	/*{"ObjVideo_Create", DxScript::Func_ObjVideo_Create, 0},
+	{ "ObjVideo_Load", DxScript::Func_ObjVideo_Load, 2 },
+	{ "ObjVideo_Play", DxScript::Func_ObjVideo_Play, 1 },
+	{ "ObjVideo_Stop", DxScript::Func_ObjVideo_Stop, 1 },*/
+
 	//Dx関数：ファイル操作(DxFileObject)
 	{ "ObjFile_Create", DxScript::Func_ObjFile_Create, 1 },
 	{ "ObjFile_Open", DxScript::Func_ObjFile_Open, 2 },
