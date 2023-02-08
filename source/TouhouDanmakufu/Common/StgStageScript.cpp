@@ -224,11 +224,11 @@ int StgStageScriptObjectManager::CreatePlayerObject()
 //StgStageScript
 **********************************************************/
 function const stgFunction[] = {
-	//STG共通関数：共通データ
+	//STG共通関数：共通データ/Shmup Common Functions: Common Data
 	{ "SaveCommonDataAreaToReplayFile", StgStageScript::Func_SaveCommonDataAreaToReplayFile, 1 },
 	{ "LoadCommonDataAreaFromReplayFile", StgStageScript::Func_LoadCommonDataAreaFromReplayFile, 1 },
 
-	//STG共通関数：システム関連
+	//STG共通関数：システム関連/Shmup Common Functions: System Connection
 	{ "GetMainStgScriptPath", StgStageScript::Func_GetMainStgScriptPath, 0 },
 	{ "GetMainStgScriptDirectory", StgStageScript::Func_GetMainStgScriptDirectory, 0 },
 	{ "SetStgFrame", StgStageScript::Func_SetStgFrame, 6 },
@@ -243,7 +243,7 @@ function const stgFunction[] = {
 	{ "CloseStgScene", StgStageScript::Func_CloseStgScene, 0 },
 	{ "GetReplayFps", StgStageScript::Func_GetReplayFps, 0 },
 
-	//STG共通関数：自機
+	//STG共通関数：自機/Shmup Common Functions: Player
 	{ "GetPlayerObjectID", StgStageScript::Func_GetPlayerObjectID, 0 },
 	{ "SetPlayerSpeed", StgStageScript::Func_SetPlayerSpeed, 2 },
 	{ "SetPlayerClip", StgStageScript::Func_SetPlayerClip, 4 },
@@ -275,7 +275,7 @@ function const stgFunction[] = {
 	{ "IsPlayerSpellActive", StgStageScript::Func_IsPlayerSpellActive, 0 },
 	{ "GetPlayerScriptID", StgStageScript::Func_GetPlayerScriptID, 0 },
 
-	//STG共通関数：敵
+	//STG共通関数：敵/Shmup Common Functions: Enemies
 	{ "GetEnemyBossSceneObjectID", StgStageScript::Func_GetEnemyBossSceneObjectID, 0 },
 	{ "GetEnemyBossObjectID", StgStageScript::Func_GetEnemyBossObjectID, 0 },
 	{ "GetAllEnemyID", StgStageScript::Func_GetAllEnemyID, 0 },
@@ -287,7 +287,7 @@ function const stgFunction[] = {
 	{ "LoadEnemyShotData", StgStageScript::Func_LoadEnemyShotData, 1 },
 	{ "ReloadEnemyShotData", StgStageScript::Func_ReloadEnemyShotData, 1 },
 
-	//STG共通関数：弾
+	//STG共通関数：弾/Shmup Common Functions: Bullets
 	{ "DeleteShotAll", StgStageScript::Func_DeleteShotAll, 2 },
 	{ "DeleteShotInCircle", StgStageScript::Func_DeleteShotInCircle, 5 },
 	{ "CreateShotA1", StgStageScript::Func_CreateShotA1, 6 },
@@ -309,7 +309,7 @@ function const stgFunction[] = {
 	{ "GetShotDataInfoA1", StgStageScript::Func_GetShotDataInfoA1, 3 },
 	{ "StartShotScript", StgStageScript::Func_StartShotScript, 1 },
 
-	//STG共通関数：アイテム
+	//STG共通関数：アイテム/Shmup Common Functions: Item
 	{ "CreateItemA1", StgStageScript::Func_CreateItemA1, 4 },
 	{ "CreateItemA2", StgStageScript::Func_CreateItemA2, 6 },
 	{ "CreateItemU1", StgStageScript::Func_CreateItemU1, 4 },
@@ -324,20 +324,22 @@ function const stgFunction[] = {
 	{ "LoadItemData", StgStageScript::Func_LoadItemData, 1 },
 	{ "ReloadItemData", StgStageScript::Func_ReloadItemData, 1 },
 
-	//STG共通関数：その他
-	{ "StartSlow", StgStageScript::Func_StartSlow, 2 },
-	{ "StopSlow", StgStageScript::Func_StopSlow, 1 },
-	{ "IsIntersected_Line_Circle", StgStageScript::Func_IsIntersected_Line_Circle, 8 },
-	{ "IsIntersected_Obj_Obj", StgStageScript::Func_IsIntersected_Obj_Obj, 2 },
+	//STG共通関数：ネット/Shmup Common Functions: Netplay
 	{ "GetLocalNetData", StgStageScript::Func_GetLocalNetData, 0 },
 	{ "ReceiveNetData", StgStageScript::Func_ReceiveNetData, 0 },
 	{ "SendNetData", StgStageScript::Func_SendNetData, 2 },
 	//{ "ReceiveUDPData", StgStageScript::Func_ReceiveUDPData, 0 },
 	//{ "SendUDPData", StgStageScript::Func_SendUDPData, 3 },
 	{ "RunNetplay", StgStageScript::Func_RunNetplay, 2 },
+
+	//STG共通関数：その他/Shmup Common Functions: Others
+	{ "StartSlow", StgStageScript::Func_StartSlow, 2 },
+	{ "StopSlow", StgStageScript::Func_StopSlow, 1 },
+	{ "IsIntersected_Line_Circle", StgStageScript::Func_IsIntersected_Line_Circle, 8 },
+	{ "IsIntersected_Obj_Obj", StgStageScript::Func_IsIntersected_Obj_Obj, 2 },
 	//{ "Eval", StgStageScript::Func_Eval, 1 },
 
-	//STG共通関数：移動オブジェクト操作
+	//STG共通関数：移動オブジェクト操作/Shmup Common Functions: Moving Objects Operation
 	{ "ObjMove_SetX", StgStageScript::Func_ObjMove_SetX, 2 },
 	{ "ObjMove_SetY", StgStageScript::Func_ObjMove_SetY, 2 },
 	{ "ObjMove_SetPosition", StgStageScript::Func_ObjMove_SetPosition, 3 },
@@ -361,7 +363,7 @@ function const stgFunction[] = {
 	{ "ObjMove_GetSpeed", StgStageScript::Func_ObjMove_GetSpeed, 1 },
 	{ "ObjMove_GetAngle", StgStageScript::Func_ObjMove_GetAngle, 1 },
 
-	//STG共通関数：敵オブジェクト操作
+	//STG共通関数：敵オブジェクト操作/Shmup Common Functions: Enemy Objects Operation
 	{ "ObjEnemy_Create", StgStageScript::Func_ObjEnemy_Create, 1 },
 	{ "ObjEnemy_Regist", StgStageScript::Func_ObjEnemy_Regist, 1 },
 	{ "ObjEnemy_GetInfo", StgStageScript::Func_ObjEnemy_GetInfo, 2 },
@@ -372,7 +374,7 @@ function const stgFunction[] = {
 	{ "ObjEnemy_SetIntersectionCircleToShot", StgStageScript::Func_ObjEnemy_SetIntersectionCircleToShot, 4 },
 	{ "ObjEnemy_SetIntersectionCircleToPlayer", StgStageScript::Func_ObjEnemy_SetIntersectionCircleToPlayer, 4 },
 
-	//STG共通関数：敵ボスシーンオブジェクト操作
+	//STG共通関数：敵ボスシーンオブジェクト操作/Shmup Common Functions: Enemy Boss Scene Object Operation
 	{ "ObjEnemyBossScene_Create", StgStageScript::Func_ObjEnemyBossScene_Create, 0 },
 	{ "ObjEnemyBossScene_Regist", StgStageScript::Func_ObjEnemyBossScene_Regist, 1 },
 	{ "ObjEnemyBossScene_Add", StgStageScript::Func_ObjEnemyBossScene_Add, 3 },
@@ -381,7 +383,7 @@ function const stgFunction[] = {
 	{ "ObjEnemyBossScene_SetSpellTimer", StgStageScript::Func_ObjEnemyBossScene_SetSpellTimer, 2 },
 	{ "ObjEnemyBossScene_StartSpell", StgStageScript::Func_ObjEnemyBossScene_StartSpell, 1 },
 
-	//STG共通関数：弾オブジェクト操作
+	//STG共通関数：弾オブジェクト操作/Shmup Common Functions: Bullet Objects Operation
 	{ "ObjShot_Create", StgStageScript::Func_ObjShot_Create, 1 },
 	{ "ObjShot_Regist", StgStageScript::Func_ObjShot_Regist, 1 },
 	{ "ObjShot_SetAutoDelete", StgStageScript::Func_ObjShot_SetAutoDelete, 2 },
@@ -423,7 +425,7 @@ function const stgFunction[] = {
 	{ "ObjStLaser_SetSource", StgStageScript::Func_ObjStLaser_SetSource, 2 },
 	{ "ObjCrLaser_SetTipDecrement", StgStageScript::Func_ObjCrLaser_SetTipDecrement, 2 },
 
-	//STG共通関数：アイテムオブジェクト操作
+	//STG共通関数：アイテムオブジェクト操作/Shmup Common Functions: Item Objects Operation
 	{ "ObjItem_Create", StgStageScript::Func_ObjItem_Create, 1 },
 	{ "ObjItem_Regist", StgStageScript::Func_ObjItem_Regist, 1 },
 	{ "ObjItem_SetItemID", StgStageScript::Func_ObjItem_SetItemID, 2 },
@@ -432,17 +434,17 @@ function const stgFunction[] = {
 	{ "ObjItem_SetDefinedMovePatternA1", StgStageScript::Func_ObjItem_SetDefinedMovePatternA1, 2 },
 	{ "ObjItem_GetInfo", StgStageScript::Func_ObjItem_GetInfo, 2 },
 
-	//STG共通関数：自機オブジェクト操作
+	//STG共通関数：自機オブジェクト操作/Shmup Common Functions: Player Objects Operation
 	{ "ObjPlayer_AddIntersectionCircleA1", StgStageScript::Func_ObjPlayer_AddIntersectionCircleA1, 5 },
 	{ "ObjPlayer_AddIntersectionCircleA2", StgStageScript::Func_ObjPlayer_AddIntersectionCircleA2, 4 },
 	{ "ObjPlayer_ClearIntersection", StgStageScript::Func_ObjPlayer_ClearIntersection, 1 },
 
-	//STG共通関数：当たり判定オブジェクト操作
+	//STG共通関数：当たり判定オブジェクト操作/Shmup Common Functions: Collision Detection Object Operation
 	{ "ObjCol_IsIntersected", StgStageScript::Func_ObjCol_IsIntersected, 1 },
 	{ "ObjCol_GetListOfIntersectedEnemyID", StgStageScript::Func_ObjCol_GetListOfIntersectedEnemyID, 1 },
 	{ "ObjCol_GetIntersectedCount", StgStageScript::Func_ObjCol_GetIntersectedCount, 1 },
 
-	//定数
+	//定数/Constants
 	{ "SCREEN_WIDTH", constant<640>::func, 0 },
 	{ "SCREEN_HEIGHT", constant<480>::func, 0 },
 	{ "TYPE_ALL", constant<StgStageScript::TYPE_ALL>::func, 0 },

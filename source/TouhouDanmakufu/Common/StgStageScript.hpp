@@ -157,11 +157,11 @@ public:
 
 	ref_count_ptr<StgStageScriptObjectManager> GetStgObjectManager();
 
-	//STG共通関数：共通データ
+	//STG共通関数：共通データ/Shmup Common Functions: Common Data
 	static gstd::value Func_SaveCommonDataAreaToReplayFile(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_LoadCommonDataAreaFromReplayFile(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：システム関連
+	//STG共通関数：システム関連/Shmup Common Functions: System Connection
 	static gstd::value Func_GetMainStgScriptPath(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetMainStgScriptDirectory(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SetStgFrame(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -176,7 +176,7 @@ public:
 	static gstd::value Func_CloseStgScene(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetReplayFps(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：自機
+	//STG共通関数：自機/Shmup Common Functions: Player
 	static gstd::value Func_GetPlayerObjectID(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetPlayerScriptID(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SetPlayerSpeed(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -208,7 +208,7 @@ public:
 	static gstd::value Func_IsPlayerLastSpellWait(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_IsPlayerSpellActive(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：敵
+	//STG共通関数：敵/Shmup Common Functions: Enemies
 	static gstd::value Func_GetEnemyBossSceneObjectID(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetEnemyBossObjectID(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_GetAllEnemyID(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -220,7 +220,7 @@ public:
 	static gstd::value Func_LoadEnemyShotData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ReloadEnemyShotData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：弾
+	//STG共通関数：弾/Shmup Common Functions: Bullets
 	static gstd::value Func_DeleteShotAll(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_DeleteShotInCircle(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_CreateShotA1(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -241,7 +241,7 @@ public:
 	static gstd::value Func_GetShotDataInfoA1(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_StartShotScript(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：アイテム
+	//STG共通関数：アイテム/Shmup Common Functions: Items
 	static gstd::value Func_CreateItemA1(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_CreateItemA2(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_CreateItemU1(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -256,18 +256,20 @@ public:
 	static gstd::value Func_LoadItemData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ReloadItemData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：その他
-	static gstd::value Func_StartSlow(gstd::script_machine* machine, int argc, gstd::value const* argv);
-	static gstd::value Func_StopSlow(gstd::script_machine* machine, int argc, gstd::value const* argv);
-	static gstd::value Func_IsIntersected_Line_Circle(gstd::script_machine* machine, int argc, gstd::value const* argv);
-	static gstd::value Func_IsIntersected_Obj_Obj(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	//STG共通関数：ネット/Shmup Common Functions: Netplay
 	static gstd::value Func_GetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_RunNetplay(gstd::script_machine* machine, int argc, gstd::value const* argv);
+
+	//STG共通関数：その他/Shmup Common Functions: Others
+	static gstd::value Func_StartSlow(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_StopSlow(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_IsIntersected_Line_Circle(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_IsIntersected_Obj_Obj(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Eval(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：移動オブジェクト操作
+	//STG共通関数：移動オブジェクト操作/Shmup Common Functions: Moving Objects Operation
 	static gstd::value Func_ObjMove_SetX(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjMove_SetY(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjMove_SetPosition(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -291,7 +293,7 @@ public:
 	static gstd::value Func_ObjMove_GetSpeed(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjMove_GetAngle(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：敵オブジェクト操作
+	//STG共通関数：敵オブジェクト操作/Shmup Common Functions: Enemy Objects Operation
 	static gstd::value Func_ObjEnemy_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjEnemy_Regist(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjEnemy_GetInfo(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -302,7 +304,7 @@ public:
 	static gstd::value Func_ObjEnemy_SetIntersectionCircleToShot(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjEnemy_SetIntersectionCircleToPlayer(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：敵ボスシーンオブジェクト操作
+	//STG共通関数：敵ボスシーンオブジェクト操作/Shmup Common Functions: Enemy Boss Scene Objects Operation
 	static gstd::value Func_ObjEnemyBossScene_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjEnemyBossScene_Regist(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjEnemyBossScene_Add(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -311,7 +313,7 @@ public:
 	static gstd::value Func_ObjEnemyBossScene_SetSpellTimer(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjEnemyBossScene_StartSpell(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：弾オブジェクト操作
+	//STG共通関数：弾オブジェクト操作/Shmup Common Functions: Bullet Objects Operation
 	static gstd::value Func_ObjShot_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjShot_Regist(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjShot_SetAutoDelete(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -353,7 +355,7 @@ public:
 	static gstd::value Func_ObjStLaser_SetSource(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjCrLaser_SetTipDecrement(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：アイテムオブジェクト操作
+	//STG共通関数：アイテムオブジェクト操作/Shmup Common Functions: Item Objects Operation
 	static gstd::value Func_ObjItem_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjItem_Regist(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjItem_SetItemID(gstd::script_machine* machine, int argc, gstd::value const* argv);
@@ -362,12 +364,12 @@ public:
 	static gstd::value Func_ObjItem_SetDefinedMovePatternA1(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjItem_GetInfo(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：自機オブジェクト操作
+	//STG共通関数：自機オブジェクト操作/Shmup Common Functions: Player Object Operation
 	static gstd::value Func_ObjPlayer_AddIntersectionCircleA1(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjPlayer_AddIntersectionCircleA2(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjPlayer_ClearIntersection(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
-	//STG共通関数：当たり判定オブジェクト操作
+	//STG共通関数：当たり判定オブジェクト操作/Shmup Common Functions: Collision Detection Object Operation
 	static gstd::value Func_ObjCol_IsIntersected(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjCol_GetListOfIntersectedEnemyID(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjCol_GetIntersectedCount(gstd::script_machine* machine, int argc, gstd::value const* argv);
