@@ -8,6 +8,6 @@ using namespace directx;
 
 const int STANDARD_FPS = 60;
 
-const std::wstring DNH_VERSION = L" 0.6.1";
+const std::wstring DNH_VERSION = L" 0.6.2";
 
 #endif
