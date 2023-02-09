@@ -160,7 +160,7 @@ gstd::ref_count_ptr<SoundPlayer> DirectSoundManager::_CreatePlayer(std::wstring 
 		if (!reader->Open())
 			throw gstd::wexception(ErrorUtility::GetFileNotFoundErrorMessage(path).c_str());
 
-		//フォーマット確認
+		//フォーマット確認/Format Verification
 		int sizeFile = reader->GetFileSize();
 		FileFormat format = SD_UNKNOWN;
 		if (sizeFile <= 64)
@@ -176,7 +176,7 @@ gstd::ref_count_ptr<SoundPlayer> DirectSoundManager::_CreatePlayer(std::wstring 
 			ZeroMemory(&pcmwf, sizeof(PCMWAVEFORMAT));
 			memcpy(&pcmwf, header.GetPointer(20), sizeof(WAVEFORMATEX));
 			if (pcmwf.wFormatTag == 85)
-				format = SD_AWAVE; //waveヘッダmp3
+				format = SD_AWAVE; //waveヘッダmp3/Wave Header MP3
 			else
 				format = SD_WAVE;
 		} else if (!memcmp(header.GetPointer(), "OggS", 4)) { //OggVorbis
@@ -187,13 +187,13 @@ gstd::ref_count_ptr<SoundPlayer> DirectSoundManager::_CreatePlayer(std::wstring 
 			format = SD_MP3;
 		}
 
-		//プレイヤ作成
+		//プレイヤ作成/Making a player 
 		if (format == SD_WAVE) { //WAVE
 			if (sizeFile < 1024 * 1024) {
-				//メモリ保持再生
+				//メモリ保持再生/Memory Retention
 				res = new SoundPlayerWave();
 			} else {
-				//ストリーミング
+				//ストリーミング/Streaming
 				res = new SoundStreamingPlayerWave();
 			}
 		} else if (format == SD_OGG) { //OggVorbis
@@ -207,21 +207,21 @@ gstd::ref_count_ptr<SoundPlayer> DirectSoundManager::_CreatePlayer(std::wstring 
 		bSuccess &= res != NULL;
 
 		if (res != NULL) {
-			//ファイルを読み込みサウンドバッファを作成
+			//ファイルを読み込みサウンドバッファを作成/Making a buffer while loading a file
 			bSuccess &= res->_CreateBuffer(reader);
 			res->Seek(0);
 		}
 
+		std::wstring str;
 		if (bSuccess) {
 			res->manager_ = this;
 			res->path_ = path;
 			mapPlayer_[path].push_back(res);
-			std::wstring str = StringUtility::Format(L"DirectSound：音声データを読み込みました[%s]", path.c_str());
-			Logger::WriteTop(str);
+			str = StringUtility::Format(L"DirectSound：音声データを読み込みました[%s]", path.c_str());
 		} else {
-			std::wstring str = StringUtility::Format(L"DirectSound：音声データ読み込み失敗[%s]", path.c_str());
-			Logger::WriteTop(str);
+			str = StringUtility::Format(L"DirectSound：音声データ読み込み失敗[%s]", path.c_str());
 		}
+		Logger::WriteTop(str);
 	} catch (gstd::wexception& e) {
 		std::wstring str = StringUtility::Format(L"DirectSound：音声データ読み込み失敗[%s]\n\t%s", path.c_str(), e.what());
 		Logger::WriteTop(str);
