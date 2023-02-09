@@ -130,7 +130,13 @@ private:
 };
 
 /**********************************************************
-//DxScriptPrimitiveObject
+//
+
+
+
+
+
+
 **********************************************************/
 class DxScriptPrimitiveObject : public DxScriptRenderObject {
 	friend DxScript;
@@ -462,6 +468,25 @@ public:
 protected:
 	gstd::ref_count_ptr<SoundPlayer> player_;
 	SoundPlayer::PlayStyle style_;
+};
+
+/**********************************************************
+//DxVideoObject
+**********************************************************/
+class DxVideoObject : public DxScriptObjectBase {
+	friend DxScript;
+
+public:
+	DxVideoObject();
+	~DxVideoObject();
+	virtual void Render() {}
+	virtual void SetRenderState() {}
+
+	bool Load(std::wstring path);
+	void Play();
+
+protected:
+	
 };
 
 /**********************************************************

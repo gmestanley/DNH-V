@@ -4226,6 +4226,22 @@ gstd::value DxScript::Func_ObjSound_GetVolumeRate(gstd::script_machine* machine,
 	return value(machine->get_engine()->get_real_type(), (double)rate);
 }
 
+//Dx関数：ファイル操作(DxVideoObject)
+gstd::value DxScript::Func_ObjVideo_Create(gstd::script_machine* machine, int argc, gstd::value const* argv)
+{
+	DxScript* script = (DxScript*)machine->data;
+	script->CheckRunInMainThread();
+	ref_count_ptr<DxVideoObject>::unsync obj;
+
+	int id = ID_INVALID;
+	if (obj != NULL) {
+		obj->Initialize();
+		obj->manager_ = script->objManager_.GetPointer();
+		id = script->AddObject(obj);
+	}
+	return value(machine->get_engine()->get_real_type(), (double)id);
+}
+
 //Dx関数：ファイル操作(DxFileObject)
 gstd::value DxScript::Func_ObjFile_Create(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
