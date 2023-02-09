@@ -1,15 +1,23 @@
 # Touhou Danmakufu-V
-A fork of Danmakufu ph3.5 aiming to provide new features to the engine, such as general improvements and other functionalities, such as Netplay.<br>
+A fork of Danmakufu ph3.5 aiming to provide better functionality to the engine, such as general improvements and others including new features, like Netplay.<br>
+All readme-like documents have been translated from Japanese to English by the repository owner himself.<br>
 Multiplatform support is also planned for Windows, macOS and Linux; the [linux](https://github.com/gmestanley/DNH-V/tree/linux/) branch is in development and is set to be used for the last one, but is still a heavy work in progress. Currently only Windows is supported with the master branch.
 
 ## Changelog
 Aside from the current releases, there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
 
+###### [0.6.2]
+ * Error-catching in the Netplay functions' logging improved
+ * LocalNetData renamed to GetLocalNetData
+ * Implemented new function SetLocalNetData
+    - Sets any data recently saved by ReceiveNetData to a string specified in the first argument.
+
 ###### [0.6.1]
- * Versioning and branding updated
- 	- Title was changed from "Netplay" to "DNH-V" and version was changed from 0.6 to 0.6.1.
- * Translations of the Readme and adjacent documents provided (along with the original forms).
- * Example script for Netplay functionality provided (misplaced in script/sample/).
+ * Branding updated
+ 	- Title was changed from "DNH Netplay" to "DNH-V", and further mentions of "Netplay" were also replaced with that.
+ * Translations of the Readme and adjacent documents provided (along with the original forms)
+ * Example script for Netplay functionality provided (misplaced in script/sample/)
+ * VS Projects upgraded to Visual Studio 2019
 
 ## Requirements (for compiling)
  * zlib
