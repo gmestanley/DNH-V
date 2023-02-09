@@ -692,6 +692,30 @@ void DxSoundObject::Play()
 }
 
 /**********************************************************
+//DxVideoObject
+**********************************************************/
+DxVideoObject::DxVideoObject() {
+	typeObject_ = DxScript::OBJ_VIDEO;
+}
+DxVideoObject::~DxVideoObject() {
+	if (player_ == NULL)
+		return;
+	player_->Delete();
+}
+bool DxSoundObject::Load(std::wstring path) {
+	//DirectSoundManager* manager = DirectSoundManager::GetBase();
+	player_ = manager->GetPlayer(path);
+	if (player_ == NULL)
+		return false;
+
+	return true;
+}
+void DxSoundObject::Play() {
+	if (player_ != NULL)
+		player_->Play(style_);
+}
+
+/**********************************************************
 //DxFileObject
 **********************************************************/
 DxFileObject::DxFileObject()
@@ -4228,6 +4252,49 @@ gstd::value DxScript::Func_ObjSound_GetVolumeRate(gstd::script_machine* machine,
 
 //Dx関数：ファイル操作(DxVideoObject)
 gstd::value DxScript::Func_ObjVideo_Create(gstd::script_machine* machine, int argc, gstd::value const* argv)
+{
+	DxScript* script = (DxScript*)machine->data;
+	script->CheckRunInMainThread();
+	ref_count_ptr<DxVideoObject>::unsync obj;
+
+	int id = ID_INVALID;
+	if (obj != NULL) {
+		obj->Initialize();
+		obj->manager_ = script->objManager_.GetPointer();
+		id = script->AddObject(obj);
+	}
+	return value(machine->get_engine()->get_real_type(), (double)id);
+}
+gstd::value DxScript::Func_ObjVideo_Load(gstd::script_machine* machine, int argc, gstd::value const* argv)
+{
+	DxScript* script = (DxScript*)machine->data;
+	int id = (int)argv[0].as_real();
+	DxVideoObject* obj = dynamic_cast<DxVideoObject*>(script->GetObjectPointer(id));
+	if (obj == NULL)
+		return value();
+	;
+
+	std::wstring path = argv[1].as_string();
+	path = PathProperty::GetUnique(path);
+	bool bLoad = obj->Load(path);
+
+	return value(machine->get_engine()->get_boolean_type(), bLoad);
+}
+gstd::value DxScript::Func_ObjVideo_Play(gstd::script_machine* machine, int argc, gstd::value const* argv)
+{
+	DxScript* script = (DxScript*)machine->data;
+	script->CheckRunInMainThread();
+	ref_count_ptr<DxVideoObject>::unsync obj;
+
+	int id = ID_INVALID;
+	if (obj != NULL) {
+		obj->Initialize();
+		obj->manager_ = script->objManager_.GetPointer();
+		id = script->AddObject(obj);
+	}
+	return value(machine->get_engine()->get_real_type(), (double)id);
+}
+gstd::value DxScript::Func_ObjVideo_Stop(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	DxScript* script = (DxScript*)machine->data;
 	script->CheckRunInMainThread();
