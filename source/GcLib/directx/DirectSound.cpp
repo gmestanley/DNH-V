@@ -183,14 +183,14 @@ gstd::ref_count_ptr<SoundPlayer> DirectSoundManager::_CreatePlayer(std::wstring 
 			format = SD_OGG;
 		} else if (!memcmp(header.GetPointer(), "MThd", 4)) { //midi
 			format = SD_MIDI;
-		} else { //多分mp3
+		} else { //多分mp3/Probably MP3
 			format = SD_MP3;
 		}
 
 		//プレイヤ作成/Making a player 
 		if (format == SD_WAVE) { //WAVE
 			if (sizeFile < 1024 * 1024) {
-				//メモリ保持再生/Memory Retention
+				//メモリ保持再生/Playback w/Memory Retention
 				res = new SoundPlayerWave();
 			} else {
 				//ストリーミング/Streaming
@@ -1395,10 +1395,10 @@ bool SoundStreamingPlayerMp3::_CreateBuffer(gstd::ref_count_ptr<gstd::FileReader
 		if (memcmp(tag, "TAG", 3) == 0)
 			dataSize = fileSize - 128; // 末尾のタグを省く
 		else
-			dataSize = fileSize; // ファイル全体がMP3データ
+			dataSize = fileSize; // ファイル全体がMP3データ/The whole file is MP3 data
 	}
 
-	dataSize -= 4; //mp3ヘッダ
+	dataSize -= 4; //mp3ヘッダ/MP3 Header
 	posMp3DataStart_ = offsetDataStart + 4;
 	posMp3DataEnd_ = posMp3DataStart_ + dataSize;
 
