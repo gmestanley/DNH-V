@@ -8,14 +8,14 @@
 ////////////////////////////////////////////////////////////
 // Netplay
 ////////////////////////////////////////////////////////////
-std::string Netplay::p = "";
-std::wstring Netplay::wchar = L"";
-sf::TcpSocket Netplay::t_socket{
+std::string Netplay::port = "";
+std::wstring Netplay::wcharBuffer = L"";
+sf::TcpSocket Netplay::tcpSocket{
 	
 };
-sf::UdpSocket Netplay::u_socket{
+/*sf::UdpSocket Netplay::udpSocket{
 
-};
+};*/
 char Netplay::in[128]{
 
 };
