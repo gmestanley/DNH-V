@@ -257,6 +257,7 @@ public:
 	static gstd::value Func_ReloadItemData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
 	//STG共通関数：ネット/Shmup Common Functions: Netplay
+	static gstd::value Func_SetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv); //Sets the local netplay data to a string.
 	static gstd::value Func_GetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv);

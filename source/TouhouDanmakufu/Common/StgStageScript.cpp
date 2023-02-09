@@ -325,6 +325,7 @@ function const stgFunction[] = {
 	{ "ReloadItemData", StgStageScript::Func_ReloadItemData, 1 },
 
 	//STG共通関数：ネット/Shmup Common Functions: Netplay
+	{ "SetLocalNetData", StgStageScript::Func_GetLocalNetData, 1 },
 	{ "GetLocalNetData", StgStageScript::Func_GetLocalNetData, 0 },
 	{ "ReceiveNetData", StgStageScript::Func_ReceiveNetData, 0 },
 	{ "SendNetData", StgStageScript::Func_SendNetData, 2 },
@@ -2288,6 +2289,10 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	}
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
+gstd::value StgStageScript::Func_SetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+	Netplay::wcharBuffer = argv[0].as_string();
+	return value();
+}
 gstd::value StgStageScript::Func_GetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
 	return value(machine->get_engine()->get_string_type(), (std::wstring)Netplay::wcharBuffer);
@@ -2295,9 +2300,12 @@ gstd::value StgStageScript::Func_GetLocalNetData(gstd::script_machine* machine, 
 gstd::value StgStageScript::Func_ReceiveNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	std::size_t received;
 	std::fill_n(Netplay::in, sizeof(Netplay::in), 0);
-	Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received);
-	Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
-	Logger::WriteTop(L"Message received from the server: \"" + Netplay::wcharBuffer + L"\"");
+	if (Netplay::tcpSocket.receive(Netplay::in, sizeof(Netplay::in), received) != sf::Socket::Done)
+		Logger::WriteTop(L"Failed to receive messages from the server");
+	else {
+		Netplay::wcharBuffer = Netplay::convertToWString(Netplay::in);
+		Logger::WriteTop(L"Message received from the server: \"" + Netplay::wcharBuffer + L"\"");
+	}
 	return value();
 }
 gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
@@ -2308,8 +2316,11 @@ gstd::value StgStageScript::Func_SendNetData(gstd::script_machine* machine, int 
 	else {
 		vstring = Netplay::convertToChar(argv[0].as_char(), sizeof(argv[0].as_char()));
 	}
-	Netplay::tcpSocket.send(vstring, sizeof(vstring));
-	Logger::WriteTop(L"Message \"" + Netplay::wcharBuffer + L"\" sent to the other machine connected");
+	if (Netplay::tcpSocket.send(vstring, sizeof(vstring)) != sf::Socket::Done)
+		Logger::WriteTop(L"Unable to send message \"" + Netplay::wcharBuffer + L"\" to the other machine connected");
+	else {
+		Logger::WriteTop(L"Message \"" + Netplay::wcharBuffer + L"\" sent to the other machine connected");
+	}
 	return value();
 }
 /*gstd::value StgStageScript::Func_ReceiveUDPData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
@@ -2336,7 +2347,7 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 	bool serverIsValid = false;
 	for (int i = 0; i < fullAddress.length(); i++) {
 		if (fullAddress[i] == ':') {
-			if (i < 7 && bool(!argv[1])) {
+			if (i < 7 && !argv[0].as_boolean()) {
 				script->RaiseError(L"Netplay Error: Not a valid server!");
 			}
 			else {
@@ -2350,20 +2361,25 @@ gstd::value StgStageScript::Func_RunNetplay(gstd::script_machine* machine, int a
 			actualAddress[i] = fullAddress[i];
 		}
 	}
-	long double currentPort = std::stod(Netplay::port);
+	long double currentPort = std::stod(Netplay::port); //Converts the port that is a string into a double, which vanilla DNH uses
 	if (!argv[0].as_boolean()) {
 		// Create a server socket to accept new connections
 		sf::TcpListener listener;
 
 		// Listen to the given port for incoming connections
 		if (listener.listen(currentPort) != sf::Socket::Done)
-			return value();
-		Logger::WriteTop(L"Server is listening to port " + std::to_wstring(currentPort) + L", waiting for connections...");
+			Logger::WriteTop(L"Unable to listen to port " + std::to_wstring(currentPort));
+		else {
+			Logger::WriteTop(L"Server is listening to port " + std::to_wstring(currentPort) + L", waiting for connections...");
 
-		// Wait for a connection
-		listener.accept(Netplay::tcpSocket);
-		sf::IpAddress net = Netplay::tcpSocket.getRemoteAddress();
-		Logger::WriteTop(L"Client connected: " + std::to_wstring(net.toInteger()));
+			// Wait for a connection
+			if (listener.accept(Netplay::tcpSocket) != sf::Socket::Done)
+				Logger::WriteTop(L"Unable to receive connecting clients");
+			else {
+				sf::IpAddress net = Netplay::tcpSocket.getRemoteAddress();
+				Logger::WriteTop(L"Client connected: " + std::to_wstring(net.toInteger()));
+			}
+		}
 	}
 	else if (argv[0].as_boolean()) {
 		sf::IpAddress server = actualAddress;
