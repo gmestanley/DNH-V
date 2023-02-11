@@ -37,7 +37,7 @@ ref_count_ptr<ScriptInformation> ScriptInformation::CreateScriptInformation(std:
 			type = TYPE_UNKNOWN;
 			bScript = true;
 		}
-		int scriptVersion = 3;
+		std::wstring scriptVersion = L"3";
 		std::wstring idScript = L"";
 		std::wstring title = L"";
 		std::wstring text = L"";
