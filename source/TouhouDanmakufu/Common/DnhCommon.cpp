@@ -37,6 +37,7 @@ ref_count_ptr<ScriptInformation> ScriptInformation::CreateScriptInformation(std:
 			type = TYPE_UNKNOWN;
 			bScript = true;
 		}
+		int scriptVersion = 3;
 		std::wstring idScript = L"";
 		std::wstring title = L"";
 		std::wstring text = L"";
@@ -84,6 +85,8 @@ ref_count_ptr<ScriptInformation> ScriptInformation::CreateScriptInformation(std:
 						throw gstd::wexception();
 				} else if (element == L"ID") {
 					idScript = _GetString(scanner);
+				} else if (element == L"ScriptVersion") {
+					scriptVersion = _GetString(scanner);
 				} else if (element == L"Title") {
 					title = _GetString(scanner);
 				} else if (element == L"Text") {

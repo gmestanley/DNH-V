@@ -1393,7 +1393,7 @@ bool SoundStreamingPlayerMp3::_CreateBuffer(gstd::ref_count_ptr<gstd::FileReader
 
 		// データの位置、サイズを計算
 		if (memcmp(tag, "TAG", 3) == 0)
-			dataSize = fileSize - 128; // 末尾のタグを省く
+			dataSize = fileSize - 128; // 末尾のタグを省く/Leave out end tag S
 		else
 			dataSize = fileSize; // ファイル全体がMP3データ/The whole file is MP3 data
 	}
