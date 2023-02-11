@@ -159,7 +159,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 		scriptManager_->StartScript(idScript);
 	}
 
-	//自機スクリプト
+	//自機スクリプト/Player Script
 	ref_count_ptr<StgPlayerObject>::unsync objPlayer = NULL;
 	ref_count_ptr<ScriptInformation> infoPlayer = infoStage_->GetPlayerScriptInformation();
 	std::wstring pathPlayerScript = infoPlayer->GetScriptPath();
@@ -184,7 +184,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 	if (objPlayer != NULL)
 		infoStage_->SetPlayerObjectInformation(objPlayer->GetPlayerInformation());
 
-	//メインスクリプト
+	//メインスクリプト/Main Script
 	if (infoMain->GetType() == ScriptInformation::TYPE_SINGLE) {
 		std::wstring pathMainScript = EPathProperty::GetSystemResourceDirectory() + L"script/System_SingleStage.txt";
 		_int64 idScript = scriptManager_->LoadScript(pathMainScript, StgStageScript::TYPE_STAGE);
@@ -202,7 +202,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 		}
 	}
 
-	//背景スクリプト
+	//背景スクリプト/Background Script
 	std::wstring pathBack = infoMain->GetBackgroundPath();
 	if (pathBack == ScriptInformation::DEFAULT)
 		pathBack = L"";
@@ -213,7 +213,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 		scriptManager_->StartScript(idScript);
 	}
 
-	//音声再生
+	//音声再生/Audio Playback
 	std::wstring pathBGM = infoMain->GetBgmPath();
 	if (pathBGM == ScriptInformation::DEFAULT)
 		pathBGM = L"";
@@ -228,6 +228,9 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 			player->Play(style);
 		}
 	}
+
+	//スクリプトバージョン/Script Version
+	std::wstring scriptVersion = infoMain->GetScriptVersion();
 
 	//リプレイ関連(スクリプト初期化後)
 	if (!infoStage_->IsReplay()) {
