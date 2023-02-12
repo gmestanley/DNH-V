@@ -377,7 +377,19 @@ public:
 
 
 	//0.12m
+
 	static gstd::value Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetMovePositionRandom01(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetPlayerX(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetPlayerY(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetCoordinateType(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetOrigin(gstd::script_machine* machine, int argc, gstd::value const* argv);
+
+	static gstd::value Func_Orig_SetShotDirectionType(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_CreateShotA(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_CreateLaserA(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetLaserDataA(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	static gstd::value Func_Orig_SetLaserDataB(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
 protected:
 	StgStageController* stageController_;

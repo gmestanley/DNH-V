@@ -619,7 +619,7 @@ function const stgFunctionOriginal[] = {
 	{ "CreateShot11", StgStageScript::Func_CreateShotB1, 6 },
 	{ "CreateShot12", StgStageScript::Func_CreateShotB2, 10 },
 	{ "CreateShotOB1", StgStageScript::Func_CreateShotOB1, 5 },
-	{ "CreateLooseLaserA1", StgStageScript::Func_CreateLooseLaserA1, 8 },
+	{ "CreateLaser01", StgStageScript::Func_CreateLooseLaserA1, 8 },
 	{ "CreateStraightLaserA1", StgStageScript::Func_CreateStraightLaserA1, 8 },
 	{ "CreateCurveLaserA1", StgStageScript::Func_CreateCurveLaserA1, 8 },
 	// { "StgStraightLaserA1", StgStageScript::Func_CreateStraightLaserA1, 8 },
@@ -676,12 +676,12 @@ function const stgFunctionOriginal[] = {
 	{ "SetMovePosition02", StgStageScript::Func_ObjMove_SetDestAtFrame, 4 },
 	{ "SetMovePosition03", StgStageScript::Func_ObjMove_SetDestAtWeight, 5 },
 	{ "ObjMove_AddPatternA1", StgStageScript::Func_ObjMove_AddPatternA1, 4 },
-	{ "ObjMove_AddPatternA2", StgStageScript::Func_ObjMove_AddPatternA2, 7 },
-	{ "ObjMove_AddPatternA3", StgStageScript::Func_ObjMove_AddPatternA3, 8 },
+	{ "SetLaserDataC", StgStageScript::Func_ObjMove_AddPatternA2, 7 },
+	{ "SetShotDataA", StgStageScript::Func_ObjMove_AddPatternA3, 8 },
 	{ "ObjMove_AddPatternA4", StgStageScript::Func_ObjMove_AddPatternA4, 9 },
 	{ "ObjMove_AddPatternB1", StgStageScript::Func_ObjMove_AddPatternB1, 4 },
 	{ "ObjMove_AddPatternB2", StgStageScript::Func_ObjMove_AddPatternB2, 8 },
-	{ "ObjMove_AddPatternB3", StgStageScript::Func_ObjMove_AddPatternB3, 9 },
+	{ "SetShotDataA_XY", StgStageScript::Func_ObjMove_AddPatternB3, 9 },
 	{ "ObjMove_GetX", StgStageScript::Func_ObjMove_GetX, 1 },
 	{ "ObjMove_GetY", StgStageScript::Func_ObjMove_GetY, 1 },
 	{ "ObjMove_GetSpeed", StgStageScript::Func_ObjMove_GetSpeed, 1 },
@@ -712,7 +712,7 @@ function const stgFunctionOriginal[] = {
 	{ "ObjShot_Regist", StgStageScript::Func_ObjShot_Regist, 1 },
 	{ "ObjShot_SetAutoDelete", StgStageScript::Func_ObjShot_SetAutoDelete, 2 },
 	{ "ObjShot_FadeDelete", StgStageScript::Func_ObjShot_FadeDelete, 1 },
-	{ "ObjShot_SetDeleteFrame", StgStageScript::Func_ObjShot_SetDeleteFrame, 2 },
+	{ "SetShotKillTime", StgStageScript::Func_ObjShot_SetDeleteFrame, 2 },
 	{ "ObjShot_SetDelay", StgStageScript::Func_ObjShot_SetDelay, 2 },
 	{ "ObjShot_SetSpellResist", StgStageScript::Func_ObjShot_SetSpellResist, 2 },
 	{ "ObjShot_SetGraphic", StgStageScript::Func_ObjShot_SetGraphic, 2 },
@@ -4746,5 +4746,36 @@ gstd::value StgStagePlayerScript::Func_ObjSpell_SetIntersectionLine(gstd::script
 
 
 gstd::value StgStageScript::Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetMovePositionRandom01(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetPlayerX(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetPlayerY(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetCoordinateType(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetOrigin(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+
+gstd::value StgStageScript::Func_Orig_SetShotDirectionType(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_CreateShotA(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_CreateLaserA(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetLaserDataA(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+}
+gstd::value StgStageScript::Func_Orig_SetLaserDataB(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 
 }
