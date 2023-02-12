@@ -4745,6 +4745,6 @@ gstd::value StgStagePlayerScript::Func_ObjSpell_SetIntersectionLine(gstd::script
 
 
 
-gstd::value StgStagePlayerScript::Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+gstd::value StgStageScript::Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 
 }
