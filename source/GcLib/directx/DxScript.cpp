@@ -698,19 +698,19 @@ DxVideoObject::DxVideoObject() {
 	typeObject_ = DxScript::OBJ_VIDEO;
 }
 DxVideoObject::~DxVideoObject() {
-	if (player_ == NULL)
+	/*if (player_ == NULL)
 		return;
-	player_->Delete();
+	player_->Delete();*/
 }
-bool DxSoundObject::Load(std::wstring path) {
-	//DirectSoundManager* manager = DirectSoundManager::GetBase();
+bool DxVideoObject::Load(std::wstring path) {
+	/*DirectSoundManager* manager = DirectSoundManager::GetBase();
 	player_ = manager->GetPlayer(path);
 	if (player_ == NULL)
 		return false;
 
-	return true;
+	return true;*/
 }
-void DxSoundObject::Play() {
+void DxVideoObject::Play() {
 	if (player_ != NULL)
 		player_->Play(style_);
 }
