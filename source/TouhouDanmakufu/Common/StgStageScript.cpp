@@ -803,9 +803,11 @@ function const stgFunctionOriginal[] = {
 	{ "OBJ_ENEMY_BOSS", constant<StgStageScript::OBJ_ENEMY_BOSS>::func, 0 },
 	{ "OBJ_ENEMY_BOSS_SCENE", constant<StgStageScript::OBJ_ENEMY_BOSS_SCENE>::func, 0 },
 	{ "OBJ_SHOT", constant<StgStageScript::OBJ_SHOT>::func, 0 },
-	{ "OBJ_LOOSE_LASER", constant<StgStageScript::OBJ_LOOSE_LASER>::func, 0 },
+	{ "OBJ_LASER", constant<StgStageScript::OBJ_STRAIGHT_LASER>::func, 0 },
+	{ "OBJ_SINUATE_LASER", constant<StgStageScript::OBJ_CURVE_LASER>::func, 0 },
+	/*{"OBJ_LOOSE_LASER", constant<StgStageScript::OBJ_LOOSE_LASER>::func, 0},
 	{ "OBJ_STRAIGHT_LASER", constant<StgStageScript::OBJ_STRAIGHT_LASER>::func, 0 },
-	{ "OBJ_CURVE_LASER", constant<StgStageScript::OBJ_CURVE_LASER>::func, 0 },
+	{ "OBJ_CURVE_LASER", constant<StgStageScript::OBJ_CURVE_LASER>::func, 0 },*/
 	{ "OBJ_ITEM", constant<StgStageScript::OBJ_ITEM>::func, 0 },
 
 	{ "INFO_LIFE", constant<StgStageScript::INFO_LIFE>::func, 0 },
@@ -4739,4 +4741,10 @@ gstd::value StgStagePlayerScript::Func_ObjSpell_SetIntersectionLine(gstd::script
 	intersectionManager->AddTarget(target);
 
 	return value();
+}
+
+
+
+gstd::value StgStagePlayerScript::Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
 }

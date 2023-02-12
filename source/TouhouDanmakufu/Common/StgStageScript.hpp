@@ -375,6 +375,10 @@ public:
 	static gstd::value Func_ObjCol_GetListOfIntersectedEnemyID(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_ObjCol_GetIntersectedCount(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
+
+	//0.12m
+	static gstd::value Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv);
+
 protected:
 	StgStageController* stageController_;
 };

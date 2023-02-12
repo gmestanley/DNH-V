@@ -1756,6 +1756,7 @@ function const dxFunctionOriginal[] = {
 	{ "Get2dPosition", DxScript::Func_Get2dPosition, 3 },
 
 	//Dx関数：オブジェクト操作(共通)/Dx Functions: Object Operation (Common)
+	{ "Obj_Create", DxScript::Func_Orig_Obj_Create, 1 },
 	{ "Obj_Delete", DxScript::Func_Obj_Delete, 1 },
 	{ "Obj_IsDeleted", DxScript::Func_Obj_IsDeleted, 1 },
 	{ "Obj_SetVisible", DxScript::Func_Obj_SetVisible, 2 },
@@ -5134,4 +5135,9 @@ gstd::value DxScript::Func_ObjFileB_ReadString(gstd::script_machine* machine, in
 		res = to_wide(str);
 	}
 	return value(machine->get_engine()->get_string_type(), res);
+}
+
+gstd::value DxScript::Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+	switch (argv[0])
+	case "OBJ_"
 }
