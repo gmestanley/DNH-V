@@ -711,8 +711,8 @@ bool DxVideoObject::Load(std::wstring path) {
 	return true;*/
 }
 void DxVideoObject::Play() {
-	if (player_ != NULL)
-		player_->Play(style_);
+	/*if (player_ != NULL)
+		player_->Play(style_);*/
 }
 
 /**********************************************************
