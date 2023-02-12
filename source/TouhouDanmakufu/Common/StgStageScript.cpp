@@ -4744,7 +4744,7 @@ gstd::value StgStagePlayerScript::Func_ObjSpell_SetIntersectionLine(gstd::script
 }
 
 
-
+//移動系関数/Movement-type Functions
 gstd::value StgStageScript::Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 
 }
@@ -4763,7 +4763,7 @@ gstd::value StgStageScript::Func_Orig_SetCoordinateType(gstd::script_machine* ma
 gstd::value StgStageScript::Func_Orig_SetOrigin(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 
 }
-
+//敵弾を制御する関数/Bullet-Controlling Functions
 gstd::value StgStageScript::Func_Orig_SetShotDirectionType(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 
 }
