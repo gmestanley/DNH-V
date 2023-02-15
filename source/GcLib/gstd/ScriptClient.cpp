@@ -119,6 +119,10 @@ function const commonFunction[] = {
 	{ "GetCommonDataAreaKeyList", ScriptClientBase::Func_GetCommonDataAreaKeyList, 0 },
 	{ "GetCommonDataValueKeyList", ScriptClientBase::Func_GetCommonDataValueKeyList, 1 },
 
+
+	{ "OutputDebugString", ScriptClientBase::Func_OutputDebugString, 1 },
+
+
 	//定数
 	{ "NULL", constant<0>::func, 0 },
 };
@@ -1303,14 +1307,25 @@ value ScriptClientBase::Func_GetCommonDataValueKeyList(script_machine* machine, 
 }
 
 
+value ScriptClientBase::Func_OutputDebugString(script_machine* machine, int argc, value const* argv)
+{
+	ScriptClientBase* script = (ScriptClientBase*)machine->data;
+	ScriptCommonDataManager* commonDataManager = script->GetCommonDataManager();
+
+	WindowLogger* logger;
+	logger->SetInfo(argv[0].as_real(), argv[1].as_string(), argv[2].as_string());
+	return value();
+}
+
+
 //デバッグ用関数/Functions for Debug
 value ScriptClientBase::Func_Orig_OutputDebugString(script_machine* machine, int argc, value const* argv)
 {
 	ScriptClientBase* script = (ScriptClientBase*)machine->data;
 	ScriptCommonDataManager* commonDataManager = script->GetCommonDataManager();
 
-	std::wstring msg = argv[1].as_string();
-	Logger::WriteTop(msg);
+	WindowLogger* logger;
+	logger->SetInfo(argv[0].as_real(), argv[1].as_string(), argv[2].as_string());
 	return value();
 }
 
