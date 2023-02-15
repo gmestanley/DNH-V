@@ -1378,6 +1378,37 @@ function const operations[] = {
 	{ "assert", assert_, 2 }
 };
 
+function const operationsOriginal[] = {
+	{ "true", true_, 0 },
+	{ "false", false_, 0 },
+	{ "pi", pi, 0 },
+	{ "length", length, 1 },
+	{ "not", not_, 1 },
+	{ "negative", negative, 1 },
+	{ "predecessor", predecessor, 1 },
+	{ "successor", successor, 1 },
+	{ "round", round, 1 },
+	{ "trunc", truncate, 1 },
+	{ "truncate", truncate, 1 },
+	{ "ceil", ceil, 1 },
+	{ "floor", floor, 1 },
+	{ "absolute", absolute, 1 },
+	{ "add", add, 2 },
+	{ "subtract", subtract, 2 },
+	{ "multiply", multiply, 2 },
+	{ "divide", divide, 2 },
+	{ "remainder", remainder, 2 },
+	{ "power", power, 2 },
+	{ "index_", index, 2 },
+	{ "index!", index_writable, 2 },
+	{ "slice", slice, 3 },
+	{ "erase", erase, 2 },
+	{ "append", append, 2 },
+	{ "concatenate", concatenate, 2 },
+	{ "compare", compare, 2 },
+	{ "assert", assert_, 2 }
+};
+
 /* parser */
 
 class gstd::parser {

@@ -647,21 +647,11 @@ function const stgFunctionOriginal[] = {
 	{ "LoadItemData", StgStageScript::Func_LoadItemData, 1 },
 	{ "ReloadItemData", StgStageScript::Func_ReloadItemData, 1 },
 
-	//STG共通関数：ネット/Shmup Common Functions: Netplay
-	{ "SetLocalNetData", StgStageScript::Func_GetLocalNetData, 1 },
-	{ "GetLocalNetData", StgStageScript::Func_GetLocalNetData, 0 },
-	{ "ReceiveNetData", StgStageScript::Func_ReceiveNetData, 0 },
-	{ "SendNetData", StgStageScript::Func_SendNetData, 2 },
-	//{ "ReceiveUDPData", StgStageScript::Func_ReceiveUDPData, 0 },
-	//{ "SendUDPData", StgStageScript::Func_SendUDPData, 3 },
-	{ "RunNetplay", StgStageScript::Func_RunNetplay, 2 },
-
 	//STG共通関数：その他/Shmup Common Functions: Others
 	{ "StartSlow", StgStageScript::Func_StartSlow, 2 },
 	{ "StopSlow", StgStageScript::Func_StopSlow, 1 },
-	{ "IsIntersected_Line_Circle", StgStageScript::Func_IsIntersected_Line_Circle, 8 },
+	{ "Collision_Line_Circle", StgStageScript::Func_IsIntersected_Line_Circle, 8 },
 	{ "IsIntersected_Obj_Obj", StgStageScript::Func_IsIntersected_Obj_Obj, 2 },
-	//{ "Eval", StgStageScript::Func_Eval, 1 },
 
 	//STG共通関数：移動オブジェクト操作/Shmup Common Functions: Moving Objects Operation
 	{ "ObjMove_SetX", StgStageScript::Func_ObjMove_SetX, 2 },
@@ -4744,6 +4734,7 @@ gstd::value StgStagePlayerScript::Func_ObjSpell_SetIntersectionLine(gstd::script
 }
 
 
+// * 0.12m
 //移動系関数/Movement-type Functions
 gstd::value StgStageScript::Func_Orig_SetMovePositionHermite(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 

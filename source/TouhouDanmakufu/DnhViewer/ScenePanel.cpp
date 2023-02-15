@@ -122,7 +122,7 @@ bool ScenePanel::StartStg()
 	try {
 		ref_count_ptr<ScriptInformation> infoEnemy = panelPathEnemy_->GetSelectedScriptInformation();
 		if (infoEnemy == NULL)
-			throw gstd::wexception(L"敵スクリプトが不正です");
+			throw gstd::wexception(L"The enemy script is improper.\n敵スクリプトが不正です");
 
 		ref_count_ptr<StgControllerForViewer> controller = StgControllerForViewer::Create();
 		if (infoEnemy->GetType() == ScriptInformation::TYPE_PACKAGE) {
@@ -133,7 +133,7 @@ bool ScenePanel::StartStg()
 		} else {
 			ref_count_ptr<ScriptInformation> infoPlayer = panelPathPlayer_->GetSelectedScriptInformation();
 			if (infoPlayer == NULL)
-				throw gstd::wexception(L"自機スクリプトが不正です");
+				throw gstd::wexception(L"The player script is improper.\n自機スクリプトが不正です");
 
 			ref_count_ptr<StgSystemInformation> infoStgSystem = new StgSystemInformation();
 			infoStgSystem->SetMainScriptInformation(infoEnemy);
@@ -148,8 +148,8 @@ bool ScenePanel::StartStg()
 		ErrorDialog::ShowErrorDialog(e.what());
 		Logger::WriteTop(e.what());
 	} catch (...) {
-		MessageBox(hWnd_, L"開始失敗", L"error", MB_OK);
-		Logger::WriteTop(L"開始失敗");
+		MessageBox(hWnd_, L"Failed to start\n開始失敗", L"error", MB_OK);
+		Logger::WriteTop(L"Failed to start\n開始失敗");
 	}
 
 	return true;

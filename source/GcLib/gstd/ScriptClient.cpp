@@ -123,6 +123,73 @@ function const commonFunction[] = {
 	{ "NULL", constant<0>::func, 0 },
 };
 
+
+function const commonFunctionOriginal[] = {
+	//共通関数：スクリプト引数結果
+	{ "GetScriptArgument", ScriptClientBase::Func_GetScriptArgument, 1 },
+	{ "GetScriptArgumentCount", ScriptClientBase::Func_GetScriptArgumentCount, 0 },
+	{ "SetScriptResult", ScriptClientBase::Func_SetScriptResult, 1 },
+
+	//共通関数：数学系
+	{ "cos", ScriptClientBase::Func_Cos, 1 },
+	{ "sin", ScriptClientBase::Func_Sin, 1 },
+	{ "tan", ScriptClientBase::Func_Tan, 1 },
+	{ "acos", ScriptClientBase::Func_Acos, 1 },
+	{ "asin", ScriptClientBase::Func_Asin, 1 },
+	{ "atan", ScriptClientBase::Func_Atan, 1 },
+	{ "atan2", ScriptClientBase::Func_Atan2, 2 },
+	{ "log", ScriptClientBase::Func_Log, 1 },
+	{ "log10", ScriptClientBase::Func_Log10, 1 },
+	{ "rand", ScriptClientBase::Func_Rand, 2 },
+
+	//共通関数：文字列操作
+	{ "ToString", ScriptClientBase::Func_ToString, 1 },
+	{ "IntToString", ScriptClientBase::Func_IntToString, 1 },
+	{ "itoa", ScriptClientBase::Func_ItoA, 1 },
+	{ "rtoa", ScriptClientBase::Func_RtoA, 1 },
+	{ "rtos", ScriptClientBase::Func_RtoS, 2 },
+	{ "vtos", ScriptClientBase::Func_VtoS, 2 },
+	{ "atoi", ScriptClientBase::Func_AtoI, 1 },
+	{ "ator", ScriptClientBase::Func_AtoR, 1 },
+	{ "TrimString", ScriptClientBase::Func_TrimString, 1 },
+	{ "SplitString", ScriptClientBase::Func_SplitString, 2 },
+
+	//共通関数：パス関連
+	{ "GetModuleDirectory", ScriptClientBase::Func_GetModuleDirectory, 0 },
+	{ "GetMainScriptDirectory", ScriptClientBase::Func_GetMainScriptDirectory, 0 },
+	{ "GetCurrentScriptDirectory", ScriptClientBase::Func_GetCurrentScriptDirectory, 0 },
+	{ "GetFileDirectory", ScriptClientBase::Func_GetFileDirectory, 1 },
+	{ "GetFilePathList", ScriptClientBase::Func_GetFilePathList, 1 },
+	{ "GetDirectoryList", ScriptClientBase::Func_GetDirectoryList, 1 },
+
+	//共通関数：時刻関連
+	{ "GetCurrentDateTimeS", ScriptClientBase::Func_GetCurrentDateTimeS, 0 },
+
+	//共通関数：デバッグ関連
+	{ "OutputDebugString", ScriptClientBase::Func_Orig_OutputDebugString, 1 },
+	{ "RaiseError", ScriptClientBase::Func_RaiseError, 1 },
+
+	//共通関数：共通データ
+	{ "SetDefaultCommonDataArea", ScriptClientBase::Func_SetDefaultCommonDataArea, 1 },
+	{ "SetCommonData", ScriptClientBase::Func_SetCommonData, 2 },
+	{ "GetCommonData", ScriptClientBase::Func_GetCommonData, 2 },
+	{ "ClearCommonData", ScriptClientBase::Func_ClearCommonData, 0 },
+	{ "DeleteCommonData", ScriptClientBase::Func_DeleteCommonData, 1 },
+	{ "SetAreaCommonData", ScriptClientBase::Func_SetAreaCommonData, 3 },
+	{ "GetAreaCommonData", ScriptClientBase::Func_GetAreaCommonData, 3 },
+	{ "ClearAreaCommonData", ScriptClientBase::Func_ClearAreaCommonData, 1 },
+	{ "DeleteAreaCommonData", ScriptClientBase::Func_DeleteAreaCommonData, 2 },
+	{ "CreateCommonDataArea", ScriptClientBase::Func_CreateCommonDataArea, 1 },
+	{ "CopyCommonDataArea", ScriptClientBase::Func_CopyCommonDataArea, 2 },
+	{ "IsCommonDataAreaExists", ScriptClientBase::Func_IsCommonDataAreaExists, 1 },
+	{ "GetCommonDataAreaKeyList", ScriptClientBase::Func_GetCommonDataAreaKeyList, 0 },
+	{ "GetCommonDataValueKeyList", ScriptClientBase::Func_GetCommonDataValueKeyList, 1 },
+
+	//定数
+	{ "NULL", constant<0>::func, 0 },
+};
+
+
 ScriptClientBase::ScriptClientBase()
 {
 	bError_ = false;
@@ -1233,6 +1300,18 @@ value ScriptClientBase::Func_GetCommonDataValueKeyList(script_machine* machine, 
 	}
 	gstd::value res = script->CreateStringArrayValue(listKey);
 	return res;
+}
+
+
+//デバッグ用関数/Functions for Debug
+value ScriptClientBase::Func_Orig_OutputDebugString(script_machine* machine, int argc, value const* argv)
+{
+	ScriptClientBase* script = (ScriptClientBase*)machine->data;
+	ScriptCommonDataManager* commonDataManager = script->GetCommonDataManager();
+
+	std::wstring msg = argv[1].as_string();
+	Logger::WriteTop(msg);
+	return value();
 }
 
 /**********************************************************

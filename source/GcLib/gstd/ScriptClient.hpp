@@ -183,6 +183,10 @@ public:
 	static value Func_GetCommonDataAreaKeyList(script_machine* machine, int argc, value const* argv);
 	static value Func_GetCommonDataValueKeyList(script_machine* machine, int argc, value const* argv);
 
+	// * 0.12m
+	//デバッグ用関数/Functions for Debug
+	static value Func_Orig_OutputDebugString(script_machine* machine, int argc, value const* argv);
+
 protected:
 	bool bError_;
 	gstd::ref_count_ptr<ScriptEngineCache> cache_;

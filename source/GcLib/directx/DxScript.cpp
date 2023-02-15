@@ -1758,7 +1758,7 @@ function const dxFunctionOriginal[] = {
 	//Dx関数：オブジェクト操作(共通)/Dx Functions: Object Operation (Common)
 	{ "Obj_Create", DxScript::Func_Orig_Obj_Create, 1 },
 	{ "Obj_Delete", DxScript::Func_Obj_Delete, 1 },
-	{ "Obj_IsDeleted", DxScript::Func_Obj_IsDeleted, 1 },
+	{ "Obj_BeDeleted", DxScript::Func_Obj_IsDeleted, 1 },
 	{ "Obj_SetVisible", DxScript::Func_Obj_SetVisible, 2 },
 	{ "Obj_IsVisible", DxScript::Func_Obj_IsVisible, 1 },
 	{ "Obj_SetRenderPriority", DxScript::Func_Obj_SetRenderPriority, 2 },
