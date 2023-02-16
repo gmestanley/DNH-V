@@ -9,7 +9,7 @@
 
 using namespace gstd;
 
-const std::wstring WINDOW_TITLE = L"File Archiver ph3";
+const std::wstring WINDOW_TITLE = L"EXE Trimmer ph3";
 const std::wstring PATH_ENVIRONMENT = L"env.dat";
 
 #endif
