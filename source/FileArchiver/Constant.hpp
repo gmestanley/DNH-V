@@ -9,7 +9,8 @@
 
 using namespace gstd;
 
-const std::wstring WINDOW_TITLE = L"EXE Trimmer ph3";
+const std::wstring DNH_VERSION = L" 0.6.2";
+const std::wstring WINDOW_TITLE = L"EXE Trimmer-V";
 const std::wstring PATH_ENVIRONMENT = L"env.dat";
 
 #endif
