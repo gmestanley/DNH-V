@@ -180,7 +180,14 @@ BOOL MainWindow::_DropFiles(WPARAM wParam, LPARAM lParam)
 void MainWindow::_AddFunctionFromDialog()
 {
 	const int maxFileCount = 64;
-	
+	HWND hListFunctions = GetDlgItem(hWnd_, IDC_LIST_FILE);
+	DWORD dwStyleFunctions = ListView_GetExtendedListViewStyle(hListFunctions);
+	dwStyleFunctions |= LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES;
+	ListView_SetExtendedListViewStyle(hListFunctions, dwStyleFunctions);
+	wndListFile_.Attach(hListFunctions);
+	wndListFile_.AddColumn(160, 0, L"Function");
+	wndListFile_.AddColumn(160, 1, L"Arguments");
+	wndListFile_.AddColumn(256, 2, L"Functionality");
 
 	buttonDecompile_.SetWindowEnable(listFile_.size() > 0);
 }
