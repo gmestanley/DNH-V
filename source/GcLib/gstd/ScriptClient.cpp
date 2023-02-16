@@ -120,7 +120,7 @@ function const commonFunction[] = {
 	{ "GetCommonDataValueKeyList", ScriptClientBase::Func_GetCommonDataValueKeyList, 1 },
 
 
-	{ "OutputDebugString", ScriptClientBase::Func_OutputDebugString, 1 },
+	{ "OutputDebugString", ScriptClientBase::Func_OutputDebugString, 3 },
 
 
 	//定数
