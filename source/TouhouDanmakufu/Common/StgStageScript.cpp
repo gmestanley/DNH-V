@@ -546,7 +546,7 @@ function const stgFunction[] = {
 
 
 
-function const stgFunctionOriginal[] = {
+/*function const stgFunctionOriginal[] = {
 	//STG共通関数：共通データ/Shmup Common Functions: Common Data
 	{ "SaveCommonDataAreaToReplayFile", StgStageScript::Func_SaveCommonDataAreaToReplayFile, 1 },
 	{ "LoadCommonDataAreaFromReplayFile", StgStageScript::Func_LoadCommonDataAreaFromReplayFile, 1 },
@@ -795,9 +795,9 @@ function const stgFunctionOriginal[] = {
 	{ "OBJ_SHOT", constant<StgStageScript::OBJ_SHOT>::func, 0 },
 	{ "OBJ_LASER", constant<StgStageScript::OBJ_STRAIGHT_LASER>::func, 0 },
 	{ "OBJ_SINUATE_LASER", constant<StgStageScript::OBJ_CURVE_LASER>::func, 0 },
-	/*{"OBJ_LOOSE_LASER", constant<StgStageScript::OBJ_LOOSE_LASER>::func, 0},
-	{ "OBJ_STRAIGHT_LASER", constant<StgStageScript::OBJ_STRAIGHT_LASER>::func, 0 },
-	{ "OBJ_CURVE_LASER", constant<StgStageScript::OBJ_CURVE_LASER>::func, 0 },*/
+	//{"OBJ_LOOSE_LASER", constant<StgStageScript::OBJ_LOOSE_LASER>::func, 0},
+	//{ "OBJ_STRAIGHT_LASER", constant<StgStageScript::OBJ_STRAIGHT_LASER>::func, 0 },
+	//{ "OBJ_CURVE_LASER", constant<StgStageScript::OBJ_CURVE_LASER>::func, 0 },
 	{ "OBJ_ITEM", constant<StgStageScript::OBJ_ITEM>::func, 0 },
 
 	{ "INFO_LIFE", constant<StgStageScript::INFO_LIFE>::func, 0 },
@@ -856,7 +856,7 @@ function const stgFunctionOriginal[] = {
 	{ "TARGET_PLAYER", constant<StgStageScript::TARGET_PLAYER>::func, 0 },
 
 	{ "NO_CHANGE", constant<StgMovePattern::NO_CHANGE>::func, 0 },
-};
+}; */
 
 
 StgStageScript::StgStageScript(StgStageController* stageController) : StgControlScript(stageController->GetSystemController())
