@@ -24,5 +24,22 @@
     <ClInclude Include="Constant.hpp">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="LibImpl.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LibImpl.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
