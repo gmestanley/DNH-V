@@ -48,9 +48,9 @@ bool MainWindow::Initialize()
 	dwStyle |= LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES;
 	ListView_SetExtendedListViewStyle(hList, dwStyle);
 	wndListFile_.Attach(hList);
-	wndListFile_.AddColumn(160, COL_FUNCTION, L"Function");
-	/*wndListFile_.AddColumn(160, COL_DIRECTORY, L"Directory");
-	wndListFile_.AddColumn(256, COL_FULLPATH, L"Path");*/
+	wndListFile_.AddColumn(160, COL_FILENAME, L"File");
+	wndListFile_.AddColumn(160, COL_DIRECTORY, L"Directory");
+	wndListFile_.AddColumn(256, COL_FULLPATH, L"Path");
 
 	//ステータスバー/Status Bar
 	wndStatus_.Create(hWnd_);
@@ -58,11 +58,16 @@ bool MainWindow::Initialize()
 	sizeStatus.push_back(1600);
 	wndStatus_.SetPartsSize(sizeStatus);
 
+	//設定読み込み/Loading of Settings
+	_LoadEnvironment();
+
+	DragAcceptFiles(hWnd_, TRUE);
+
 	ShowWindow(hWnd_, SW_SHOW);
 
 	return true;
 }
-/*void MainWindow::_LoadEnvironment()
+void MainWindow::_LoadEnvironment()
 {
 	std::wstring path = PathProperty::GetModuleDirectory() + PATH_ENVIRONMENT;
 	RecordBuffer record;
@@ -75,7 +80,7 @@ void MainWindow::_SaveEnvironment()
 	RecordBuffer record;
 
 	record.WriteToFile(path);
-}*/
+}
 LRESULT MainWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg) {
@@ -85,6 +90,7 @@ LRESULT MainWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 	}
 	case WM_DESTROY: {
 		//設定保存/Saving Settings
+		_SaveEnvironment();
 		::PostQuitMessage(0);
 		break;
 	}
@@ -99,11 +105,11 @@ LRESULT MainWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 
 		case IDC_BUTTON_ADD:
 		case ID_MENUITEM_ADD:
-			_AddFunctionFromDialog();
+			_AddFileFromDialog();
 			break;
 
 		case IDC_BUTTON_DELETE:
-			_RemoveFunction();
+			_RemoveFile();
 			break;
 
 		case IDC_BUTTON_ARCHIVE:
@@ -111,7 +117,7 @@ LRESULT MainWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 			break;
 
 		case ID_MENUITEM_VERSION: {
-			std::wstring version = WINDOW_TITLE + DNH_VERSION;
+			std::wstring version = WINDOW_TITLE;
 			::MessageBox(hWnd_, version.c_str(), L"Version", MB_OK);
 			break;
 		}
@@ -169,7 +175,7 @@ BOOL MainWindow::_DropFiles(WPARAM wParam, LPARAM lParam)
 		std::wstring path = szFileName;
 
 		std::wstring dirBase = PathProperty::GetFileDirectory(path);
-		_AddFunction(dirBase, path);
+		_AddFile(dirBase, path);
 	}
 	DragFinish(hDrop);
 
@@ -177,21 +183,48 @@ BOOL MainWindow::_DropFiles(WPARAM wParam, LPARAM lParam)
 
 	return FALSE;
 }
-void MainWindow::_AddFunctionFromDialog()
+void MainWindow::_AddFileFromDialog()
 {
 	const int maxFileCount = 64;
-	HWND hListFunctions = GetDlgItem(hWnd_, IDC_LIST_FILE);
-	DWORD dwStyleFunctions = ListView_GetExtendedListViewStyle(hListFunctions);
-	dwStyleFunctions |= LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES;
-	ListView_SetExtendedListViewStyle(hListFunctions, dwStyleFunctions);
-	wndListFile_.Attach(hListFunctions);
-	wndListFile_.AddColumn(160, 0, L"Function");
-	wndListFile_.AddColumn(160, 1, L"Arguments");
-	wndListFile_.AddColumn(256, 2, L"Functionality");
+	wchar_t outFileName[MAX_PATH * maxFileCount];
+	ZeroMemory(&outFileName, MAX_PATH * maxFileCount);
+	OPENFILENAME ofn;
+	ZeroMemory(&ofn, sizeof(OPENFILENAME));
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = hWnd_;
+	ofn.nMaxFile = MAX_PATH * maxFileCount;
+	ofn.lpstrFile = outFileName;
+	ofn.lpstrTitle = L"ファイルの追加";
+	ofn.Flags = OFN_ALLOWMULTISELECT | OFN_EXPLORER | OFN_HIDEREADONLY;
+	if (!GetOpenFileName(&ofn))
+		return;
+
+	wchar_t* endstr = wcschr(outFileName, '\0');
+	wchar_t* nextstr = endstr + 1;
+
+	if (*(nextstr) == L'\0') //選択したファイルが１つ/Chosen file is only one
+	{
+		std::wstring path = outFileName;
+		std::wstring dirBase = PathProperty::GetFileDirectory(path);
+		_AddFile(dirBase, path);
+	}
+	else //複数選択/Select multiple
+	{
+		while (*(nextstr) != L'\0') {
+			endstr = wcschr(nextstr, L'\0');
+			std::wstring path = outFileName;
+			path += L"\\";
+			path += nextstr;
+			nextstr = endstr + 1;
+
+			std::wstring dirBase = PathProperty::GetFileDirectory(path);
+			_AddFile(dirBase, path);
+		}
+	}
 
 	buttonDecompile_.SetWindowEnable(listFile_.size() > 0);
 }
-void MainWindow::_AddFunction(std::wstring dirBase, std::wstring path)
+void MainWindow::_AddFile(std::wstring dirBase, std::wstring path)
 {
 	dirBase = PathProperty::ReplaceYenToSlash(dirBase);
 	path = PathProperty::ReplaceYenToSlash(path);
@@ -221,7 +254,7 @@ void MainWindow::_AddFunction(std::wstring dirBase, std::wstring path)
 			std::wstring dir = _CreateRelativeDirectory(dirBase, path);
 
 			int row = wndListFile_.GetRowCount();
-			wndListFile_.SetText(row, COL_FUNCTION, filename);
+			wndListFile_.SetText(row, COL_FILENAME, filename);
 			wndListFile_.SetText(row, COL_DIRECTORY, dir);
 			wndListFile_.SetText(row, COL_FULLPATH, tName);
 
@@ -230,7 +263,8 @@ void MainWindow::_AddFunction(std::wstring dirBase, std::wstring path)
 
 		} while (FindNextFile(hFind, &data) == TRUE);
 		FindClose(hFind);
-	} else {
+	}
+	else {
 		if (!_IsValidFilePath(dirBase, path))
 			return;
 
@@ -238,7 +272,7 @@ void MainWindow::_AddFunction(std::wstring dirBase, std::wstring path)
 		std::wstring dir = _CreateRelativeDirectory(dirBase, path);
 
 		int row = wndListFile_.GetRowCount();
-		wndListFile_.SetText(row, COL_FUNCTION, filename);
+		wndListFile_.SetText(row, COL_FILENAME, filename);
 		wndListFile_.SetText(row, COL_DIRECTORY, dir);
 		wndListFile_.SetText(row, COL_FULLPATH, path);
 
@@ -246,12 +280,12 @@ void MainWindow::_AddFunction(std::wstring dirBase, std::wstring path)
 		listFile_.insert(key);
 	}
 }
-void MainWindow::_RemoveFunction()
+void MainWindow::_RemoveFile()
 {
 	HWND hList = wndListFile_.GetWindowHandle();
 	int item = -1;
 	while ((item = ListView_GetNextItem(hList, item, LVNI_SELECTED)) != -1) {
-		std::wstring name = wndListFile_.GetText(item, COL_FUNCTION);
+		std::wstring name = wndListFile_.GetText(item, COL_FILENAME);
 		std::wstring dir = wndListFile_.GetText(item, COL_DIRECTORY);
 
 		wndListFile_.DeleteRow(item);
@@ -350,7 +384,7 @@ void MainWindow::_Archive()
 	int countRow = wndListFile_.GetRowCount();
 	for (int iRow = 0; iRow < countRow && GetStatus() == RUN; iRow++) {
 		std::wstring path = wndListFile_.GetText(iRow, COL_FULLPATH);
-		std::wstring name = wndListFile_.GetText(iRow, COL_FUNCTION);
+		std::wstring name = wndListFile_.GetText(iRow, COL_FILENAME);
 		std::wstring dir = wndListFile_.GetText(iRow, COL_DIRECTORY);
 		std::wstring ext = PathProperty::GetFileExtension(path);
 
@@ -368,7 +402,8 @@ void MainWindow::_Archive()
 		std::wstring log = StringUtility::Format(L"アーカイブファイル作成完了\n [%s]", pathArchive_.c_str());
 		Logger::WriteTop(log);
 		MessageBox(hWnd_, log.c_str(), L"success", MB_OK);
-	} catch (gstd::wexception e) {
+	}
+	catch (gstd::wexception e) {
 		std::wstring log = StringUtility::Format(L"アーカイブファイル作成失敗[%s]", e.what());
 		Logger::WriteTop(log);
 		MessageBox(hWnd_, log.c_str(), L"error", MB_OK);

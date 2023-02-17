@@ -194,10 +194,7 @@
     <ClInclude Include="source\GcLib\gstd\Window.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="source\FileArchiver\FileArchiver.rc">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source\FileArchiver;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source\FileArchiver;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
+    <ResourceCompile Include="source\FileArchiver\FileArchiver.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="source\FileArchiver\icon.ico" />

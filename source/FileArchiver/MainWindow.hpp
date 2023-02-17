@@ -16,7 +16,7 @@ class MainWindow : public WindowBase , public Singleton<MainWindow>, Thread
 	private:
 		enum
 		{
-			COL_FUNCTION = 0,
+			COL_FILENAME = 0,
 			COL_DIRECTORY,
 			COL_FULLPATH,
 		};
@@ -28,11 +28,11 @@ class MainWindow : public WindowBase , public Singleton<MainWindow>, Thread
 		std::wstring pathArchive_;
 		std::set<std::wstring> listFile_;//èdï°ìoò^ÇñhÇÆ
 
-		BOOL _DropFiles(WPARAM wParam,LPARAM lParam);
-		void _AddFunctionFromDialog();
+		BOOL _DropFiles(WPARAM wParam, LPARAM lParam);
+		void _AddFileFromDialog();
 
-		void _AddFunction(std::wstring dirBase, std::wstring path);
-		void _RemoveFunction();
+		void _AddFile(std::wstring dirBase, std::wstring path);
+		void _RemoveFile();
 		bool _IsValidFilePath(std::wstring dirBase, std::wstring path);
 		std::wstring _CreateKey(std::wstring dirBase, std::wstring path);
 		std::wstring _CreateRelativeDirectory(std::wstring dirBase, std::wstring path);
