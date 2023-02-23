@@ -230,7 +230,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 	}
 
 	//スクリプトバージョン/Script Version
-	std::wstring scriptVersion = infoMain->GetScriptVersion();
+	//std::wstring scriptVersion = infoMain->GetScriptVersion();
 
 	//リプレイ関連(スクリプト初期化後)
 	if (!infoStage_->IsReplay()) {

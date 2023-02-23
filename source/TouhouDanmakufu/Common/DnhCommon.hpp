@@ -32,8 +32,8 @@ public:
 	std::wstring GetScriptPath() { return pathScript_; }
 	void SetScriptPath(std::wstring path) { pathScript_ = path; }
 
-	std::wstring GetScriptVersion() { return scriptVersion_; }
-	void SetScriptVersion(std::wstring version) { scriptVersion_ = version; }
+	/*std::wstring GetScriptVersion() { return scriptVersion_; }
+	void SetScriptVersion(std::wstring version) { scriptVersion_ = version; }*/
 	std::wstring GetID() { return id_; }
 	void SetID(std::wstring id) { id_ = id; }
 	std::wstring GetTitle() { return title_; }
@@ -73,7 +73,7 @@ private:
 	std::wstring pathArchive_;
 	std::wstring pathScript_;
 
-	std::wstring scriptVersion_;
+	//std::wstring scriptVersion_;
 	std::wstring id_;
 	std::wstring title_;
 	std::wstring text_;
