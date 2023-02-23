@@ -130,13 +130,7 @@ private:
 };
 
 /**********************************************************
-//
-
-
-
-
-
-
+//DxScriptPrimitiveObject
 **********************************************************/
 class DxScriptPrimitiveObject : public DxScriptRenderObject {
 	friend DxScript;
