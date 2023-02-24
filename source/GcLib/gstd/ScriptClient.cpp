@@ -128,7 +128,7 @@ function const commonFunction[] = {
 };
 
 
-function const commonFunctionOriginal[] = {
+/*function const commonFunctionOriginal[] = {
 	//共通関数：スクリプト引数結果
 	{ "GetScriptArgument", ScriptClientBase::Func_GetScriptArgument, 1 },
 	{ "GetScriptArgumentCount", ScriptClientBase::Func_GetScriptArgumentCount, 0 },
@@ -191,7 +191,7 @@ function const commonFunctionOriginal[] = {
 
 	//定数
 	{ "NULL", constant<0>::func, 0 },
-};
+};*/
 
 
 ScriptClientBase::ScriptClientBase()
