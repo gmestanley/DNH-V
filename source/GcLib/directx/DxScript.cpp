@@ -694,13 +694,13 @@ void DxSoundObject::Play()
 /**********************************************************
 //DxVideoObject
 **********************************************************/
-DxVideoObject::DxVideoObject() {
+/*DxVideoObject::DxVideoObject() {
 	typeObject_ = DxScript::OBJ_VIDEO;
 }
 DxVideoObject::~DxVideoObject() {
 	/*if (player_ == NULL)
 		return;
-	player_->Delete();*/
+	player_->Delete();
 }
 bool DxVideoObject::Load(std::wstring path) {
 	/*DirectSoundManager* manager = DirectSoundManager::GetBase();
@@ -708,12 +708,12 @@ bool DxVideoObject::Load(std::wstring path) {
 	if (player_ == NULL)
 		return false;
 
-	return true;*/
+	return true;
 }
 void DxVideoObject::Play() {
 	/*if (player_ != NULL)
-		player_->Play(style_);*/
-}
+		player_->Play(style_);
+}*/
 
 /**********************************************************
 //DxFileObject
@@ -1439,10 +1439,10 @@ function const dxFunctionPH3[] = {
 	{ "ObjSound_GetVolumeRate", DxScript::Func_ObjSound_GetVolumeRate, 1 },
 
 	//Dx関数：動画操作(DxVideoObject)/Dx Functions: Video Operation
-	{ "ObjVideo_Create", DxScript::Func_ObjVideo_Create, 0},
+	/*{"ObjVideo_Create", DxScript::Func_ObjVideo_Create, 0},
 	{ "ObjVideo_Load", DxScript::Func_ObjVideo_Load, 2 },
 	{ "ObjVideo_Play", DxScript::Func_ObjVideo_Play, 1 },
-	{ "ObjVideo_Stop", DxScript::Func_ObjVideo_Stop, 1 },
+	{ "ObjVideo_Stop", DxScript::Func_ObjVideo_Stop, 1 },*/
 
 	//Dx関数：ファイル操作(DxFileObject)/Dx Functions: File Operation (
 	{ "ObjFile_Create", DxScript::Func_ObjFile_Create, 1 },
@@ -4721,7 +4721,7 @@ gstd::value DxScript::Func_ObjSound_GetVolumeRate(gstd::script_machine* machine,
 }
 
 //Dx関数：ファイル操作(DxVideoObject)
-gstd::value DxScript::Func_ObjVideo_Create(gstd::script_machine* machine, int argc, gstd::value const* argv)
+/*gstd::value DxScript::Func_ObjVideo_Create(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	DxScript* script = (DxScript*)machine->data;
 	script->CheckRunInMainThread();
@@ -4777,7 +4777,7 @@ gstd::value DxScript::Func_ObjVideo_Stop(gstd::script_machine* machine, int argc
 		id = script->AddObject(obj);
 	}
 	return value(machine->get_engine()->get_real_type(), (double)id);
-}
+}*/
 
 //Dx関数：ファイル操作(DxFileObject)
 gstd::value DxScript::Func_ObjFile_Create(gstd::script_machine* machine, int argc, gstd::value const* argv)
