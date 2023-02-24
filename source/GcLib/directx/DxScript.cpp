@@ -1668,7 +1668,7 @@ function const dxFunctionPH3[] = {
 	
 	
 };
-function const dxFunctionOriginal[] = {
+/*function const dxFunctionOriginal[] = {
 	//Dx関数：システム系/Dx Functions: System-type
 	{ "InstallFont", DxScript::Func_InstallFont, 1 },
 
@@ -2136,7 +2136,7 @@ function const dxFunctionOriginal[] = {
 	{ "D3DX_FROM_FILE", constant<D3DX_FROM_FILE>::func, 0 },
 
 
-};
+};*/
 
 
 DxScript::DxScript()
