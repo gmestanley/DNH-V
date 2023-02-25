@@ -91,18 +91,18 @@ bool Application::Run()
 	try {
 		bool res = _Finalize();
 		if (res == false)
-			throw gstd::wexception(L"終了中に例外が発生しました。/An exception has occurred during finalization.");
+			throw gstd::wexception(L"終了中に例外が発生しました。/An exception has occurred during termination.");
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"正常に終了できませんでした。");
+		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
 	} catch (gstd::wexception& e) {
 		std::wstring log = e.what();
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"正常に終了できませんでした。");
+		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
 		bAppRun_ = false;
 	} catch (...) {
-		Logger::WriteTop(L"正常に終了できませんでした。");
+		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
 	}
 	return true;
 }
