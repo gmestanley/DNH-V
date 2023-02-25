@@ -2,6 +2,8 @@
 #include "Logger.hpp"
 
 using namespace gstd;
+std::wstring terminationError = L"終了中に例外が発生しました。/An exception has occurred during termination.";
+std::wstring abnormalTerminationError = L"正常に終了できませんでした。/Was not able to terminate normally.";
 
 /**********************************************************
 //Application
@@ -91,18 +93,18 @@ bool Application::Run()
 	try {
 		bool res = _Finalize();
 		if (res == false)
-			throw gstd::wexception(L"終了中に例外が発生しました。/An exception has occurred during termination.");
+			throw gstd::wexception(terminationError);
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
+		Logger::WriteTop();
 	} catch (gstd::wexception& e) {
 		std::wstring log = e.what();
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
+		Logger::WriteTop(abnormalTerminationError);
 		bAppRun_ = false;
 	} catch (...) {
-		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
+		Logger::WriteTop(abnormalTerminationError);
 	}
 	return true;
 }
