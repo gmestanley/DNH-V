@@ -34,19 +34,19 @@ bool Application::Run()
 	try {
 		bool res = _Initialize();
 		if (res == false)
-			throw gstd::wexception(L"初期化中に例外が発生しました。");
+			throw gstd::wexception(L"初期化中に例外が発生しました。\nAn exception has occurred during initialization.");
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。");
+		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Doing a forced termination.");
 		bAppRun_ = false;
 	} catch (gstd::wexception& e) {
 		std::wstring log = e.what();
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。");
+		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Doing a forced termination.");
 		bAppRun_ = false;
 	} catch (...) {
-		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。");
+		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Doing a forced termination.");
 		bAppRun_ = false;
 	}
 
