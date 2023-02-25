@@ -2,8 +2,6 @@
 #include "Logger.hpp"
 
 using namespace gstd;
-std::wstring terminationError = L"終了中に例外が発生しました。/An exception has occurred during termination.";
-std::wstring abnormalTerminationError = L"正常に終了できませんでした。/Was not able to terminate normally.";
 
 /**********************************************************
 //Application
@@ -36,7 +34,7 @@ bool Application::Run()
 	try {
 		bool res = _Initialize();
 		if (res == false)
-			throw gstd::wexception(L"初期化中に例外が発生しました。\nAn exception has occurred during initialization.");
+			throw gstd::wexception(L"An exception has occurred during initialization.\n初期化中に例外が発生しました。");
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
@@ -93,18 +91,18 @@ bool Application::Run()
 	try {
 		bool res = _Finalize();
 		if (res == false)
-			throw gstd::wexception(terminationError);
+			throw gstd::wexception(L"終了中に例外が発生しました。/An exception has occurred during termination.");
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
-		Logger::WriteTop();
+		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
 	} catch (gstd::wexception& e) {
 		std::wstring log = e.what();
 		Logger::WriteTop(log);
-		Logger::WriteTop(abnormalTerminationError);
+		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
 		bAppRun_ = false;
 	} catch (...) {
-		Logger::WriteTop(abnormalTerminationError);
+		Logger::WriteTop(L"正常に終了できませんでした。/Was not able to terminate normally.");
 	}
 	return true;
 }
