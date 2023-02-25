@@ -38,15 +38,15 @@ bool Application::Run()
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Doing a forced termination.");
+		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Will do a forced termination.");
 		bAppRun_ = false;
 	} catch (gstd::wexception& e) {
 		std::wstring log = e.what();
 		Logger::WriteTop(log);
-		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Doing a forced termination.");
+		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Will do a forced termination.");
 		bAppRun_ = false;
 	} catch (...) {
-		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Doing a forced termination.");
+		Logger::WriteTop(L"初期化中に例外が発生しました。強制終了します。/An exception has occurred during initialization. Will do a forced termination.");
 		bAppRun_ = false;
 	}
 
@@ -70,12 +70,12 @@ bool Application::Run()
 			} catch (std::exception& e) {
 				std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 				Logger::WriteTop(log);
-				Logger::WriteTop(L"実行中に例外が発生しました。終了します。");
+				Logger::WriteTop(L"実行中に例外が発生しました。終了します。/An exception has occurred during execution. Terminating.");
 				break;
 			} catch (gstd::wexception& e) {
 				std::wstring log = e.what();
 				Logger::WriteTop(log);
-				Logger::WriteTop(L"実行中に例外が発生しました。終了します。");
+				Logger::WriteTop(L"実行中に例外が発生しました。終了します。/An exception has occurred during execution. Terminating.");
 				break;
 			}
 			// catch(...)
@@ -91,7 +91,7 @@ bool Application::Run()
 	try {
 		bool res = _Finalize();
 		if (res == false)
-			throw gstd::wexception(L"終了中に例外が発生しました。");
+			throw gstd::wexception(L"終了中に例外が発生しました。/An exception has occurred during finalization.");
 	} catch (std::exception& e) {
 		std::wstring log = StringUtility::ConvertMultiToWide(e.what());
 		Logger::WriteTop(log);
