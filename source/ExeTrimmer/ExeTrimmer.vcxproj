@@ -139,12 +139,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\GcLib\gstd\Application.hpp" />
+    <ClInclude Include="..\GcLib\gstd\File.hpp" />
+    <ClInclude Include="..\GcLib\gstd\FpsController.hpp" />
+    <ClInclude Include="..\GcLib\gstd\GstdConstant.hpp" />
+    <ClInclude Include="..\GcLib\gstd\GstdLib.hpp" />
+    <ClInclude Include="..\GcLib\gstd\GstdUtility.hpp" />
+    <ClInclude Include="..\GcLib\gstd\Logger.hpp" />
+    <ClInclude Include="..\GcLib\gstd\MersenneTwister.hpp" />
+    <ClInclude Include="..\GcLib\gstd\Script.hpp" />
+    <ClInclude Include="..\GcLib\gstd\ScriptClient.hpp" />
+    <ClInclude Include="..\GcLib\gstd\Task.hpp" />
+    <ClInclude Include="..\GcLib\gstd\Thread.hpp" />
+    <ClInclude Include="..\GcLib\gstd\Window.hpp" />
     <ClInclude Include="Constant.hpp" />
     <ClInclude Include="LibImpl.hpp" />
     <ClInclude Include="MainWindow.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\GcLib\gstd\Application.cpp" />
+    <ClCompile Include="..\GcLib\gstd\File.cpp" />
+    <ClCompile Include="..\GcLib\gstd\FpsController.cpp" />
+    <ClCompile Include="..\GcLib\gstd\GstdUtility.cpp" />
+    <ClCompile Include="..\GcLib\gstd\Logger.cpp" />
+    <ClCompile Include="..\GcLib\gstd\MersenneTwister.cpp" />
+    <ClCompile Include="..\GcLib\gstd\Script.cpp" />
+    <ClCompile Include="..\GcLib\gstd\ScriptClient.cpp" />
+    <ClCompile Include="..\GcLib\gstd\Task.cpp" />
+    <ClCompile Include="..\GcLib\gstd\Thread.cpp" />
+    <ClCompile Include="..\GcLib\gstd\Window.cpp" />
     <ClCompile Include="LibImpl.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="WinMain.cpp" />

@@ -33,6 +33,45 @@
     <ClInclude Include="resource.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\Application.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\File.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\FpsController.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\GstdConstant.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\GstdLib.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\GstdUtility.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\MersenneTwister.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\Script.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\Logger.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\ScriptClient.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\Task.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\Thread.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GcLib\gstd\Window.hpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LibImpl.cpp">
@@ -43,6 +82,39 @@
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\Application.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\File.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\FpsController.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\GstdUtility.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\MersenneTwister.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\Script.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\Logger.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\ScriptClient.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\Task.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\Thread.cpp">
+      <Filter>source\GcLib\gstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GcLib\gstd\Window.cpp">
+      <Filter>source\GcLib\gstd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
