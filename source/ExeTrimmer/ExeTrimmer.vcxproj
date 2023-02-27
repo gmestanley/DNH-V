@@ -143,7 +143,6 @@
     <ClInclude Include="LibImpl.hpp" />
     <ClInclude Include="MainWindow.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LibImpl.cpp" />

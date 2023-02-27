@@ -33,9 +33,6 @@
     <ClInclude Include="resource.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LibImpl.cpp">
@@ -50,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ExeTrimmer.rc">
-      <Filter>Resource Files</Filter>
+      <Filter>source</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>
