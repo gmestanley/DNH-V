@@ -133,7 +133,7 @@ void MainWindow::_RunExecutor()
 	ZeroMemory(&si, sizeof(si));
 	si.cb = sizeof(STARTUPINFO);
 
-	std::wstring command = L"th_dnh_v.exe";
+	std::wstring command = L"th_dnh-v.exe";
 	BOOL res = ::CreateProcess(
 		NULL,
 		(wchar_t*)command.c_str(),
