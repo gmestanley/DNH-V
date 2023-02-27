@@ -1,23 +1,25 @@
-// Microsoft Visual C++ generated resource script.
+//Microsoft Developer Studio generated resource script.
 //
-#include "resource1.h"
+#include "resource.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "winres.h"
+#include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Portuguese (Brazil) resources
+// 日本語 resources
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PTB)
-LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE_BRAZILIAN
-#pragma code_page(1252)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -25,18 +27,18 @@ LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE_BRAZILIAN
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE 
+1 TEXTINCLUDE DISCARDABLE 
 BEGIN
-    "resource1.h\0"
+    "resource.h\0"
 END
 
-2 TEXTINCLUDE 
+2 TEXTINCLUDE DISCARDABLE 
 BEGIN
-    "#include ""winres.h""\r\n"
+    "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE 
+3 TEXTINCLUDE DISCARDABLE 
 BEGIN
     "\r\n"
     "\0"
@@ -50,13 +52,18 @@ END
 // Dialog
 //
 
-IDD_DIALOG1 DIALOGEX 0, 0, 309, 176
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Dialog"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
+IDD_DIALOG_MAIN DIALOGEX 0, 0, 254, 171
+STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "FileArchiver"
+MENU IDR_MENU_MAIN
+FONT 9, "ＭＳ Ｐゴシック"
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,198,155,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,252,155,50,14
+    CONTROL         "List1",IDC_LIST_FILE,"SysListView32",LVS_REPORT | 
+                    WS_BORDER | WS_TABSTOP,1,5,195,138,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Add",IDC_BUTTON_ADD,201,5,50,14
+    PUSHBUTTON      "Delete",IDC_BUTTON_DELETE,201,27,50,14
+    PUSHBUTTON      "Start Archive",IDC_BUTTON_ARCHIVE,171,149,80,17
 END
 
 
@@ -66,14 +73,14 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO DISCARDABLE 
 BEGIN
-    IDD_DIALOG1, DIALOG
+    IDD_DIALOG_MAIN, DIALOG
     BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 302
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 169
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 251
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 166
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -81,15 +88,24 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// AFX_DIALOG_LAYOUT
+// Menu
 //
 
-IDD_DIALOG1 AFX_DIALOG_LAYOUT
+IDR_MENU_MAIN MENU DISCARDABLE 
 BEGIN
-    0
+    POPUP "File(&F)"
+    BEGIN
+        MENUITEM "Add(&A)",                     ID_MENUITEM_ADD
+        MENUITEM SEPARATOR
+        MENUITEM "Exit(&X)\tAlt+F4",            ID_MENUITEM_EXIT
+    END
+    POPUP "Help(&H)"
+    BEGIN
+        MENUITEM "Version(&A)",                 ID_MENUITEM_VERSION
+    END
 END
 
-#endif    // Portuguese (Brazil) resources
+#endif    // 日本語 resources
 /////////////////////////////////////////////////////////////////////////////
 
 
