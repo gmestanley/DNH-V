@@ -144,7 +144,7 @@ void MainWindow::_RunExecutor()
 	);
 	if(res == 0)
 	{
-		std::wstring log = StringUtility::Format(L"実行失敗\r\n%s", ErrorUtility::GetLastErrorMessage().c_str());
+		std::wstring log = StringUtility::Format(L"実行失敗/Execution Failure\r\n%s", ErrorUtility::GetLastErrorMessage().c_str());
 		Logger::WriteTop(log);
 		return;
 	}

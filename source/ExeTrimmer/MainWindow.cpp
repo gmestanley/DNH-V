@@ -48,7 +48,7 @@ bool MainWindow::Initialize()
 	dwStyle |= LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES;
 	ListView_SetExtendedListViewStyle(hList, dwStyle);
 	wndListFile_.Attach(hList);
-	wndListFile_.AddColumn(160, COL_FILENAME, L"File");
+	wndListFile_.AddColumn(160, COL_FILENAME, L"Function");
 	wndListFile_.AddColumn(160, COL_DIRECTORY, L"Directory");
 	wndListFile_.AddColumn(256, COL_FULLPATH, L"Path");
 
