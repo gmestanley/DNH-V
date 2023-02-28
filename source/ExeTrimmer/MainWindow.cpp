@@ -338,7 +338,7 @@ void MainWindow::_StartArchive()
 	ofn.lpstrFile = &path[0];
 	ofn.Flags = OFN_EXPLORER | OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;
 	ofn.nFilterIndex = 2;
-	ofn.lpstrDefExt = L".dat";
+	ofn.lpstrDefExt = L".exe";
 	ofn.lpstrFilter = L"全てのファイル (*.*)\0*.*\0datファイル[*dat]\0*.dat\0";
 	ofn.lpstrTitle = L"アーカイブファイルの作成";
 	if (GetSaveFileName(&ofn)) {
