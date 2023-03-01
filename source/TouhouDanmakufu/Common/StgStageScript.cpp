@@ -4775,16 +4775,21 @@ gstd::value StgStageScript::Func_Orig_SetLaserDataB(gstd::script_machine* machin
 }
 //オブジェクト操作共通関数/Common Object Creation Functions
 gstd::value StgStageScript::Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv) {
-	switch ((int)argv[0].as_real())
-	case OBJ_SHOT:
-		
-	case OBJ_LASER:
-		
-	case OBJ_SINUATE_LASER:
-		
-	case OBJ_EFFECT:
-		
-	case OBJ_SPELL:
-		
+	StgStageScript* script = (StgStageScript*)machine->data;
+	script->CheckRunInMainThread();
+	StgStageController* stageController = script->stageController_;
+
+	ref_count_ptr<StgShotObject>::unsync obj;
+	switch ((int)argv[0].as_real()) {
+		case OBJ_SHOT:
+			obj = new StgNormalShotObject(stageController);
+		case OBJ_LASER:
+			obj = new StgStraightLaserObject(stageController);
+		case OBJ_SINUATE_LASER:
+			obj = new StgCurveLaserObject(stageController);
+		case OBJ_EFFECT:
+
+		case OBJ_SPELL:
+	}
 
 }
