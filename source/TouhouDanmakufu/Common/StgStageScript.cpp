@@ -653,6 +653,9 @@ function const stgFunctionOriginal[] = {
 	{ "Collision_Line_Circle", StgStageScript::Func_IsIntersected_Line_Circle, 8 },
 	{ "IsIntersected_Obj_Obj", StgStageScript::Func_IsIntersected_Obj_Obj, 2 },
 
+	//
+	{ "Obj_Create", StgStageScript::Func_Orig_Obj_Create, 1 },
+
 	//STG共通関数：移動オブジェクト操作/Shmup Common Functions: Moving Objects Operation
 	{ "ObjMove_SetX", StgStageScript::Func_ObjMove_SetX, 2 },
 	{ "ObjMove_SetY", StgStageScript::Func_ObjMove_SetY, 2 },
@@ -4769,4 +4772,19 @@ gstd::value StgStageScript::Func_Orig_SetLaserDataA(gstd::script_machine* machin
 }
 gstd::value StgStageScript::Func_Orig_SetLaserDataB(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	return value();
+}
+//オブジェクト操作共通関数/Common Object Creation Functions
+gstd::value StgStageScript::Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+	switch (argv[0])
+	case OBJ_SHOT:
+		
+	case OBJ_LASER:
+		
+	case OBJ_SINUATE_LASER:
+		
+	case OBJ_EFFECT:
+		
+	case OBJ_SHOT":
+		
+
 }

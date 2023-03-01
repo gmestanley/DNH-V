@@ -961,7 +961,6 @@ public:
 
 
 	//0.12m
-	static gstd::value Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
 protected:
 	gstd::ref_count_ptr<DxScriptObjectManager> objManager_;

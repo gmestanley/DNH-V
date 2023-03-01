@@ -89,7 +89,12 @@ public:
 		OBJ_CURVE_LASER, //曲がるレーザー
 		OBJ_ITEM,
 
-		INFO_LIFE,
+		//0.12M
+		OBJ_LASER = OBJ_STRAIGHT_LASER, //設置型レーザー
+		OBJ_SINUATE_LASER = OBJ_CURVE_LASER, //曲がるレーザー
+		//0.12M
+
+		INFO_LIFE = OBJ_ITEM+1,
 		INFO_DAMAGE_RATE_SHOT,
 		INFO_DAMAGE_RATE_SPELL,
 		INFO_SHOT_HIT_COUNT,
@@ -390,6 +395,8 @@ public:
 	static gstd::value Func_Orig_CreateLaserA(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Orig_SetLaserDataA(gstd::script_machine* machine, int argc, gstd::value const* argv);
 	static gstd::value Func_Orig_SetLaserDataB(gstd::script_machine* machine, int argc, gstd::value const* argv);
+	//
+	static gstd::value Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv);
 
 protected:
 	StgStageController* stageController_;
