@@ -125,6 +125,11 @@ public:
 		INFO_COLLISION,
 		INFO_COLLISION_LIST,
 
+		//0.12m
+		OBJ_EFFECT,
+		OBJ_SPELL,
+		//0.12M
+
 		//イベント
 		EV_REQUEST_LIFE = 1, //敵ライフ要求
 		EV_REQUEST_TIMER, //敵スペルタイマ要求
@@ -154,10 +159,6 @@ public:
 		TARGET_ALL,
 		TARGET_ENEMY,
 		TARGET_PLAYER,
-
-		//0.12m
-		OBJ_EFFECT,
-		OBJ_SPELL
 	};
 
 public:
