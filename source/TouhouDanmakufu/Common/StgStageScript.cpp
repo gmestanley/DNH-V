@@ -4788,8 +4788,8 @@ gstd::value StgStageScript::Func_Orig_Obj_Create(gstd::script_machine* machine, 
 		case OBJ_SINUATE_LASER:
 			obj = new StgCurveLaserObject(stageController);
 		case OBJ_EFFECT:
-
+			
 		case OBJ_SPELL:
+			
 	}
-
 }
