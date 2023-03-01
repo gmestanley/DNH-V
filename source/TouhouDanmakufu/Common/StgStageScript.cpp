@@ -4775,7 +4775,7 @@ gstd::value StgStageScript::Func_Orig_SetLaserDataB(gstd::script_machine* machin
 }
 //オブジェクト操作共通関数/Common Object Creation Functions
 gstd::value StgStageScript::Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv) {
-	switch (argv[0])
+	switch ((int)argv[0].as_real())
 	case OBJ_SHOT:
 		
 	case OBJ_LASER:
@@ -4784,7 +4784,7 @@ gstd::value StgStageScript::Func_Orig_Obj_Create(gstd::script_machine* machine, 
 		
 	case OBJ_EFFECT:
 		
-	case OBJ_SHOT":
+	case OBJ_SPELL:
 		
 
 }

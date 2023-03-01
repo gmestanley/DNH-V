@@ -154,6 +154,10 @@ public:
 		TARGET_ALL,
 		TARGET_ENEMY,
 		TARGET_PLAYER,
+
+		//0.12m
+		OBJ_EFFECT,
+		OBJ_SPELL
 	};
 
 public:
