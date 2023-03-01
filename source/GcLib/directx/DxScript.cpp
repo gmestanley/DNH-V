@@ -5139,5 +5139,15 @@ gstd::value DxScript::Func_ObjFileB_ReadString(gstd::script_machine* machine, in
 
 /*gstd::value DxScript::Func_Orig_Obj_Create(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	switch (argv[0])
-	case "OBJ_"
+	case "OBJ_SHOT":
+		
+	case "OBJ_LASER":
+		
+	case "OBJ_SINUATE_LASER":
+		
+	case "OBJ_EFFECTHOT":
+		
+	case "OBJ_SHOT":
+		
+
 }*/
