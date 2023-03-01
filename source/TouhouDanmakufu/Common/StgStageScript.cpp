@@ -761,6 +761,21 @@ function const stgFunctionOriginal[] = {
 	{ "ObjCol_GetListOfIntersectedEnemyID", StgStageScript::Func_ObjCol_GetListOfIntersectedEnemyID, 1 },
 	{ "ObjCol_GetIntersectedCount", StgStageScript::Func_ObjCol_GetIntersectedCount, 1 },
 
+	//0.12m
+	//移動系関数/Movement-type Functions
+	{ "SetMovePositionHermite", StgStageScript::Func_Orig_SetMovePositionHermite, 7 },
+	{ "SetMovePositionRandom01", StgStageScript::Func_Orig_SetMovePositionRandom01, 7 },
+	{ "SetPlayerX", StgStageScript::Func_Orig_SetPlayerX, 1 },
+	{ "SetPlayerY", StgStageScript::Func_Orig_SetPlayerY, 1 },
+	{ "SetCoordinateType", StgStageScript::Func_Orig_SetCoordinateType, 1 },
+	{ "SetOrigin", StgStageScript::Func_Orig_SetOrigin, 2 },
+	//敵弾を制御する関数/Bullet-Controlling Functions
+	{ "SetShotDirectionType", StgStageScript::Func_Orig_SetShotDirectionType, 1 },
+	{ "CreateShotA", StgStageScript::Func_Orig_CreateShotA, 6 },
+	{ "CreateLaserA", StgStageScript::Func_Orig_CreateLaserA, 1 },
+	{ "SetLaserDataA", StgStageScript::Func_Orig_SetLaserDataA, 1 },
+	{ "SetLaserDataB", StgStageScript::Func_Orig_SetLaserDataB, 1 },
+
 	//定数/Constants
 	{ "SCREEN_WIDTH", constant<640>::func, 0 },
 	{ "SCREEN_HEIGHT", constant<480>::func, 0 },
