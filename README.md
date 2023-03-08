@@ -3,6 +3,9 @@ A fork of Danmakufu ph3.5 aiming to provide better functionality to the engine, 
 All readme-like documents have been translated from Japanese to English by the repository owner himself.<br>
 Multiplatform support is also planned for Windows, macOS and Linux; the [linux](https://github.com/gmestanley/DNH-V/tree/linux/) branch is in development and is set to be used for the last one, but is still a heavy work in progress. Currently only Windows is supported with the master branch.
 
+## What is this branch?
+This branch is used for testing DNH-V's compatibility with 0.12m scripts.
+
 ## Changelog
 Aside from the current releases, there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
 
