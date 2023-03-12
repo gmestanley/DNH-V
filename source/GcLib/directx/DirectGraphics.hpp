@@ -70,18 +70,18 @@ public:
 		SCREENMODE_WINDOW,
 	};
 	enum {
-		MODE_BLEND_NONE, //なし
-		MODE_BLEND_ALPHA, //αで半透明合成
-		MODE_BLEND_ADD_RGB, //RGBで加算合成
-		MODE_BLEND_ADD_ARGB, //αで加算合成
-		MODE_BLEND_MULTIPLY, //乗算合成
-		MODE_BLEND_SUBTRACT, //減算合成
-		MODE_BLEND_SHADOW, //影描画用
-		MODE_BLEND_INV_DESTRGB, //描画先色反転合成
+		MODE_BLEND_NONE, //なし/None
+		MODE_BLEND_ALPHA, //αで半透明合成/Translucent Composition with alpha
+		MODE_BLEND_ADD_RGB, //RGBで加算合成/Addition with RGB
+		MODE_BLEND_ADD_ARGB, //αで加算合成/Addition with alpha
+		MODE_BLEND_MULTIPLY, //乗算合成/Multiplication Composition
+		MODE_BLEND_SUBTRACT, //減算合成/Subtraction Composition
+		MODE_BLEND_SHADOW, //影描画用/For drawing shadows
+		MODE_BLEND_INV_DESTRGB, //描画先色反転合成/Color Inversion Before Drawing Composition 
 
-		MODE_TEXTURE_FILTER_NONE, //フィルタなし
-		MODE_TEXTURE_FILTER_POINT, //補間なし
-		MODE_TEXTURE_FILTER_LINEAR, //線形補間
+		MODE_TEXTURE_FILTER_NONE, //フィルタなし/No filter
+		MODE_TEXTURE_FILTER_POINT, //補間なし/No interpolation
+		MODE_TEXTURE_FILTER_LINEAR, //線形補間/Linear Interpolation
 	};
 
 public:
@@ -101,20 +101,20 @@ public:
 	IDirect3DDevice9* GetDevice() { return pDevice_; }
 	DirectGraphicsConfig& GetConfigData() { return config_; }
 
-	void BeginScene(bool bClear = true); //描画開始
-	void EndScene(); //描画終了
+	void BeginScene(bool bClear = true); //描画開始/Drawing Start
+	void EndScene(); //描画終了/Drawing Termination
 	void ClearRenderTarget();
 	void ClearRenderTarget(RECT rect);
 	void SetRenderTarget(gstd::ref_count_ptr<Texture> texture);
 	gstd::ref_count_ptr<Texture> GetRenderTarget() { return textureTarget_; }
 
-	//レンダリングステートラッパ
-	void SetLightingEnable(bool bEnable); //ライティング
-	void SetSpecularEnable(bool bEnable); //スペキュラ
-	void SetCullingMode(DWORD mode); //カリング
-	void SetShadingMode(DWORD mode); //シェーディング
-	void SetZBufferEnable(bool bEnable); //Zバッファ参照
-	void SetZWriteEnalbe(bool bEnable); //Zバッファ書き込み
+	//レンダリングステートラッパ/Rendering State Wrapper
+	void SetLightingEnable(bool bEnable); //ライティング/Lighting
+	void SetSpecularEnable(bool bEnable); //スペキュラ/Specular
+	void SetCullingMode(DWORD mode); //カリング/Culling
+	void SetShadingMode(DWORD mode); //シェーディング/Shading
+	void SetZBufferEnable(bool bEnable); //Zバッファ参照/Z-Buffer Browsing
+	void SetZWriteEnalbe(bool bEnable); //Zバッファ書き込み/Z-Buffer Loading
 	void SetAlphaTest(bool bEnable, DWORD ref = 0, D3DCMPFUNC func = D3DCMP_GREATER);
 	void SetBlendMode(DWORD mode, int stage = 0);
 	void SetFillMode(DWORD mode);
