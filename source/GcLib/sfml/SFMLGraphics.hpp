@@ -120,8 +120,8 @@ public:
 	void SetFillMode(DWORD mode);
 	void SetFogEnable(bool bEnable);
 	bool IsFogEnable();
-	void SetVertexFog(bool bEnable, D3DCOLOR color, float start, float end);
-	void SetPixelFog(bool bEnable, D3DCOLOR color, float start, float end);
+	void SetVertexFog(bool bEnable, Color color, float start, float end);
+	void SetPixelFog(bool bEnable, Color color, float start, float end);
 	void SetTextureFilter(DWORD mode, int stage = 0);
 	DWORD GetTextureFilter(int stage = 0);
 
