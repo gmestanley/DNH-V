@@ -73,9 +73,9 @@ protected:
 		Face() { indexMaterial_ = -1; }
 	};
 	bool bVisible_;
-	std::wstring name_; //オブジェクト名
-	std::vector<sf::Vector3f> vertices_; //頂点たち
-	std::vector<Face> faces_; //面たち
+	std::wstring name_; //オブジェクト名/Object Name
+	std::vector<sf::Vector3f> vertices_; //頂点たち/Vertices
+	std::vector<Face> faces_; //面たち/Faces
 };
 
 class MetasequoiaMeshData::RenderObject : public RenderObjectNX {
