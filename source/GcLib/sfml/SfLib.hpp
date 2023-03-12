@@ -1,5 +1,5 @@
-#ifndef __OPENGL_OGLIB__
-#define __OPENGL_OGLIB__
+#ifndef __SFML_SFLIB__
+#define __SFML_SFLIB__
 
 #include "SfConstant.hpp"
 

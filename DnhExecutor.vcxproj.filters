@@ -176,49 +176,49 @@
     <ClCompile Include="source\TouhouDanmakufu\Common\Networking.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\ElfreinaMesh.cpp">
+    <ClCompile Include="source\GcLib\sfml\ElfreinaMesh.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\DirectGraphics.cpp">
+    <ClCompile Include="source\GcLib\sfml\DirectGraphics.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\SFMLInput.cpp">
+    <ClCompile Include="source\GcLib\sfml\SFMLInput.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\DirectSound.cpp">
+    <ClCompile Include="source\GcLib\sfml\SFMLSound.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\DxScript.cpp">
+    <ClCompile Include="source\GcLib\sfml\DxScript.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\DxText.cpp">
+    <ClCompile Include="source\GcLib\sfml\DxText.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\DxUtility.cpp">
+    <ClCompile Include="source\GcLib\sfml\DxUtility.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\DxWindow.cpp">
+    <ClCompile Include="source\GcLib\sfml\DxWindow.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\EventScript.cpp">
+    <ClCompile Include="source\GcLib\sfml\EventScript.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\MetasequoiaMesh.cpp">
+    <ClCompile Include="source\GcLib\sfml\MetasequoiaMesh.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\RenderObject.cpp">
+    <ClCompile Include="source\GcLib\sfml\RenderObject.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\ScriptManager.cpp">
+    <ClCompile Include="source\GcLib\sfml\ScriptManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\Shader.cpp">
+    <ClCompile Include="source\GcLib\sfml\Shader.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\Texture.cpp">
+    <ClCompile Include="source\GcLib\sfml\Texture.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\opengl\TransitionEffect.cpp">
+    <ClCompile Include="source\GcLib\sfml\TransitionEffect.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -265,7 +265,7 @@
     <ClInclude Include="source\GcLib\gstd\Window.hpp">
       <Filter>source\GcLib\gstd</Filter>
     </ClInclude>
-    <ClInclude Include="source\GcLib\opengl\OgLib.hpp">
+    <ClInclude Include="source\GcLib\sfml\SfLib.hpp">
       <Filter>source\GcLib\directx</Filter>
     </ClInclude>
     <ClInclude Include="source\GcLib\GcLib.hpp">
@@ -359,23 +359,23 @@
     <ClInclude Include="source\GcLib\zlib\zlib.h" />
     <ClInclude Include="source\GcLib\zlib\zutil.h" />
     <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp" />
-    <ClInclude Include="source\GcLib\opengl\ElfreinaMesh.hpp" />
-    <ClInclude Include="source\GcLib\opengl\GLSL.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DirectGraphics.hpp" />
-    <ClInclude Include="source\GcLib\opengl\SFMLInput.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DirectSound.hpp" />
-    <ClInclude Include="source\GcLib\opengl\SfConstant.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DxScript.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DxText.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DxUtility.hpp" />
-    <ClInclude Include="source\GcLib\opengl\DxWindow.hpp" />
-    <ClInclude Include="source\GcLib\opengl\EventScript.hpp" />
-    <ClInclude Include="source\GcLib\opengl\MetasequoiaMesh.hpp" />
-    <ClInclude Include="source\GcLib\opengl\RenderObject.hpp" />
-    <ClInclude Include="source\GcLib\opengl\ScriptManager.hpp" />
-    <ClInclude Include="source\GcLib\opengl\Shader.hpp" />
-    <ClInclude Include="source\GcLib\opengl\Texture.hpp" />
-    <ClInclude Include="source\GcLib\opengl\TransitionEffect.hpp" />
+    <ClInclude Include="source\GcLib\sfml\ElfreinaMesh.hpp" />
+    <ClInclude Include="source\GcLib\sfml\GLSL.hpp" />
+    <ClInclude Include="source\GcLib\sfml\DirectGraphics.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMLInput.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMLSound.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SfConstant.hpp" />
+    <ClInclude Include="source\GcLib\sfml\DxScript.hpp" />
+    <ClInclude Include="source\GcLib\sfml\DxText.hpp" />
+    <ClInclude Include="source\GcLib\sfml\DxUtility.hpp" />
+    <ClInclude Include="source\GcLib\sfml\DxWindow.hpp" />
+    <ClInclude Include="source\GcLib\sfml\EventScript.hpp" />
+    <ClInclude Include="source\GcLib\sfml\MetasequoiaMesh.hpp" />
+    <ClInclude Include="source\GcLib\sfml\RenderObject.hpp" />
+    <ClInclude Include="source\GcLib\sfml\ScriptManager.hpp" />
+    <ClInclude Include="source\GcLib\sfml\Shader.hpp" />
+    <ClInclude Include="source\GcLib\sfml\Texture.hpp" />
+    <ClInclude Include="source\GcLib\sfml\TransitionEffect.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">

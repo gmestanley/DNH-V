@@ -1,9 +1,9 @@
 #ifndef __DIRECTX_DIRECTSOUND__
 #define __DIRECTX_DIRECTSOUND__
 
-#include "DxConstant.hpp"
+#include "SfConstant.hpp"
 
-namespace directx {
+namespace sfml {
 
 class DirectSoundManager;
 class SoundInfoPanel;
@@ -21,7 +21,7 @@ class AcmBase;
 class AcmMp3;
 class AcmMp3Wave;
 
-struct WAVEFILEHEADER { //WAVE構成フォーマット情報、"fmt "チャンクデータ
+struct WAVEFILEHEADER { //WAVE構成フォーマット情報、"fmt "チャンクデータ/WAVE composition format information, "fmt " chunk data
 	char cRIFF[4];
 	int iSizeRIFF;
 	char cType[4];
@@ -51,7 +51,7 @@ public:
 		SD_WAVE,
 		SD_MP3,
 		SD_OGG,
-		SD_AWAVE, //圧縮wave waveヘッダmp3
+		SD_AWAVE, //圧縮wave waveヘッダmp3/Compressed Wave: Wave Header MP3
 		SD_UNKNOWN,
 	};
 gstd::ref_count_ptr<SoundPlayer> _CreatePlayer(std::wstring path);
@@ -63,7 +63,7 @@ public:
 	virtual bool Initialize(HWND hWnd);
 	void Clear();
 
-	IDirectSound8* GetDirectSound() { return pDirectSound_; }
+	sf::SoundBuffer* GetDirectSound() { return pDirectSound_; }
 	gstd::CriticalSection& GetLock() { return lock_; }
 
 	gstd::ref_count_ptr<SoundPlayer> GetPlayer(std::wstring path, bool bCreateAlways = false);
