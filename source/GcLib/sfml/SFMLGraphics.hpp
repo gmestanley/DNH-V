@@ -1,9 +1,9 @@
 #ifndef __DIRECTX_DIRECTGRAPHICS__
 #define __DIRECTX_DIRECTGRAPHICS__
 
-#include "DxConstant.hpp"
+#include "SfConstant.hpp"
 
-namespace directx {
+namespace sfml {
 
 class DxCamera;
 class DxCamera2D;
@@ -101,20 +101,20 @@ public:
 	IDirect3DDevice9* GetDevice() { return pDevice_; }
 	DirectGraphicsConfig& GetConfigData() { return config_; }
 
-	void BeginScene(bool bClear = true); //描画開始
-	void EndScene(); //描画終了
+	void BeginScene(bool bClear = true); //描画開始/Drawing Start
+	void EndScene(); //描画終了/Drawing Termination
 	void ClearRenderTarget();
 	void ClearRenderTarget(RECT rect);
 	void SetRenderTarget(gstd::ref_count_ptr<Texture> texture);
 	gstd::ref_count_ptr<Texture> GetRenderTarget() { return textureTarget_; }
 
-	//レンダリングステートラッパ
-	void SetLightingEnable(bool bEnable); //ライティング
-	void SetSpecularEnable(bool bEnable); //スペキュラ
-	void SetCullingMode(DWORD mode); //カリング
-	void SetShadingMode(DWORD mode); //シェーディング
-	void SetZBufferEnable(bool bEnable); //Zバッファ参照
-	void SetZWriteEnalbe(bool bEnable); //Zバッファ書き込み
+	//レンダリングステートラッパ/Rendering State Wrapper
+	void SetLightingEnable(bool bEnable); //ライティング/Lighting
+	void SetSpecularEnable(bool bEnable); //スペキュラ/Specular
+	void SetCullingMode(DWORD mode); //カリング/Culling
+	void SetShadingMode(DWORD mode); //シェーディング/Shading
+	void SetZBufferEnable(bool bEnable); //Zバッファ参照/Z-Buffer Browsing
+	void SetZWriteEnalbe(bool bEnable); //Zバッファ書き込み/Z-Buffer Loading
 	void SetAlphaTest(bool bEnable, DWORD ref = 0, D3DCMPFUNC func = D3DCMP_GREATER);
 	void SetBlendMode(DWORD mode, int stage = 0);
 	void SetFillMode(DWORD mode);
@@ -229,10 +229,10 @@ public:
 	void SetProjectionMatrix(float width, float height, float posNear, float posFar);
 	void UpdateDeviceProjectionMatrix();
 
-	D3DXVECTOR2 TransformCoordinateTo2D(D3DXVECTOR3 pos);
+	sf::Vector2f TransformCoordinateTo2D(sf::Vector3f pos);
 
 private:
-	D3DXVECTOR3 pos_; //焦点
+	sf::Vector3f pos_; //焦点/Focus
 	float radius_;
 	float angleAzimuth_;
 	float angleElevation_;

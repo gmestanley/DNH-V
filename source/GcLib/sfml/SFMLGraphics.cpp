@@ -1,4 +1,4 @@
-#include "DirectGraphics.hpp"
+#include "SFMLGraphics.hpp"
 
 #include "Texture.hpp"
 
