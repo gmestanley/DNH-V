@@ -11,6 +11,13 @@ namespace sfml {
 		float b;
 		float a;
 	};
+	typedef struct Vector4f {
+		float x;
+		float y;
+		float z;
+		float w;
+	};
+	typedef unsigned long Color;
 /**********************************************************
 //ColorAccess
 **********************************************************/

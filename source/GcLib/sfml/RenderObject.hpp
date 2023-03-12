@@ -1,12 +1,12 @@
-#ifndef __DIRECTX_RENDEROBJECT__
-#define __DIRECTX_RENDEROBJECT__
+#ifndef __SFML_RENDEROBJECT__
+#define __SFML_RENDEROBJECT__
 
-#include "DxConstant.hpp"
-#include "DxUtility.hpp"
+#include "SfConstant.hpp"
+#include "SfUtility.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
 
-namespace directx {
+namespace sfml {
 
 class RenderObjectBase;
 class RenderManager;
@@ -17,123 +17,123 @@ class RenderManager;
 struct VERTEX_TL {
 	//座標3D変換済み、ライティング済み
 	VERTEX_TL() {}
-	VERTEX_TL(D3DXVECTOR4 pos, D3DCOLOR dcol)
+	VERTEX_TL(sfml::Vector4f pos, sfml::Color dcol)
 		: position(pos)
 		, diffuse_color(dcol)
 	{
 	}
-	D3DXVECTOR4 position;
-	D3DCOLOR diffuse_color;
+	sfml::Vector4f position;
+	sfml::Color diffuse_color;
 	enum { fvf = (D3DFVF_XYZRHW | D3DFVF_DIFFUSE) };
 };
 
 struct VERTEX_TLX {
 	//座標3D変換済み、ライティング済み、テクスチャ有り
 	VERTEX_TLX() {}
-	VERTEX_TLX(D3DXVECTOR4 pos, D3DCOLOR diffcol, D3DXVECTOR2 tex)
+	VERTEX_TLX(sfml::Vector4f pos, sfml::Color diffcol, sf::Vector2f tex)
 		: position(pos)
 		, diffuse_color(diffcol)
 		, texcoord(tex)
 	{
 	}
-	D3DXVECTOR4 position;
-	D3DCOLOR diffuse_color;
-	D3DXVECTOR2 texcoord;
+	sfml::Vector4f position;
+	sfml::Color diffuse_color;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1) };
 };
 
 struct VERTEX_L {
 	//ライティング済み
 	VERTEX_L() {}
-	VERTEX_L(const D3DXVECTOR3& pos, const D3DCOLOR& col)
+	VERTEX_L(const sf::Vector3f& pos, const sfml::Color& col)
 		: position(pos)
 		, diffuse_color(col)
 	{
 	}
-	D3DXVECTOR3 position;
-	D3DCOLOR diffuse_color;
+	sf::Vector3f position;
+	sfml::Color diffuse_color;
 	enum { fvf = (D3DFVF_XYZ | D3DFVF_DIFFUSE) };
 };
 
 struct VERTEX_LX {
 	//ライティング済み、テクスチャ有り
 	VERTEX_LX() {}
-	VERTEX_LX(D3DXVECTOR3& pos, D3DCOLOR& diffcol, D3DXVECTOR2 tex)
+	VERTEX_LX(sf::Vector3f& pos, sfml::Color& diffcol, sf::Vector2f tex)
 		: position(pos)
 		, diffuse_color(diffcol)
 		, texcoord(tex)
 	{
 	}
-	D3DXVECTOR3 position;
-	D3DCOLOR diffuse_color;
-	D3DXVECTOR2 texcoord;
+	sf::Vector3f position;
+	sfml::Color diffuse_color;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1) };
 };
 
 struct VERTEX_N {
 	//未ライティング
 	VERTEX_N() {}
-	VERTEX_N(D3DXVECTOR3 pos, D3DXVECTOR3 n)
+	VERTEX_N(sf::Vector3f pos, sf::Vector3f n)
 		: position(pos)
 		, normal(n)
 	{
 	}
-	D3DXVECTOR3 position;
-	D3DXVECTOR3 normal;
+	sf::Vector3f position;
+	sf::Vector3f normal;
 	enum { fvf = (D3DFVF_XYZ | D3DFVF_NORMAL) };
 };
 
 struct VERTEX_NX {
 	//未ライティング、テクスチャ有り
 	VERTEX_NX() {}
-	VERTEX_NX(D3DXVECTOR3& pos, D3DXVECTOR3& n, D3DXVECTOR2& tc)
+	VERTEX_NX(sf::Vector3f& pos, sf::Vector3f& n, sf::Vector2f& tc)
 		: position(pos)
 		, normal(n)
 		, texcoord(tc)
 	{
 	}
-	D3DXVECTOR3 position;
-	D3DXVECTOR3 normal;
-	D3DXVECTOR2 texcoord;
+	sf::Vector3f position;
+	sf::Vector3f normal;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1) };
 };
 
 struct VERTEX_NXG {
 	VERTEX_NXG() {}
-	VERTEX_NXG(D3DXVECTOR3& pos, D3DXVECTOR3& n, D3DXVECTOR2& tc)
+	VERTEX_NXG(sf::Vector3f& pos, sf::Vector3f& n, sf::Vector2f& tc)
 		: position(pos)
 		, normal(n)
 		, texcoord(tc)
 	{
 	}
-	D3DXVECTOR3 position;
+	sf::Vector3f position;
 	float blend[3];
-	D3DXVECTOR3 normal;
-	D3DXVECTOR2 texcoord;
+	sf::Vector3f normal;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZB3 | D3DFVF_NORMAL | D3DFVF_TEX1) };
 };
 
 struct VERTEX_B1NX {
 	//未ライティング、テクスチャ有り、頂点ブレンド1
 	VERTEX_B1NX() {}
-	VERTEX_B1NX(D3DXVECTOR3& pos, DWORD bi, D3DXVECTOR3& n, D3DXVECTOR2& tc)
+	VERTEX_B1NX(sf::Vector3f& pos, DWORD bi, sf::Vector3f& n, sf::Vector2f& tc)
 		: position(pos)
 		, normal(n)
 		, texcoord(tc)
 	{
 		blendIndex = bi;
 	}
-	D3DXVECTOR3 position;
+	sf::Vector3f position;
 	DWORD blendIndex;
-	D3DXVECTOR3 normal;
-	D3DXVECTOR2 texcoord;
+	sf::Vector3f normal;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZB1 | D3DFVF_LASTBETA_UBYTE4 | D3DFVF_NORMAL | D3DFVF_TEX1) };
 };
 
 struct VERTEX_B2NX {
 	//未ライティング、テクスチャ有り、頂点ブレンド2
 	VERTEX_B2NX() {}
-	VERTEX_B2NX(D3DXVECTOR3& pos, float rate, BYTE index1, BYTE index2, D3DXVECTOR3& n, D3DXVECTOR2& tc)
+	VERTEX_B2NX(sf::Vector3f& pos, float rate, BYTE index1, BYTE index2, sf::Vector3f& n, sf::Vector2f& tc)
 		: position(pos)
 		, normal(n)
 		, texcoord(tc)
@@ -142,18 +142,18 @@ struct VERTEX_B2NX {
 		gstd::BitAccess::SetByte(blendIndex, 0, index1);
 		gstd::BitAccess::SetByte(blendIndex, 8, index2);
 	}
-	D3DXVECTOR3 position;
+	sf::Vector3f position;
 	float blendRate;
 	DWORD blendIndex;
-	D3DXVECTOR3 normal;
-	D3DXVECTOR2 texcoord;
+	sf::Vector3f normal;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZB2 | D3DFVF_LASTBETA_UBYTE4 | D3DFVF_NORMAL | D3DFVF_TEX1) };
 };
 
 struct VERTEX_B4NX {
 	//未ライティング、テクスチャ有り、頂点ブレンド4
 	VERTEX_B4NX() {}
-	VERTEX_B4NX(D3DXVECTOR3& pos, float rate[3], BYTE index[4], D3DXVECTOR3& n, D3DXVECTOR2& tc)
+	VERTEX_B4NX(sf::Vector3f& pos, float rate[3], BYTE index[4], sf::Vector3f& n, sf::Vector2f& tc)
 		: position(pos)
 		, normal(n)
 		, texcoord(tc)
@@ -163,11 +163,11 @@ struct VERTEX_B4NX {
 		for (int iIndex = 0; iIndex < 4; iIndex++)
 			gstd::BitAccess::SetByte(blendIndex, 8 * iIndex, index[iIndex]);
 	}
-	D3DXVECTOR3 position;
+	sf::Vector3f position;
 	float blendRate[3];
 	DWORD blendIndex;
-	D3DXVECTOR3 normal;
-	D3DXVECTOR2 texcoord;
+	sf::Vector3f normal;
+	sf::Vector2f texcoord;
 	enum { fvf = (D3DFVF_XYZB4 | D3DFVF_LASTBETA_UBYTE4 | D3DFVF_NORMAL | D3DFVF_TEX1) };
 };
 
@@ -192,18 +192,18 @@ public:
 
 	void SetRenderObject(gstd::ref_count_ptr<RenderObject> obj) { obj_ = obj; }
 	gstd::ref_count_ptr<RenderObject> GetRenderObject() { return obj_; }
-	void SetPosition(D3DXVECTOR3& pos) { position_ = pos; }
-	void SetAngle(D3DXVECTOR3& angle) { angle_ = angle; }
-	void SetScale(D3DXVECTOR3& scale) { scale_ = scale; }
+	void SetPosition(sf::Vector3f& pos) { position_ = pos; }
+	void SetAngle(sf::Vector3f& angle) { angle_ = angle; }
+	void SetScale(sf::Vector3f& scale) { scale_ = scale; }
 
 protected:
 	float posSortKey_;
 	gstd::ref_count_ptr<RenderStateFunction> func_;
 	gstd::ref_count_ptr<RenderObject> obj_;
 
-	D3DXVECTOR3 position_; //移動先座標
-	D3DXVECTOR3 angle_; //回転角度
-	D3DXVECTOR3 scale_; //拡大率
+	sf::Vector3f position_; //移動先座標
+	sf::Vector3f angle_; //回転角度
+	sf::Vector3f scale_; //拡大率
 };
 
 class RenderBlocks {
@@ -313,7 +313,7 @@ public:
 	virtual void Render() = 0;
 	virtual void InitializeVertexBuffer() {}
 	virtual void CalculateWeightCenter() {}
-	D3DXVECTOR3 GetWeightCenter() { return posWeightCenter_; }
+	sf::Vector3f GetWeightCenter() { return posWeightCenter_; }
 	gstd::ref_count_ptr<Texture> GetTexture(int pos = 0) { return texture_[pos]; }
 
 	void SetRalativeMatrix(D3DXMATRIX mat) { matRelative_ = mat; }
@@ -330,7 +330,7 @@ public:
 	gstd::ByteBuffer* GetVertexPointer() { return &vertex_; }
 
 	//描画用設定
-	void SetPosition(D3DXVECTOR3& pos) { position_ = pos; }
+	void SetPosition(sf::Vector3f& pos) { position_ = pos; }
 	void SetPosition(float x, float y, float z)
 	{
 		position_.x = x;
@@ -340,14 +340,14 @@ public:
 	void SetX(float x) { position_.x = x; }
 	void SetY(float y) { position_.y = y; }
 	void SetZ(float z) { position_.z = z; }
-	void SetAngle(D3DXVECTOR3& angle) { angle_ = angle; }
+	void SetAngle(sf::Vector3f& angle) { angle_ = angle; }
 	void SetAngleXYZ(float angx = 0.0f, float angy = 0.0f, float angz = 0.0f)
 	{
 		angle_.x = angx;
 		angle_.y = angy;
 		angle_.z = angz;
 	}
-	void SetScale(D3DXVECTOR3& scale) { scale_ = scale; }
+	void SetScale(sf::Vector3f& scale) { scale_ = scale; }
 	void SetScaleXYZ(float sx = 1.0f, float sy = 1.0f, float sz = 1.0f)
 	{
 		scale_.x = sx;
@@ -371,16 +371,16 @@ protected:
 	gstd::ByteBuffer vertex_; //頂点
 	std::vector<short> vertexIndices_;
 	std::vector<gstd::ref_count_ptr<Texture>> texture_; //テクスチャ
-	D3DXVECTOR3 posWeightCenter_; //重心
+	sf::Vector3f posWeightCenter_; //重心
 
 	//シェーダ用
 	IDirect3DVertexDeclaration9* pVertexDecl_;
 	IDirect3DVertexBuffer9* pVertexBuffer_;
 	IDirect3DIndexBuffer9* pIndexBuffer_;
 
-	D3DXVECTOR3 position_; //移動先座標
-	D3DXVECTOR3 angle_; //回転角度
-	D3DXVECTOR3 scale_; //拡大率
+	sf::Vector3f position_; //移動先座標
+	sf::Vector3f angle_; //回転角度
+	sf::Vector3f scale_; //拡大率
 	D3DXMATRIX matRelative_; //関係行列
 	bool bCoordinate2D_; //2D座標指定
 	gstd::ref_count_ptr<Shader> shader_;
@@ -417,11 +417,11 @@ public:
 	void SetVertex(int index, VERTEX_TLX& vertex);
 	void SetVertexPosition(int index, float x, float y, float z = 1.0f, float w = 1.0f);
 	void SetVertexUV(int index, float u, float v);
-	void SetVertexColor(int index, D3DCOLOR color);
+	void SetVertexColor(int index, sfml::Color color);
 	void SetVertexColorARGB(int index, int a, int r, int g, int b);
 	void SetVertexAlpha(int index, int alpha);
 	void SetVertexColorRGB(int index, int r, int g, int b);
-	void SetColorRGB(D3DCOLOR color);
+	void SetColorRGB(sfml::Color color);
 	void SetAlpha(int alpha);
 
 	//カメラ
@@ -452,11 +452,11 @@ public:
 	void SetVertex(int index, VERTEX_LX& vertex);
 	void SetVertexPosition(int index, float x, float y, float z);
 	void SetVertexUV(int index, float u, float v);
-	void SetVertexColor(int index, D3DCOLOR color);
+	void SetVertexColor(int index, sfml::Color color);
 	void SetVertexColorARGB(int index, int a, int r, int g, int b);
 	void SetVertexAlpha(int index, int alpha);
 	void SetVertexColorRGB(int index, int r, int g, int b);
-	void SetColorRGB(D3DCOLOR color);
+	void SetColorRGB(sfml::Color color);
 	void SetAlpha(int alpha);
 
 protected:
@@ -465,7 +465,7 @@ protected:
 
 /**********************************************************
 //RenderObjectNX
-//法線有り、テクスチャ有り
+//法線有り、テクスチャ有り/Has normal vector, has textures
 **********************************************************/
 class RenderObjectNX : public RenderObject {
 public:
@@ -473,33 +473,33 @@ public:
 	~RenderObjectNX();
 	virtual void Render();
 
-	//頂点設定
+	//頂点設定/Vertex setting
 	VERTEX_NX* GetVertex(int index);
 	void SetVertex(int index, VERTEX_NX& vertex);
 	void SetVertexPosition(int index, float x, float y, float z);
 	void SetVertexUV(int index, float u, float v);
 	void SetVertexNormal(int index, float x, float y, float z);
-	void SetColor(D3DCOLOR color) { color_ = color; }
+	void SetColor(sfml::Color color) { color_ = color; }
 
 protected:
-	D3DCOLOR color_;
+	sfml::Color color_;
 	virtual void _CreateVertexDeclaration();
 };
 
 /**********************************************************
-//RenderObjectBNX
-//頂点ブレンド
-//法線有り
-//テクスチャ有り
+RenderObjectBNX
+頂点ブレンド/Vertex Blend
+法線有り/Has Normal Vector
+テクスチャ有り/Has Textures
 **********************************************************/
 class RenderObjectBNX : public RenderObject {
 public:
 	struct Vertex {
-		D3DXVECTOR3 position;
-		D3DXVECTOR4 blendRate;
-		D3DXVECTOR4 blendIndex;
-		D3DXVECTOR3 normal;
-		D3DXVECTOR2 texcoord;
+		sf::Vector3f position;
+		sfml::Vector4f blendRate;
+		sfml::Vector4f blendIndex;
+		sf::Vector3f normal;
+		sf::Vector2f texcoord;
 	};
 
 public:
@@ -508,13 +508,13 @@ public:
 	virtual void InitializeVertexBuffer();
 	virtual void Render();
 
-	//描画用設定
+	//描画用設定/Setting for Drawing
 	void SetMatrix(gstd::ref_count_ptr<Matrices> matrix) { matrix_ = matrix; }
-	void SetColor(D3DCOLOR color) { color_ = color; }
+	void SetColor(sfml::Color color) { color_ = color; }
 
 protected:
 	gstd::ref_count_ptr<Matrices> matrix_;
-	D3DCOLOR color_;
+	sfml::Color color_;
 	D3DMATERIAL9 materialBNX_;
 	virtual void _CreateVertexDeclaration();
 	virtual void _CopyVertexBufferOnInitialize() = 0;
@@ -523,12 +523,12 @@ protected:
 class RenderObjectBNXBlock : public RenderBlock {
 public:
 	void SetMatrix(gstd::ref_count_ptr<Matrices> matrix) { matrix_ = matrix; }
-	void SetColor(D3DCOLOR color) { color_ = color; }
+	void SetColor(sfml::Color color) { color_ = color; }
 	bool IsTranslucent() { return ColorAccess::GetColorA(color_) != 255; }
 
 protected:
 	gstd::ref_count_ptr<Matrices> matrix_;
-	D3DCOLOR color_;
+	sfml::Color color_;
 };
 
 /**********************************************************
@@ -597,7 +597,7 @@ public:
 
 /**********************************************************
 //Sprite2D
-//矩形スプライト
+//矩形スプライト/Rectangle Sprite
 **********************************************************/
 class Sprite2D : public RenderObjectTLX {
 public:
@@ -607,14 +607,14 @@ public:
 	void SetSourceRect(RECT_D& rcSrc);
 	void SetDestinationRect(RECT_D& rcDest);
 	void SetDestinationCenter();
-	void SetVertex(RECT_D& rcSrc, RECT_D& rcDest, D3DCOLOR color = D3DCOLOR_ARGB(255, 255, 255, 255));
+	void SetVertex(RECT_D& rcSrc, RECT_D& rcDest, sfml::Color color = sfml::Color_ARGB(255, 255, 255, 255));
 
 	RECT_D GetDestinationRect();
 };
 
 /**********************************************************
 //SpriteList2D
-//矩形スプライトリスト
+//矩形スプライトリスト/Rectangle Sprite List
 **********************************************************/
 class SpriteList2D : public RenderObjectTLX {
 public:
@@ -630,22 +630,22 @@ public:
 	void SetSourceRect(RECT_D& rcSrc) { rcSrc_ = rcSrc; }
 	void SetDestinationRect(RECT_D& rcDest) { rcDest_ = rcDest; }
 	void SetDestinationCenter();
-	D3DCOLOR GetColor() { return color_; }
-	void SetColor(D3DCOLOR color) { color_ = color; }
+	sfml::Color GetColor() { return color_; }
+	void SetColor(sfml::Color color) { color_ = color; }
 	void CloseVertex();
 
 private:
 	int countRenderVertex_;
 	RECT_D rcSrc_;
 	RECT_D rcDest_;
-	D3DCOLOR color_;
+	sfml::Color color_;
 	bool bCloseVertexList_;
 	void _AddVertex(VERTEX_TLX& vertex);
 };
 
 /**********************************************************
 //Sprite3D
-//矩形スプライト
+//矩形スプライト/Rectangle Sprite
 **********************************************************/
 class Sprite3D : public RenderObjectLX {
 public:
@@ -653,9 +653,9 @@ public:
 	~Sprite3D();
 	void SetSourceRect(RECT_D& rcSrc);
 	void SetDestinationRect(RECT_D& rcDest);
-	void SetVertex(RECT_D& rcSrc, RECT_D& rcDest, D3DCOLOR color = D3DCOLOR_ARGB(255, 255, 255, 255));
+	void SetVertex(RECT_D& rcSrc, RECT_D& rcDest, sfml::Color color = sfml::Color_ARGB(255, 255, 255, 255));
 	void SetSourceDestRect(RECT_D& rcSrc);
-	void SetVertex(RECT_D& rcSrc, D3DCOLOR color = D3DCOLOR_ARGB(255, 255, 255, 255));
+	void SetVertex(RECT_D& rcSrc, sfml::Color color = sfml::Color_ARGB(255, 255, 255, 255));
 	void SetBillboardEnable(bool bEnable) { bBillboard_ = bEnable; }
 
 protected:
@@ -665,7 +665,7 @@ protected:
 
 /**********************************************************
 //TrajectoryObject3D
-//3D軌跡
+//3D軌跡/3D Locus
 **********************************************************/
 class TrajectoryObject3D : public RenderObjectLX {
 public:
@@ -677,7 +677,7 @@ public:
 	void AddPoint(D3DXMATRIX mat);
 	void SetAlphaVariation(int diff) { diffAlpha_ = diff; }
 	void SetComplementCount(int count) { countComplement_ = count; }
-	void SetColor(D3DCOLOR color) { color_ = color; }
+	void SetColor(sfml::Color color) { color_ = color; }
 
 private:
 	struct Data {
@@ -687,7 +687,7 @@ private:
 	};
 
 protected:
-	D3DCOLOR color_;
+	sfml::Color color_;
 	int diffAlpha_;
 	int countComplement_;
 	Data dataInit_;
@@ -739,7 +739,7 @@ public:
 
 	virtual void Render() = 0;
 	virtual void Render(std::wstring nameAnime, int time) { Render(); }
-	void SetPosition(D3DXVECTOR3 pos) { position_ = pos; }
+	void SetPosition(sf::Vector3f pos) { position_ = pos; }
 	void SetPosition(float x, float y, float z)
 	{
 		position_.x = x;
@@ -749,14 +749,14 @@ public:
 	void SetX(float x) { position_.x = x; }
 	void SetY(float y) { position_.y = y; }
 	void SetZ(float z) { position_.z = z; }
-	void SetAngle(D3DXVECTOR3 angle) { angle_ = angle; }
+	void SetAngle(sf::Vector3f angle) { angle_ = angle; }
 	void SetAngleXYZ(float angx = 0.0f, float angy = 0.0f, float angz = 0.0f)
 	{
 		angle_.x = angx;
 		angle_.y = angy;
 		angle_.z = angz;
 	}
-	void SetScale(D3DXVECTOR3 scale) { scale_ = scale; }
+	void SetScale(sf::Vector3f scale) { scale_ = scale; }
 	void SetScaleXYZ(float sx = 1.0f, float sy = 1.0f, float sz = 1.0f)
 	{
 		scale_.x = sx;
@@ -764,8 +764,8 @@ public:
 		scale_.z = sz;
 	}
 
-	void SetColor(D3DCOLOR color) { color_ = color; }
-	void SetColorRGB(D3DCOLOR color);
+	void SetColor(sfml::Color color) { color_ = color; }
+	void SetColorRGB(sfml::Color color);
 	void SetAlpha(int alpha);
 
 	bool IsCoordinate2D() { return bCoordinate2D_; }
@@ -782,10 +782,10 @@ public:
 	void SetShader(gstd::ref_count_ptr<Shader> shader) { shader_ = shader; }
 
 protected:
-	D3DXVECTOR3 position_; //移動先座標
-	D3DXVECTOR3 angle_; //回転角度
-	D3DXVECTOR3 scale_; //拡大率
-	D3DCOLOR color_;
+	sf::Vector3f position_; //移動先座標
+	sf::Vector3f angle_; //回転角度
+	sf::Vector3f scale_; //拡大率
+	sfml::Color color_;
 	bool bCoordinate2D_; //2D座標指定
 	gstd::ref_count_ptr<Shader> shader_;
 
