@@ -673,7 +673,7 @@ public:
 	~TrajectoryObject3D();
 	virtual void Work();
 	virtual void Render();
-	void SetInitialLine(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2);
+	void SetInitialLine(sf::Vector3f pos1, sf::Vector3f pos2);
 	void AddPoint(D3DXMATRIX mat);
 	void SetAlphaVariation(int diff) { diffAlpha_ = diff; }
 	void SetComplementCount(int count) { countComplement_ = count; }
@@ -682,8 +682,8 @@ public:
 private:
 	struct Data {
 		int alpha;
-		D3DXVECTOR3 pos1;
-		D3DXVECTOR3 pos2;
+		sf::Vector3f pos1;
+		sf::Vector3f pos2;
 	};
 
 protected:

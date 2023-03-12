@@ -1,10 +1,16 @@
 #ifndef __DIRECTX_UTILITY__
 #define __DIRECTX_UTILITY__
 
-#include "DxConstant.hpp"
+#include "SfConstant.hpp"
 
-namespace directx {
+namespace sfml {
 
+	typedef struct ColorValue {
+		float r;
+		float g;
+		float b;
+		float a;
+	};
 /**********************************************************
 //ColorAccess
 **********************************************************/

@@ -1,12 +1,12 @@
-#include "DxScript.hpp"
-#include "DirectGraphics.hpp"
-#include "DirectInput.hpp"
-#include "DxUtility.hpp"
+#include "SfScript.hpp"
+#include "SFMLGraphics.hpp"
+#include "SFMLInput.hpp"
+#include "SfUtility.hpp"
 #include "ElfreinaMesh.hpp"
 #include "MetasequoiaMesh.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 
 /**********************************************************

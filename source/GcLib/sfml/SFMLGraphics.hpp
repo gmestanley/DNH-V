@@ -290,7 +290,7 @@ public:
 	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratio);
 	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratioX, double ratioY);
 	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratioX, double ratioY, RECT rcClip);
-
+	
 	D3DXMATRIX GetMatrix();
 
 private:

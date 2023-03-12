@@ -55,8 +55,8 @@ void MetasequoiaMeshData::_ReadMaterial(gstd::Scanner& scanner)
 
 	int posMat = 0;
 	Material* mat = material_[posMat].GetPointer();
-	D3DCOLORVALUE color;
-	ZeroMemory(&color, sizeof(D3DCOLORVALUE));
+	sfml::ColorValue color;
+	ZeroMemory(&color, sizeof(sfml::ColorValue));
 	while (true) {
 		gstd::Token& tok = scanner.Next();
 		if (tok.GetType() == Token::TK_CLOSEC)
@@ -67,7 +67,7 @@ void MetasequoiaMeshData::_ReadMaterial(gstd::Scanner& scanner)
 			if (material_.size() <= posMat)
 				break;
 			mat = material_[posMat].GetPointer();
-			ZeroMemory(&color, sizeof(D3DCOLORVALUE));
+			ZeroMemory(&color, sizeof(sfml::ColorValue));
 		} else if (tok.GetType() == Token::TK_STRING) {
 			mat->name_ = tok.GetString();
 		} else if (tok.GetElement() == L"col") {
@@ -78,7 +78,7 @@ void MetasequoiaMeshData::_ReadMaterial(gstd::Scanner& scanner)
 			color.a = scanner.Next().GetReal();
 			scanner.CheckType(scanner.Next(), Token::TK_CLOSEP);
 		} else if (tok.GetElement() == L"dif" || tok.GetElement() == L"amb" || tok.GetElement() == L"emi" || tok.GetElement() == L"spc") {
-			D3DCOLORVALUE* value = NULL;
+			sfml::ColorValue* value = NULL;
 			if (tok.GetElement() == L"dif")
 				value = &mat->mat_.Diffuse;
 			else if (tok.GetElement() == L"amb")
