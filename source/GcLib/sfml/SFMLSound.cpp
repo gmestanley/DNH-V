@@ -1,7 +1,7 @@
 #include "SFMLSound.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 /**********************************************************
 //DirectSoundManager
@@ -18,7 +18,7 @@ DirectSoundManager::DirectSoundManager()
 }
 DirectSoundManager::~DirectSoundManager()
 {
-	Logger::WriteTop(L"DirectSound：終了開始");
+	Logger::WriteTop(L"sf::Sound：終了開始");
 	this->Clear();
 	threadManage_->Stop();
 	threadManage_->Join();

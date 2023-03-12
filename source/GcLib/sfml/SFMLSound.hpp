@@ -63,7 +63,7 @@ public:
 	virtual bool Initialize(HWND hWnd);
 	void Clear();
 
-	sf::SoundBuffer* GetDirectSound() { return pDirectSound_; }
+	sf::Sound* GetDirectSound() { return pDirectSound_; }
 	gstd::CriticalSection& GetLock() { return lock_; }
 
 	gstd::ref_count_ptr<SoundPlayer> GetPlayer(std::wstring path, bool bCreateAlways = false);
@@ -82,8 +82,8 @@ public:
 	void SetFadeDeleteAll();
 
 protected:
-	IDirectSound8* pDirectSound_;
-	IDirectSoundBuffer8* pDirectSoundBuffer_;
+	sf::Sound* pDirectSound_;
+	sf::SoundBuffer* pDirectSoundBuffer_;
 	gstd::CriticalSection lock_;
 	SoundManageThread* threadManage_;
 	std::map<std::wstring, std::list<gstd::ref_count_ptr<SoundPlayer>>> mapPlayer_;
@@ -97,8 +97,8 @@ private:
 	static DirectSoundManager* thisBase_;
 };
 
-//フェードイン／フェードアウト制御
-//必要なくなったバッファの開放など
+//フェードイン／フェードアウト制御|Fade-in/Fade-out control
+//必要なくなったバッファの開放など|Opening the buffer that turned out useless etc.
 class DirectSoundManager::SoundManageThread : public gstd::Thread, public gstd::InnerClass<DirectSoundManager> {
 	friend DirectSoundManager;
 
@@ -108,8 +108,8 @@ protected:
 
 	SoundManageThread(DirectSoundManager* manager);
 	void _Run();
-	void _Arrange(); //必要なくなったデータを削除
-	void _Fade(); //フェード処理
+	void _Arrange(); //必要なくなったデータを削除/Delete the data that turned out useless
+	void _Fade(); //フェード処理/Fade Processing
 };
 
 /**********************************************************
@@ -229,7 +229,7 @@ protected:
 	DirectSoundManager* manager_;
 	std::wstring path_;
 	gstd::CriticalSection lock_;
-	IDirectSoundBuffer8* pDirectSoundBuffer_;
+	sf::SoundBuffer *pDirectSoundBuffer_;
 	gstd::ref_count_ptr<gstd::FileReader> reader_;
 	gstd::ref_count_ptr<SoundDivision> division_;
 
@@ -281,11 +281,11 @@ class SoundStreamingPlayer : public SoundPlayer {
 
 protected:
 	HANDLE hEvent_[3];
-	IDirectSoundNotify* pDirectSoundNotify_; //イベント
+	IDirectSoundNotify* pDirectSoundNotify_; //イベント/Event
 	int sizeCopy_;
 	StreamingThread* thread_;
 	bool bStreaming_;
-	bool bRequestStop_; //ループ完了時のフラグ。すぐ停止すると最後のバッファが再生されないため。
+	bool bRequestStop_; //ループ完了時のフラグ。すぐ停止すると最後のバッファが再生されないため。/Flag for when the loop is completed.
 
 	void _CreateSoundEvent(WAVEFORMATEX& formatWave);
 	virtual void _CopyStream(int indexCopy);

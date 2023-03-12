@@ -3,10 +3,10 @@
 
 #include "SfConstant.hpp"
 
-#include "OgUtility.hpp"
+#include "SfUtility.hpp"
 
-#include "OpenGLGraphics.hpp"
-#include "OgText.hpp"
+#include "SFMLGraphics.hpp"
+#include "SfText.hpp"
 //#include "BlenderMesh.hpp"
 #include "RenderObject.hpp"
 #include "Shader.hpp"
@@ -14,7 +14,7 @@
 
 #include "TransitionEffect.hpp"
 // #include"OgWindow.hpp"
-#include "OgScript.hpp"
+#include "SfScript.hpp"
 #include "ScriptManager.hpp"
 // #include"EventScript.hpp"
 

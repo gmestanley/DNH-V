@@ -181,13 +181,13 @@
     <ClCompile Include="source\GcLib\gstd\Task.cpp" />
     <ClCompile Include="source\GcLib\gstd\Thread.cpp" />
     <ClCompile Include="source\GcLib\gstd\Window.cpp" />
-    <ClCompile Include="source\GcLib\sfml\DirectGraphics.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SFMLGraphics.cpp" />
     <ClCompile Include="source\GcLib\sfml\SFMLInput.cpp" />
     <ClCompile Include="source\GcLib\sfml\SFMLSound.cpp" />
-    <ClCompile Include="source\GcLib\sfml\DxScript.cpp" />
-    <ClCompile Include="source\GcLib\sfml\DxText.cpp" />
-    <ClCompile Include="source\GcLib\sfml\DxUtility.cpp" />
-    <ClCompile Include="source\GcLib\sfml\DxWindow.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SfScript.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SfText.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SfUtility.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SfWindow.cpp" />
     <ClCompile Include="source\GcLib\sfml\ElfreinaMesh.cpp" />
     <ClCompile Include="source\GcLib\sfml\EventScript.cpp" />
     <ClCompile Include="source\GcLib\sfml\MetasequoiaMesh.cpp" />
@@ -238,14 +238,14 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\GcLib\sfml\DirectGraphics.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMLGraphics.hpp" />
     <ClInclude Include="source\GcLib\sfml\SFMLInput.hpp" />
     <ClInclude Include="source\GcLib\sfml\SFMLSound.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfConstant.hpp" />
-    <ClInclude Include="source\GcLib\sfml\DxScript.hpp" />
-    <ClInclude Include="source\GcLib\sfml\DxText.hpp" />
-    <ClInclude Include="source\GcLib\sfml\DxUtility.hpp" />
-    <ClInclude Include="source\GcLib\sfml\DxWindow.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SfScript.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SfText.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SfUtility.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SfWindow.hpp" />
     <ClInclude Include="source\GcLib\sfml\ElfreinaMesh.hpp" />
     <ClInclude Include="source\GcLib\sfml\EventScript.hpp" />
     <ClInclude Include="source\GcLib\sfml\GLSL.hpp" />
