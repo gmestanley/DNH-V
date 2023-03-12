@@ -1,9 +1,9 @@
-#ifndef __DIRECTX_METASEQUOIAMESH__
-#define __DIRECTX_METASEQUOIAMESH__
+#ifndef __SFML_METASEQUOIAMESH__
+#define __SFML_METASEQUOIAMESH__
 
 #include "RenderObject.hpp"
 
-namespace directx {
+namespace sfml {
 
 /**********************************************************
 //MetasequoiaMesh
@@ -33,7 +33,7 @@ protected:
 private:
 	struct NormalData {
 		std::vector<int> listIndex_;
-		D3DXVECTOR3 normal_;
+		sf::Vector3f normal_;
 		virtual ~NormalData() {}
 	};
 };
@@ -66,7 +66,7 @@ protected:
 		//面の頂点
 		struct Vertex {
 			long indexVertex_; //頂点のインデックス
-			D3DXVECTOR2 tcoord_; //テクスチャの座標
+			sf::Vector2f tcoord_; //テクスチャの座標
 		};
 		long indexMaterial_; //マテリアルのインデックス
 		std::vector<Vertex> vertices_; //面の頂点
@@ -74,7 +74,7 @@ protected:
 	};
 	bool bVisible_;
 	std::wstring name_; //オブジェクト名
-	std::vector<D3DXVECTOR3> vertices_; //頂点たち
+	std::vector<sf::Vector3f> vertices_; //頂点たち
 	std::vector<Face> faces_; //面たち
 };
 

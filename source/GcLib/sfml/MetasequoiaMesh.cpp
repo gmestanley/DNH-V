@@ -1,9 +1,9 @@
 #include "MetasequoiaMesh.hpp"
-#include "DirectGraphics.hpp"
-#include "DxUtility.hpp"
+#include "SFMLGraphics.hpp"
+#include "SfUtility.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 /**********************************************************
 //MetasequoiaMesh
