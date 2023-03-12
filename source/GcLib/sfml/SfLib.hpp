@@ -7,6 +7,8 @@
 
 #include "SFMLGraphics.hpp"
 #include "SfText.hpp"
+#include "ElfreinaMesh.hpp"
+#include "MetasequoiaMesh.hpp"
 //#include "BlenderMesh.hpp"
 #include "RenderObject.hpp"
 #include "Shader.hpp"
