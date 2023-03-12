@@ -183,7 +183,7 @@ public:
 
 protected:
 	gstd::WindowBase wndGraphics_;
-	virtual LRESULT _WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam); //オーバーライド用プロシージャ
+	virtual LRESULT _WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam); //オーバーライド用プロシージャ/Procedure for overriding
 	void _PauseDrawing();
 	void _RestartDrawing();
 };
@@ -232,7 +232,7 @@ public:
 	D3DXVECTOR2 TransformCoordinateTo2D(D3DXVECTOR3 pos);
 
 private:
-	D3DXVECTOR3 pos_; //焦点
+	D3DXVECTOR3 pos_; //焦点/Focus
 	float radius_;
 	float angleAzimuth_;
 	float angleElevation_;
@@ -295,11 +295,11 @@ public:
 
 private:
 	bool bEnable_;
-	D3DXVECTOR2 pos_; //焦点
-	double ratioX_; //拡大率
+	D3DXVECTOR2 pos_; //焦点/Focus
+	double ratioX_; //拡大率/Magnification Rate
 	double ratioY_;
 	double angleZ_;
-	RECT rcClip_; //視野
+	RECT rcClip_; //視野/Field of Vision
 
 	gstd::ref_count_ptr<D3DXVECTOR2> posReset_;
 };
