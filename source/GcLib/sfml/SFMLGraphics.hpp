@@ -196,8 +196,8 @@ public:
 	DxCamera();
 	virtual ~DxCamera();
 	void Reset();
-	D3DXVECTOR3 GetCameraPosition();
-	D3DXVECTOR3 GetFocusPosition() { return pos_; }
+	sf::Vector3f GetCameraPosition();
+	sf::Vector3f GetFocusPosition() { return pos_; }
 	void SetFocus(float x, float y, float z)
 	{
 		pos_.x = x;
@@ -257,7 +257,7 @@ public:
 	bool IsEnable() { return bEnable_; }
 	void SetEnable(bool bEnable) { bEnable_ = bEnable; }
 
-	D3DXVECTOR2 GetFocusPosition() { return pos_; }
+	sf::Vector2f GetFocusPosition() { return pos_; }
 	float GetFocusX() { return pos_.x; }
 	float GetFocusY() { return pos_.y; }
 	void SetFocus(float x, float y)
@@ -265,7 +265,7 @@ public:
 		pos_.x = x;
 		pos_.y = y;
 	}
-	void SetFocus(D3DXVECTOR2 pos) { pos_ = pos; }
+	void SetFocus(sf::Vector2f pos) { pos_ = pos; }
 	void SetFocusX(float x) { pos_.x = x; }
 	void SetFocusY(float y) { pos_.y = y; }
 	double GetRatio() { return max(ratioX_, ratioY_); }
@@ -284,24 +284,24 @@ public:
 	RECT GetClip() { return rcClip_; }
 	void SetClip(RECT rect) { rcClip_ = rect; }
 
-	void SetResetFocus(gstd::ref_count_ptr<D3DXVECTOR2> pos) { posReset_ = pos; }
+	void SetResetFocus(gstd::ref_count_ptr<sf::Vector2f> pos) { posReset_ = pos; }
 	void Reset();
-	inline D3DXVECTOR2 GetLeftTopPosition();
-	inline static D3DXVECTOR2 GetLeftTopPosition(D3DXVECTOR2 focus, double ratio);
-	inline static D3DXVECTOR2 GetLeftTopPosition(D3DXVECTOR2 focus, double ratioX, double ratioY);
-	inline static D3DXVECTOR2 GetLeftTopPosition(D3DXVECTOR2 focus, double ratioX, double ratioY, RECT rcClip);
+	inline sf::Vector2f GetLeftTopPosition();
+	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratio);
+	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratioX, double ratioY);
+	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratioX, double ratioY, RECT rcClip);
 
 	D3DXMATRIX GetMatrix();
 
 private:
 	bool bEnable_;
-	D3DXVECTOR2 pos_; //焦点
-	double ratioX_; //拡大率
+	sf::Vector2f pos_; //焦点/Focus
+	double ratioX_; //拡大率/Magnification Rate
 	double ratioY_;
 	double angleZ_;
-	RECT rcClip_; //視野
+	RECT rcClip_; //視野/Field of View
 
-	gstd::ref_count_ptr<D3DXVECTOR2> posReset_;
+	gstd::ref_count_ptr<sf::Vector2f> posReset_;
 };
 
 } // namespace directx
