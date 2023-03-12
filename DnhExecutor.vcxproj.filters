@@ -179,13 +179,13 @@
     <ClCompile Include="source\GcLib\sfml\ElfreinaMesh.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\sfml\SFMLGraphics.cpp">
+    <ClCompile Include="source\GcLib\sfml\SFMGraphics.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\sfml\SFMLInput.cpp">
+    <ClCompile Include="source\GcLib\sfml\SFMInput.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\GcLib\sfml\SFMLSound.cpp">
+    <ClCompile Include="source\GcLib\sfml\SFMSound.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\GcLib\sfml\SfScript.cpp">
@@ -361,9 +361,9 @@
     <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp" />
     <ClInclude Include="source\GcLib\sfml\ElfreinaMesh.hpp" />
     <ClInclude Include="source\GcLib\sfml\GLSL.hpp" />
-    <ClInclude Include="source\GcLib\sfml\SFMLGraphics.hpp" />
-    <ClInclude Include="source\GcLib\sfml\SFMLInput.hpp" />
-    <ClInclude Include="source\GcLib\sfml\SFMLSound.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMGraphics.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMInput.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMSound.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfConstant.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfScript.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfText.hpp" />

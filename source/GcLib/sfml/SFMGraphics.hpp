@@ -1,5 +1,5 @@
-#ifndef __DIRECTX_DIRECTGRAPHICS__
-#define __DIRECTX_DIRECTGRAPHICS__
+#ifndef __SFML_SFMGRAPHICS__
+#define __SFML_SFMGRAPHICS__
 
 #include "SfConstant.hpp"
 

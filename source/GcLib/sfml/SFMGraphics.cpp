@@ -1,9 +1,9 @@
-#include "SFMLGraphics.hpp"
+#include "SFMGraphics.hpp"
 
 #include "Texture.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 /**********************************************************
 //DirectGraphicsConfig
@@ -63,10 +63,10 @@ bool DirectGraphics::Initialize(HWND hWnd, DirectGraphicsConfig& config)
 	if (thisBase_ != NULL)
 		return false;
 
-	Logger::WriteTop(L"DirectGraphics：初期化");
-	pDirect3D_ = Direct3DCreate9(D3D_SDK_VERSION);
+	Logger::WriteTop(L"SFMLGraphics：初期化");
+	/*pDirect3D_ = Direct3DCreate9(D3D_SDK_VERSION);
 	if (pDirect3D_ == NULL)
-		throw gstd::wexception(L"Direct3DCreate9失敗");
+		throw gstd::wexception(L"Direct3DCreate9失敗");*/
 
 	config_ = config;
 	wndStyleFull_ = WS_POPUP;

@@ -181,9 +181,9 @@
     <ClCompile Include="source\GcLib\gstd\Task.cpp" />
     <ClCompile Include="source\GcLib\gstd\Thread.cpp" />
     <ClCompile Include="source\GcLib\gstd\Window.cpp" />
-    <ClCompile Include="source\GcLib\sfml\SFMLGraphics.cpp" />
-    <ClCompile Include="source\GcLib\sfml\SFMLInput.cpp" />
-    <ClCompile Include="source\GcLib\sfml\SFMLSound.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SFMGraphics.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SFMInput.cpp" />
+    <ClCompile Include="source\GcLib\sfml\SFMSound.cpp" />
     <ClCompile Include="source\GcLib\sfml\SfScript.cpp" />
     <ClCompile Include="source\GcLib\sfml\SfText.cpp" />
     <ClCompile Include="source\GcLib\sfml\SfUtility.cpp" />
@@ -238,9 +238,9 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\GcLib\sfml\SFMLGraphics.hpp" />
-    <ClInclude Include="source\GcLib\sfml\SFMLInput.hpp" />
-    <ClInclude Include="source\GcLib\sfml\SFMLSound.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMGraphics.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMInput.hpp" />
+    <ClInclude Include="source\GcLib\sfml\SFMSound.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfConstant.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfScript.hpp" />
     <ClInclude Include="source\GcLib\sfml\SfText.hpp" />
