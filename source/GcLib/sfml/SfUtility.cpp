@@ -1,16 +1,16 @@
-#include "DxUtility.hpp"
+#include "SfUtility.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 /**********************************************************
 //ColorAccess
 **********************************************************/
-int ColorAccess::GetColorA(D3DCOLOR& color)
+int ColorAccess::GetColorA(Color& color)
 {
 	return gstd::BitAccess::GetByte(color, BIT_ALPHA);
 }
-D3DCOLOR& ColorAccess::SetColorA(D3DCOLOR& color, int alpha)
+Color& ColorAccess::SetColorA(Color& color, int alpha)
 {
 	if (alpha > 255)
 		alpha = 255;
@@ -18,11 +18,11 @@ D3DCOLOR& ColorAccess::SetColorA(D3DCOLOR& color, int alpha)
 		alpha = 0;
 	return gstd::BitAccess::SetByte(color, BIT_ALPHA, (unsigned char)alpha);
 }
-int ColorAccess::GetColorR(D3DCOLOR color)
+int ColorAccess::GetColorR(Color color)
 {
 	return gstd::BitAccess::GetByte(color, BIT_RED);
 }
-D3DCOLOR& ColorAccess::SetColorR(D3DCOLOR& color, int red)
+Color& ColorAccess::SetColorR(Color& color, int red)
 {
 	if (red > 255)
 		red = 255;
@@ -30,11 +30,11 @@ D3DCOLOR& ColorAccess::SetColorR(D3DCOLOR& color, int red)
 		red = 0;
 	return gstd::BitAccess::SetByte(color, BIT_RED, (unsigned char)red);
 }
-int ColorAccess::GetColorG(D3DCOLOR& color)
+int ColorAccess::GetColorG(Color& color)
 {
 	return gstd::BitAccess::GetByte(color, BIT_GREEN);
 }
-D3DCOLOR& ColorAccess::SetColorG(D3DCOLOR& color, int green)
+Color& ColorAccess::SetColorG(Color& color, int green)
 {
 	if (green > 255)
 		green = 255;
@@ -42,11 +42,11 @@ D3DCOLOR& ColorAccess::SetColorG(D3DCOLOR& color, int green)
 		green = 0;
 	return gstd::BitAccess::SetByte(color, BIT_GREEN, (unsigned char)green);
 }
-int ColorAccess::GetColorB(D3DCOLOR& color)
+int ColorAccess::GetColorB(Color& color)
 {
 	return gstd::BitAccess::GetByte(color, BIT_BLUE);
 }
-D3DCOLOR& ColorAccess::SetColorB(D3DCOLOR& color, int blue)
+Color& ColorAccess::SetColorB(Color& color, int blue)
 {
 	if (blue > 255)
 		blue = 255;
@@ -54,7 +54,7 @@ D3DCOLOR& ColorAccess::SetColorB(D3DCOLOR& color, int blue)
 		blue = 0;
 	return gstd::BitAccess::SetByte(color, BIT_BLUE, (unsigned char)blue);
 }
-D3DCOLORVALUE ColorAccess::SetColor(D3DCOLORVALUE value, D3DCOLOR color)
+ColorValue ColorAccess::SetColor(ColorValue value, Color color)
 {
 	float a = (float)GetColorA(color) / 255.0f;
 	float r = (float)GetColorR(color) / 255.0f;
@@ -66,7 +66,7 @@ D3DCOLORVALUE ColorAccess::SetColor(D3DCOLORVALUE value, D3DCOLOR color)
 	value.a *= a;
 	return value;
 }
-D3DMATERIAL9 ColorAccess::SetColor(D3DMATERIAL9 mat, D3DCOLOR color)
+D3DMATERIAL9 ColorAccess::SetColor(D3DMATERIAL9 mat, Color color)
 {
 	float a = (float)GetColorA(color) / 255.0f;
 	float r = (float)GetColorR(color) / 255.0f;
@@ -90,7 +90,7 @@ D3DMATERIAL9 ColorAccess::SetColor(D3DMATERIAL9 mat, D3DCOLOR color)
 	mat.Emissive.a *= a;
 	return mat;
 }
-D3DCOLOR& ColorAccess::ApplyAlpha(D3DCOLOR& color, double alpha)
+Color& ColorAccess::ApplyAlpha(Color& color, double alpha)
 {
 	color = SetColorA(color, GetColorA(color) * alpha);
 	color = SetColorR(color, GetColorR(color) * alpha);
@@ -98,7 +98,7 @@ D3DCOLOR& ColorAccess::ApplyAlpha(D3DCOLOR& color, double alpha)
 	color = SetColorB(color, GetColorB(color) * alpha);
 	return color;
 }
-D3DCOLOR& ColorAccess::SetColorHSV(D3DCOLOR& color, int hue, int saturation, int value)
+Color& ColorAccess::SetColorHSV(Color& color, int hue, int saturation, int value)
 {
 	float f;
 	int i, p, q, t;
@@ -154,7 +154,7 @@ D3DCOLOR& ColorAccess::SetColorHSV(D3DCOLOR& color, int hue, int saturation, int
 /**********************************************************
 //DxMath
 **********************************************************/
-D3DXVECTOR4 DxMath::VectMatMulti(D3DXVECTOR4 v, D3DMATRIX& mat)
+Vector4f DxMath::VectMatMulti(Vector4f v, D3DMATRIX& mat)
 {
 	float x, y, z;
 
@@ -169,7 +169,7 @@ D3DXVECTOR4 DxMath::VectMatMulti(D3DXVECTOR4 v, D3DMATRIX& mat)
 
 	return v;
 }
-bool DxMath::IsIntersected(D3DXVECTOR2& pos, std::vector<D3DXVECTOR2>& list)
+bool DxMath::IsIntersected(sf::Vector2f& pos, std::vector<sf::Vector2f>& list)
 {
 	if (list.size() <= 2)
 		return false;
@@ -245,7 +245,7 @@ bool DxMath::IsIntersected(DxWidthLine& line1, DxWidthLine& line2)
 {
 	return false;
 }
-bool DxMath::IsIntersected(DxLine3D& line, std::vector<DxTriangle>& triangles, std::vector<D3DXVECTOR3>& out)
+bool DxMath::IsIntersected(DxLine3D& line, std::vector<DxTriangle>& triangles, std::vector<sf::Vector3f>& out)
 {
 	out.clear();
 
@@ -254,11 +254,11 @@ bool DxMath::IsIntersected(DxLine3D& line, std::vector<DxTriangle>& triangles, s
 		D3DXPLANE plane; //3角形の面
 		D3DXPlaneFromPoints(&plane, &tri.GetPosition(0), &tri.GetPosition(1), &tri.GetPosition(2));
 
-		D3DXVECTOR3 vOut; // 面と視線の交点の座標
+		sf::Vector3f vOut; // 面と視線の交点の座標
 		if (D3DXPlaneIntersectLine(&vOut, &plane, &line.GetPosition(0), &line.GetPosition(1))) {
 			// 内外判定
-			D3DXVECTOR3 vN[3];
-			D3DXVECTOR3 vv1, vv2, vv3;
+			sf::Vector3f vN[3];
+			sf::Vector3f vv1, vv2, vv3;
 			vv1 = tri.GetPosition(0) - vOut;
 			vv2 = tri.GetPosition(1) - vOut;
 			vv3 = tri.GetPosition(2) - vOut;
