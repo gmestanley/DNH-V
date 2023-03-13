@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace directx {
+namespace sfml {
 
 static const std::string GLSL_DEFAULT_SKINED_MESH = "\
 		float4 lightDirection;  \r\n\

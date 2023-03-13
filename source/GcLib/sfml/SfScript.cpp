@@ -1,6 +1,6 @@
 #include "SfScript.hpp"
-#include "SFMLGraphics.hpp"
-#include "SFMLInput.hpp"
+#include "SimpleGraphics.hpp"
+#include "SimpleInput.hpp"
 #include "SfUtility.hpp"
 #include "ElfreinaMesh.hpp"
 #include "MetasequoiaMesh.hpp"
@@ -43,11 +43,11 @@ DxScriptRenderObject::DxScriptRenderObject()
 	bZWrite_ = false;
 	bZTest_ = false;
 	bFogEnable_ = false;
-	typeBlend_ = DirectGraphics::MODE_BLEND_ALPHA;
+	typeBlend_ = SimpleGraphics::MODE_BLEND_ALPHA;
 	modeCulling_ = D3DCULL_NONE;
-	position_ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	angle_ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	scale_ = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	position_ = sf::Vector3f(0.0f, 0.0f, 0.0f);
+	angle_ = sf::Vector3f(0.0f, 0.0f, 0.0f);
+	scale_ = sf::Vector3f(1.0f, 1.0f, 1.0f);
 }
 
 /**********************************************************
@@ -110,7 +110,7 @@ void DxScriptPrimitiveObject2D::Render()
 	RenderObjectTLX* obj = GetObjectPointer();
 
 	//フォグを解除する
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	DWORD bEnableFog = FALSE;
 	graphics->GetDevice()->GetRenderState(D3DRS_FOGENABLE, &bEnableFog);
 	if (bEnableFog)
@@ -124,7 +124,7 @@ void DxScriptPrimitiveObject2D::Render()
 }
 void DxScriptPrimitiveObject2D::SetRenderState()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	RenderObjectTLX* obj = GetObjectPointer();
 	obj->SetPosition(position_);
 	obj->SetAngle(angle_);
@@ -148,7 +148,7 @@ void DxScriptPrimitiveObject2D::SetColor(int r, int g, int b)
 	int count = obj->GetVertexCount();
 	for (int iVert = 0; iVert < count; iVert++) {
 		VERTEX_TLX* vert = obj->GetVertex(iVert);
-		D3DCOLOR& color = vert->diffuse_color;
+		Color& color = vert->diffuse_color;
 		color = ColorAccess::SetColorR(color, r);
 		color = ColorAccess::SetColorG(color, g);
 		color = ColorAccess::SetColorB(color, b);
@@ -161,7 +161,7 @@ void DxScriptPrimitiveObject2D::SetAlpha(int alpha)
 	int count = obj->GetVertexCount();
 	for (int iVert = 0; iVert < count; iVert++) {
 		VERTEX_TLX* vert = obj->GetVertex(iVert);
-		D3DCOLOR& color = vert->diffuse_color;
+		Color& color = vert->diffuse_color;
 		color = ColorAccess::SetColorA(color, alpha);
 	}
 }
@@ -185,7 +185,7 @@ void DxScriptPrimitiveObject2D::SetVertexAlpha(int index, int alpha)
 		return;
 	RenderObjectTLX* obj = GetObjectPointer();
 	VERTEX_TLX* vert = obj->GetVertex(index);
-	D3DCOLOR& color = vert->diffuse_color;
+	Color& color = vert->diffuse_color;
 	color = ColorAccess::SetColorA(color, alpha);
 }
 void DxScriptPrimitiveObject2D::SetVertexColor(int index, int r, int g, int b)
@@ -194,7 +194,7 @@ void DxScriptPrimitiveObject2D::SetVertexColor(int index, int r, int g, int b)
 		return;
 	RenderObjectTLX* obj = GetObjectPointer();
 	VERTEX_TLX* vert = obj->GetVertex(index);
-	D3DCOLOR& color = vert->diffuse_color;
+	Color& color = vert->diffuse_color;
 	color = ColorAccess::SetColorR(color, r);
 	color = ColorAccess::SetColorG(color, g);
 	color = ColorAccess::SetColorB(color, b);
@@ -204,9 +204,9 @@ void DxScriptPrimitiveObject2D::SetPermitCamera(bool bPermit)
 	RenderObjectTLX* obj = GetObjectPointer();
 	obj->SetPermitCamera(bPermit);
 }
-D3DXVECTOR3 DxScriptPrimitiveObject2D::GetVertexPosition(int index)
+sf::Vector3f DxScriptPrimitiveObject2D::GetVertexPosition(int index)
 {
-	D3DXVECTOR3 res(0, 0, 0);
+	sf::Vector3f res(0, 0, 0);
 	if (!IsValidVertexIndex(index))
 		return res;
 	RenderObjectTLX* obj = GetObjectPointer();
@@ -256,7 +256,7 @@ DxScriptSpriteListObject2D::DxScriptSpriteListObject2D()
 }
 void DxScriptSpriteListObject2D::SetColor(int r, int g, int b)
 {
-	D3DCOLOR color = GetSpritePointer()->GetColor();
+	Color color = GetSpritePointer()->GetColor();
 	color = ColorAccess::SetColorR(color, r);
 	color = ColorAccess::SetColorG(color, g);
 	color = ColorAccess::SetColorB(color, b);
@@ -264,7 +264,7 @@ void DxScriptSpriteListObject2D::SetColor(int r, int g, int b)
 }
 void DxScriptSpriteListObject2D::SetAlpha(int alpha)
 {
-	D3DCOLOR color = GetSpritePointer()->GetColor();
+	Color color = GetSpritePointer()->GetColor();
 	color = ColorAccess::SetColorA(color, alpha);
 	GetSpritePointer()->SetColor(color);
 }
@@ -281,9 +281,9 @@ void DxScriptSpriteListObject2D::CloseVertex()
 	SpriteList2D* obj = GetSpritePointer();
 	obj->CloseVertex();
 
-	position_ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	angle_ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	scale_ = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	position_ = sf::Vector3f(0.0f, 0.0f, 0.0f);
+	angle_ = sf::Vector3f(0.0f, 0.0f, 0.0f);
+	scale_ = sf::Vector3f(1.0f, 1.0f, 1.0f);
 }
 
 /**********************************************************
@@ -300,7 +300,7 @@ DxScriptPrimitiveObject3D::DxScriptPrimitiveObject3D()
 void DxScriptPrimitiveObject3D::Render()
 {
 	RenderObjectLX* obj = GetObjectPointer();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	bool bEnvFogEnable = graphics->IsFogEnable();
 	SetRenderState();
 	obj->Render();
@@ -326,7 +326,7 @@ void DxScriptPrimitiveObject3D::SetRenderState()
 		}
 	}
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	bool bEnvFogEnable = graphics->IsFogEnable();
 
 	RenderObjectLX* obj = GetObjectPointer();
@@ -353,7 +353,7 @@ void DxScriptPrimitiveObject3D::SetColor(int r, int g, int b)
 	int count = obj->GetVertexCount();
 	for (int iVert = 0; iVert < count; iVert++) {
 		VERTEX_LX* vert = obj->GetVertex(iVert);
-		D3DCOLOR& color = vert->diffuse_color;
+		Color& color = vert->diffuse_color;
 		color = ColorAccess::SetColorR(color, r);
 		color = ColorAccess::SetColorG(color, g);
 		color = ColorAccess::SetColorB(color, b);
@@ -365,7 +365,7 @@ void DxScriptPrimitiveObject3D::SetAlpha(int alpha)
 	int count = obj->GetVertexCount();
 	for (int iVert = 0; iVert < count; iVert++) {
 		VERTEX_LX* vert = obj->GetVertex(iVert);
-		D3DCOLOR& color = vert->diffuse_color;
+		Color& color = vert->diffuse_color;
 		color = ColorAccess::SetColorA(color, alpha);
 	}
 }
@@ -395,7 +395,7 @@ void DxScriptPrimitiveObject3D::SetVertexAlpha(int index, int alpha)
 		return;
 	RenderObjectLX* obj = GetObjectPointer();
 	VERTEX_LX* vert = obj->GetVertex(index);
-	D3DCOLOR& color = vert->diffuse_color;
+	Color& color = vert->diffuse_color;
 	color = ColorAccess::SetColorA(color, alpha);
 }
 void DxScriptPrimitiveObject3D::SetVertexColor(int index, int r, int g, int b)
@@ -404,14 +404,14 @@ void DxScriptPrimitiveObject3D::SetVertexColor(int index, int r, int g, int b)
 		return;
 	RenderObjectLX* obj = GetObjectPointer();
 	VERTEX_LX* vert = obj->GetVertex(index);
-	D3DCOLOR& color = vert->diffuse_color;
+	Color& color = vert->diffuse_color;
 	color = ColorAccess::SetColorR(color, r);
 	color = ColorAccess::SetColorG(color, g);
 	color = ColorAccess::SetColorB(color, b);
 }
-D3DXVECTOR3 DxScriptPrimitiveObject3D::GetVertexPosition(int index)
+sf::Vector3f DxScriptPrimitiveObject3D::GetVertexPosition(int index)
 {
-	D3DXVECTOR3 res(0, 0, 0);
+	sf::Vector3f res(0, 0, 0);
 	if (!IsValidVertexIndex(index))
 		return res;
 	RenderObjectLX* obj = GetObjectPointer();
@@ -468,7 +468,7 @@ void DxScriptTrajectoryObject3D::Render()
 }
 void DxScriptTrajectoryObject3D::SetRenderState()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	TrajectoryObject3D* obj = GetObjectPointer();
 	graphics->SetLightingEnable(false);
 	graphics->SetZWriteEnalbe(bZWrite_);
@@ -478,9 +478,9 @@ void DxScriptTrajectoryObject3D::SetRenderState()
 }
 void DxScriptTrajectoryObject3D::SetColor(int r, int g, int b)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	TrajectoryObject3D* obj = GetObjectPointer();
-	obj->SetColor(D3DCOLOR_ARGB(255, r, g, b));
+	obj->SetColor(Color_ARGB(255, r, g, b));
 }
 
 /**********************************************************
@@ -494,7 +494,7 @@ DxScriptMeshObject::DxScriptMeshObject()
 	bFogEnable_ = true;
 	time_ = 0;
 	anime_ = L"";
-	color_ = D3DCOLOR_ARGB(255, 255, 255, 255);
+	color_ = Color_ARGB(255, 255, 255, 255);
 	bCoordinate2D_ = false;
 }
 
@@ -502,7 +502,7 @@ void DxScriptMeshObject::Render()
 {
 	if (mesh_ == NULL)
 		return;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	bool bEnvFogEnable = graphics->IsFogEnable();
 	SetRenderState();
 	mesh_->Render(anime_, time_);
@@ -513,7 +513,7 @@ void DxScriptMeshObject::Render()
 }
 void DxScriptMeshObject::SetRenderState()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	bool bEnvFogEnable = graphics->IsFogEnable();
 
 	mesh_->SetPosition(position_);
@@ -564,12 +564,12 @@ DxScriptTextObject::DxScriptTextObject()
 	typeObject_ = DxScript::OBJ_TEXT;
 	bChange_ = true;
 	bAutoCenter_ = true;
-	center_ = D3DXVECTOR2(0, 0);
+	center_ = sf::Vector2f(0, 0);
 }
 void DxScriptTextObject::Render()
 {
 	//フォグを解除する
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	DWORD bEnableFog = FALSE;
 	graphics->GetDevice()->GetRenderState(D3DRS_FOGENABLE, &bEnableFog);
 	if (bEnableFog)
@@ -592,7 +592,7 @@ void DxScriptTextObject::Render()
 }
 void DxScriptTextObject::SetRenderState()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetLightingEnable(false);
 	graphics->SetZWriteEnalbe(false);
 	graphics->SetZBufferEnable(false);
@@ -622,7 +622,7 @@ std::vector<int> DxScriptTextObject::GetTextCountCU()
 }
 void DxScriptTextObject::SetAlpha(int alpha)
 {
-	D3DCOLOR color = text_.GetVertexColor();
+	Color color = text_.GetVertexColor();
 	int r = ColorAccess::GetColorR(color);
 	int g = ColorAccess::GetColorG(color);
 	int b = ColorAccess::GetColorB(color);
@@ -630,11 +630,11 @@ void DxScriptTextObject::SetAlpha(int alpha)
 	alpha = max(alpha, 0);
 	alpha = min(alpha, 255);
 
-	SetVertexColor(D3DCOLOR_ARGB(alpha, r, g, b));
+	SetVertexColor(Color_ARGB(alpha, r, g, b));
 }
 void DxScriptTextObject::SetColor(int r, int g, int b)
 {
-	D3DCOLOR color = text_.GetVertexColor();
+	Color color = text_.GetVertexColor();
 	int a = ColorAccess::GetColorA(color);
 	r = max(r, 0);
 	r = min(r, 255);
@@ -643,7 +643,7 @@ void DxScriptTextObject::SetColor(int r, int g, int b)
 	b = max(b, 0);
 	b = min(b, 255);
 
-	SetVertexColor(D3DCOLOR_ARGB(a, r, g, b));
+	SetVertexColor(Color_ARGB(a, r, g, b));
 }
 int DxScriptTextObject::GetTotalWidth()
 {
@@ -897,7 +897,7 @@ DxScriptObjectManager::DxScriptObjectManager()
 	totalObjectCreateCount_ = 0;
 
 	bFogEnable_ = false;
-	fogColor_ = D3DCOLOR_ARGB(255, 255, 255, 255);
+	fogColor_ = Color_ARGB(255, 255, 255, 255);
 	fogStart_ = 0;
 	fogEnd_ = 0;
 }
@@ -1094,7 +1094,7 @@ void DxScriptObjectManager::RenderObject()
 {
 	PrepareRenderObject();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetVertexFog(bFogEnable_, fogColor_, fogStart_, fogEnd_);
 
 	for (int iPri = 0; iPri < objRender_.size(); iPri++) {
@@ -1165,7 +1165,7 @@ void DxScriptObjectManager::DeleteReservedSound(gstd::ref_count_ptr<SoundPlayer>
 	std::wstring path = player->GetPath();
 	mapReservedSound_.erase(path);
 }
-void DxScriptObjectManager::SetFogParam(bool bEnable, D3DCOLOR fogColor, float start, float end)
+void DxScriptObjectManager::SetFogParam(bool bEnable, Color fogColor, float start, float end)
 {
 	bFogEnable_ = bEnable;
 	fogColor_ = fogColor;
@@ -1457,14 +1457,14 @@ function const dxFunction[] = {
 	{ "OBJ_FILE_TEXT", constant<DxScript::OBJ_FILE_TEXT>::func, 0 },
 	{ "OBJ_FILE_BINARY", constant<DxScript::OBJ_FILE_BINARY>::func, 0 },
 
-	{ "BLEND_NONE", constant<DirectGraphics::MODE_BLEND_NONE>::func, 0 },
-	{ "BLEND_ALPHA", constant<DirectGraphics::MODE_BLEND_ALPHA>::func, 0 },
-	{ "BLEND_ADD_RGB", constant<DirectGraphics::MODE_BLEND_ADD_RGB>::func, 0 },
-	{ "BLEND_ADD_ARGB", constant<DirectGraphics::MODE_BLEND_ADD_ARGB>::func, 0 },
-	{ "BLEND_MULTIPLY", constant<DirectGraphics::MODE_BLEND_MULTIPLY>::func, 0 },
-	{ "BLEND_SUBTRACT", constant<DirectGraphics::MODE_BLEND_SUBTRACT>::func, 0 },
-	{ "BLEND_SHADOW", constant<DirectGraphics::MODE_BLEND_SHADOW>::func, 0 },
-	{ "BLEND_INV_DESTRGB", constant<DirectGraphics::MODE_BLEND_INV_DESTRGB>::func, 0 },
+	{ "BLEND_NONE", constant<SimpleGraphics::MODE_BLEND_NONE>::func, 0 },
+	{ "BLEND_ALPHA", constant<SimpleGraphics::MODE_BLEND_ALPHA>::func, 0 },
+	{ "BLEND_ADD_RGB", constant<SimpleGraphics::MODE_BLEND_ADD_RGB>::func, 0 },
+	{ "BLEND_ADD_ARGB", constant<SimpleGraphics::MODE_BLEND_ADD_ARGB>::func, 0 },
+	{ "BLEND_MULTIPLY", constant<SimpleGraphics::MODE_BLEND_MULTIPLY>::func, 0 },
+	{ "BLEND_SUBTRACT", constant<SimpleGraphics::MODE_BLEND_SUBTRACT>::func, 0 },
+	{ "BLEND_SHADOW", constant<SimpleGraphics::MODE_BLEND_SHADOW>::func, 0 },
+	{ "BLEND_INV_DESTRGB", constant<SimpleGraphics::MODE_BLEND_INV_DESTRGB>::func, 0 },
 	{ "CULL_NONE", constant<D3DCULL_NONE>::func, 0 },
 	{ "CULL_CW", constant<D3DCULL_CW>::func, 0 },
 	{ "CULL_CCW", constant<D3DCULL_CCW>::func, 0 },
@@ -1496,7 +1496,7 @@ function const dxFunction[] = {
 	{ "ENDIAN_LITTLE", constant<ByteOrder::ENDIAN_LITTLE>::func, 0 },
 	{ "ENDIAN_BIG", constant<ByteOrder::ENDIAN_BIG>::func, 0 },
 	
-	//DirectInput
+	//SimpleInput
 	{ "KEY_FREE", constant<KEY_FREE>::func, 0 },
 	{ "KEY_PUSH", constant<KEY_PUSH>::func, 0 },
 	{ "KEY_PULL", constant<KEY_PULL>::func, 0 },
@@ -1787,39 +1787,39 @@ value DxScript::Func_StopSound(script_machine* machine, int argc, value const* a
 //Dx関数：キー系
 gstd::value DxScript::Func_GetKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectInput* input = DirectInput::GetBase();
+	SimpleInput* input = SimpleInput::GetBase();
 	int key = (int)argv[0].as_real();
 	double res = input->GetKeyState(key);
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_GetMouseX(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetMousePosition().x;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_GetMouseY(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetMousePosition().y;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_GetMouseMoveZ(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectInput* input = DirectInput::GetBase();
+	SimpleInput* input = SimpleInput::GetBase();
 	double res = input->GetMouseMoveZ();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_GetMouseState(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectInput* input = DirectInput::GetBase();
+	SimpleInput* input = SimpleInput::GetBase();
 	double res = input->GetMouseState(argv[0].as_real());
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_GetVirtualKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	double res = KEY_FREE;
-	VirtualKeyManager* input = dynamic_cast<VirtualKeyManager*>(DirectInput::GetBase());
+	VirtualKeyManager* input = dynamic_cast<VirtualKeyManager*>(SimpleInput::GetBase());
 	if (input != NULL) {
 		int id = (int)(argv[0].as_real());
 		res = input->GetVirtualKeyState(id);
@@ -1828,7 +1828,7 @@ gstd::value DxScript::Func_GetVirtualKeyState(gstd::script_machine* machine, int
 }
 gstd::value DxScript::Func_SetVirtualKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	VirtualKeyManager* input = dynamic_cast<VirtualKeyManager*>(DirectInput::GetBase());
+	VirtualKeyManager* input = dynamic_cast<VirtualKeyManager*>(SimpleInput::GetBase());
 	if (input != NULL) {
 		int id = (int)(argv[0].as_real());
 		int state = (int)(argv[1].as_real());
@@ -1842,19 +1842,19 @@ gstd::value DxScript::Func_SetVirtualKeyState(gstd::script_machine* machine, int
 //Dx関数：描画系
 gstd::value DxScript::Func_GetScreenWidth(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int res = graphics->GetScreenWidth();
 	return value(machine->get_engine()->get_real_type(), (double)res);
 }
 gstd::value DxScript::Func_GetScreenHeight(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int res = graphics->GetScreenHeight();
 	return value(machine->get_engine()->get_real_type(), (double)res);
 }
 value DxScript::Func_SetTextureRenderMethod(script_machine* machine, int argc, value const* argv)
 {	
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int newvalue = (int)(argv[0].as_real());
 	graphics->SetDirectXRenderMethod(newvalue);
 	
@@ -1950,7 +1950,7 @@ gstd::value DxScript::Func_SetFogParam(gstd::script_machine* machine, int argc, 
 	int r = (int)argv[2].as_real();
 	int g = (int)argv[3].as_real();
 	int b = (int)argv[4].as_real();
-	D3DCOLOR color = D3DCOLOR_ARGB(255, r, g, b);
+	Color color = Color_ARGB(255, r, g, b);
 	script->GetObjectManager()->SetFogParam(true, color, start, end);
 	return value();
 }
@@ -1982,7 +1982,7 @@ gstd::value DxScript::Func_SetRenderTarget(gstd::script_machine* machine, int ar
 	if (texture == NULL)
 		return value();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<Texture> current = graphics->GetRenderTarget();
 	graphics->SetRenderTarget(texture);
 	graphics->ClearRenderTarget();
@@ -2002,7 +2002,7 @@ gstd::value DxScript::Func_SaveRenderedTextureA1(gstd::script_machine* machine, 
 	path = PathProperty::GetUnique(path);
 
 	TextureManager* textureManager = TextureManager::GetBase();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 
 	ref_count_ptr<Texture> texture = script->_GetTexture(nameTexture);
 	if (texture == NULL)
@@ -2036,7 +2036,7 @@ gstd::value DxScript::Func_SaveRenderedTextureA2(gstd::script_machine* machine, 
 	int rcBottom = (int)argv[5].as_real();
 
 	TextureManager* textureManager = TextureManager::GetBase();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 
 	ref_count_ptr<Texture> texture = script->_GetTexture(nameTexture);
 	if (texture == NULL)
@@ -2063,7 +2063,7 @@ gstd::value DxScript::Func_IsPixelShaderSupported(gstd::script_machine* machine,
 	int major = (int)(argv[0].as_real() + 0.5);
 	int minor = (int)(argv[1].as_real() + 0.5);
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	bool res = graphics->IsPixelShaderSupported(major, minor);
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
@@ -2138,21 +2138,21 @@ gstd::value DxScript::Func_ResetShaderI(gstd::script_machine* machine, int argc,
 value DxScript::Func_SetCameraFocusX(script_machine* machine, int argc, value const* argv)
 {
 	float x = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetFocusX(x);
 	return value();
 }
 value DxScript::Func_SetCameraFocusY(script_machine* machine, int argc, value const* argv)
 {
 	float y = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetFocusY(y);
 	return value();
 }
 value DxScript::Func_SetCameraFocusZ(script_machine* machine, int argc, value const* argv)
 {
 	float z = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetFocusZ(z);
 	return value();
 }
@@ -2161,7 +2161,7 @@ value DxScript::Func_SetCameraFocusXYZ(script_machine* machine, int argc, value 
 	float x = argv[0].as_real();
 	float y = argv[1].as_real();
 	float z = argv[2].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetFocusX(x);
 	graphics->GetCamera()->SetFocusY(y);
 	graphics->GetCamera()->SetFocusZ(z);
@@ -2170,120 +2170,120 @@ value DxScript::Func_SetCameraFocusXYZ(script_machine* machine, int argc, value 
 value DxScript::Func_SetCameraRadius(script_machine* machine, int argc, value const* argv)
 {
 	float r = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetRadius(r);
 	return value();
 }
 value DxScript::Func_SetCameraAzimuthAngle(script_machine* machine, int argc, value const* argv)
 {
 	float angle = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetAzimuthAngle(angle);
 	return value();
 }
 value DxScript::Func_SetCameraElevationAngle(script_machine* machine, int argc, value const* argv)
 {
 	float angle = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetElevationAngle(angle);
 	return value();
 }
 value DxScript::Func_SetCameraYaw(script_machine* machine, int argc, value const* argv)
 {
 	float angle = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetYaw(angle);
 	return value();
 }
 value DxScript::Func_SetCameraPitch(script_machine* machine, int argc, value const* argv)
 {
 	float angle = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetPitch(angle);
 	return value();
 }
 value DxScript::Func_SetCameraRoll(script_machine* machine, int argc, value const* argv)
 {
 	float angle = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera()->SetRoll(angle);
 	return value();
 }
 value DxScript::Func_GetCameraX(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetCameraPosition().x;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraY(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetCameraPosition().y;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraZ(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetCameraPosition().z;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraFocusX(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetFocusPosition().x;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraFocusY(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetFocusPosition().y;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraFocusZ(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetFocusPosition().z;
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraRadius(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetRadius();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraAzimuthAngle(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetAzimuthAngle();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraElevationAngle(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetElevationAngle();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraYaw(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetYaw();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraPitch(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetPitch();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_GetCameraRoll(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera()->GetRoll();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 value DxScript::Func_SetCameraPerspectiveClip(script_machine* machine, int argc, value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double clipNear = argv[0].as_real();
 	double clipFar = argv[1].as_real();
 	int width = graphics->GetScreenWidth();
@@ -2297,84 +2297,84 @@ value DxScript::Func_SetCameraPerspectiveClip(script_machine* machine, int argc,
 gstd::value DxScript::Func_Set2DCameraFocusX(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	float x = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->SetFocusX(x);
 	return gstd::value();
 }
 gstd::value DxScript::Func_Set2DCameraFocusY(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	float y = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->SetFocusY(y);
 	return gstd::value();
 }
 gstd::value DxScript::Func_Set2DCameraAngleZ(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	float angle = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->SetAngleZ(angle);
 	return gstd::value();
 }
 gstd::value DxScript::Func_Set2DCameraRatio(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	float ratio = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->SetRatio(ratio);
 	return gstd::value();
 }
 gstd::value DxScript::Func_Set2DCameraRatioX(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	float ratio = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->SetRatioX(ratio);
 	return gstd::value();
 }
 gstd::value DxScript::Func_Set2DCameraRatioY(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	float ratio = argv[0].as_real();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->SetRatioY(ratio);
 	return gstd::value();
 }
 gstd::value DxScript::Func_Reset2DCamera(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->GetCamera2D()->Reset();
 	return gstd::value();
 }
 gstd::value DxScript::Func_Get2DCameraX(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera2D()->GetFocusX();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_Get2DCameraY(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera2D()->GetFocusY();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_Get2DCameraAngleZ(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera2D()->GetAngleZ();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_Get2DCameraRatio(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera2D()->GetRatio();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_Get2DCameraRatioX(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera2D()->GetRatioX();
 	return value(machine->get_engine()->get_real_type(), res);
 }
 gstd::value DxScript::Func_Get2DCameraRatioY(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	double res = graphics->GetCamera2D()->GetRatioY();
 	return value(machine->get_engine()->get_real_type(), res);
 }
@@ -2410,11 +2410,11 @@ gstd::value DxScript::Func_GetObject2dPosition(gstd::script_machine* machine, in
 	if (obj == NULL)
 		script->RaiseError(L"error invalid object");
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	gstd::ref_count_ptr<DxCamera> camera = graphics->GetCamera();
-	D3DXVECTOR3 pos = obj->GetPosition();
+	sf::Vector3f pos = obj->GetPosition();
 
-	D3DXVECTOR2 point = camera->TransformCoordinateTo2D(pos);
+	sf::Vector2f point = camera->TransformCoordinateTo2D(pos);
 	std::vector<double> listRes;
 	listRes.push_back(point.x);
 	listRes.push_back(point.y);
@@ -2429,11 +2429,11 @@ gstd::value DxScript::Func_Get2dPosition(gstd::script_machine* machine, int argc
 	double py = argv[1].as_real();
 	double pz = argv[2].as_real();
 
-	D3DXVECTOR3 pos(px, py, pz);
+	sf::Vector3f pos(px, py, pz);
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	gstd::ref_count_ptr<DxCamera> camera = graphics->GetCamera();
-	D3DXVECTOR2 point = camera->TransformCoordinateTo2D(pos);
+	sf::Vector2f point = camera->TransformCoordinateTo2D(pos);
 	std::vector<double> listRes;
 	listRes.push_back(point.x);
 	listRes.push_back(point.y);
@@ -2766,7 +2766,7 @@ value DxScript::Func_ObjRender_SetColorHSV(script_machine* machine, int argc, va
 	int sat = (int)argv[2].as_real();
 	int val = (int)argv[3].as_real();
 
-	D3DCOLOR color = D3DCOLOR_ARGB(255, 255, 255, 255);
+	Color color = Color_ARGB(255, 255, 255, 255);
 	color = ColorAccess::SetColorHSV(color, hue, sat, val);
 
 	int red = ColorAccess::GetColorR(color);
@@ -3144,7 +3144,7 @@ gstd::value DxScript::Func_ObjShader_SetVector(gstd::script_machine* machine, in
 		return value();
 
 	std::string name = StringUtility::ConvertWideToMulti(argv[1].as_string());
-	D3DXVECTOR4 vect4;
+	Vector4f vect4;
 	vect4.x = (float)argv[2].as_real();
 	vect4.y = (float)argv[3].as_real();
 	vect4.z = (float)argv[4].as_real();
@@ -3365,7 +3365,7 @@ value DxScript::Func_ObjPrimitive_GetVertexPosition(script_machine* machine, int
 	int id = (int)argv[0].as_real();
 	int index = (int)argv[1].as_real();
 
-	D3DXVECTOR3 pos = D3DXVECTOR3(0, 0, 0);
+	sf::Vector3f pos = sf::Vector3f(0, 0, 0);
 	DxScriptPrimitiveObject* obj = dynamic_cast<DxScriptPrimitiveObject*>(script->GetObjectPointer(id));
 	if (obj != NULL)
 		pos = obj->GetVertexPosition(index);
@@ -3580,8 +3580,8 @@ value DxScript::Func_ObjTrajectory3D_SetInitialPoint(script_machine* machine, in
 	if (obj == NULL)
 		return value();
 
-	D3DXVECTOR3 pos1(argv[1].as_real(), argv[2].as_real(), argv[3].as_real());
-	D3DXVECTOR3 pos2(argv[4].as_real(), argv[5].as_real(), argv[6].as_real());
+	sf::Vector3f pos1(argv[1].as_real(), argv[2].as_real(), argv[3].as_real());
+	sf::Vector3f pos2(argv[4].as_real(), argv[5].as_real(), argv[6].as_real());
 	obj->GetObjectPointer()->SetInitialLine(pos1, pos2);
 	return value();
 }
@@ -3678,8 +3678,8 @@ value DxScript::Func_ObjMesh_SetAnimation(script_machine* machine, int argc, val
 	obj->time_ = (int)argv[2].as_real();
 
 	//	D3DXMATRIX mat = obj->mesh_->GetAnimationMatrix(anime, obj->time_, "悠久前部");
-	//	D3DXVECTOR3 pos;
-	//	D3DXVec3TransformCoord(&pos, &D3DXVECTOR3(0,0,0), &mat);
+	//	sf::Vector3f pos;
+	//	D3DXVec3TransformCoord(&pos, &sf::Vector3f(0,0,0), &mat);
 	return value();
 }
 gstd::value DxScript::Func_ObjMesh_SetCoordinate2D(gstd::script_machine* machine, int argc, gstd::value const* argv)
@@ -3879,7 +3879,7 @@ value DxScript::Func_ObjText_SetVertexColor(script_machine* machine, int argc, v
 	int r = (int)argv[2].as_real();
 	int g = (int)argv[3].as_real();
 	int b = (int)argv[4].as_real();
-	obj->SetVertexColor(D3DCOLOR_ARGB(a, r, g, b));
+	obj->SetVertexColor(Color_ARGB(a, r, g, b));
 	return value();
 }
 gstd::value DxScript::Func_ObjText_SetTransCenter(gstd::script_machine* machine, int argc, gstd::value const* argv)
@@ -3892,7 +3892,7 @@ gstd::value DxScript::Func_ObjText_SetTransCenter(gstd::script_machine* machine,
 	double centerX = argv[1].as_real();
 	double centerY = argv[2].as_real();
 
-	obj->center_ = D3DXVECTOR2(centerX, centerY);
+	obj->center_ = sf::Vector2f(centerX, centerY);
 	return value();
 }
 gstd::value DxScript::Func_ObjText_SetAutoTransCenter(gstd::script_machine* machine, int argc, gstd::value const* argv)

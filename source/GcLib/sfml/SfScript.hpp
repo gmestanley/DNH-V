@@ -1,13 +1,13 @@
-#ifndef __DIRECTX_DXSCRIPT__
-#define __DIRECTX_DXSCRIPT__
+#ifndef __SFML_SFSCRIPT__
+#define __SFML_SFSCRIPT__
 
-#include "DirectSound.hpp"
-#include "DxConstant.hpp"
-#include "DxText.hpp"
+#include "SimpleSound.hpp"
+#include "SfConstant.hpp"
+#include "SfText.hpp"
 #include "RenderObject.hpp"
 #include "Texture.hpp"
 
-namespace directx {
+namespace sfml {
 
 class DxScript;
 class DxScriptObjectManager;
@@ -79,12 +79,12 @@ public:
 	virtual void SetColor(int r, int g, int b) = 0;
 	virtual void SetAlpha(int alpha) = 0;
 
-	D3DXVECTOR3 GetPosition() { return position_; }
-	D3DXVECTOR3 GetAngle() { return angle_; }
-	D3DXVECTOR3 GetScale() { return scale_; }
-	void SetPosition(D3DXVECTOR3 pos) { position_ = pos; }
-	void SetAngle(D3DXVECTOR3 angle) { angle_ = angle; }
-	void SetScale(D3DXVECTOR3 scale) { scale_ = scale; }
+	sf::Vector3f GetPosition() { return position_; }
+	sf::Vector3f GetAngle() { return angle_; }
+	sf::Vector3f GetScale() { return scale_; }
+	void SetPosition(sf::Vector3f pos) { position_ = pos; }
+	void SetAngle(sf::Vector3f angle) { angle_ = angle; }
+	void SetScale(sf::Vector3f scale) { scale_ = scale; }
 
 	int GetBlendType() { return typeBlend_; }
 	void SetRelativeObject(int id, std::wstring bone)
@@ -104,9 +104,9 @@ protected:
 	bool bFogEnable_;
 	int modeCulling_;
 
-	D3DXVECTOR3 position_; //移動先座標
-	D3DXVECTOR3 angle_; //回転角度
-	D3DXVECTOR3 scale_; //拡大率
+	sf::Vector3f position_; //移動先座標
+	sf::Vector3f angle_; //回転角度
+	sf::Vector3f scale_; //拡大率
 	int typeBlend_;
 
 	int idRelative_;
@@ -148,7 +148,7 @@ public:
 	virtual void SetVertexUV(int index, float u, float v) = 0;
 	virtual void SetVertexAlpha(int index, int alpha) = 0;
 	virtual void SetVertexColor(int index, int r, int g, int b) = 0;
-	virtual D3DXVECTOR3 GetVertexPosition(int index) = 0;
+	virtual sf::Vector3f GetVertexPosition(int index) = 0;
 
 	virtual gstd::ref_count_ptr<Shader> GetShader();
 	virtual void SetShader(gstd::ref_count_ptr<Shader> shader);
@@ -174,7 +174,7 @@ public:
 	virtual void SetVertexAlpha(int index, int alpha);
 	virtual void SetVertexColor(int index, int r, int g, int b);
 	void SetPermitCamera(bool bPermit);
-	virtual D3DXVECTOR3 GetVertexPosition(int index);
+	virtual sf::Vector3f GetVertexPosition(int index);
 };
 
 /**********************************************************
@@ -218,7 +218,7 @@ public:
 	virtual void SetVertexUV(int index, float u, float v);
 	virtual void SetVertexAlpha(int index, int alpha);
 	virtual void SetVertexColor(int index, int r, int g, int b);
-	virtual D3DXVECTOR3 GetVertexPosition(int index);
+	virtual sf::Vector3f GetVertexPosition(int index);
 };
 /**********************************************************
 //DxScriptSpriteObject3D
@@ -247,7 +247,7 @@ public:
 	virtual void SetVertexUV(int index, float u, float v){};
 	virtual void SetVertexAlpha(int index, int alpha){};
 	virtual void SetVertexColor(int index, int r, int g, int b){};
-	virtual D3DXVECTOR3 GetVertexPosition(int index) { return D3DXVECTOR3(0, 0, 0); }
+	virtual sf::Vector3f GetVertexPosition(int index) { return sf::Vector3f(0, 0, 0); }
 };
 
 /**********************************************************
@@ -318,7 +318,7 @@ protected:
 	gstd::ref_count_ptr<DxMesh> mesh_;
 	int time_;
 	std::wstring anime_;
-	D3DCOLOR color_;
+	Color color_;
 	bool bCoordinate2D_;
 	void _UpdateMeshState();
 };
@@ -368,12 +368,12 @@ public:
 
 	void SetFontColorTop(int r, int g, int b)
 	{
-		text_.SetFontColorTop(D3DCOLOR_ARGB(255, r, g, b));
+		text_.SetFontColorTop(Color_ARGB(255, r, g, b));
 		bChange_ = true;
 	}
 	void SetFontColorBottom(int r, int g, int b)
 	{
-		text_.SetFontColorBottom(D3DCOLOR_ARGB(255, r, g, b));
+		text_.SetFontColorBottom(Color_ARGB(255, r, g, b));
 		bChange_ = true;
 	}
 	void SetFontBorderWidth(int width)
@@ -388,7 +388,7 @@ public:
 	}
 	void SetFontBorderColor(int r, int g, int b)
 	{
-		text_.SetFontBorderColor(D3DCOLOR_ARGB(255, r, g, b));
+		text_.SetFontBorderColor(Color_ARGB(255, r, g, b));
 		bChange_ = true;
 	}
 
@@ -427,7 +427,7 @@ public:
 
 	virtual void SetAlpha(int alpha);
 	virtual void SetColor(int r, int g, int b);
-	void SetVertexColor(D3DCOLOR color) { text_.SetVertexColor(color); }
+	void SetVertexColor(Color color) { text_.SetVertexColor(color); }
 	virtual void SetShader(gstd::ref_count_ptr<Shader> shader);
 
 protected:
@@ -435,7 +435,7 @@ protected:
 	DxText text_;
 	gstd::ref_count_ptr<DxTextInfo> textInfo_;
 	gstd::ref_count_ptr<DxTextRenderObject> objRender_;
-	D3DXVECTOR2 center_; //座標変換の中心
+	sf::Vector2f center_; //座標変換の中心
 	bool bAutoCenter_;
 
 	void _UpdateRenderer();
@@ -578,11 +578,11 @@ public:
 
 	void ReserveSound(gstd::ref_count_ptr<SoundPlayer> player, SoundPlayer::PlayStyle& style);
 	void DeleteReservedSound(gstd::ref_count_ptr<SoundPlayer> player);
-	void SetFogParam(bool bEnable, D3DCOLOR fogColor, float start, float end);
+	void SetFogParam(bool bEnable, Color fogColor, float start, float end);
 	_int64 GetTotalObjectCreateCount() { return totalObjectCreateCount_; }
 
 	bool IsFogEneble() { return bFogEnable_; }
-	D3DCOLOR GetFogColor() { return fogColor_; }
+	Color GetFogColor() { return fogColor_; }
 	float GetFogStart() { return fogStart_; }
 	float GetFogEnd() { return fogEnd_; }
 
@@ -595,7 +595,7 @@ protected:
 
 	//フォグ
 	bool bFogEnable_;
-	D3DCOLOR fogColor_;
+	Color fogColor_;
 	float fogStart_;
 	float fogEnd_;
 

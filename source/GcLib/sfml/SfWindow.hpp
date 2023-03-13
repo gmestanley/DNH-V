@@ -1,11 +1,11 @@
-#ifndef __DIRECTX_DXWINDOW__
-#define __DIRECTX_DXWINDOW__
+#ifndef __SFML_SFWINDOW__
+#define __SFML_SFWINDOW__
 
-#include "DxText.hpp"
-#include "DxUtility.hpp"
+#include "SfText.hpp"
+#include "SfUtility.hpp"
 #include "RenderObject.hpp"
 
-namespace directx {
+namespace sfml {
 
 class DxWindowManager;
 class DxWindow;
@@ -126,7 +126,7 @@ protected:
 	DxWindow* windowParent_; //親ウィンドウ
 	std::list<gstd::ref_count_ptr<DxWindow>> listWindowChild_; //子ウィンドウ
 
-	D3DCOLOR color_;
+	Color color_;
 	gstd::ref_count_ptr<Sprite2D> spriteFrame_;
 	int typeRenderFrame_;
 

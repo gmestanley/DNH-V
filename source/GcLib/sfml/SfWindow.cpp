@@ -1,9 +1,9 @@
-#include "DxWindow.hpp"
-#include "DirectGraphics.hpp"
-#include "DirectInput.hpp"
+#include "SfWindow.hpp"
+#include "SimpleGraphics.hpp"
+#include "SimpleInput.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 /**********************************************************
 //DxWindowManager
@@ -90,11 +90,11 @@ void DxWindowManager::Work()
 }
 void DxWindowManager::Render()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetLightingEnable(false);
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 	std::list<ref_count_ptr<DxWindow>>::reverse_iterator itr;
 	for (itr = listWindow_.rbegin(); itr != listWindow_.rend(); itr++) {
 		if ((*itr) == NULL)
@@ -108,11 +108,11 @@ void DxWindowManager::Render()
 }
 gstd::ref_count_ptr<DxWindow> DxWindowManager::GetIntersectedWindow()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	if (graphics == NULL)
 		return NULL;
 
-	DirectInput* input = DirectInput::GetBase();
+	SimpleInput* input = SimpleInput::GetBase();
 	if (input == NULL)
 		return NULL;
 
@@ -176,7 +176,7 @@ gstd::ref_count_ptr<DxWindow> DxWindowManager::GetIntersectedWindow(POINT& pos, 
 }
 void DxWindowManager::_DispatchMouseEvent()
 {
-	DirectInput* input = DirectInput::GetBase();
+	SimpleInput* input = SimpleInput::GetBase();
 	if (input == NULL)
 		return;
 
@@ -317,7 +317,7 @@ DxWindow::DxWindow()
 	bWindowEnable_ = true;
 	bWindowVisible_ = true;
 	SetRect(&rectWindow_, 0, 0, 0, 0);
-	color_ = D3DCOLOR_ARGB(255, 255, 255, 255);
+	color_ = Color_ARGB(255, 255, 255, 255);
 
 	//空いているWindowID取得
 	listWndId_.sort();
@@ -331,7 +331,7 @@ DxWindow::DxWindow()
 	idWindow_ = idFree;
 	listWndId_.push_back(idFree);
 
-	typeRenderFrame_ = DirectGraphics::MODE_BLEND_ALPHA;
+	typeRenderFrame_ = SimpleGraphics::MODE_BLEND_ALPHA;
 }
 DxWindow::~DxWindow()
 {
@@ -429,7 +429,7 @@ void DxWindow::_RenderFrame()
 	if (spriteFrame_ == NULL)
 		return;
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetBlendMode(typeRenderFrame_);
 	int alphaWindow = GetAbsoluteAlpha();
 	int alphaSprite = ColorAccess::GetColorA(spriteFrame_->GetVertex(0)->diffuse_color);
@@ -441,7 +441,7 @@ void DxWindow::_RenderFrame()
 	spriteFrame_->Render();
 	spriteFrame_->SetAlpha(alphaSprite);
 
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 }
 bool DxWindow::IsIntersected(POINT pos)
 {
@@ -578,15 +578,15 @@ void DxButton::RenderIntersectedFrame()
 		return;
 	if (!IsWindowEnable())
 		return;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ADD_RGB);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ADD_RGB);
 	Sprite2D sprite;
 	int alpha = 64;
 	RECT_D rcSrc = { 1, 1, 2, 2 };
 	RECT_D rcDest = GetRectD(GetAbsoluteWindowRect());
-	sprite.SetVertex(rcSrc, rcDest, D3DCOLOR_ARGB(alpha, alpha, alpha, alpha));
+	sprite.SetVertex(rcSrc, rcDest, Color_ARGB(alpha, alpha, alpha, alpha));
 	sprite.Render();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 }
 void DxButton::RenderSelectedFrame()
 {
@@ -594,15 +594,15 @@ void DxButton::RenderSelectedFrame()
 		return;
 	if (!IsWindowEnable())
 		return;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ADD_RGB);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ADD_RGB);
 	Sprite2D sprite;
 	int alpha = 64;
 	RECT_D rcSrc = { 1, 1, 2, 2 };
 	RECT_D rcDest = GetRectD(GetAbsoluteWindowRect());
-	sprite.SetVertex(rcSrc, rcDest, D3DCOLOR_ARGB(alpha, alpha, alpha, alpha));
+	sprite.SetVertex(rcSrc, rcDest, Color_ARGB(alpha, alpha, alpha, alpha));
 	sprite.Render();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 }
 
 /**********************************************************
@@ -626,7 +626,7 @@ void DxMessageBox::SetButton(std::vector<gstd::ref_count_ptr<DxButton>> listButt
 }
 void DxMessageBox::UpdateWindowRect()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int scrnWidth = graphics->GetScreenWidth() + ::GetSystemMetrics(SM_CXEDGE) + 10;
 	int scrnHeight = graphics->GetScreenHeight() + ::GetSystemMetrics(SM_CYEDGE) + 10;
 

@@ -1,11 +1,11 @@
-#ifndef __DIRECTX_DXTEXT__
-#define __DIRECTX_DXTEXT__
+#ifndef __SFML_SFTEXT__
+#define __SFML_SFTEXT__
 
-#include "DxConstant.hpp"
+#include "SfConstant.hpp"
 #include "RenderObject.hpp"
 #include "Texture.hpp"
 
-namespace directx {
+namespace sfml {
 
 class DxChar;
 class DxCharCache;
@@ -32,24 +32,24 @@ public:
 	virtual ~DxFont();
 	void SetLogFont(LOGFONT& font) { info_ = font; }
 	LOGFONT GetLogFont() { return info_; }
-	void SetTopColor(D3DCOLOR color) { colorTop_ = color; }
-	D3DCOLOR GetTopColor() { return colorTop_; }
-	void SetBottomColor(D3DCOLOR color) { colorBottom_ = color; }
-	D3DCOLOR GetBottomColor() { return colorBottom_; }
+	void SetTopColor(Color color) { colorTop_ = color; }
+	Color GetTopColor() { return colorTop_; }
+	void SetBottomColor(Color color) { colorBottom_ = color; }
+	Color GetBottomColor() { return colorBottom_; }
 	void SetBorderType(int type) { typeBorder_ = type; }
 	int GetBorderType() { return typeBorder_; }
 	void SetBorderWidth(int width) { widthBorder_ = width; }
 	int GetBorderWidth() { return widthBorder_; }
-	void SetBorderColor(D3DCOLOR color) { colorBorder_ = color; }
-	D3DCOLOR GetBorderColor() { return colorBorder_; }
+	void SetBorderColor(Color color) { colorBorder_ = color; }
+	Color GetBorderColor() { return colorBorder_; }
 
 protected:
 	LOGFONT info_; //フォント種別
-	D3DCOLOR colorTop_;
-	D3DCOLOR colorBottom_;
+	Color colorTop_;
+	Color colorBottom_;
 	int typeBorder_; //縁取り
 	int widthBorder_;
-	D3DCOLOR colorBorder_; //縁取り色
+	Color colorBorder_; //縁取り色
 };
 
 /**********************************************************
@@ -402,11 +402,11 @@ public:
 		position_.x = x;
 		position_.y = y;
 	}
-	void SetVertexColor(D3DCOLOR color) { color_ = color; }
+	void SetVertexColor(Color color) { color_ = color; }
 
-	void SetAngle(D3DXVECTOR3& angle) { angle_ = angle; }
-	void SetScale(D3DXVECTOR3& scale) { scale_ = scale; }
-	void SetTransCenter(D3DXVECTOR2& center) { center_ = center; }
+	void SetAngle(sf::Vector3f& angle) { angle_ = angle; }
+	void SetScale(sf::Vector3f& scale) { scale_ = scale; }
+	void SetTransCenter(sf::Vector2f& center) { center_ = center; }
 	void SetAutoCenter(bool bAuto) { bAutoCenter_ = bAuto; }
 	void SetPermitCamera(bool bPermit) { bPermitCamera_ = bPermit; }
 
@@ -415,11 +415,11 @@ public:
 
 protected:
 	POINT position_; //移動先座標
-	D3DXVECTOR3 angle_; //回転角度
-	D3DXVECTOR3 scale_; //拡大率
-	D3DCOLOR color_;
+	sf::Vector3f angle_; //回転角度
+	sf::Vector3f scale_; //拡大率
+	Color color_;
 	std::list<ObjectData> listData_;
-	D3DXVECTOR2 center_; //座標変換の中心
+	sf::Vector2f center_; //座標変換の中心
 	bool bAutoCenter_;
 	bool bPermitCamera_;
 	gstd::ref_count_ptr<Shader> shader_;
@@ -447,7 +447,7 @@ public:
 
 	void ClearCache() { cache_.Clear(); }
 	void SetFont(LOGFONT& logFont) { winFont_.CreateFontIndirect(logFont); }
-	void SetVertexColor(D3DCOLOR color) { colorVertex_ = color; }
+	void SetVertexColor(Color color) { colorVertex_ = color; }
 	gstd::ref_count_ptr<DxTextInfo> GetTextInfo(DxText* dxText);
 
 	gstd::ref_count_ptr<DxTextRenderObject> CreateRenderObject(DxText* dxText, gstd::ref_count_ptr<DxTextInfo> textInfo);
@@ -462,7 +462,7 @@ public:
 protected:
 	DxCharCache cache_;
 	gstd::Font winFont_;
-	D3DCOLOR colorVertex_;
+	Color colorVertex_;
 	gstd::CriticalSection lock_;
 
 	SIZE _GetTextSize(HDC hDC, wchar_t* pText);
@@ -528,11 +528,11 @@ public:
 		SetFont(info);
 	}
 
-	void SetFontColorTop(D3DCOLOR color) { dxFont_.SetTopColor(color); }
-	void SetFontColorBottom(D3DCOLOR color) { dxFont_.SetBottomColor(color); }
+	void SetFontColorTop(Color color) { dxFont_.SetTopColor(color); }
+	void SetFontColorBottom(Color color) { dxFont_.SetBottomColor(color); }
 	void SetFontBorderWidth(int width) { dxFont_.SetBorderWidth(width); }
 	void SetFontBorderType(int type) { dxFont_.SetBorderType(type); }
-	void SetFontBorderColor(D3DCOLOR color) { dxFont_.SetBorderColor(color); }
+	void SetFontBorderColor(Color color) { dxFont_.SetBorderColor(color); }
 
 	POINT GetPosition() { return pos_; }
 	void SetPosition(int x, int y)
@@ -556,8 +556,8 @@ public:
 	int GetVerticalAlignment() { return alignmentVertical_; }
 	void SetVerticalAlignment(int value) { alignmentVertical_ = value; }
 
-	D3DCOLOR GetVertexColor() { return colorVertex_; }
-	void SetVertexColor(D3DCOLOR color) { colorVertex_ = color; }
+	Color GetVertexColor() { return colorVertex_; }
+	void SetVertexColor(Color color) { colorVertex_ = color; }
 	bool IsPermitCamera() { return bPermitCamera_; }
 	void SetPermitCamera(bool bPermit) { bPermitCamera_ = bPermit; }
 	bool IsSyntacticAnalysis() { return bSyntacticAnalysis_; }
@@ -579,7 +579,7 @@ protected:
 	RECT margin_;
 	int alignmentHorizontal_;
 	int alignmentVertical_;
-	D3DCOLOR colorVertex_;
+	Color colorVertex_;
 	bool bPermitCamera_;
 	bool bSyntacticAnalysis_;
 

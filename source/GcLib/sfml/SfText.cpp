@@ -1,29 +1,29 @@
-#include "DxText.hpp"
-#include "DirectGraphics.hpp"
-#include "DxUtility.hpp"
+#include "SfText.hpp"
+#include "SimpleGraphics.hpp"
+#include "SfUtility.hpp"
 #include "RenderObject.hpp"
 
 using namespace gstd;
-using namespace directx;
+using namespace sfml;
 
 /**********************************************************
-//DxFont
+//SfFont
 **********************************************************/
 DxFont::DxFont()
 {
 	ZeroMemory(&info_, sizeof(LOGFONT));
-	colorTop_ = D3DCOLOR_ARGB(255, 128, 128, 255);
-	colorBottom_ = D3DCOLOR_ARGB(255, 32, 32, 255);
+	colorTop_ = Color_ARGB(255, 128, 128, 255);
+	colorBottom_ = Color_ARGB(255, 32, 32, 255);
 	typeBorder_ = BORDER_NONE;
 	widthBorder_ = 2;
-	colorBorder_ = D3DCOLOR_ARGB(128, 255, 255, 255);
+	colorBorder_ = Color_ARGB(128, 255, 255, 255);
 }
 DxFont::~DxFont()
 {
 }
 
 /**********************************************************
-//DxChar
+//SfChar
 **********************************************************/
 DxChar::DxChar()
 {
@@ -38,9 +38,9 @@ bool DxChar::Create(int code, Font& winFont, DxFont& dxFont)
 	font_ = dxFont;
 
 	int typeBorder = font_.GetBorderType();
-	D3DCOLOR colorTop = font_.GetTopColor();
-	D3DCOLOR colorBottom = font_.GetBottomColor();
-	D3DCOLOR colorBorder = font_.GetBorderColor();
+	Color colorTop = font_.GetTopColor();
+	Color colorBottom = font_.GetBottomColor();
+	Color colorBorder = font_.GetBorderColor();
 	int widthBorder = typeBorder != DxFont::BORDER_NONE ? font_.GetBorderWidth() : 0;
 
 	HDC hDC = ::GetDC(NULL);
@@ -86,7 +86,7 @@ bool DxChar::Create(int code, Font& winFont, DxFont& dxFont)
 		num_y++;
 	}
 	IDirect3DTexture9* pTexture = NULL;
-	HRESULT hr = DirectGraphics::GetBase()->GetDevice()->CreateTexture(
+	HRESULT hr = SimpleGraphics::GetBase()->GetDevice()->CreateTexture(
 		widthTexture, heightTexture,
 		1, D3DPOOL_DEFAULT, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED, &pTexture, NULL);
 	if (FAILED(hr))
@@ -795,9 +795,9 @@ DxTextRenderObject::DxTextRenderObject()
 	position_.x = 0;
 	position_.y = 0;
 
-	angle_ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	scale_ = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-	center_ = D3DXVECTOR2(0.0f, 0.0f);
+	angle_ = sf::Vector3f(0.0f, 0.0f, 0.0f);
+	scale_ = sf::Vector3f(1.0f, 1.0f, 1.0f);
+	center_ = sf::Vector2f(0.0f, 0.0f);
 	bAutoCenter_ = true;
 	bPermitCamera_ = true;
 }
@@ -821,7 +821,7 @@ void DxTextRenderObject::Render()
 		mat = mat * matRot;
 	}
 
-	D3DXVECTOR2 center = center_;
+	sf::Vector2f center = center_;
 	if (bMatrix && bAutoCenter_) {
 		RECT rect;
 		ZeroMemory(&rect, sizeof(RECT));
@@ -855,7 +855,7 @@ void DxTextRenderObject::Render()
 				VERTEX_TLX* vert = sprite->GetVertex(iVert);
 				vert->position.x -= center.x;
 				vert->position.y -= center.y;
-				D3DXVec3TransformCoord((D3DXVECTOR3*)&vert->position, (D3DXVECTOR3*)&vert->position, &mat);
+				D3DXVec3TransformCoord((sf::Vector3f*)&vert->position, (sf::Vector3f*)&vert->position, &mat);
 				vert->position.x += center.x + pos.x + bias.x;
 				vert->position.y += center.y + pos.y + bias.y;
 			}
@@ -894,7 +894,7 @@ void DxTextRenderObject::AddRenderObject(gstd::ref_count_ptr<DxTextRenderObject>
 DxTextRenderer* DxTextRenderer::thisBase_ = NULL;
 DxTextRenderer::DxTextRenderer()
 {
-	colorVertex_ = D3DCOLOR_ARGB(255, 255, 255, 255);
+	colorVertex_ = Color_ARGB(255, 255, 255, 255);
 }
 DxTextRenderer::~DxTextRenderer()
 {
@@ -1387,11 +1387,11 @@ bool DxTextRenderer::AddFontFromFile(std::wstring path)
 **********************************************************/
 DxText::DxText()
 {
-	dxFont_.SetTopColor(D3DCOLOR_ARGB(255, 255, 255, 255));
-	dxFont_.SetBottomColor(D3DCOLOR_ARGB(255, 255, 255, 255));
+	dxFont_.SetTopColor(Color_ARGB(255, 255, 255, 255));
+	dxFont_.SetBottomColor(Color_ARGB(255, 255, 255, 255));
 	dxFont_.SetBorderType(DxFont::BORDER_NONE);
 	dxFont_.SetBorderWidth(0);
-	dxFont_.SetBorderColor(D3DCOLOR_ARGB(255, 255, 255, 255));
+	dxFont_.SetBorderColor(Color_ARGB(255, 255, 255, 255));
 
 	LOGFONT logFont;
 	ZeroMemory(&logFont, sizeof(LOGFONT));
@@ -1415,7 +1415,7 @@ DxText::DxText()
 	alignmentVertical_ = ALIGNMENT_TOP;
 	ZeroMemory(&margin_, sizeof(RECT));
 
-	colorVertex_ = D3DCOLOR_ARGB(255, 255, 255, 255);
+	colorVertex_ = Color_ARGB(255, 255, 255, 255);
 	bPermitCamera_ = true;
 	bSyntacticAnalysis_ = true;
 }

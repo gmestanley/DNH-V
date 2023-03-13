@@ -3,7 +3,7 @@
 
 #include "SfConstant.hpp"
 
-namespace directx {
+namespace sfml {
 
 enum {
 	DI_MOUSE_LEFT   = 0,
@@ -19,10 +19,10 @@ enum {
 };
 
 /**********************************************************
-//DirectInput
+//SimpleInput
 **********************************************************/
-class DirectInput {
-	static DirectInput* thisBase_;
+class SimpleInput {
+	static SimpleInput* thisBase_;
 
 public:
 	enum {
@@ -34,9 +34,9 @@ public:
 
 public:
 	void InputLog(std::wstring message);
-	DirectInput();
-	virtual ~DirectInput();
-	static DirectInput* GetBase() { return thisBase_; }
+	SimpleInput();
+	virtual ~SimpleInput();
+	static SimpleInput* GetBase() { return thisBase_; }
 
 	virtual bool Initialize(HWND hWnd);
 
@@ -117,7 +117,7 @@ private:
 	int state_; //現在の状態
 };
 
-class VirtualKeyManager : public DirectInput {
+class VirtualKeyManager : public SimpleInput {
 public:
 	VirtualKeyManager();
 	~VirtualKeyManager();
@@ -174,7 +174,7 @@ protected:
 
 } // namespace directx
 
-/* DirectInput キー識別コード表
+/* SimpleInput キー識別コード表
 DIK_ESCAPE 0x01 Esc
 DIK_1 0x02 1
 DIK_2 0x03 2
