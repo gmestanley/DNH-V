@@ -1,5 +1,5 @@
-#ifndef __SFML_SFMGRAPHICS__
-#define __SFML_SFMGRAPHICS__
+#ifndef __SFML_SIMPLEGRAPHICS__
+#define __SFML_SIMPLEGRAPHICS__
 
 #include "SfConstant.hpp"
 
@@ -9,9 +9,9 @@ class DxCamera;
 class DxCamera2D;
 class Texture;
 /**********************************************************
-//SFMLGraphicsConfig
+//SimpleGraphicsConfig
 **********************************************************/
-class SFMLGraphicsConfig {
+class SimpleGraphicsConfig {
 public:
 	enum {
 		COLOR_MODE_16BIT,
@@ -19,8 +19,8 @@ public:
 	};
 
 public:
-	SFMLGraphicsConfig();
-	virtual ~SFMLGraphicsConfig();
+	SimpleGraphicsConfig();
+	virtual ~SimpleGraphicsConfig();
 	bool IsShowWindow() { return bShowWindow_; }
 	void SetShowWindow(bool b) { bShowWindow_ = b; }
 	int GetScreenWidth() { return widthScreen_; }
@@ -52,17 +52,17 @@ protected:
 	bool bPseudoFullScreen_;
 };
 
-class SFMLGraphicsListener {
+class SimpleGraphicsListener {
 public:
-	virtual ~SFMLGraphicsListener() {}
-	virtual void ReleaseSFMLGraphics() {}
-	virtual void RestoreSFMLGraphics() {}
-	virtual void StartChangeScreenMode() { ReleaseSFMLGraphics(); }
-	virtual void EndChangeScreenMode() { RestoreSFMLGraphics(); }
+	virtual ~SimpleGraphicsListener() {}
+	virtual void ReleaseSimpleGraphics() {}
+	virtual void RestoreSimpleGraphics() {}
+	virtual void StartChangeScreenMode() { ReleaseSimpleGraphics(); }
+	virtual void EndChangeScreenMode() { RestoreSimpleGraphics(); }
 };
 
-class SFMLGraphics {
-	static SFMLGraphics* thisBase_;
+class SimpleGraphics {
+	static SimpleGraphics* thisBase_;
 
 public:
 	enum {
@@ -85,21 +85,21 @@ public:
 	};
 
 public:
-	SFMLGraphics();
-	virtual ~SFMLGraphics();
-	static SFMLGraphics* GetBase() { return thisBase_; }
+	SimpleGraphics();
+	virtual ~SimpleGraphics();
+	static SimpleGraphics* GetBase() { return thisBase_; }
 	HWND GetAttachedWindowHandle() { return hAttachedWindow_; }
 
 	virtual bool Initialize(HWND hWnd);
-	virtual bool Initialize(HWND hWnd, SFMLGraphicsConfig& config);
-	void AddSFMLGraphicsListener(SFMLGraphicsListener* listener);
-	void RemoveSFMLGraphicsListener(SFMLGraphicsListener* listener);
+	virtual bool Initialize(HWND hWnd, SimpleGraphicsConfig& config);
+	void AddSimpleGraphicsListener(SimpleGraphicsListener* listener);
+	void RemoveSimpleGraphicsListener(SimpleGraphicsListener* listener);
 	int GetScreenMode() { return modeScreen_; }
 	D3DPRESENT_PARAMETERS GetFullScreenPresentParameter() { return d3dppFull_; }
 	D3DPRESENT_PARAMETERS GetWindowPresentParameter() { return d3dppWin_; }
 
 	IDirect3DDevice9* GetDevice() { return pDevice_; }
-	SFMLGraphicsConfig& GetConfigData() { return config_; }
+	SimpleGraphicsConfig& GetConfigData() { return config_; }
 
 	void BeginScene(bool bClear = true); //描画開始/Drawing Start
 	void EndScene(); //描画終了/Drawing Termination
@@ -152,13 +152,13 @@ protected:
 	IDirect3DSurface9* pBackSurf_;
 	IDirect3DSurface9* pZBuffer_;
 
-	SFMLGraphicsConfig config_;
+	SimpleGraphicsConfig config_;
 	HWND hAttachedWindow_;
 	DWORD wndStyleFull_;
 	DWORD wndStyleWin_;
 	int modeScreen_;
 	int renderMode_;
-	std::list<SFMLGraphicsListener*> listListener_;
+	std::list<SimpleGraphicsListener*> listListener_;
 
 	gstd::ref_count_ptr<DxCamera> camera_;
 	gstd::ref_count_ptr<DxCamera2D> camera2D_;
@@ -171,14 +171,14 @@ protected:
 };
 
 /**********************************************************
-//SFMLGraphicsPrimaryWindow
+//SimpleGraphicsPrimaryWindow
 **********************************************************/
-class SFMLGraphicsPrimaryWindow : public SFMLGraphics, public gstd::WindowBase {
+class SimpleGraphicsPrimaryWindow : public SimpleGraphics, public gstd::WindowBase {
 public:
-	SFMLGraphicsPrimaryWindow();
-	~SFMLGraphicsPrimaryWindow();
+	SimpleGraphicsPrimaryWindow();
+	~SimpleGraphicsPrimaryWindow();
 	virtual bool Initialize();
-	virtual bool Initialize(SFMLGraphicsConfig& config);
+	virtual bool Initialize(SimpleGraphicsConfig& config);
 	void ChangeScreenMode();
 
 protected:

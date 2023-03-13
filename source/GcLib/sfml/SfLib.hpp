@@ -5,7 +5,7 @@
 
 #include "SfUtility.hpp"
 
-#include "SFMLGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "SfText.hpp"
 #include "ElfreinaMesh.hpp"
 #include "MetasequoiaMesh.hpp"
@@ -20,7 +20,7 @@
 #include "ScriptManager.hpp"
 // #include"EventScript.hpp"
 
-#include "SFMLInput.hpp"
-#include "SFMLSound.hpp"
+#include "SimpleInput.hpp"
+#include "SimpleSound.hpp"
 
 #endif

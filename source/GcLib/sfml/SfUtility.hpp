@@ -77,7 +77,7 @@ private:
 };
 
 class DxWidthLine {
-	//幅のある線分
+	//幅のある線分/A certain width line segment
 public:
 	DxWidthLine()
 	{
