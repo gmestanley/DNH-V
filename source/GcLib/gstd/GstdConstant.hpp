@@ -16,7 +16,7 @@
 //http://www1.kokusaika.jp/advisory/org/ja/win32_unicode.html
 
 //Win2000以降
-#define _WIN32_WINNT 0x0500
+//#define _WIN32_WINNT 0x0500
 
 //lib
 #pragma comment(lib, "winmm.lib")
@@ -58,10 +58,7 @@
 #include <string>
 #include <vector>
 
-//Windows
-#include <windows.h>
-#include <windowsx.h>
-
+//Linux
 #include <commctrl.h>
 #include <mmsystem.h>
 #include <pdh.h>

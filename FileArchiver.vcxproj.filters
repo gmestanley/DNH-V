@@ -56,7 +56,7 @@
     <ClCompile Include="source\FileArchiver\MainWindow.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\FileArchiver\WinMain.cpp">
+    <ClCompile Include="source\FileArchiver\Main.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

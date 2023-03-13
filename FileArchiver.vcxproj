@@ -162,7 +162,7 @@
   <ItemGroup>
     <ClCompile Include="source\FileArchiver\LibImpl.cpp" />
     <ClCompile Include="source\FileArchiver\MainWindow.cpp" />
-    <ClCompile Include="source\FileArchiver\WinMain.cpp" />
+    <ClCompile Include="source\FileArchiver\Main.cpp" />
     <ClCompile Include="source\GcLib\gstd\Application.cpp" />
     <ClCompile Include="source\GcLib\gstd\File.cpp" />
     <ClCompile Include="source\GcLib\gstd\FpsController.cpp" />

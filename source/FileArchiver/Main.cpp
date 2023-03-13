@@ -2,12 +2,12 @@
 #include "MainWindow.hpp"
 
 /**********************************************************
-WinMain
+Main
 **********************************************************/
-int APIENTRY wWinMain(HINSTANCE hInstance,
+int main(/*HINSTANCE hInstance,
 	                  HINSTANCE hPrevInstance,
 	                  LPWSTR lpCmdLine,
-	                  int nCmdShow) {
+	                  int nCmdShow*/) {
 	DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		ELogger::CreateInstance();

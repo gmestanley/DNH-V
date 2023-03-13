@@ -2,6 +2,7 @@
 #define __LIBIMPL__
 
 #include "Constant.hpp"
+#include <unistd.h>
 
 class EApplication : public Singleton<EApplication>, public Application {
 	friend Singleton<EApplication>;
@@ -12,7 +13,7 @@ public:
 protected:
 	virtual bool _Loop()
 	{
-		Sleep(10);
+		usleep(10);
 		return true;
 	}
 
