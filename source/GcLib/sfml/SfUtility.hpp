@@ -1,5 +1,5 @@
-#ifndef __DIRECTX_UTILITY__
-#define __DIRECTX_UTILITY__
+#ifndef __SFML_UTILITY__
+#define __SFML_UTILITY__
 
 #include "SfConstant.hpp"
 

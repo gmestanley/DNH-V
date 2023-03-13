@@ -6,9 +6,9 @@ using namespace gstd;
 using namespace sfml;
 
 /**********************************************************
-//DirectGraphicsConfig
+//SFMLGraphicsConfig
 **********************************************************/
-DirectGraphicsConfig::DirectGraphicsConfig()
+SFMLGraphicsConfig::SFMLGraphicsConfig()
 {
 	bShowWindow_ = true;
 	widthScreen_ = 800;
@@ -20,16 +20,16 @@ DirectGraphicsConfig::DirectGraphicsConfig()
 	bUseWaitTimer_ = false;
 	bPseudoFullScreen_ = true;
 }
-DirectGraphicsConfig::~DirectGraphicsConfig()
+SFMLGraphicsConfig::~SFMLGraphicsConfig()
 {
 }
 
 /**********************************************************
-//DirectGraphics
+//SFMLGraphics
 **********************************************************/
-DirectGraphics* DirectGraphics::thisBase_ = NULL;
+SFMLGraphics* SFMLGraphics::thisBase_ = NULL;
 
-DirectGraphics::DirectGraphics()
+SFMLGraphics::SFMLGraphics()
 {
 	pDirect3D_ = NULL;
 	pDevice_ = NULL;
@@ -39,9 +39,9 @@ DirectGraphics::DirectGraphics()
 	camera_ = new DxCamera();
 	camera2D_ = new DxCamera2D();
 }
-DirectGraphics::~DirectGraphics()
+SFMLGraphics::~SFMLGraphics()
 {
-	Logger::WriteTop(L"DirectGraphics：終了開始");
+	Logger::WriteTop(L"SFMLGraphics：終了開始/SFMLGraphics: Termination Start");
 
 	if (pZBuffer_ != NULL)
 		pZBuffer_->Release();
@@ -52,18 +52,18 @@ DirectGraphics::~DirectGraphics()
 	if (pDirect3D_ != NULL)
 		pDirect3D_->Release();
 	thisBase_ = NULL;
-	Logger::WriteTop(L"DirectGraphics：終了完了");
+	Logger::WriteTop(L"SFMLGraphics：終了完了/SFMLGraphics: Termination Completion");
 }
-bool DirectGraphics::Initialize(HWND hWnd)
+bool SFMLGraphics::Initialize(HWND hWnd)
 {
 	return this->Initialize(hWnd, config_);
 }
-bool DirectGraphics::Initialize(HWND hWnd, DirectGraphicsConfig& config)
+bool SFMLGraphics::Initialize(HWND hWnd, SFMLGraphicsConfig& config)
 {
 	if (thisBase_ != NULL)
 		return false;
 
-	Logger::WriteTop(L"SFMLGraphics：初期化");
+	Logger::WriteTop(L"SFMLGraphics：初期化/SFMLGraphics: Initialization");
 	/*pDirect3D_ = Direct3DCreate9(D3D_SDK_VERSION);
 	if (pDirect3D_ == NULL)
 		throw gstd::wexception(L"Direct3DCreate9失敗");*/
@@ -80,7 +80,7 @@ bool DirectGraphics::Initialize(HWND hWnd, DirectGraphicsConfig& config)
 	d3dppFull_.BackBufferHeight = config_.GetScreenHeight();
 	d3dppFull_.Windowed = FALSE;
 	d3dppFull_.SwapEffect = D3DSWAPEFFECT_DISCARD;
-	if (config_.GetColorMode() == DirectGraphicsConfig::COLOR_MODE_16BIT)
+	if (config_.GetColorMode() == SFMLGraphicsConfig::COLOR_MODE_16BIT)
 		d3dppFull_.BackBufferFormat = D3DFMT_R5G6B5;
 	else
 		d3dppFull_.BackBufferFormat = D3DFMT_X8R8G8B8;
@@ -132,20 +132,20 @@ bool DirectGraphics::Initialize(HWND hWnd, DirectGraphicsConfig& config)
 		if (caps.VertexShaderVersion >= D3DVS_VERSION(2, 0)) {
 			hrDevice = pDirect3D_->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED | D3DCREATE_FPU_PRESERVE, &d3dpp, &pDevice_);
 			if (!FAILED(hrDevice))
-				Logger::WriteTop(L"DirectGraphics：デバイス初期化完了->D3DCREATE_HARDWARE_VERTEXPROCESSING");
+				Logger::WriteTop(L"SFMLGraphics：デバイス初期化完了->D3DCREATE_HARDWARE_VERTEXPROCESSING");
 			if (FAILED(hrDevice)) {
 				hrDevice = pDirect3D_->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED | D3DCREATE_FPU_PRESERVE, &d3dpp, &pDevice_);
 				if (!FAILED(hrDevice))
-					Logger::WriteTop(L"DirectGraphics：デバイス初期化完了->D3DCREATE_SOFTWARE_VERTEXPROCESSING");
+					Logger::WriteTop(L"SFMLGraphics：デバイス初期化完了->D3DCREATE_SOFTWARE_VERTEXPROCESSING");
 			}
 		} else {
 			hrDevice = pDirect3D_->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED | D3DCREATE_FPU_PRESERVE, &d3dpp, &pDevice_);
 			if (!FAILED(hrDevice))
-				Logger::WriteTop(L"DirectGraphics：デバイス初期化完了->D3DCREATE_SOFTWARE_VERTEXPROCESSING");
+				Logger::WriteTop(L"SFMLGraphics：デバイス初期化完了->D3DCREATE_SOFTWARE_VERTEXPROCESSING");
 		}
 
 		if (FAILED(hrDevice)) {
-			Logger::WriteTop(L"DirectGraphics：HEL動作します。おそらく正常動作しません。");
+			Logger::WriteTop(L"SFMLGraphics：HEL動作します。おそらく正常動作しません。");
 			hrDevice = pDirect3D_->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING | D3DCREATE_MULTITHREADED | D3DCREATE_FPU_PRESERVE, &d3dpp, &pDevice_);
 		}
 	}
@@ -169,34 +169,34 @@ bool DirectGraphics::Initialize(HWND hWnd, DirectGraphicsConfig& config)
 	BeginScene();
 	EndScene();
 
-	Logger::WriteTop(L"DirectGraphics：初期化完了");
+	Logger::WriteTop(L"SFMLGraphics：初期化完了");
 	return true;
 }
 
-void DirectGraphics::_ReleaseDxResource()
+void SFMLGraphics::_ReleaseDxResource()
 {
 	if (pZBuffer_ != NULL)
 		pZBuffer_->Release();
 	if (pBackSurf_ != NULL)
 		pBackSurf_->Release();
-	std::list<DirectGraphicsListener*>::iterator itr;
+	std::list<SFMLGraphicsListener*>::iterator itr;
 	for (itr = listListener_.begin(); itr != listListener_.end(); itr++) {
-		(*itr)->ReleaseDirectGraphics();
+		(*itr)->ReleaseSFMLGraphics();
 	}
 }
-void DirectGraphics::_RestoreDxResource()
+void SFMLGraphics::_RestoreDxResource()
 {
 	pDevice_->GetRenderTarget(0, &pBackSurf_);
 	pDevice_->GetDepthStencilSurface(&pZBuffer_);
-	std::list<DirectGraphicsListener*>::iterator itr;
+	std::list<SFMLGraphicsListener*>::iterator itr;
 	for (itr = listListener_.begin(); itr != listListener_.end(); itr++) {
-		(*itr)->RestoreDirectGraphics();
+		(*itr)->RestoreSFMLGraphics();
 	}
 	_InitializeDeviceState();
 }
-void DirectGraphics::_Restore()
+void SFMLGraphics::_Restore()
 {
-	Logger::WriteTop(L"DirectGraphics：_Restore開始");
+	Logger::WriteTop(L"SFMLGraphics：_Restore開始");
 	// ディスプレイの協調レベルを調査
 	HRESULT hr = pDevice_->TestCooperativeLevel();
 	if (hr == D3DERR_DEVICELOST) {
@@ -221,9 +221,9 @@ void DirectGraphics::_Restore()
 
 	_RestoreDxResource();
 
-	Logger::WriteTop(L"DirectGraphics：_Restore完了");
+	Logger::WriteTop(L"SFMLGraphics：_Restore完了");
 }
-void DirectGraphics::_InitializeDeviceState()
+void SFMLGraphics::_InitializeDeviceState()
 {
 	D3DXMATRIX viewMat;
 	D3DXMATRIX persMat;
@@ -265,18 +265,18 @@ void DirectGraphics::_InitializeDeviceState()
 	//ViewPort
 	ResetViewPort();
 }
-void DirectGraphics::AddDirectGraphicsListener(DirectGraphicsListener* listener)
+void SFMLGraphics::AddSFMLGraphicsListener(SFMLGraphicsListener* listener)
 {
-	std::list<DirectGraphicsListener*>::iterator itr;
+	std::list<SFMLGraphicsListener*>::iterator itr;
 	for (itr = listListener_.begin(); itr != listListener_.end(); itr++) {
 		if ((*itr) == listener)
 			return;
 	}
 	listListener_.push_back(listener);
 }
-void DirectGraphics::RemoveDirectGraphicsListener(DirectGraphicsListener* listener)
+void SFMLGraphics::RemoveSFMLGraphicsListener(SFMLGraphicsListener* listener)
 {
-	std::list<DirectGraphicsListener*>::iterator itr;
+	std::list<SFMLGraphicsListener*>::iterator itr;
 	for (itr = listListener_.begin(); itr != listListener_.end(); itr++) {
 		if ((*itr) != listener)
 			continue;
@@ -284,14 +284,14 @@ void DirectGraphics::RemoveDirectGraphicsListener(DirectGraphicsListener* listen
 		break;
 	}
 }
-void DirectGraphics::BeginScene(bool bClear)
+void SFMLGraphics::BeginScene(bool bClear)
 {
 	if (bClear)
 		ClearRenderTarget();
 	pDevice_->BeginScene();
 	camera_->UpdateDeviceWorldViewMatrix();
 }
-void DirectGraphics::EndScene()
+void SFMLGraphics::EndScene()
 {
 	pDevice_->EndScene();
 
@@ -301,7 +301,7 @@ void DirectGraphics::EndScene()
 		_InitializeDeviceState();
 	}
 }
-void DirectGraphics::ClearRenderTarget()
+void SFMLGraphics::ClearRenderTarget()
 {
 	int width = GetScreenWidth();
 	int height = GetScreenWidth();
@@ -312,7 +312,7 @@ void DirectGraphics::ClearRenderTarget()
 		pDevice_->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_ARGB(0, 0, 0, 0), 1.0, 0);
 	}
 }
-void DirectGraphics::ClearRenderTarget(RECT rect)
+void SFMLGraphics::ClearRenderTarget(RECT rect)
 {
 	D3DRECT rcDest = { rect.left, rect.top, rect.right, rect.bottom };
 	if (textureTarget_ == NULL) {
@@ -321,7 +321,7 @@ void DirectGraphics::ClearRenderTarget(RECT rect)
 		pDevice_->Clear(1, &rcDest, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_ARGB(0, 0, 0, 0), 1.0, 0);
 	}
 }
-void DirectGraphics::SetRenderTarget(gstd::ref_count_ptr<Texture> texture)
+void SFMLGraphics::SetRenderTarget(gstd::ref_count_ptr<Texture> texture)
 {
 	textureTarget_ = texture;
 	if (texture == NULL) {
@@ -333,31 +333,31 @@ void DirectGraphics::SetRenderTarget(gstd::ref_count_ptr<Texture> texture)
 	}
 	_InitializeDeviceState();
 }
-void DirectGraphics::SetLightingEnable(bool bEnable)
+void SFMLGraphics::SetLightingEnable(bool bEnable)
 {
 	pDevice_->SetRenderState(D3DRS_LIGHTING, bEnable);
 }
-void DirectGraphics::SetSpecularEnable(bool bEnable)
+void SFMLGraphics::SetSpecularEnable(bool bEnable)
 {
 	pDevice_->SetRenderState(D3DRS_SPECULARENABLE, bEnable);
 }
-void DirectGraphics::SetCullingMode(DWORD mode)
+void SFMLGraphics::SetCullingMode(DWORD mode)
 {
 	pDevice_->SetRenderState(D3DRS_CULLMODE, mode);
 }
-void DirectGraphics::SetShadingMode(DWORD mode)
+void SFMLGraphics::SetShadingMode(DWORD mode)
 {
 	pDevice_->SetRenderState(D3DRS_SHADEMODE, mode);
 }
-void DirectGraphics::SetZBufferEnable(bool bEnable)
+void SFMLGraphics::SetZBufferEnable(bool bEnable)
 {
 	pDevice_->SetRenderState(D3DRS_ZENABLE, bEnable);
 }
-void DirectGraphics::SetZWriteEnalbe(bool bEnable)
+void SFMLGraphics::SetZWriteEnalbe(bool bEnable)
 {
 	pDevice_->SetRenderState(D3DRS_ZWRITEENABLE, bEnable);
 }
-void DirectGraphics::SetAlphaTest(bool bEnable, DWORD ref, D3DCMPFUNC func)
+void SFMLGraphics::SetAlphaTest(bool bEnable, DWORD ref, D3DCMPFUNC func)
 {
 	pDevice_->SetRenderState(D3DRS_ALPHATESTENABLE, bEnable);
 	if (bEnable) {
@@ -365,7 +365,7 @@ void DirectGraphics::SetAlphaTest(bool bEnable, DWORD ref, D3DCMPFUNC func)
 		pDevice_->SetRenderState(D3DRS_ALPHAREF, ref);
 	}
 }
-void DirectGraphics::SetBlendMode(DWORD mode, int stage)
+void SFMLGraphics::SetBlendMode(DWORD mode, int stage)
 {
 	switch (mode) {
 	case MODE_BLEND_NONE: //なし
@@ -494,22 +494,22 @@ void DirectGraphics::SetBlendMode(DWORD mode, int stage)
 	// pDevice_->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_INVDESTCOLOR);
 	// pDevice_->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ZERO);
 }
-void DirectGraphics::SetFillMode(DWORD mode)
+void SFMLGraphics::SetFillMode(DWORD mode)
 {
 	pDevice_->SetRenderState(D3DRS_FILLMODE, mode);
 }
-void DirectGraphics::SetFogEnable(bool bEnable)
+void SFMLGraphics::SetFogEnable(bool bEnable)
 {
 	pDevice_->SetRenderState(D3DRS_FOGENABLE, bEnable ? TRUE : FALSE);
 }
-bool DirectGraphics::IsFogEnable()
+bool SFMLGraphics::IsFogEnable()
 {
 	DWORD fog = FALSE;
 	pDevice_->GetRenderState(D3DRS_FOGENABLE, &fog);
 	bool res = fog == TRUE;
 	return res;
 }
-void DirectGraphics::SetVertexFog(bool bEnable, D3DCOLOR color, float start, float end)
+void SFMLGraphics::SetVertexFog(bool bEnable, D3DCOLOR color, float start, float end)
 {
 	SetFogEnable(bEnable);
 	pDevice_->SetRenderState(D3DRS_FOGCOLOR, color);
@@ -517,10 +517,10 @@ void DirectGraphics::SetVertexFog(bool bEnable, D3DCOLOR color, float start, flo
 	pDevice_->SetRenderState(D3DRS_FOGSTART, *(DWORD*)(&start));
 	pDevice_->SetRenderState(D3DRS_FOGEND, *(DWORD*)(&end));
 }
-void DirectGraphics::SetPixelFog(bool bEnable, D3DCOLOR color, float start, float end)
+void SFMLGraphics::SetPixelFog(bool bEnable, D3DCOLOR color, float start, float end)
 {
 }
-void DirectGraphics::SetTextureFilter(DWORD mode, int stage)
+void SFMLGraphics::SetTextureFilter(DWORD mode, int stage)
 {
 	switch (mode) {
 	case MODE_TEXTURE_FILTER_NONE:
@@ -537,7 +537,7 @@ void DirectGraphics::SetTextureFilter(DWORD mode, int stage)
 		break;
 	}
 }
-DWORD DirectGraphics::GetTextureFilter(int stage)
+DWORD SFMLGraphics::GetTextureFilter(int stage)
 {
 	int res = MODE_TEXTURE_FILTER_NONE;
 	DWORD mode;
@@ -555,7 +555,7 @@ DWORD DirectGraphics::GetTextureFilter(int stage)
 	}
 	return res;
 }
-void DirectGraphics::SetDirectionalLight(D3DVECTOR& dir)
+void SFMLGraphics::SetDirectionalLight(D3DVECTOR& dir)
 {
 	D3DLIGHT9 light;
 	ZeroMemory(&light, sizeof(D3DLIGHT9));
@@ -570,7 +570,7 @@ void DirectGraphics::SetDirectionalLight(D3DVECTOR& dir)
 	pDevice_->SetLight(0, &light);
 	pDevice_->LightEnable(0, TRUE);
 }
-void DirectGraphics::SetViewPort(int x, int y, int width, int height)
+void SFMLGraphics::SetViewPort(int x, int y, int width, int height)
 {
 	D3DVIEWPORT9 viewPort;
 	ZeroMemory(&viewPort, sizeof(D3DVIEWPORT9));
@@ -582,19 +582,19 @@ void DirectGraphics::SetViewPort(int x, int y, int width, int height)
 	viewPort.MaxZ = 1.0f;
 	pDevice_->SetViewport(&viewPort);
 }
-void DirectGraphics::ResetViewPort()
+void SFMLGraphics::ResetViewPort()
 {
 	SetViewPort(0, 0, GetScreenWidth(), GetScreenHeight());
 }
-int DirectGraphics::GetScreenWidth()
+int SFMLGraphics::GetScreenWidth()
 {
 	return config_.GetScreenWidth();
 }
-int DirectGraphics::GetScreenHeight()
+int SFMLGraphics::GetScreenHeight()
 {
 	return config_.GetScreenHeight();
 }
-double DirectGraphics::GetScreenWidthRatio()
+double SFMLGraphics::GetScreenWidthRatio()
 {
 	RECT rect;
 	::GetWindowRect(hAttachedWindow_, &rect);
@@ -608,7 +608,7 @@ double DirectGraphics::GetScreenWidthRatio()
 
 	return widthWindow / widthView;
 }
-double DirectGraphics::GetScreenHeightRatio()
+double SFMLGraphics::GetScreenHeightRatio()
 {
 	RECT rect;
 	::GetWindowRect(hAttachedWindow_, &rect);
@@ -622,7 +622,7 @@ double DirectGraphics::GetScreenHeightRatio()
 
 	return heightWindow / heightView;
 }
-POINT DirectGraphics::GetMousePosition()
+POINT SFMLGraphics::GetMousePosition()
 {
 	POINT res = { 0, 0 };
 	GetCursorPos(&res);
@@ -639,7 +639,7 @@ POINT DirectGraphics::GetMousePosition()
 
 	return res;
 }
-void DirectGraphics::SaveBackSurfaceToFile(std::wstring path)
+void SFMLGraphics::SaveBackSurfaceToFile(std::wstring path)
 {
 	RECT rect = { 0, 0, config_.GetScreenWidth(), config_.GetScreenHeight() };
 	LPDIRECT3DSURFACE9 pBackSurface = NULL;
@@ -648,7 +648,7 @@ void DirectGraphics::SaveBackSurfaceToFile(std::wstring path)
 		pBackSurface, NULL, &rect);
 	pBackSurface->Release();
 }
-bool DirectGraphics::IsPixelShaderSupported(int major, int minor)
+bool SFMLGraphics::IsPixelShaderSupported(int major, int minor)
 {
 	D3DCAPS9 caps;
 	pDevice_->GetDeviceCaps(&caps);
@@ -657,15 +657,15 @@ bool DirectGraphics::IsPixelShaderSupported(int major, int minor)
 }
 
 /**********************************************************
-//DirectGraphicsPrimaryWindow
+//SFMLGraphicsPrimaryWindow
 **********************************************************/
-DirectGraphicsPrimaryWindow::DirectGraphicsPrimaryWindow()
+SFMLGraphicsPrimaryWindow::SFMLGraphicsPrimaryWindow()
 {
 }
-DirectGraphicsPrimaryWindow::~DirectGraphicsPrimaryWindow()
+SFMLGraphicsPrimaryWindow::~SFMLGraphicsPrimaryWindow()
 {
 }
-void DirectGraphicsPrimaryWindow::_PauseDrawing()
+void SFMLGraphicsPrimaryWindow::_PauseDrawing()
 {
 	//	gstd::Application::GetBase()->SetActive(false);
 	// ウインドウのメニューバーを描画する
@@ -673,20 +673,20 @@ void DirectGraphicsPrimaryWindow::_PauseDrawing()
 	// ウインドウのフレームを描画する
 	::RedrawWindow(hWnd_, NULL, NULL, RDW_FRAME);
 }
-void DirectGraphicsPrimaryWindow::_RestartDrawing()
+void SFMLGraphicsPrimaryWindow::_RestartDrawing()
 {
 	gstd::Application::GetBase()->SetActive(true);
 }
-bool DirectGraphicsPrimaryWindow::Initialize()
+bool SFMLGraphicsPrimaryWindow::Initialize()
 {
 	this->Initialize(config_);
 	return true;
 }
-bool DirectGraphicsPrimaryWindow::Initialize(DirectGraphicsConfig& config)
+bool SFMLGraphicsPrimaryWindow::Initialize(SFMLGraphicsConfig& config)
 {
 	HINSTANCE hInst = ::GetModuleHandle(NULL);
 	{
-		std::wstring nameClass = L"DirectGraphicsPrimaryWindow";
+		std::wstring nameClass = L"SFMLGraphicsPrimaryWindow";
 		WNDCLASSEX wcex;
 		ZeroMemory(&wcex, sizeof(wcex));
 		wcex.cbSize = sizeof(WNDCLASSEX);
@@ -716,8 +716,8 @@ bool DirectGraphicsPrimaryWindow::Initialize(DirectGraphicsConfig& config)
 
 	HWND hWndGraphics = NULL;
 	if (config.IsPseudoFullScreen()) {
-		//擬似フルスクリーンの場合は、子ウィンドウにDirectGraphicsを配置する
-		std::wstring nameClass = L"DirectGraphicsPrimaryWindow.Child";
+		//擬似フルスクリーンの場合は、子ウィンドウにSFMLGraphicsを配置する
+		std::wstring nameClass = L"SFMLGraphicsPrimaryWindow.Child";
 		WNDCLASSEX wcex;
 		ZeroMemory(&wcex, sizeof(wcex));
 		wcex.cbSize = sizeof(WNDCLASSEX);
@@ -757,12 +757,12 @@ bool DirectGraphicsPrimaryWindow::Initialize(DirectGraphicsConfig& config)
 	int top = drect.bottom / 2 - tHeight / 2;
 	::MoveWindow(hWnd_, left, top, tWidth, tHeight, TRUE);
 
-	DirectGraphics::Initialize(hWndGraphics, config);
+	SFMLGraphics::Initialize(hWndGraphics, config);
 
 	return true;
 }
 
-LRESULT DirectGraphicsPrimaryWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LRESULT SFMLGraphicsPrimaryWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg) {
 	case WM_CLOSE: {
@@ -860,7 +860,7 @@ LRESULT DirectGraphicsPrimaryWindow::_WindowProcedure(HWND hWnd, UINT uMsg, WPAR
 	return _CallPreviousWindowProcedure(hWnd, uMsg, wParam, lParam);
 }
 
-void DirectGraphicsPrimaryWindow::ChangeScreenMode()
+void SFMLGraphicsPrimaryWindow::ChangeScreenMode()
 {
 	if (!config_.IsPseudoFullScreen()) {
 		if (modeScreen_ == SCREENMODE_WINDOW) {
@@ -1036,7 +1036,7 @@ D3DXMATRIX DxCamera::GetMatrixLookAtLH()
 }
 void DxCamera::UpdateDeviceWorldViewMatrix()
 {
-	DirectGraphics* graph = DirectGraphics::GetBase();
+	SFMLGraphics* graph = SFMLGraphics::GetBase();
 	if (graph == NULL)
 		return;
 	IDirect3DDevice9* device = graph->GetDevice();
@@ -1046,7 +1046,7 @@ void DxCamera::UpdateDeviceWorldViewMatrix()
 }
 void DxCamera::SetProjectionMatrix(float width, float height, float posNear, float posFar)
 {
-	DirectGraphics* graph = DirectGraphics::GetBase();
+	SFMLGraphics* graph = SFMLGraphics::GetBase();
 	if (graph == NULL)
 		return;
 	IDirect3DDevice9* device = graph->GetDevice();
@@ -1076,7 +1076,7 @@ void DxCamera::SetProjectionMatrix(float width, float height, float posNear, flo
 }
 void DxCamera::UpdateDeviceProjectionMatrix()
 {
-	DirectGraphics* graph = DirectGraphics::GetBase();
+	SFMLGraphics* graph = SFMLGraphics::GetBase();
 	if (graph == NULL)
 		return;
 	IDirect3DDevice9* device = graph->GetDevice();
@@ -1084,7 +1084,7 @@ void DxCamera::UpdateDeviceProjectionMatrix()
 }
 D3DXVECTOR2 DxCamera::TransformCoordinateTo2D(D3DXVECTOR3 pos)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SFMLGraphics* graphics = SFMLGraphics::GetBase();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	int width = graphics->GetConfigData().GetScreenWidth();
 	int height = graphics->GetConfigData().GetScreenHeight();
@@ -1136,7 +1136,7 @@ DxCamera2D::~DxCamera2D()
 }
 void DxCamera2D::Reset()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SFMLGraphics* graphics = SFMLGraphics::GetBase();
 	int width = graphics->GetScreenWidth();
 	int height = graphics->GetScreenHeight();
 	if (posReset_ == NULL) {
@@ -1162,7 +1162,7 @@ D3DXVECTOR2 DxCamera2D::GetLeftTopPosition(D3DXVECTOR2 focus, double ratio)
 }
 D3DXVECTOR2 DxCamera2D::GetLeftTopPosition(D3DXVECTOR2 focus, double ratioX, double ratioY)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SFMLGraphics* graphics = SFMLGraphics::GetBase();
 	int width = graphics->GetScreenWidth();
 	int height = graphics->GetScreenHeight();
 	RECT rcClip;

@@ -9,9 +9,9 @@ class DxCamera;
 class DxCamera2D;
 class Texture;
 /**********************************************************
-//DirectGraphicsConfig
+//SFMLGraphicsConfig
 **********************************************************/
-class DirectGraphicsConfig {
+class SFMLGraphicsConfig {
 public:
 	enum {
 		COLOR_MODE_16BIT,
@@ -19,8 +19,8 @@ public:
 	};
 
 public:
-	DirectGraphicsConfig();
-	virtual ~DirectGraphicsConfig();
+	SFMLGraphicsConfig();
+	virtual ~SFMLGraphicsConfig();
 	bool IsShowWindow() { return bShowWindow_; }
 	void SetShowWindow(bool b) { bShowWindow_ = b; }
 	int GetScreenWidth() { return widthScreen_; }
@@ -52,17 +52,17 @@ protected:
 	bool bPseudoFullScreen_;
 };
 
-class DirectGraphicsListener {
+class SFMLGraphicsListener {
 public:
-	virtual ~DirectGraphicsListener() {}
-	virtual void ReleaseDirectGraphics() {}
-	virtual void RestoreDirectGraphics() {}
-	virtual void StartChangeScreenMode() { ReleaseDirectGraphics(); }
-	virtual void EndChangeScreenMode() { RestoreDirectGraphics(); }
+	virtual ~SFMLGraphicsListener() {}
+	virtual void ReleaseSFMLGraphics() {}
+	virtual void RestoreSFMLGraphics() {}
+	virtual void StartChangeScreenMode() { ReleaseSFMLGraphics(); }
+	virtual void EndChangeScreenMode() { RestoreSFMLGraphics(); }
 };
 
-class DirectGraphics {
-	static DirectGraphics* thisBase_;
+class SFMLGraphics {
+	static SFMLGraphics* thisBase_;
 
 public:
 	enum {
@@ -85,21 +85,21 @@ public:
 	};
 
 public:
-	DirectGraphics();
-	virtual ~DirectGraphics();
-	static DirectGraphics* GetBase() { return thisBase_; }
+	SFMLGraphics();
+	virtual ~SFMLGraphics();
+	static SFMLGraphics* GetBase() { return thisBase_; }
 	HWND GetAttachedWindowHandle() { return hAttachedWindow_; }
 
 	virtual bool Initialize(HWND hWnd);
-	virtual bool Initialize(HWND hWnd, DirectGraphicsConfig& config);
-	void AddDirectGraphicsListener(DirectGraphicsListener* listener);
-	void RemoveDirectGraphicsListener(DirectGraphicsListener* listener);
+	virtual bool Initialize(HWND hWnd, SFMLGraphicsConfig& config);
+	void AddSFMLGraphicsListener(SFMLGraphicsListener* listener);
+	void RemoveSFMLGraphicsListener(SFMLGraphicsListener* listener);
 	int GetScreenMode() { return modeScreen_; }
 	D3DPRESENT_PARAMETERS GetFullScreenPresentParameter() { return d3dppFull_; }
 	D3DPRESENT_PARAMETERS GetWindowPresentParameter() { return d3dppWin_; }
 
 	IDirect3DDevice9* GetDevice() { return pDevice_; }
-	DirectGraphicsConfig& GetConfigData() { return config_; }
+	SFMLGraphicsConfig& GetConfigData() { return config_; }
 
 	void BeginScene(bool bClear = true); //描画開始/Drawing Start
 	void EndScene(); //描画終了/Drawing Termination
@@ -152,13 +152,13 @@ protected:
 	IDirect3DSurface9* pBackSurf_;
 	IDirect3DSurface9* pZBuffer_;
 
-	DirectGraphicsConfig config_;
+	SFMLGraphicsConfig config_;
 	HWND hAttachedWindow_;
 	DWORD wndStyleFull_;
 	DWORD wndStyleWin_;
 	int modeScreen_;
 	int renderMode_;
-	std::list<DirectGraphicsListener*> listListener_;
+	std::list<SFMLGraphicsListener*> listListener_;
 
 	gstd::ref_count_ptr<DxCamera> camera_;
 	gstd::ref_count_ptr<DxCamera2D> camera2D_;
@@ -171,14 +171,14 @@ protected:
 };
 
 /**********************************************************
-//DirectGraphicsPrimaryWindow
+//SFMLGraphicsPrimaryWindow
 **********************************************************/
-class DirectGraphicsPrimaryWindow : public DirectGraphics, public gstd::WindowBase {
+class SFMLGraphicsPrimaryWindow : public SFMLGraphics, public gstd::WindowBase {
 public:
-	DirectGraphicsPrimaryWindow();
-	~DirectGraphicsPrimaryWindow();
+	SFMLGraphicsPrimaryWindow();
+	~SFMLGraphicsPrimaryWindow();
 	virtual bool Initialize();
-	virtual bool Initialize(DirectGraphicsConfig& config);
+	virtual bool Initialize(SFMLGraphicsConfig& config);
 	void ChangeScreenMode();
 
 protected:
