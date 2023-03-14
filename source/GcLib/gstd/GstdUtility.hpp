@@ -55,6 +55,7 @@ public:
 	static int GetBomSize(const void* data, int dataSize);
 
 	static const unsigned char BOM_UTF16LE[];
+	static const unsigned char BOM_UTF16BE[];
 };
 
 //================================================================

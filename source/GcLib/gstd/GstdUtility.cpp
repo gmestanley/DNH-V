@@ -1,5 +1,6 @@
 #include "GstdUtility.hpp"
 #include "Logger.hpp"
+#include <cstring>
 using namespace gstd;
 
 //================================================================
@@ -15,6 +16,7 @@ void DebugUtility::DumpMemoryLeaksOnExit() {
 //================================================================
 //Encoding
 const unsigned char Encoding::BOM_UTF16LE[] = { 0xFF, 0xFE };
+const unsigned char Encoding::BOM_UTF16BE[] = { 0xFE, 0xFF };
 int Encoding::Detect(const void* data, int dataSize)
 {
 	return UNKNOWN;
@@ -23,7 +25,7 @@ bool Encoding::IsUtf16Le(const void* data, int dataSize)
 {
 	if (dataSize < 2)
 		return false;
-	if (memcmp(data, "\0", 1) == 0)
+	if (std::memcmp(data, "\0", 1) == 0)
 		return false;
 
 	bool res = memcmp(data, BOM_UTF16LE, 2) == 0;
