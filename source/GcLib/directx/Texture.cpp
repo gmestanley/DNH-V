@@ -330,13 +330,13 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 		return true;
 	}
 
-	//まだ作成されていないなら、作成
+	//まだ作成されていないなら、作成/Create if it's not being created
 	try {
 		ref_count_ptr<FileReader> reader = FileManager::GetBase()->GetFileReader(path);
 		if (reader == NULL)
-			throw gstd::wexception(L"ファイルが見つかりません");
+			throw gstd::wexception(L"The file can't be found\nファイルが見つかりません");
 		if (!reader->Open())
-			throw gstd::wexception(L"ファイルが開けません");
+			throw gstd::wexception(L"The file can't be opened\nファイルが開けません");
 
 		int size = reader->GetFileSize();
 		ByteBuffer buf;
@@ -347,7 +347,7 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 		// D3DXGetImageInfoFromFileInMemory(buf.GetPointer(), size, &info);
 
 		D3DCOLOR colorKey = D3DCOLOR_ARGB(255, 0, 0, 0);
-		if (path.find(L".bmp") == std::wstring::npos) //bmpのみカラーキー適応
+		if (path.find(L".bmp") == std::wstring::npos) //bmpのみカラーキー適応/Color key conformity of nothing but BMP
 			colorKey = 0;
 		D3DFORMAT pixelFormat = D3DFMT_A8R8G8B8;
 
@@ -375,7 +375,7 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 			NULL,
 			&data->pTexture_);
 		if (FAILED(hr)) {
-			throw gstd::wexception(L"D3DXCreateTextureFromFileInMemoryEx失敗");
+			throw gstd::wexception(L"D3DXCreateTextureFromFileInMemoryEx failed\nD3DXCreateTextureFromFileInMemoryEx失敗");
 		}
 
 		mapTextureData_[path] = data;
