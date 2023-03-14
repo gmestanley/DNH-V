@@ -383,9 +383,9 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 		data->name_ = path;
 		D3DXGetImageInfoFromFileInMemory(buf.GetPointer(), size, &data->infoImage_);
 
-		Logger::WriteTop(StringUtility::Format(L"TextureManager：テクスチャを読み込みました[%s]", path.c_str()));
+		Logger::WriteTop(StringUtility::Format(L"TextureManager: Loaded texture [%s]\nTextureManager：テクスチャを読み込みました[%s]", path.c_str()));
 	} catch (gstd::wexception& e) {
-		std::wstring str = StringUtility::Format(L"TextureManager：テクスチャ読み込み失敗[%s]\n\t%s", path.c_str(), e.what());
+		std::wstring str = StringUtility::Format(L"TextureManager: Failed to load texture [%s]\nTextureManager：テクスチャ読み込み失敗[%s]\n\t%s", path.c_str(), e.what());
 		Logger::WriteTop(str);
 		return false;
 	}
@@ -512,7 +512,7 @@ gstd::ref_count_ptr<Texture> TextureManager::CreateFromFileInLoadThread(std::wst
 					try {
 						ref_count_ptr<FileReader> reader = FileManager::GetBase()->GetFileReader(path);
 						if (reader == NULL)
-							throw gstd::wexception(L"ファイルが見つかりません");
+							throw gstd::wexception(L"The file can't be found\nファイルが見つかりません");
 						if (!reader->Open())
 							throw gstd::wexception(L"ファイルが開けません");
 
@@ -571,7 +571,7 @@ void TextureManager::CallFromLoadThread(ref_count_ptr<FileManager::LoadThreadEve
 		try {
 			ref_count_ptr<FileReader> reader = FileManager::GetBase()->GetFileReader(path);
 			if (reader == NULL)
-				throw gstd::wexception(L"ファイルが見つかりません");
+				throw gstd::wexception(L"The file can't be found\nファイルが見つかりません");
 			if (!reader->Open())
 				throw gstd::wexception(L"ファイルが開けません");
 
