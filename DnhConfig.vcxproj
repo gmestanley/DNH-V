@@ -203,7 +203,7 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhConfig\Common.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\DnhConfig\GcLibImpl.cpp" />
     <ClCompile Include="source\TouhouDanmakufu\DnhConfig\MainWindow.cpp" />
-    <ClCompile Include="source\TouhouDanmakufu\DnhConfig\WinMain.cpp" />
+    <ClCompile Include="source\TouhouDanmakufu\DnhConfig\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\directx\DirectGraphics.hpp" />

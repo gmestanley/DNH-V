@@ -4,10 +4,10 @@
 /**********************************************************
 WinMain
 **********************************************************/
-int WINAPI wWinMain(HINSTANCE hInstance,
+int main(/*HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPWSTR lpCmdLine,
-	int nCmdShow)
+	int nCmdShow*/)
 {
 	gstd::DebugUtility::DumpMemoryLeaksOnExit();
 

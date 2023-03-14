@@ -113,7 +113,7 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhConfig\MainWindow.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\TouhouDanmakufu\DnhConfig\WinMain.cpp">
+    <ClCompile Include="source\TouhouDanmakufu\DnhConfig\Main.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\GcLib\zlib\adler32.c">
