@@ -1367,7 +1367,7 @@ bool DxTextRenderer::AddFontFromFile(std::wstring path)
 	if (reader == NULL)
 		throw gstd::wexception(StringUtility::Format(L"The font file can't be found(%s)\nフォントファイルが見つかりません(%s)", path.c_str()).c_str());
 	if (!reader->Open())
-		throw gstd::wexception(StringUtility::Format(L"The font file can't be found(%s)\nフォントファイルを開けません(%s)", path.c_str()).c_str());
+		throw gstd::wexception(StringUtility::Format(L"The font file can't be opened(%s)\nフォントファイルを開けません(%s)", path.c_str()).c_str());
 
 	int size = reader->GetFileSize();
 	ByteBuffer buf;
