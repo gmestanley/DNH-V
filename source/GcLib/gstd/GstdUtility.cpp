@@ -15,6 +15,7 @@ void DebugUtility::DumpMemoryLeaksOnExit() {
 //================================================================
 //Encoding
 const unsigned char Encoding::BOM_UTF16LE[] = { 0xFF, 0xFE };
+const unsigned char Encoding::BOM_UTF16BE[] = { 0xFE, 0xFF };
 int Encoding::Detect(const void* data, int dataSize)
 {
 	return UNKNOWN;
