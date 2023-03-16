@@ -1754,7 +1754,7 @@ void parser::parse_clause(script_engine::block* block)
 		write_operation(block, "absolute", 1);
 		if (lex->next != tk_close_abs) {
 			std::wstring error;
-			error += L"\"|\" is nessasary.\r\n";
+			error += L"\"|\" is necessary.\r\n";
 			error += L"(\"|)\"が必要です)";
 			throw parser_error(error);
 		}
@@ -1922,7 +1922,7 @@ int parser::parse_arguments(script_engine::block* block)
 		}
 		if (lex->next != tk_close_par) {
 			std::wstring error;
-			error += L"\")\" is nessasary.\r\n";
+			error += L"\")\" is necessary.\r\n";
 			error += L"(\")\"が必要です)";
 			throw parser_error(error);
 		}
@@ -2035,7 +2035,7 @@ void parser::parse_statements(script_engine::block* block)
 				if (argc != s->sub->arguments) {
 					std::wstring error;
 					error += StringUtility::FormatToWide(
-						"%s incorrect number of parameters. Check to make sure you have the correct number of parameters.\r\n",
+						"Incorrect number of parameters for %s. Check to make sure you have the correct number of parameters.\r\n",
 						s->sub->name.c_str());
 					error += StringUtility::FormatToWide("(%sの引数の数が違います)", s->sub->name.c_str());
 					throw parser_error(error);
@@ -2048,7 +2048,7 @@ void parser::parse_statements(script_engine::block* block)
 
 			if (lex->next != tk_word) {
 				std::wstring error;
-				error += L"Symbol name is nessasary.\r\n";
+				error += L"Symbol name is necessary.\r\n";
 				error += L"(識別子が必要です)";
 				throw parser_error(error);
 			}
@@ -2103,13 +2103,16 @@ void parser::parse_statements(script_engine::block* block)
 			parse_inline_block(block, script_engine::bk_loop);
 			block->codes.push_back(code(lex->line, script_engine::pc_loop_back, ip));
 			need_semicolon = false;
+		} else if (lex->next == tk_FOR) {
+			lex->advance();
+
 		} else if (lex->next == tk_ASCENT || lex->next == tk_DESCENT) {
 			bool back = lex->next == tk_DESCENT;
 			lex->advance();
 
 			if (lex->next != tk_open_par) {
 				std::wstring error;
-				error += L"\"(\" is nessasary.\r\n";
+				error += L"\"(\" is necessary.\r\n";
 				error += L"(\"(\"が必要です)";
 				throw parser_error(error);
 			}
@@ -2121,7 +2124,7 @@ void parser::parse_statements(script_engine::block* block)
 
 			if (lex->next != tk_word) {
 				std::wstring error;
-				error += L"The symbol name is nessasary.\r\n";
+				error += L"The symbol name is necessary.\r\n";
 				error += L"(識別子が必要です)";
 				throw parser_error(error);
 			}
@@ -2132,7 +2135,7 @@ void parser::parse_statements(script_engine::block* block)
 
 			if (lex->next != tk_IN) {
 				std::wstring error;
-				error += L"\"in\" is nessasary.\r\n";
+				error += L"\"in\" is necessary.\r\n";
 				error += L"(inが必要です)";
 				throw parser_error(error);
 			}
@@ -2142,7 +2145,7 @@ void parser::parse_statements(script_engine::block* block)
 
 			if (lex->next != tk_range) {
 				std::wstring error;
-				error += L"\"..\" is nessasary.\r\n";
+				error += L"\"..\" is necessary.\r\n";
 				error += L"(\"..\"が必要です)";
 				throw parser_error(error);
 			}
@@ -2152,7 +2155,7 @@ void parser::parse_statements(script_engine::block* block)
 
 			if (lex->next != tk_close_par) {
 				std::wstring error;
-				error += L"\")\" is nessasary.\r\n";
+				error += L"\")\" is necessary.\r\n";
 				error += L"(\")\"が必要です)";
 				throw parser_error(error);
 			}
@@ -2225,7 +2228,7 @@ void parser::parse_statements(script_engine::block* block)
 
 				if (lex->next != tk_open_par) {
 					std::wstring error;
-					error += L"\"(\" is nessasary.\r\n";
+					error += L"\"(\" is necessary.\r\n";
 					error += L"(\"(\"が必要です)";
 					throw parser_error(error);
 				}
@@ -2246,7 +2249,7 @@ void parser::parse_statements(script_engine::block* block)
 				block->codes.push_back(code(lex->line, script_engine::pc_case_end));
 				if (lex->next != tk_close_par) {
 					std::wstring error;
-					error += L"\")\" is nessasary.\r\n";
+					error += L"\")\" is necessary.\r\n";
 					error += L"(\")\"が必要です)";
 					throw parser_error(error);
 				}
@@ -2309,7 +2312,7 @@ void parser::parse_statements(script_engine::block* block)
 			lex->advance();
 			if (lex->next != tk_word) {
 				std::wstring error;
-				error += L"Symbol name is nessasary.\r\n";
+				error += L"Symbol name is necessary.\r\n";
 				error += L"(識別子が必要です)";
 				throw parser_error(error);
 			}
@@ -2337,7 +2340,7 @@ void parser::parse_statements(script_engine::block* block)
 							lex->advance();
 							if (lex->next != tk_word) {
 								std::wstring error;
-								error += L"Function parameter is nessasary.\r\n";
+								error += L"Function parameter is necessary.\r\n";
 								error += L"(仮引数が必要です)";
 								throw parser_error(error);
 							}
@@ -2350,7 +2353,7 @@ void parser::parse_statements(script_engine::block* block)
 					}
 					if (lex->next != tk_close_par) {
 						std::wstring error;
-						error += L"\")\" is nessasary.\r\n";
+						error += L"\")\" is necessary.\r\n";
 						error += L"(\")\"が必要です)";
 						throw parser_error(error);
 					}
@@ -2362,7 +2365,7 @@ void parser::parse_statements(script_engine::block* block)
 					lex->advance();
 					if (lex->next != tk_close_par) {
 						std::wstring error;
-						error += L"\")\" is nessasary.\r\n";
+						error += L"\")\" is necessary.\r\n";
 						error += L"(\")\"が必要…というか\"(\"要らんです)";
 						throw parser_error(error);
 					}
@@ -2393,7 +2396,7 @@ void parser::parse_block(script_engine::block* block, std::vector<std::string> c
 {
 	if (lex->next != tk_open_cur) {
 		std::wstring error;
-		error += L"\"{\" is nessasary.\r\n";
+		error += L"\"{\" is necessary.\r\n";
 		error += L"(\"{\"が必要です)";
 		throw parser_error(error);
 	}
@@ -2415,7 +2418,7 @@ void parser::parse_block(script_engine::block* block, std::vector<std::string> c
 
 	if (lex->next != tk_close_cur) {
 		std::wstring error;
-		error += L"\"}\" is nessasary.\r\n";
+		error += L"\"}\" is necessary.\r\n";
 		error += L"(\"}\"が必要です)";
 		throw parser_error(error);
 	}
