@@ -1700,7 +1700,7 @@ void parser::parse_clause(script_engine::block* block)
 		symbol* s = search(lex->word);
 		if (s == NULL) {
 			std::wstring error;
-			error += StringUtility::FormatToWide("%s is not defined.\r\n", lex->word.c_str());
+			error += StringUtility::FormatToWide("%s is not defined.(ADDITIONAL ERROR BULLSHIT)\r\n", lex->word.c_str());
 			error += StringUtility::FormatToWide("(%sは未定義の識別子です)", lex->word.c_str());
 			throw parser_error(error);
 		}
