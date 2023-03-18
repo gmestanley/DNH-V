@@ -1700,7 +1700,7 @@ void parser::parse_clause(script_engine::block* block)
 		symbol* s = search(lex->word);
 		if (s == NULL) {
 			std::wstring error;
-			error += StringUtility::FormatToWide("%s is not defined.(ADDITIONAL ERROR BULLSHIT)\r\n", lex->word.c_str());
+			error += StringUtility::FormatToWide("%s is not defined.\r\n", lex->word.c_str());
 			error += StringUtility::FormatToWide("(%sは未定義の識別子です)", lex->word.c_str());
 			throw parser_error(error);
 		}
@@ -2105,7 +2105,40 @@ void parser::parse_statements(script_engine::block* block)
 			need_semicolon = false;
 		} else if (lex->next == tk_FOR) {
 			lex->advance();
+			if (lex->next != tk_open_par) {
+				std::wstring error;
+				error += L"\"(\" is necessary.\r\n";
+				error += L"(\"(\"が必要です)";
+				throw parser_error(error);
+			}
+			lex->advance();
 
+			if (lex->next != tk_LET && lex->next != tk_REAL) {
+				std::wstring error;
+				error += L"The data type is necessary.\r\n";
+				error += L"(データ型が必要です)";
+				throw parser_error(error);
+			}
+			lex->advance();
+
+			if (lex->next != tk_word) {
+				std::wstring error;
+				error += L"The symbol name is necessary.\r\n";
+				error += L"(識別子が必要です)";
+				throw parser_error(error);
+			}
+
+			std::string s = lex->word;
+
+			lex->advance();
+
+			if (lex->next != tk_EQUAL) {
+				std::wstring error;
+				error += L"The equal sign is necessary.\r\n";
+				error += L"(データ型が必要です)";
+				throw parser_error(error);
+			}
+			lex->advance();
 		} else if (lex->next == tk_ASCENT || lex->next == tk_DESCENT) {
 			bool back = lex->next == tk_DESCENT;
 			lex->advance();
