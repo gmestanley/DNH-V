@@ -257,6 +257,33 @@
     <ClCompile Include="ffmpeg\libavutil\samplefmt.c">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\avcodec.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\codec_desc.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\encode.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\gif.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\gif_parser.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\gifdec.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\lzw.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\lzwenc.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ffmpeg\libavcodec\version.c">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -460,12 +487,29 @@
     <ClInclude Include="ffmpeg\libavutil\pixfmt.h" />
     <ClInclude Include="ffmpeg\libavutil\rational.h" />
     <ClInclude Include="ffmpeg\libavutil\samplefmt.h" />
+    <ClInclude Include="ffmpeg\libavcodec\avcodec.h" />
+    <ClInclude Include="ffmpeg\libavcodec\bytestream.h" />
+    <ClInclude Include="ffmpeg\libavcodec\codec.h" />
+    <ClInclude Include="ffmpeg\libavcodec\codec_desc.h" />
+    <ClInclude Include="ffmpeg\libavcodec\codec_id.h" />
+    <ClInclude Include="ffmpeg\libavcodec\codec_internal.h" />
+    <ClInclude Include="ffmpeg\libavcodec\defs.h" />
+    <ClInclude Include="ffmpeg\libavcodec\encode.h" />
+    <ClInclude Include="ffmpeg\libavcodec\gif.h" />
+    <ClInclude Include="ffmpeg\libavcodec\lzw.h" />
+    <ClInclude Include="ffmpeg\libavcodec\packet.h" />
+    <ClInclude Include="ffmpeg\libavcodec\packet_internal.h" />
+    <ClInclude Include="ffmpeg\libavcodec\version.h" />
+    <ClInclude Include="ffmpeg\libavcodec\version_major.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">
       <Filter>source</Filter>
     </ResourceCompile>
     <ResourceCompile Include="ffmpeg\avcodecres.rc">
+      <Filter>source</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="ffmpeg\libavcodec\avcodecres.rc">
       <Filter>source</Filter>
     </ResourceCompile>
   </ItemGroup>
