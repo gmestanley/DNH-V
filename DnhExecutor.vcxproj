@@ -170,6 +170,14 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ffmpeg\avcodec.c" />
+    <ClCompile Include="ffmpeg\encode.c" />
+    <ClCompile Include="ffmpeg\gif.c" />
+    <ClCompile Include="ffmpeg\gifdec.c" />
+    <ClCompile Include="ffmpeg\gif_parser.c" />
+    <ClCompile Include="ffmpeg\libavutil\opt.c" />
+    <ClCompile Include="ffmpeg\lzw.c" />
+    <ClCompile Include="ffmpeg\lzwenc.c" />
     <ClCompile Include="source\GcLib\directx\DirectGraphics.cpp" />
     <ClCompile Include="source\GcLib\directx\DirectInput.cpp" />
     <ClCompile Include="source\GcLib\directx\DirectSound.cpp" />
@@ -238,6 +246,13 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ffmpeg\avcodec.h" />
+    <ClInclude Include="ffmpeg\bytestream.h" />
+    <ClInclude Include="ffmpeg\codec_internal.h" />
+    <ClInclude Include="ffmpeg\encode.h" />
+    <ClInclude Include="ffmpeg\gif.h" />
+    <ClInclude Include="ffmpeg\libavutil\opt.h" />
+    <ClInclude Include="ffmpeg\lzw.h" />
     <ClInclude Include="source\GcLib\directx\DirectGraphics.hpp" />
     <ClInclude Include="source\GcLib\directx\DirectInput.hpp" />
     <ClInclude Include="source\GcLib\directx\DirectSound.hpp" />
@@ -311,6 +326,7 @@
     <ClInclude Include="source\TouhouDanmakufu\DnhExecutor\TitleScene.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="ffmpeg\avcodecres.rc" />
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source\TouhouDanmakufu\DnhExecutor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source\TouhouDanmakufu\DnhExecutor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
