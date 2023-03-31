@@ -21,16 +21,17 @@ bool EApplication::_Initialize()
 
 	EFpsController* fpsController = EFpsController::CreateInstance();
 
+	DnhConfiguration* config = DnhConfiguration::CreateInstance();
+	int language = config->GetLanguage();
 	std::wstring appName;
-	if (0) {
-		appName = L"DNH-V";
-	}
-	else if (1) {
+	if (language == DnhConfiguration::JAPANESE) {
 		appName = L"東方弾幕風-V";
+	}
+	else if (language == DnhConfiguration::ENGLISH) {
+		appName = L"DNH-V";
 	}
 	appName += DNH_VERSION;
 
-	DnhConfiguration* config = DnhConfiguration::CreateInstance();
 	std::wstring configWindowTitle = config->GetWindowTitle();
 	if (configWindowTitle.size() > 0)
 		appName = configWindowTitle;
