@@ -30,6 +30,9 @@ bool EApplication::_Initialize()
 	else if (language == DnhConfiguration::ENGLISH) {
 		appName = L"DNH-V";
 	}
+	else if (language == DnhConfiguration::CHINESE) {
+		appName = L"东方弹幕风-V";
+	}
 	appName += DNH_VERSION;
 
 	std::wstring configWindowTitle = config->GetWindowTitle();
