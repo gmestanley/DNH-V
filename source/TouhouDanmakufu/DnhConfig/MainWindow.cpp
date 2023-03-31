@@ -532,11 +532,34 @@ void OptionPanel::WriteConfiguration()
 	config->SetMouseVisible(ListView_GetCheckState(hListOption, ROW_MOUSE_UNVISIBLE) ? false : true);
 }
 
-/*
+/**********************************************************
+//MiscPanel
+**********************************************************/
+MiscPanel::MiscPanel()
+{
+}
+MiscPanel::~MiscPanel()
+{
 
+}
+bool MiscPanel::Initialize(HWND hParent)
+{
+	hWnd_ = ::CreateDialog((HINSTANCE)GetWindowLong(NULL, GWL_HINSTANCE),
+		MAKEINTRESOURCE(IDD_PANEL_DEVICE),
+		hParent, (DLGPROC)_StaticWindowProcedure);
+	Attach(hWnd_);
 
+	return true;
+}
+LRESULT MiscPanel::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	return WPanel::_WindowProcedure(hWnd, uMsg, wParam, lParam);
+}
+void MiscPanel::ReadConfiguration()
+{
+	DnhConfiguration* config = DnhConfiguration::GetInstance();
 	int language = config->GetLanguage();
-	switch(language){
+	switch (language) {
 	case DnhConfiguration::JAPANESE:
 		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_JP_EN, BM_SETCHECK, 1, 0);
 		break;
@@ -547,9 +570,10 @@ void OptionPanel::WriteConfiguration()
 		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_SETCHECK, 1, 0);
 		break;
 	}
-	
-	
-
+}
+void MiscPanel::WriteConfiguration()
+{
+	DnhConfiguration* config = DnhConfiguration::GetInstance();
 	int language = config->GetLanguage();
 	if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_JP_EN, BM_GETCHECK, 0, 0))
 		language = DnhConfiguration::JAPANESE;
@@ -557,4 +581,5 @@ void OptionPanel::WriteConfiguration()
 		language = DnhConfiguration::ENGLISH;
 	else if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_GETCHECK, 0, 0))
 		language = DnhConfiguration::CHINESE;
-	config->SetLanguage(language);*/
+	config->SetLanguage(language);
+}
