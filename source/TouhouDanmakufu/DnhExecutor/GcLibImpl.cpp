@@ -21,7 +21,13 @@ bool EApplication::_Initialize()
 
 	EFpsController* fpsController = EFpsController::CreateInstance();
 
-	std::wstring appName = L"DNH-V";
+	std::wstring appName;
+	if (0) {
+		appName = L"DNH-V";
+	}
+	else if (1) {
+		appName = L"東方弾幕風-V";
+	}
 	appName += DNH_VERSION;
 
 	DnhConfiguration* config = DnhConfiguration::CreateInstance();
