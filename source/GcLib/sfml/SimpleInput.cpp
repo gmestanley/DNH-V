@@ -1,7 +1,7 @@
-#include "SFMLInput.hpp"
+#include "SimpleInput.hpp"
 
 using namespace gstd;
-using namespace directx;
+//using namespace sf;
 
 /**********************************************************
 //DirectInput
