@@ -1,25 +1,25 @@
 #include "SimpleInput.hpp"
 
 using namespace gstd;
-//using namespace sf;
+using namespace sfml;
 
 /**********************************************************
-//DirectInput
+//SimpleInput
 **********************************************************/
-DirectInput* DirectInput::thisBase_ = NULL;
-void DirectInput::InputLog(std::wstring message) {
-	Logger::WriteTop(L"DirectInput：" + message);
+SimpleInput* SimpleInput::thisBase_ = NULL;
+void SimpleInput::InputLog(std::wstring messageJP, std::wstring messageEN) {
+	Logger::WriteTop(L"SimpleInput：" + messageJP + L"\nSimpleInput:" + messageEN);
 }
-DirectInput::DirectInput()
+SimpleInput::SimpleInput()
 {
 	hWnd_ = NULL;
 	pInput_ = NULL;
 	pKeyboard_ = NULL;
 	pMouse_ = NULL;
 }
-DirectInput::~DirectInput()
+SimpleInput::~SimpleInput()
 {
-	InputLog(L"終了開始");
+	InputLog(L"終了開始", L"Termination started");
 	for (int iPad = 0; iPad < pJoypad_.size(); iPad++) {
 		if (pJoypad_[iPad] == NULL)
 			continue;
@@ -41,14 +41,14 @@ DirectInput::~DirectInput()
 	if (pInput_ != NULL)
 		pInput_->Release();
 	thisBase_ = NULL;
-	InputLog(L"終了完了");
+	InputLog(L"終了完了", L"Termination finished");
 }
 
-bool DirectInput::Initialize(HWND hWnd)
+bool SimpleInput::Initialize(HWND hWnd)
 {
 	if (thisBase_ != NULL)
 		return false;
-	InputLog(L"初期化");
+	InputLog(L"初期化", L"Initialization");
 	hWnd_ = hWnd;
 
 	HINSTANCE hInst = ::GetModuleHandle(NULL);
@@ -68,74 +68,74 @@ bool DirectInput::Initialize(HWND hWnd)
 	}
 
 	thisBase_ = this;
-	InputLog(L"初期化完了");
+	InputLog(L"初期化完了", L"Initialization finished");
 	return true;
 }
 
-bool DirectInput::_InitializeKeyBoard()
+bool SimpleInput::_InitializeKeyBoard()
 {
-	InputLog(L"キーボード初期化");
+	InputLog(L"キーボード初期化", L"Keyboard Initialization");
 
 	HRESULT hrDevice = pInput_->CreateDevice(GUID_SysKeyboard, &pKeyboard_, NULL);
 	if (FAILED(hrDevice)) {
-		InputLog(L"キーボードのデバイスオブジェクト作成失敗");
+		InputLog(L"キーボードのデバイスオブジェクト作成失敗", L"Failed to create the keyboard's device object");
 		return false;
 	}
 
 	HRESULT hrFormat = pKeyboard_->SetDataFormat(&c_dfDIKeyboard);
 	if (FAILED(hrFormat)) {
-		InputLog(L"キーボードのデータフォーマット設定失敗");
+		InputLog(L"キーボードのデータフォーマット設定失敗", L"Failed to configure the keyboard's device object");
 		return false;
 	}
 
 	HRESULT hrCoop = pKeyboard_->SetCooperativeLevel(hWnd_, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
 	if (FAILED(hrCoop)) {
-		InputLog(L"キーボードの動作設定失敗");
+		InputLog(L"キーボードの動作設定失敗", L"Failed to configure the keyboard's movement");
 		return false;
 	}
 
 	// 入力制御開始
 	pKeyboard_->Acquire();
 
-	InputLog(L"キーボード初期化完了");
+	InputLog(L"キーボード初期化完了", L"Finished initializing the keyboard");
 
 	return true;
 }
-bool DirectInput::_InitializeMouse()
+bool SimpleInput::_InitializeMouse()
 {
-	InputLog(L"マウス初期化");
+	InputLog(L"マウス初期化", L"Initialized mouse");
 
 	HRESULT hrDevice = pInput_->CreateDevice(GUID_SysMouse, &pMouse_, NULL);
 	if (FAILED(hrDevice)) {
-		InputLog(L"マウスのデバイスオブジェクト作成失敗");
+		InputLog(L"マウスのデバイスオブジェクト作成失敗", L"Failed to configure the keyboard's movement");
 		return false;
 	}
 
 	HRESULT hrFormat = pMouse_->SetDataFormat(&c_dfDIMouse);
 	if (FAILED(hrFormat)) {
-		InputLog(L"マウスのデータフォーマット設定失敗");
+		InputLog(L"マウスのデータフォーマット設定失敗", L"Failed to configure the keyboard's movement");
 		return false;
 	}
 
 	HRESULT hrCoop = pMouse_->SetCooperativeLevel(hWnd_, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
 	if (FAILED(hrCoop)) {
-		InputLog(L"マウスの動作設定失敗");
+		InputLog(L"マウスの動作設定失敗", L"Failed to configure the keyboard's movement");
 		return false;
 	}
 
 	// 入力制御開始
 	pMouse_->Acquire();
 
-	InputLog(L"マウス初期化完了");
+	InputLog(L"マウス初期化完了", L"Failed to configure the keyboard's movement");
 	return true;
 }
-bool DirectInput::_InitializeJoypad()
+bool SimpleInput::_InitializeJoypad()
 {
-	InputLog(L"ジョイパッド初期化");
+	InputLog(L"ジョイパッド初期化", L"Failed to configure the keyboard's movement");
 	pInput_->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)_GetJoypadStaticCallback, this, DIEDFL_ATTACHEDONLY);
 	int count = pJoypad_.size();
 	if (count == 0) {
-		InputLog(L"ジョイパッドは見つかりませんでした");
+		InputLog(L"ジョイパッドは見つかりませんでした", L"Joypad could not be found");
 		return false; // ジョイパッドが見付からない
 	}
 
@@ -144,22 +144,22 @@ bool DirectInput::_InitializeJoypad()
 	for (int iPad = 0; iPad < count; iPad++)
 		padRes_[iPad] = 500;
 
-	InputLog(L"ジョイパッド初期化完了");
+	InputLog(L"ジョイパッド初期化完了", L"Finished initializing the joypad");
 
 	return true;
 }
-BOOL CALLBACK DirectInput::_GetJoypadStaticCallback(LPDIDEVICEINSTANCE lpddi, LPVOID pvRef)
+BOOL CALLBACK SimpleInput::_GetJoypadStaticCallback(LPDIDEVICEINSTANCE lpddi, LPVOID pvRef)
 {
-	DirectInput* input = (DirectInput*)pvRef;
+	SimpleInput* input = (SimpleInput*)pvRef;
 	return input->_GetJoypadCallback(lpddi);
 }
-BOOL DirectInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
+BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 {
-	InputLog(L"ジョイパッドを見つけました");
+	InputLog(L"ジョイパッドを見つけました", L"Found the joypad");
 	LPDIRECTINPUTDEVICE8 pJoypad = NULL;
 	HRESULT hrDevice = pInput_->CreateDevice(lpddi->guidInstance, &pJoypad, NULL);
 	if (FAILED(hrDevice)) {
-		InputLog(L"入力装置のデバイスオブジェクト作成失敗");
+		InputLog(L"入力装置のデバイスオブジェクト作成失敗", L"Failed to create input unit's device object");
 		return DIENUM_CONTINUE;
 	}
 
@@ -170,15 +170,15 @@ BOOL DirectInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 		State.dwSize = sizeof(State);
 		pJoypad->GetDeviceInfo(&State);
 
-		Logger::WriteTop(StringUtility::Format(L"デバイスの登録名:%s", State.tszInstanceName));
-		Logger::WriteTop(StringUtility::Format(L"デバイスの製品登録名:%s", State.tszProductName));
+		Logger::WriteTop(StringUtility::Format(L"デバイスの登録名:%s\nDevice's registered name: %s", State.tszInstanceName));
+		Logger::WriteTop(StringUtility::Format(L"デバイスの製品登録名:%s\nDevice's product registered name: %s", State.tszProductName));
 	}
 
 	HRESULT hrFormat = pJoypad->SetDataFormat(&c_dfDIJoystick);
 	if (FAILED(hrFormat)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドのデータフォーマット設定失敗");
+		InputLog(L"ジョイパッドのデータフォーマット設定失敗", L"Failed to configure the joypad's data format");
 		return DIENUM_CONTINUE;
 	}
 
@@ -186,7 +186,7 @@ BOOL DirectInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	if (FAILED(hrCoop)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドの動作設定失敗");
+		InputLog(L"ジョイパッドの動作設定失敗", L"Failed to configure the keyboard's movement");
 		return DIENUM_CONTINUE;
 	}
 
@@ -202,7 +202,7 @@ BOOL DirectInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	if (FAILED(hrRangeX)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドデバイスのx軸関係の設定に失敗しました");
+		InputLog(L"ジョイパッドデバイスのx軸関係の設定に失敗しました", L"Failed in the configuration of the joypad device's X axis connection movement");
 		return DIENUM_CONTINUE;
 	}
 
@@ -263,15 +263,15 @@ BOOL DirectInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	return DIENUM_CONTINUE;
 }
 
-int DirectInput::_GetKey(UINT code, int state)
+int SimpleInput::_GetKey(UINT code, int state)
 {
 	return _GetStateSub((stateKey_[code] & 0x80) == 0x80, state);
 }
-int DirectInput::_GetMouseButton(int button, int state)
+int SimpleInput::_GetMouseButton(int button, int state)
 {
 	return _GetStateSub((stateMouse_.rgbButtons[button] & 0x80) == 0x80, state);
 }
-int DirectInput::_GetPadDirection(int index, UINT code, int state)
+int SimpleInput::_GetPadDirection(int index, UINT code, int state)
 {
 	if (index >= pJoypad_.size())
 		return KEY_FREE;
@@ -296,11 +296,11 @@ int DirectInput::_GetPadDirection(int index, UINT code, int state)
 
 	return res;
 }
-int DirectInput::_GetPadButton(int index, int buttonNo, int state)
+int SimpleInput::_GetPadButton(int index, int buttonNo, int state)
 {
 	return _GetStateSub((statePad_[index].rgbButtons[buttonNo] & 0x80) == 0x80, state);
 }
-int DirectInput::_GetStateSub(bool flag, int state)
+int SimpleInput::_GetStateSub(bool flag, int state)
 {
 	int res = KEY_FREE;
 	if (flag) {
@@ -317,7 +317,7 @@ int DirectInput::_GetStateSub(bool flag, int state)
 	return res;
 }
 
-bool DirectInput::_IdleKeyboard()
+bool SimpleInput::_IdleKeyboard()
 {
 	if (!pInput_ || !pKeyboard_)
 		return false;
@@ -330,7 +330,7 @@ bool DirectInput::_IdleKeyboard()
 	}
 	return true;
 }
-bool DirectInput::_IdleJoypad()
+bool SimpleInput::_IdleJoypad()
 {
 	if (pJoypad_.size() == 0)
 		return false;
@@ -348,7 +348,7 @@ bool DirectInput::_IdleJoypad()
 	}
 	return true;
 }
-bool DirectInput::_IdleMouse()
+bool SimpleInput::_IdleMouse()
 {
 	if (!pInput_ || !pMouse_)
 		return false;
@@ -363,7 +363,7 @@ bool DirectInput::_IdleMouse()
 	return true;
 }
 
-void DirectInput::Update()
+void SimpleInput::Update()
 {
 	this->_IdleKeyboard();
 	this->_IdleJoypad();
@@ -385,19 +385,19 @@ void DirectInput::Update()
 			bufPad_[iPad][iButton + 4] = _GetPadButton(iPad, iButton, bufPad_[iPad][iButton + 4]);
 	}
 }
-int DirectInput::GetKeyState(int key)
+int SimpleInput::GetKeyState(int key)
 {
 	if (key < 0 || key >= MAX_KEY)
 		return KEY_FREE;
 	return bufKey_[key];
 }
-int DirectInput::GetMouseState(int button)
+int SimpleInput::GetMouseState(int button)
 {
 	if (button < 0 || button >= MAX_MOUSE_BUTTON)
 		return KEY_FREE;
 	return bufMouse_[button];
 }
-int DirectInput::GetPadState(int padNo, int button)
+int SimpleInput::GetPadState(int padNo, int button)
 {
 	int res = KEY_FREE;
 	if (padNo < bufPad_.size())
@@ -405,7 +405,7 @@ int DirectInput::GetPadState(int padNo, int button)
 	return res;
 }
 
-POINT DirectInput::GetMousePosition()
+POINT SimpleInput::GetMousePosition()
 {
 	POINT res = { 0, 0 };
 	GetCursorPos(&res);
@@ -413,25 +413,25 @@ POINT DirectInput::GetMousePosition()
 	return res;
 }
 
-void DirectInput::ResetInputState()
+void SimpleInput::ResetInputState()
 {
 	ResetMouseState();
 	ResetKeyState();
 	ResetPadState();
 }
-void DirectInput::ResetMouseState()
+void SimpleInput::ResetMouseState()
 {
 	for (int iButton = 0; iButton < 3; iButton++)
 		bufMouse_[iButton] = KEY_FREE;
 	ZeroMemory(&stateMouse_, sizeof(stateMouse_));
 }
-void DirectInput::ResetKeyState()
+void SimpleInput::ResetKeyState()
 {
 	for (int iKey = 0; iKey < MAX_KEY; iKey++)
 		bufKey_[iKey] = KEY_FREE;
 	ZeroMemory(&stateKey_, sizeof(stateKey_));
 }
-void DirectInput::ResetPadState()
+void SimpleInput::ResetPadState()
 {
 	for (int iPad = 0; iPad < bufPad_.size(); iPad++) {
 		for (int iKey = 0; iKey < bufPad_.size(); iKey++)
@@ -443,7 +443,7 @@ void DirectInput::ResetPadState()
 		}
 	}
 }
-DIDEVICEINSTANCE DirectInput::GetPadDeviceInformation(int padIndex)
+DIDEVICEINSTANCE SimpleInput::GetPadDeviceInformation(int padIndex)
 {
 	DIDEVICEINSTANCE state;
 	ZeroMemory(&state, sizeof(state));
@@ -477,7 +477,7 @@ VirtualKeyManager::~VirtualKeyManager()
 
 void VirtualKeyManager::Update()
 {
-	DirectInput::Update();
+	SimpleInput::Update();
 
 	std::map<int, gstd::ref_count_ptr<VirtualKey>>::iterator itr = mapKey_.begin();
 	for (; itr != mapKey_.end(); itr++) {
@@ -490,7 +490,7 @@ void VirtualKeyManager::Update()
 }
 void VirtualKeyManager::ClearKeyState()
 {
-	DirectInput::ResetInputState();
+	SimpleInput::ResetInputState();
 	std::map<int, gstd::ref_count_ptr<VirtualKey>>::iterator itr = mapKey_.begin();
 	for (; itr != mapKey_.end(); itr++) {
 		gstd::ref_count_ptr<VirtualKey> key = itr->second;

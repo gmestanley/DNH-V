@@ -33,7 +33,7 @@ public:
 	};
 
 public:
-	void InputLog(std::wstring message);
+	void InputLog(std::wstring messageJP, std::wstring messageEN);
 	SimpleInput();
 	virtual ~SimpleInput();
 	static SimpleInput* GetBase() { return thisBase_; }
