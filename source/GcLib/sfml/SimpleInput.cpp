@@ -95,12 +95,13 @@ bool SimpleInput::_InitializeKeyBoard()
 	}
 
 	// 入力制御開始
+	pKeyboard_->Acquire();
 
 	InputLog(L"キーボード初期化完了", L"Finished initializing the keyboard");
 
 	return true;
 }
-bool SimpleInput::_InitializePeripheral(bool isMouse, std::wstring nameJP, std::wstring nameEN)
+bool SimpleInput::_InitializeMouse()
 {
 	InputLog(L"マウス初期化", L"Initialized mouse");
 
@@ -123,12 +124,7 @@ bool SimpleInput::_InitializePeripheral(bool isMouse, std::wstring nameJP, std::
 	}
 
 	// 入力制御開始
-	if (isMouse) {
-		pMouse_->Acquire();
-	}
-	else {
-		pKeyboard_->Acquire();
-	}
+	pMouse_->Acquire();
 
 	InputLog(L"マウス初期化完了", L"Finished initializing the mouse");
 	return true;
@@ -216,7 +212,7 @@ BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	if (FAILED(hrRangeY)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドデバイスのy軸関係の設定に失敗しました");
+		InputLog(L"ジョイパッドデバイスのy軸関係の設定に失敗しました", L"Failed in the configuration of the joypad device's Y axis connection movement");
 		return DIENUM_CONTINUE;
 	}
 
@@ -224,7 +220,7 @@ BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	diprg.diph.dwObj = DIJOFS_Z;
 	HRESULT hrRangeZ = pJoypad->SetProperty(DIPROP_RANGE, &diprg.diph);
 	if (FAILED(hrRangeZ)) {
-		InputLog(L"ジョイパッドデバイスのz軸関係の設定に失敗しました");
+		InputLog(L"ジョイパッドデバイスのz軸関係の設定に失敗しました", L"Failed in the configuration of the joypad device's Z axis connection movement");
 	}
 
 	// xの無効ゾーンを設定
@@ -238,7 +234,7 @@ BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	if (FAILED(hrDeadX)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドデバイスのx軸の無効ゾーンの設定に失敗しました");
+		InputLog(L"ジョイパッドデバイスのx軸の無効ゾーンの設定に失敗しました", L"Failed in the configuration of the joypad device's X axis' void zone");
 		return DIENUM_CONTINUE;
 	}
 
@@ -248,7 +244,7 @@ BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	if (FAILED(hrDeadY)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドデバイスのy軸の無効ゾーンの設定に失敗しました");
+		InputLog(L"ジョイパッドデバイスのy軸の無効ゾーンの設定に失敗しました", L"Failed in the configuration of the joypad device's Y axis' void zone");
 		return DIENUM_CONTINUE;
 	}
 
@@ -256,7 +252,7 @@ BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	dipdw.diph.dwObj = DIJOFS_Z;
 	HRESULT hrDeadZ = pJoypad->SetProperty(DIPROP_DEADZONE, &dipdw.diph);
 	if (FAILED(hrDeadZ)) {
-		InputLog(L"ジョイパッドデバイスのz軸の無効ゾーンの設定に失敗しました");
+		InputLog(L"ジョイパッドデバイスのz軸の無効ゾーンの設定に失敗しました", L"Failed in the configuration of the joypad device's Z axis' void zone");
 	}
 
 	// 入力制御開始
