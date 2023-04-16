@@ -95,13 +95,12 @@ bool SimpleInput::_InitializeKeyBoard()
 	}
 
 	// 入力制御開始
-	pKeyboard_->Acquire();
 
 	InputLog(L"キーボード初期化完了", L"Finished initializing the keyboard");
 
 	return true;
 }
-bool SimpleInput::_InitializeMouse()
+bool SimpleInput::_InitializePeripheral(bool isMouse, std::wstring nameJP, std::wstring nameEN)
 {
 	InputLog(L"マウス初期化", L"Initialized mouse");
 
@@ -124,7 +123,12 @@ bool SimpleInput::_InitializeMouse()
 	}
 
 	// 入力制御開始
-	pMouse_->Acquire();
+	if (isMouse) {
+		pMouse_->Acquire();
+	}
+	else {
+		pKeyboard_->Acquire();
+	}
 
 	InputLog(L"マウス初期化完了", L"Finished initializing the mouse");
 	return true;
