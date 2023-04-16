@@ -119,19 +119,19 @@ bool SimpleInput::_InitializeMouse()
 
 	HRESULT hrCoop = pMouse_->SetCooperativeLevel(hWnd_, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
 	if (FAILED(hrCoop)) {
-		InputLog(L"マウスの動作設定失敗", L"Failed to configure the mause's movement");
+		InputLog(L"マウスの動作設定失敗", L"Failed to configure the mouse's movement");
 		return false;
 	}
 
 	// 入力制御開始
 	pMouse_->Acquire();
 
-	InputLog(L"マウス初期化完了", L"Failed to configure the keyboard's movement");
+	InputLog(L"マウス初期化完了", L"Finished initializing the mouse");
 	return true;
 }
 bool SimpleInput::_InitializeJoypad()
 {
-	InputLog(L"ジョイパッド初期化", L"Failed to configure the keyboard's movement");
+	InputLog(L"ジョイパッド初期化", L"Joypad initialization");
 	pInput_->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)_GetJoypadStaticCallback, this, DIEDFL_ATTACHEDONLY);
 	int count = pJoypad_.size();
 	if (count == 0) {
