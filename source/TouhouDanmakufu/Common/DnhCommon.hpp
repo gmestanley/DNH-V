@@ -172,7 +172,7 @@ public:
 
 	int GetPadIndex() { return padIndex_; }
 	void SetPadIndex(int index) { padIndex_ = index; }
-	ref_count_ptr<VirtualKey> GetVirtualKey(int id);
+	ref_count_ptr<sf::Keyboard> GetVirtualKey(int id);
 
 	bool IsLogWindow() { return bLogWindow_; }
 	void SetLogWindow(bool b) { bLogWindow_ = b; }
@@ -192,7 +192,7 @@ private:
 	int fpsType_;
 
 	int padIndex_;
-	std::map<int, ref_count_ptr<VirtualKey>> mapKey_;
+	std::map<int, ref_count_ptr<sf::Keyboard>> mapKey_;
 
 	bool bLogWindow_;
 	bool bLogFile_;
