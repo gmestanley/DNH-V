@@ -84,7 +84,7 @@ bool SimpleInput::_InitializeKeyBoard()
 
 	HRESULT hrFormat = pKeyboard_->SetDataFormat(&c_dfDIKeyboard);
 	if (FAILED(hrFormat)) {
-		InputLog(L"キーボードのデータフォーマット設定失敗", L"Failed to configure the keyboard's device object");
+		InputLog(L"キーボードのデータフォーマット設定失敗", L"Failed to configure the keyboard's data format");
 		return false;
 	}
 
@@ -107,19 +107,19 @@ bool SimpleInput::_InitializeMouse()
 
 	HRESULT hrDevice = pInput_->CreateDevice(GUID_SysMouse, &pMouse_, NULL);
 	if (FAILED(hrDevice)) {
-		InputLog(L"マウスのデバイスオブジェクト作成失敗", L"Failed to configure the keyboard's movement");
+		InputLog(L"マウスのデバイスオブジェクト作成失敗", L"Failed to configure the mouse's device object");
 		return false;
 	}
 
 	HRESULT hrFormat = pMouse_->SetDataFormat(&c_dfDIMouse);
 	if (FAILED(hrFormat)) {
-		InputLog(L"マウスのデータフォーマット設定失敗", L"Failed to configure the keyboard's movement");
+		InputLog(L"マウスのデータフォーマット設定失敗", L"Failed to configure the mouse's data format");
 		return false;
 	}
 
 	HRESULT hrCoop = pMouse_->SetCooperativeLevel(hWnd_, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
 	if (FAILED(hrCoop)) {
-		InputLog(L"マウスの動作設定失敗", L"Failed to configure the keyboard's movement");
+		InputLog(L"マウスの動作設定失敗", L"Failed to configure the mause's movement");
 		return false;
 	}
 
@@ -136,7 +136,7 @@ bool SimpleInput::_InitializeJoypad()
 	int count = pJoypad_.size();
 	if (count == 0) {
 		InputLog(L"ジョイパッドは見つかりませんでした", L"Joypad could not be found");
-		return false; // ジョイパッドが見付からない
+		return false; // ジョイパッドが見付からない/The joypad cannot be found
 	}
 
 	statePad_.resize(count);
@@ -186,7 +186,7 @@ BOOL SimpleInput::_GetJoypadCallback(LPDIDEVICEINSTANCE lpddi)
 	if (FAILED(hrCoop)) {
 		if (pJoypad != NULL)
 			pJoypad->Release();
-		InputLog(L"ジョイパッドの動作設定失敗", L"Failed to configure the keyboard's movement");
+		InputLog(L"ジョイパッドの動作設定失敗", L"Failed to configure the joypad's movement");
 		return DIENUM_CONTINUE;
 	}
 
