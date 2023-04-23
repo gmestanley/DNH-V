@@ -170,6 +170,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.c" />
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.c" />
     <ClCompile Include="ffmpeg\avcodec.c" />
     <ClCompile Include="ffmpeg\encode.c" />
     <ClCompile Include="ffmpeg\gif.c" />
@@ -177,6 +179,7 @@
     <ClCompile Include="ffmpeg\gif_parser.c" />
     <ClCompile Include="ffmpeg\libavcodec\avcodec.c" />
     <ClCompile Include="ffmpeg\libavcodec\codec_desc.c" />
+    <ClCompile Include="ffmpeg\libavcodec\codec_par.c" />
     <ClCompile Include="ffmpeg\libavcodec\encode.c" />
     <ClCompile Include="ffmpeg\libavcodec\gif.c" />
     <ClCompile Include="ffmpeg\libavcodec\gifdec.c" />
@@ -184,7 +187,10 @@
     <ClCompile Include="ffmpeg\libavcodec\lzw.c" />
     <ClCompile Include="ffmpeg\libavcodec\lzwenc.c" />
     <ClCompile Include="ffmpeg\libavcodec\version.c" />
+    <ClCompile Include="ffmpeg\libavutil\buffer.c" />
+    <ClCompile Include="ffmpeg\libavutil\channel_layout.c" />
     <ClCompile Include="ffmpeg\libavutil\dict.c" />
+    <ClCompile Include="ffmpeg\libavutil\frame.c" />
     <ClCompile Include="ffmpeg\libavutil\log.c" />
     <ClCompile Include="ffmpeg\libavutil\opt.c" />
     <ClCompile Include="ffmpeg\libavutil\rational.c" />
@@ -259,6 +265,8 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.h" />
     <ClInclude Include="ffmpeg\avcodec.h" />
     <ClInclude Include="ffmpeg\bytestream.h" />
     <ClInclude Include="ffmpeg\codec_internal.h" />
@@ -270,6 +278,7 @@
     <ClInclude Include="ffmpeg\libavcodec\codec_desc.h" />
     <ClInclude Include="ffmpeg\libavcodec\codec_id.h" />
     <ClInclude Include="ffmpeg\libavcodec\codec_internal.h" />
+    <ClInclude Include="ffmpeg\libavcodec\codec_par.h" />
     <ClInclude Include="ffmpeg\libavcodec\defs.h" />
     <ClInclude Include="ffmpeg\libavcodec\encode.h" />
     <ClInclude Include="ffmpeg\libavcodec\gif.h" />
@@ -278,9 +287,19 @@
     <ClInclude Include="ffmpeg\libavcodec\packet_internal.h" />
     <ClInclude Include="ffmpeg\libavcodec\version.h" />
     <ClInclude Include="ffmpeg\libavcodec\version_major.h" />
+    <ClInclude Include="ffmpeg\libavutil\attributes.h" />
+    <ClInclude Include="ffmpeg\libavutil\attributes_internal.h" />
+    <ClInclude Include="ffmpeg\libavutil\avassert.h" />
     <ClInclude Include="ffmpeg\libavutil\avutil.h" />
+    <ClInclude Include="ffmpeg\libavutil\bswap.h" />
+    <ClInclude Include="ffmpeg\libavutil\buffer.h" />
+    <ClInclude Include="ffmpeg\libavutil\buffer_internal.h" />
+    <ClInclude Include="ffmpeg\libavutil\channel_layout.h" />
+    <ClInclude Include="ffmpeg\libavutil\common.h" />
     <ClInclude Include="ffmpeg\libavutil\dict.h" />
     <ClInclude Include="ffmpeg\libavutil\dict_internal.h" />
+    <ClInclude Include="ffmpeg\libavutil\frame.h" />
+    <ClInclude Include="ffmpeg\libavutil\intreadwrite.h" />
     <ClInclude Include="ffmpeg\libavutil\log.h" />
     <ClInclude Include="ffmpeg\libavutil\opt.h" />
     <ClInclude Include="ffmpeg\libavutil\pixfmt.h" />
