@@ -242,21 +242,6 @@
     <ClCompile Include="ffmpeg\lzwenc.c">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\fifo.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\imgutils.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\mem.c">
-      <Filter>source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -452,15 +437,6 @@
     <ClInclude Include="ffmpeg\encode.h" />
     <ClInclude Include="ffmpeg\gif.h" />
     <ClInclude Include="ffmpeg\lzw.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avassert.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\fifo.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\imgutils.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\imgutils_internal.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\mem.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\mem_internal.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\thread.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">
