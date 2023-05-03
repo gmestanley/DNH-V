@@ -2106,6 +2106,40 @@ void parser::parse_statements(script_engine::block* block)
 		} else if (lex->next == tk_FOR) {
 			lex->advance();
 
+			if (lex->next != tk_open_par) {
+				std::wstring error;
+				error += L"\"(\" is necessary.\r\n";
+				error += L"(\"(\"が必要です)";
+				throw parser_error(error);
+			}
+			lex->advance();
+
+			if (lex->next != tk_LET && lex->next != tk_REAL) {
+				std::wstring error;
+				error += L"The data type is necessary.\r\n";
+				error += L"(データ型が必要です)";
+				throw parser_error(error);
+			}
+			lex->advance();
+
+			if (lex->next != tk_word) {
+				std::wstring error;
+				error += L"The symbol name is necessary.\r\n";
+				error += L"(識別子が必要です)";
+				throw parser_error(error);
+			}
+
+			std::string s = lex->word;
+
+			lex->advance();
+
+			if (lex->next != tk_e) {
+				std::wstring error;
+				error += L"The equal sign is necessary.\r\n";
+				error += L"(イコールが必要です)";
+				throw parser_error(error);
+			}
+			lex->advance();
 		} else if (lex->next == tk_ASCENT || lex->next == tk_DESCENT) {
 			bool back = lex->next == tk_DESCENT;
 			lex->advance();
