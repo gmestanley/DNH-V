@@ -90,7 +90,7 @@
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>ffmpeg; ..\SFML-2.5.1\include; source/GcLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SFML-2.5.1\include; source/GcLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

@@ -330,7 +330,7 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 		return true;
 	}
 
-	//まだ作成されていないなら、作成/If it's not being made, make it
+	//まだ作成されていないなら、作成/Create if it's not being created
 	try {
 		ref_count_ptr<FileReader> reader = FileManager::GetBase()->GetFileReader(path);
 		if (reader == NULL)
