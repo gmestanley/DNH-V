@@ -381,12 +381,7 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 		mapTextureData_[path] = data;
 		data->manager_ = this;
 		data->name_ = path;
-		if (path.find(L".gif")) {
-
-		}
-		else {
-			D3DXGetImageInfoFromFileInMemory(buf.GetPointer(), size, &data->infoImage_);
-		}
+		D3DXGetImageInfoFromFileInMemory(buf.GetPointer(), size, &data->infoImage_);
 
 		Logger::WriteTop(StringUtility::Format(L"TextureManager: Loaded texture [%s]\nTextureManager：テクスチャを読み込みました[%s]", path.c_str()));
 	} catch (gstd::wexception& e) {
