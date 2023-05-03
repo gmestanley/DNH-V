@@ -221,30 +221,6 @@
     <ClCompile Include="source\TouhouDanmakufu\Common\Networking.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="ffmpeg\libavutil\opt.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\avcodec.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\encode.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\gif.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\gif_parser.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\gifdec.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\lzw.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\lzwenc.c">
-      <Filter>source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -434,19 +410,9 @@
     <ClInclude Include="source\GcLib\zlib\zlib.h" />
     <ClInclude Include="source\GcLib\zlib\zutil.h" />
     <ClInclude Include="source\TouhouDanmakufu\Common\Networking.hpp" />
-    <ClInclude Include="ffmpeg\libavutil\opt.h" />
-    <ClInclude Include="ffmpeg\avcodec.h" />
-    <ClInclude Include="ffmpeg\bytestream.h" />
-    <ClInclude Include="ffmpeg\codec_internal.h" />
-    <ClInclude Include="ffmpeg\encode.h" />
-    <ClInclude Include="ffmpeg\gif.h" />
-    <ClInclude Include="ffmpeg\lzw.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">
-      <Filter>source</Filter>
-    </ResourceCompile>
-    <ResourceCompile Include="ffmpeg\avcodecres.rc">
       <Filter>source</Filter>
     </ResourceCompile>
   </ItemGroup>
