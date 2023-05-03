@@ -268,6 +268,19 @@ void DevicePanel::ReadConfiguration()
 		SendDlgItemMessage(hWnd_, IDC_RADIO_FPS_AUTO ,BM_SETCHECK, 1, 0);
 		break;
 	}
+
+	int language = config->GetLanguage();
+	switch(language){
+	case DnhConfiguration::JAPANESE:
+		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_JP_EN, BM_SETCHECK, 1, 0);
+		break;
+	case DnhConfiguration::ENGLISH:
+		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_EN_EN, BM_SETCHECK, 1, 0);
+		break;
+	case DnhConfiguration::CHINESE:
+		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_SETCHECK, 1, 0);
+		break;
+	}
 }
 void DevicePanel::WriteConfiguration()
 {
@@ -290,6 +303,15 @@ void DevicePanel::WriteConfiguration()
 	else if(SendDlgItemMessage(hWnd_, IDC_RADIO_FPS_AUTO, BM_GETCHECK, 0, 0))
 		fpsType = DnhConfiguration::FPS_AUTO;
 	config->SetFpsType(fpsType);
+
+	int language = config->GetLanguage();
+	if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_JP_EN, BM_GETCHECK, 0, 0))
+		language = DnhConfiguration::JAPANESE;
+	else if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_EN_EN, BM_GETCHECK, 0, 0))
+		language = DnhConfiguration::ENGLISH;
+	else if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_GETCHECK, 0, 0))
+		language = DnhConfiguration::CHINESE;
+	config->SetLanguage(language);
 }
 
 /**********************************************************
@@ -532,29 +554,3 @@ void OptionPanel::WriteConfiguration()
 	config->SetMouseVisible(ListView_GetCheckState(hListOption, ROW_MOUSE_UNVISIBLE) ? false : true);
 }
 
-/*
-
-
-	int language = config->GetLanguage();
-	switch(language){
-	case DnhConfiguration::JAPANESE:
-		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_JP_EN, BM_SETCHECK, 1, 0);
-		break;
-	case DnhConfiguration::ENGLISH:
-		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_EN_EN, BM_SETCHECK, 1, 0);
-		break;
-	case DnhConfiguration::CHINESE:
-		SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_SETCHECK, 1, 0);
-		break;
-	}
-	
-	
-
-	int language = config->GetLanguage();
-	if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_JP_EN, BM_GETCHECK, 0, 0))
-		language = DnhConfiguration::JAPANESE;
-	else if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_EN_EN, BM_GETCHECK, 0, 0))
-		language = DnhConfiguration::ENGLISH;
-	else if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_GETCHECK, 0, 0))
-		language = DnhConfiguration::CHINESE;
-	config->SetLanguage(language);*/
