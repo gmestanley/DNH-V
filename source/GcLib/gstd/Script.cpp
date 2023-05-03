@@ -1940,7 +1940,7 @@ void parser::parse_statements(script_engine::block* block)
 			symbol* s = search(lex->word);
 			if (s == NULL) {
 				std::wstring error;
-				error += StringUtility::FormatToWide("%s is not defined.(ADDITIONAL ERROR MESSAGE)\r\n", lex->word.c_str());
+				error += StringUtility::FormatToWide("%s is not defined.\r\n", lex->word.c_str());
 				error += StringUtility::FormatToWide("(%sは未定義の識別子です)", lex->word.c_str());
 				throw parser_error(error);
 			}
@@ -2132,15 +2132,13 @@ void parser::parse_statements(script_engine::block* block)
 
 			lex->advance();
 
-			if (lex->next != tk_e) {
+			if (lex->next != tk_EQUAL) {
 				std::wstring error;
 				error += L"The equal sign is necessary.\r\n";
-				error += L"(イコールが必要です)";
+				error += L"(データ型が必要です)";
 				throw parser_error(error);
 			}
 			lex->advance();
-
-
 		} else if (lex->next == tk_ASCENT || lex->next == tk_DESCENT) {
 			bool back = lex->next == tk_DESCENT;
 			lex->advance();
