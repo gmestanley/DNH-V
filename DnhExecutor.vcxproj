@@ -170,6 +170,11 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.c" />
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.c" />
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\fifo.c" />
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\imgutils.c" />
+    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\mem.c" />
     <ClCompile Include="ffmpeg\avcodec.c" />
     <ClCompile Include="ffmpeg\encode.c" />
     <ClCompile Include="ffmpeg\gif.c" />
@@ -245,6 +250,15 @@
     <ClCompile Include="source\TouhouDanmakufu\DnhExecutor\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avassert.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\fifo.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\imgutils.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\imgutils_internal.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\mem.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\mem_internal.h" />
+    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\thread.h" />
     <ClInclude Include="ffmpeg\avcodec.h" />
     <ClInclude Include="ffmpeg\bytestream.h" />
     <ClInclude Include="ffmpeg\codec_internal.h" />
