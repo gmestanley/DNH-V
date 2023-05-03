@@ -175,11 +175,7 @@
     <ClCompile Include="ffmpeg\gif.c" />
     <ClCompile Include="ffmpeg\gifdec.c" />
     <ClCompile Include="ffmpeg\gif_parser.c" />
-    <ClCompile Include="ffmpeg\libavutil\dict.c" />
-    <ClCompile Include="ffmpeg\libavutil\log.c" />
     <ClCompile Include="ffmpeg\libavutil\opt.c" />
-    <ClCompile Include="ffmpeg\libavutil\rational.c" />
-    <ClCompile Include="ffmpeg\libavutil\samplefmt.c" />
     <ClCompile Include="ffmpeg\lzw.c" />
     <ClCompile Include="ffmpeg\lzwenc.c" />
     <ClCompile Include="source\GcLib\directx\DirectGraphics.cpp" />
@@ -255,14 +251,7 @@
     <ClInclude Include="ffmpeg\codec_internal.h" />
     <ClInclude Include="ffmpeg\encode.h" />
     <ClInclude Include="ffmpeg\gif.h" />
-    <ClInclude Include="ffmpeg\libavutil\avutil.h" />
-    <ClInclude Include="ffmpeg\libavutil\dict.h" />
-    <ClInclude Include="ffmpeg\libavutil\dict_internal.h" />
-    <ClInclude Include="ffmpeg\libavutil\log.h" />
     <ClInclude Include="ffmpeg\libavutil\opt.h" />
-    <ClInclude Include="ffmpeg\libavutil\pixfmt.h" />
-    <ClInclude Include="ffmpeg\libavutil\rational.h" />
-    <ClInclude Include="ffmpeg\libavutil\samplefmt.h" />
     <ClInclude Include="ffmpeg\lzw.h" />
     <ClInclude Include="source\GcLib\directx\DirectGraphics.hpp" />
     <ClInclude Include="source\GcLib\directx\DirectInput.hpp" />
