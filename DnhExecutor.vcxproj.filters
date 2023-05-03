@@ -284,24 +284,6 @@
     <ClCompile Include="ffmpeg\libavcodec\version.c">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="ffmpeg\libavcodec\codec_par.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\libavutil\buffer.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\libavutil\channel_layout.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="ffmpeg\libavutil\frame.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.c">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.c">
-      <Filter>source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\GcLib\gstd\Application.hpp">
@@ -519,19 +501,6 @@
     <ClInclude Include="ffmpeg\libavcodec\packet_internal.h" />
     <ClInclude Include="ffmpeg\libavcodec\version.h" />
     <ClInclude Include="ffmpeg\libavcodec\version_major.h" />
-    <ClInclude Include="ffmpeg\libavcodec\codec_par.h" />
-    <ClInclude Include="ffmpeg\libavutil\common.h" />
-    <ClInclude Include="ffmpeg\libavutil\attributes.h" />
-    <ClInclude Include="ffmpeg\libavutil\attributes_internal.h" />
-    <ClInclude Include="ffmpeg\libavutil\avassert.h" />
-    <ClInclude Include="ffmpeg\libavutil\bswap.h" />
-    <ClInclude Include="ffmpeg\libavutil\buffer.h" />
-    <ClInclude Include="ffmpeg\libavutil\buffer_internal.h" />
-    <ClInclude Include="ffmpeg\libavutil\channel_layout.h" />
-    <ClInclude Include="ffmpeg\libavutil\frame.h" />
-    <ClInclude Include="ffmpeg\libavutil\intreadwrite.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\avstring.h" />
-    <ClInclude Include="..\ffmpeg-snapshot\ffmpeg\libavutil\bprint.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">
