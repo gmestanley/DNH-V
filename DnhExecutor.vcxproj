@@ -175,15 +175,6 @@
     <ClCompile Include="ffmpeg\gif.c" />
     <ClCompile Include="ffmpeg\gifdec.c" />
     <ClCompile Include="ffmpeg\gif_parser.c" />
-    <ClCompile Include="ffmpeg\libavcodec\avcodec.c" />
-    <ClCompile Include="ffmpeg\libavcodec\codec_desc.c" />
-    <ClCompile Include="ffmpeg\libavcodec\encode.c" />
-    <ClCompile Include="ffmpeg\libavcodec\gif.c" />
-    <ClCompile Include="ffmpeg\libavcodec\gifdec.c" />
-    <ClCompile Include="ffmpeg\libavcodec\gif_parser.c" />
-    <ClCompile Include="ffmpeg\libavcodec\lzw.c" />
-    <ClCompile Include="ffmpeg\libavcodec\lzwenc.c" />
-    <ClCompile Include="ffmpeg\libavcodec\version.c" />
     <ClCompile Include="ffmpeg\libavutil\dict.c" />
     <ClCompile Include="ffmpeg\libavutil\log.c" />
     <ClCompile Include="ffmpeg\libavutil\opt.c" />
@@ -264,20 +255,6 @@
     <ClInclude Include="ffmpeg\codec_internal.h" />
     <ClInclude Include="ffmpeg\encode.h" />
     <ClInclude Include="ffmpeg\gif.h" />
-    <ClInclude Include="ffmpeg\libavcodec\avcodec.h" />
-    <ClInclude Include="ffmpeg\libavcodec\bytestream.h" />
-    <ClInclude Include="ffmpeg\libavcodec\codec.h" />
-    <ClInclude Include="ffmpeg\libavcodec\codec_desc.h" />
-    <ClInclude Include="ffmpeg\libavcodec\codec_id.h" />
-    <ClInclude Include="ffmpeg\libavcodec\codec_internal.h" />
-    <ClInclude Include="ffmpeg\libavcodec\defs.h" />
-    <ClInclude Include="ffmpeg\libavcodec\encode.h" />
-    <ClInclude Include="ffmpeg\libavcodec\gif.h" />
-    <ClInclude Include="ffmpeg\libavcodec\lzw.h" />
-    <ClInclude Include="ffmpeg\libavcodec\packet.h" />
-    <ClInclude Include="ffmpeg\libavcodec\packet_internal.h" />
-    <ClInclude Include="ffmpeg\libavcodec\version.h" />
-    <ClInclude Include="ffmpeg\libavcodec\version_major.h" />
     <ClInclude Include="ffmpeg\libavutil\avutil.h" />
     <ClInclude Include="ffmpeg\libavutil\dict.h" />
     <ClInclude Include="ffmpeg\libavutil\dict_internal.h" />
@@ -361,7 +338,6 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ffmpeg\avcodecres.rc" />
-    <ResourceCompile Include="ffmpeg\libavcodec\avcodecres.rc" />
     <ResourceCompile Include="source\TouhouDanmakufu\DnhExecutor\DnhExecuter.rc">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source\TouhouDanmakufu\DnhExecutor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source\TouhouDanmakufu\DnhExecutor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
