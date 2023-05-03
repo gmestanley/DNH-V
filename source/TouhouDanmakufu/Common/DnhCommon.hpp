@@ -159,9 +159,9 @@ public:
 		FPS_1_3, // 1/3
 		FPS_AUTO,
 
-		/*JAPANESE,
+		JAPANESE,
 		ENGLISH,
-		CHINESE*/
+		CHINESE
 	};
 
 public:
@@ -176,8 +176,8 @@ public:
 	void SetWindowSize(int size) { sizeWindow_ = size; }
 	int GetFpsType() { return fpsType_; }
 	void SetFpsType(int type) { fpsType_ = type; }
-	/*int GetLanguage() { return language_; }
-	void SetLanguage(int language) { language_ = language; }*/
+	int GetLanguage() { return language_; }
+	void SetLanguage(int language) { language_ = language; }
 
 	int GetPadIndex() { return padIndex_; }
 	void SetPadIndex(int index) { padIndex_ = index; }
@@ -199,7 +199,7 @@ private:
 	int modeScreen_; //DirectGraphics::SCREENMODE_FULLSCREEN,SCREENMODE_WINDOW
 	int sizeWindow_;
 	int fpsType_;
-	//int language_;
+	int language_;
 
 	int padIndex_;
 	std::map<int, ref_count_ptr<VirtualKey>> mapKey_;

@@ -45,9 +45,9 @@ bool MainWindow::Initialize()
 	wndTab_->AddTab(L"Option", panelOption_);
 
 	//MiscPanel
-	/*panelMisc_ = new MiscPanel();
+	panelMisc_ = new MiscPanel();
 	panelMisc_->Initialize(hTab);
-	wndTab_->AddTab(L"Misc.", panelMisc_);*/
+	wndTab_->AddTab(L"Misc.", panelMisc_);
 
 	//初期化完了
 	ReadConfiguration();
@@ -534,7 +534,7 @@ void OptionPanel::WriteConfiguration()
 
 /**********************************************************
 //MiscPanel
-*********************************************************
+**********************************************************/
 MiscPanel::MiscPanel()
 {
 }
@@ -582,4 +582,4 @@ void MiscPanel::WriteConfiguration()
 	else if (SendDlgItemMessage(hWnd_, IDC_LANGUAGE_CN_EN, BM_GETCHECK, 0, 0))
 		language = DnhConfiguration::CHINESE;
 	config->SetLanguage(language);
-}*/
+}
