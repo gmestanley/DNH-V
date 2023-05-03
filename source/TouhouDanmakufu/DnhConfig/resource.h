@@ -20,17 +20,6 @@
 #define IDC_RADIO_FPS_3                 1008
 #define IDC_RADIO_AUTO                  1009
 #define IDC_RADIO_FPS_AUTO              1009
-#define IDC_RADIO_FULLSCREEN_CN         1010
-#define IDC_RADIO_WINDOW_CN             1011
-#define IDC_LANGUAGE_JP_JP		        1012
-#define IDC_LANGUAGE_EN_JP		        1013
-#define IDC_LANGUAGE_CN_JP		        1014
-#define IDC_LANGUAGE_JP_EN		        1015
-#define IDC_LANGUAGE_EN_EN		        1016
-#define IDC_LANGUAGE_CN_EN		        1017
-#define IDC_LANGUAGE_JP_CN		        1018
-#define IDC_LANGUAGE_EN_CN		        1019
-#define IDC_LANGUAGE_CN_CN		        1020
 #define ID_MENUITEM_MAIN_EXIT           40001
 
 // Next default values for new objects

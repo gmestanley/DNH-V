@@ -7,7 +7,6 @@
 class DevicePanel;
 class KeyPanel;
 class OptionPanel;
-class MiscPanel;
 /**********************************************************
 //MainWindow
 **********************************************************/
@@ -35,7 +34,6 @@ protected:
 	ref_count_ptr<DevicePanel> panelDevice_;
 	ref_count_ptr<KeyPanel> panelKey_;
 	ref_count_ptr<OptionPanel> panelOption_;
-	ref_count_ptr<MiscPanel> panelMisc_;
 };
 
 /**********************************************************
@@ -114,23 +112,6 @@ protected:
 	ref_count_ptr<WListView> viewOption_;
 
 	virtual LRESULT _WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-};
-
-/**********************************************************
-//MiscPanel
-**********************************************************/
-class MiscPanel : public WPanel {
-public:
-	MiscPanel();
-	~MiscPanel();
-	bool Initialize(HWND hParent);
-
-	void ReadConfiguration();
-	void WriteConfiguration();
-
-protected:
-	virtual LRESULT _WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-	WComboBox comboWindowSize_;
 };
 
 #endif
