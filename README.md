@@ -35,7 +35,7 @@ Aside from the current releases, there were changes made in older versions; chec
 WishMakers - for making Danmakufu Woo and helping me with this project
 
 ## Contributions
-Unlike the original source(s), this version is in active development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
+Unlike the original source(s), this version is in stable development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
 
 ## License
 zlib library has its own license, please check zlib.h in the repo for that information.</br></br>
