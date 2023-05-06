@@ -1700,7 +1700,7 @@ void parser::parse_clause(script_engine::block* block)
 		block->codes.push_back(code(lex->line, script_engine::pc_push_value, value(engine->get_string_type(), str)));
 	} else if (lex->next == tk_word) {
 		symbol* s = search(lex->word);
-		Logger::WriteTop(std::to_string(*&(frame[frame.size() - 1][lex->word]).level) + ", " + std::to_string(*&(frame[frame.size() - 1][lex->word]).variable));
+		Logger::WriteTop(to_wide(std::to_string(*&(frame[frame.size() - 1][lex->word]).level)) + L", " + to_wide(std::to_string(*&(frame[frame.size() - 1][lex->word]).variable)));
 		if (s == NULL) {
 			std::wstring error;
 			error += StringUtility::FormatToWide("%s is not defined.\r\n", lex->word.c_str());
