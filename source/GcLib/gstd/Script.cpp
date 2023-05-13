@@ -1701,7 +1701,7 @@ void parser::parse_clause(script_engine::block* block)
 	} else if (lex->next == tk_word) {
 		symbol* s = search(lex->word);
 		for (int i = frame.size() - 1; i >= 0; --i) {
-			Logger::WriteTop(to_wide(std::to_string(*frame[i].find(lex->word))));
+			Logger::WriteTop(to_wide(std::to_string(frame[i].find(lex->word) != frame[i].end())));
 		}
 		if (s == NULL) {
 			std::wstring error;
