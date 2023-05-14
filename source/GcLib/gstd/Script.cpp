@@ -1702,6 +1702,7 @@ void parser::parse_clause(script_engine::block* block)
 		symbol* s = search(lex->word);
 		for (int i = frame.size() - 1; i >= 0; --i) {
 			Logger::WriteTop(to_wide(std::to_string(frame[i].find(lex->word) != frame[i].end())));
+			Logger::WriteTop(to_wide(lex->word));
 		}
 		if (s == NULL) {
 			std::wstring error;
