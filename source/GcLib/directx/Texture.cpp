@@ -388,9 +388,9 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 			D3DXGetImageInfoFromFileInMemory(buf.GetPointer(), size, &data->infoImage_);
 		//}
 
-		Logger::WriteTop(StringUtility::Format(L"TextureManager: Loaded texture [%s]\nTextureManager：テクスチャを読み込みました[%s]", path.c_str()));
+		Logger::WriteTop(StringUtility::Format(L"TextureManager: Loaded texture [%s]\nTextureManager：テクスチャを読み込みました[%s]", path.c_str(), path.c_str()));
 	} catch (gstd::wexception& e) {
-		std::wstring str = StringUtility::Format(L"TextureManager: Failed to load texture [%s]\nTextureManager：テクスチャ読み込み失敗[%s]\n\t%s", path.c_str(), e.what());
+		std::wstring str = StringUtility::Format(L"TextureManager: Failed to load texture [%s]\nTextureManager：テクスチャ読み込み失敗[%s]\n\t%s", path.c_str(), path.c_str(), e.what());
 		Logger::WriteTop(str);
 		return false;
 	}
