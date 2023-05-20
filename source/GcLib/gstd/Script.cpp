@@ -1516,6 +1516,8 @@ void parser::register_function(function const& func)
 parser::symbol* parser::search(std::string const& name)
 {
 	for (int i = frame.size() - 1; i >= 0; --i) {
+		Logger::WriteTop(L"Internal processing|" + to_wide(std::to_string(frame[i].find(name) != frame[i].end())));
+		Logger::WriteTop(L"Internal processing|" + to_wide(name));
 		if (frame[i].find(name) != frame[i].end())
 			return &(frame[i][name]);
 	}
@@ -1701,8 +1703,8 @@ void parser::parse_clause(script_engine::block* block)
 	} else if (lex->next == tk_word) {
 		symbol* s = search(lex->word);
 		for (int i = frame.size() - 1; i >= 0; --i) {
-			Logger::WriteTop(to_wide(std::to_string(frame[i].find(lex->word) != frame[i].end())));
-			Logger::WriteTop(to_wide(lex->word));
+			Logger::WriteTop(L"External processing|" + to_wide(std::to_string(frame[i].find(lex->word) != frame[i].end())));
+			Logger::WriteTop(L"External processing|" + to_wide(lex->word));
 		}
 		if (s == NULL) {
 			std::wstring error;
