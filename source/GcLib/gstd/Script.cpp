@@ -1665,10 +1665,12 @@ void parser::write_operation(script_engine::block* block, char const* name, int 
 
 void parser::parse_parentheses(script_engine::block* block)
 {
+	std::wstring necessEN = L" is necessary.\r\n";
+	std::wstring necessJP = L"が必要です";
 	if (lex->next != tk_open_par) {
 		std::wstring error;
-		error += L"\"(\" is necessary.\r\n";
-		error += L"(\"(\"が必要です)";
+		error += L"\"(\"" + necessEN;
+		error += L"(\"(\"" + necessJP;
 		throw parser_error(error);
 	}
 	lex->advance();
@@ -1677,8 +1679,8 @@ void parser::parse_parentheses(script_engine::block* block)
 
 	if (lex->next != tk_close_par) {
 		std::wstring error;
-		error += L"\")\" is necessary.\r\n";
-		error += L"(\")\"が必要です)";
+		error += L"\")\"" + necessEN;
+		error += L"(\")\"" + necessJP;
 		throw parser_error(error);
 	}
 	lex->advance();
