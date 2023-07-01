@@ -1707,10 +1707,8 @@ void parser::parse_clause(script_engine::block* block)
 	} else if (lex->next == tk_word) {
 		symbol* s = search(lex->word);
 		for (int i = frame.size() - 1; i >= 0; --i) {
-			Logger::WriteTop(L"External processing|" + L"level|" + to_wide(std::to_string(s.level)));
-			Logger::WriteTop(L"External processing|" + L"variable|" + to_wide(std::to_string(s.variable)));
-			Logger::WriteTop(L"External processing|" + L"frame=end|" + to_wide(std::to_string(frame[i].find(lex->word) != frame[i].end())));
-			Logger::WriteTop(L"External processing|" + L"function|" + to_wide(lex->word));
+			Logger::WriteTop(L"External processing|" + to_wide(std::to_string(frame[i].find(lex->word) != frame[i].end())));
+			Logger::WriteTop(L"External processing|" + to_wide(lex->word));
 		}
 		if (s == NULL) {
 			std::wstring error;
