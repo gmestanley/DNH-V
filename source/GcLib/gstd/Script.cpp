@@ -321,6 +321,7 @@ enum token_kind {
 	tk_FOR,
 	tk_IF,
 	tk_IN,
+	tk_INT,
 	tk_LET,
 	tk_LOCAL,
 	tk_LOOP,
@@ -787,6 +788,8 @@ void scanner::advance()
 				next = tk_IF;
 			else if (word == "in")
 				next = tk_IN;
+			else if (word == "int")
+				next = tk_INT;
 			else if (word == "let" || word == "var")
 				next = tk_LET;
 			else if (word == "local")
