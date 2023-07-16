@@ -3162,7 +3162,7 @@ gstd::value StgStageScript::Func_ObjEnemy_Create(gstd::script_machine* machine, 
 	else if (type == OBJ_ENEMY_BOSS) {
 		ref_count_ptr<StgEnemyBossSceneObject>::unsync objScene = enemyManager->GetBossSceneObject();
 		if (objScene == NULL) {
-			throw gstd::wexception(L"EnemyBossSceneが作成されていません");
+			throw gstd::exception("EnemyBossSceneが作成されていません");
 		}
 
 		ref_count_ptr<StgEnemyBossSceneData>::unsync data = objScene->GetActiveData();

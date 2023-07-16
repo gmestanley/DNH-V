@@ -7,6 +7,19 @@
 namespace gstd {
 
 //================================================================
+//exception
+class exception {
+public:
+	exception() {}
+	exception(std::string msg) { message_ = msg; }
+	std::string GetMessage() { return message_; }
+	const char* what() { return message_.c_str(); }
+
+protected:
+	std::string message_;
+};
+
+//================================================================
 //wexception
 class wexception {
 public:
