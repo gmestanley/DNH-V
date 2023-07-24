@@ -33,6 +33,7 @@ Aside from the current releases, there were changes made in older versions; chec
 
 ## Special Thanks
 WishMakers - for making Danmakufu Woo and helping me with this project
+Mana - provided the fix for ItoA and IntToString's int range
 
 ## Contributions
 Unlike the original source(s), this version is in stable development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
