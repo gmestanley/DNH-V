@@ -912,13 +912,12 @@ value ScriptClientBase::Func_ToString(script_machine* machine, int argc, value c
 }
 value ScriptClientBase::Func_IntToString(script_machine* machine, int argc, value const* argv)
 {
-	std::wstring res = StringUtility::Format(L"%d", (int)argv[0].as_real());
+	std::wstring res = std::to_wstring((int64_t)argv[0].as_real());
 	return value(machine->get_engine()->get_string_type(), res);
 }
-value ScriptClientBase::Func_ItoA(script_machine* machine, int argc, value const* argv)
-{
-	std::wstring res = StringUtility::Format(L"%d", (int)argv[0].as_real());
-	return value(machine->get_engine()->get_string_type(), res);
+value ScriptClientBase::Func_ItoA(script_machine* machine, int argc, value const* argv) {
+	std::wstring res = std::to_wstring((int64_t)argv[0].as_real());
+	return CreateStringValue(res);
 }
 value ScriptClientBase::Func_RtoA(script_machine* machine, int argc, value const* argv)
 {
