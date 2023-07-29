@@ -89,7 +89,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalOptions>/execution-charset:shift_jis %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>..\SFML-2.5.1\include; source/GcLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
