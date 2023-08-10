@@ -917,7 +917,7 @@ value ScriptClientBase::Func_IntToString(script_machine* machine, int argc, valu
 }
 value ScriptClientBase::Func_ItoA(script_machine* machine, int argc, value const* argv) {
 	std::wstring res = std::to_wstring((int64_t)argv[0].as_real());
-	return CreateStringValue(res);
+	return value(machine->get_engine()->get_string_type(), res);
 }
 value ScriptClientBase::Func_RtoA(script_machine* machine, int argc, value const* argv)
 {
