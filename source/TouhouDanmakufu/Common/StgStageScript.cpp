@@ -327,8 +327,11 @@ function const stgFunction[] = {
 	//STG共通関数：ネット/Shmup Common Functions: Netplay
 	{ "SetLocalNetData", StgStageScript::Func_SetLocalNetData, 1 },
 	{ "GetLocalNetData", StgStageScript::Func_GetLocalNetData, 0 },
+	{ "LocalNetData", StgStageScript::Func_GetLocalNetData, 1 },
 	{ "ReceiveNetData", StgStageScript::Func_ReceiveNetData, 0 },
 	{ "SendNetData", StgStageScript::Func_SendNetData, 2 },
+	{ "ReceiveTCPData", StgStageScript::Func_ReceiveNetData, 0 },
+	{ "SendTCPData", StgStageScript::Func_SendNetData, 2 },
 	//{ "ReceiveUDPData", StgStageScript::Func_ReceiveUDPData, 0 },
 	//{ "SendUDPData", StgStageScript::Func_SendUDPData, 3 },
 	{ "RunNetplay", StgStageScript::Func_RunNetplay, 2 },
