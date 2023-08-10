@@ -2624,6 +2624,10 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	}
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
+gstd::value StgStageScript::Func_Eval(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+
+	return value();
+}
 
 //STG共通関数：ネット
 gstd::value StgStageScript::Func_SetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
