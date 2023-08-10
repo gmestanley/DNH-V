@@ -943,10 +943,11 @@ value ScriptClientBase::Func_RtoS(script_machine* machine, int argc, value const
 
 			if (ch == '#')
 				countIS++;
-			else if (ch == '.' && bF)
-				throw false;
 			else if (ch == '.')
-				bF = true;
+				if (bF)
+					throw false;
+				else
+					bF = true;
 			else if (ch == '0') {
 				if (bF)
 					countF++;
