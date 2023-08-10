@@ -2624,6 +2624,8 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	}
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
+
+//STG共通関数：ネット
 gstd::value StgStageScript::Func_SetLocalNetData(gstd::script_machine* machine, int argc, gstd::value const* argv) {
 	Netplay::wcharBuffer = argv[0].as_string();
 	return value();
