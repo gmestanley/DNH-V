@@ -325,7 +325,7 @@ function const stgFunction[] = {
 	{ "ReloadItemData", StgStageScript::Func_ReloadItemData, 1 },
 
 	//STG共通関数：ネット/Shmup Common Functions: Netplay
-	{ "SetLocalNetData", StgStageScript::Func_GetLocalNetData, 1 },
+	{ "SetLocalNetData", StgStageScript::Func_SetLocalNetData, 1 },
 	{ "GetLocalNetData", StgStageScript::Func_GetLocalNetData, 0 },
 	{ "ReceiveNetData", StgStageScript::Func_ReceiveNetData, 0 },
 	{ "SendNetData", StgStageScript::Func_SendNetData, 2 },
