@@ -57,12 +57,12 @@ std::string StringUtility::ConvertWideToMulti(std::wstring const& wstr, int code
 	//WideCharToMultiByteの第6引数に0を渡すと変換後のサイズが返ります
 	int sizeMulti = ::WideCharToMultiByte(codeMulti, 0, wstr.c_str(), -1, NULL, 0, NULL, NULL);
 	if (sizeMulti == 0)
-		return ""; //失敗(とりあえず空文字とします)
+		return ""; //失敗(とりあえず空文字とします)/Failure (Makes an empty character right away)
 
-	//最後の\0が含まれるため
+	//最後の\0が含まれるため/For the last \0 being included
 	sizeMulti = sizeMulti - 1;
 
-	//マルチバイトに変換します
+	//マルチバイトに変換します/Convert to multi-byte
 	std::string str;
 	str.resize(sizeMulti);
 	::WideCharToMultiByte(codeMulti, 0, wstr.c_str(), -1, &str[0],
