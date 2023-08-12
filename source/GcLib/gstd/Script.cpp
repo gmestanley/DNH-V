@@ -324,6 +324,7 @@ enum token_kind {
 	tk_INT,
 	tk_LET,
 	tk_LOCAL,
+	tk_LONG,
 	tk_LOOP,
 	tk_CONTINUE,
 	tk_OTHERS,
