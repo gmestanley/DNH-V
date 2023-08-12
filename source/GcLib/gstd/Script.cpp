@@ -330,6 +330,7 @@ enum token_kind {
 	tk_OTHERS,
 	tk_REAL,
 	tk_RETURN,
+	tk_SHORT,
 	tk_SUB,
 	tk_TASK,
 	tk_TIMES,
