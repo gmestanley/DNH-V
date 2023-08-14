@@ -2625,8 +2625,9 @@ gstd::value StgStageScript::Func_IsIntersected_Obj_Obj(gstd::script_machine* mac
 	return value(machine->get_engine()->get_boolean_type(), res);
 }
 gstd::value StgStageScript::Func_Eval(gstd::script_machine* machine, int argc, gstd::value const* argv) {
+	StgStageScript* script = (StgStageScript*)machine->data;
 	if (argv[0].as_string().find(L"BitBlt", 0)) {
-		RaiseError(L"Not a valid function");
+		script->RaiseError(L"Not a valid function");
 	}
 	return value();
 }
