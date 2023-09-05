@@ -6,7 +6,7 @@ using namespace gstd;
 //================================================================
 //DebugUtility
 void DebugUtility::DumpMemoryLeaksOnExit() {
-	#ifdef _DEBUG
+	#ifdef _DEBUG // Replace with Linux equivalents later
 		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 		// _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF);
 		// if (!_CrtCheckMemory())

@@ -4,7 +4,7 @@
 Main
 **********************************************************/
 int main(/*HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow*/) {
-	gstd::DebugUtility::DumpMemoryLeaksOnExit(); //Replace with Linux equivalent later
+	gstd::DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		DnhConfiguration* config = DnhConfiguration::CreateInstance();
 		ELogger* logger = ELogger::CreateInstance();
