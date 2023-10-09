@@ -315,6 +315,7 @@ enum token_kind {
 	tk_ASCENT,
 	tk_BREAK,
 	tk_CASE,
+	tk_CHAR,
 	tk_DOUBLE,
 	tk_DESCENT,
 	tk_ELSE,
@@ -780,6 +781,8 @@ void scanner::advance()
 				next = tk_BREAK;
 			else if (word == "case")
 				next = tk_CASE;
+			else if (word == "char")
+				next = tk_CHAR;
 			else if (word == "descent")
 				next = tk_DESCENT;
 			else if (word == "double")
