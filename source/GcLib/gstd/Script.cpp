@@ -317,8 +317,9 @@ enum token_kind {
 	tk_CASE,
 	tk_DESCENT,
 	tk_ELSE,
-	tk_FUNCTION,
+	tk_FLOAT,
 	tk_FOR,
+	tk_FUNCTION,
 	tk_IF,
 	tk_IN,
 	tk_INT,
@@ -782,10 +783,12 @@ void scanner::advance()
 				next = tk_DESCENT;
 			else if (word == "else")
 				next = tk_ELSE;
-			else if (word == "function")
-				next = tk_FUNCTION;
+			else if (word == "float")
+				next = tk_FLOAT;
 			else if (word == "for")
 				next = tk_FOR;
+			else if (word == "function")
+				next = tk_FUNCTION;
 			else if (word == "if")
 				next = tk_IF;
 			else if (word == "in")
