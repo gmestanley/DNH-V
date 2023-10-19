@@ -209,8 +209,10 @@ void ScriptSelectScene::Render()
 		case TYPE_ALL: strType = L"All"; break;
 	}
 
+	std::wstring caption[2] = {L"ファイルを選択してください", L"Please select a file"};
+
 	std::wstring strDescription = StringUtility::Format(
-		L"ファイルを選択してください (%s：%d/%d)", strType.c_str(), pageCurrent_, GetPageCount() );
+		caption[0] + L" (%s：%d/%d)", strType.c_str(), pageCurrent_, GetPageCount() );
 
 	DxText dxTextDescription;
 	dxTextDescription.SetFontColorTop(D3DCOLOR_ARGB(255,128,128,255));
@@ -1004,8 +1006,10 @@ void PlayerSelectScene::Render()
 
 	}
 
+	std::wstring shottypeCaption[2] = {L"攻撃方法を選択してください", L"Please select a shottype"};
+
 	std::wstring strDescription = StringUtility::Format(
-		L"攻撃方法を選択してください (%d/%d)", pageCurrent_, GetPageCount() );
+		shottypeCaption[0] + L" (%d/%d)", pageCurrent_, GetPageCount() );
 
 	DxText dxTextDescription;
 	dxTextDescription.SetFontColorTop(D3DCOLOR_ARGB(255,128,128,255));
