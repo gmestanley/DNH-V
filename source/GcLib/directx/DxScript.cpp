@@ -2180,12 +2180,10 @@ gstd::value DxScript::Func_InstallFont(gstd::script_machine* machine, int argc, 
 	DxScript* script = (DxScript*)machine->data;
 	DirectSoundManager* manager = DirectSoundManager::GetBase();
 
-	std::wstring path = argv[0].as_string();
-	path = PathProperty::GetUnique(path);
 	DxTextRenderer* renderer = DxTextRenderer::GetBase();
 	bool res = false;
 	try {
-		res = renderer->AddFontFromFile(path);
+		res = renderer->AddFontFromFile(PathProperty::GetUnique(argv[0].as_string()));
 	} catch (gstd::wexception e) {
 		Logger::WriteTop(e.what());
 	}
