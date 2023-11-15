@@ -2,15 +2,6 @@
 A fork of Danmakufu ph3.5 aiming to provide new features to the engine, such as general improvements and other functionalities, such as Netplay.<br>
 Multiplatform support is also planned for Windows, macOS and Linux; this linux branch is in development and is set to be used for the last one, but is still a heavy work in progress. Currently only Windows is supported with the [master](https://github.com/gmestanley/DNH-V/) branch.
 
-## Changelog
-Aside from the current releases, there were changes made in older versions; check the older repository [DNH-Netplay](https://github.com/gmestanley/DNH-Netplay) to see a log of them.
-
-###### [0.6.1]
- * Versioning and branding updated
- 	- Title was changed from "Netplay" to "DNH-V" and version was changed from 0.6 to 0.6.1.
- * Translations of the Readme and adjacent documents provided (along with the original forms).
- * Example script for Netplay functionality provided (misplaced in script/sample/).
-
 ## Requirements (for compiling)
  * zlib
 </br>(Quoted from Danmakufu Woo's repo) Best and recommended way to obtain it is to use [vcpkg](https://github.com/Microsoft/vcpkg) C++ Library Manager.
@@ -19,6 +10,7 @@ Aside from the current releases, there were changes made in older versions; chec
 </br>Also deserves credit because it was used to implement netplay in the first place.
 
 ## Known Issues
+ * Script functions do not work (top priority, is being fixed)
  * Wine 4.12.1 (confirmed on macOS at least) suffers some scaling problems with the window size, being 9 pixels too wide and 7 pixels too tall.  This causes some nasty scaling on in-game assets, possibly a result of old Windows size calls not being 100% compatible with Wine releases.
  * The exe will crash when trying to load a sound file that is both: not 1411kbs and is stereo (fixed in Woo; fix will be brought over soon)
 
