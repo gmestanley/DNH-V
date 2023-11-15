@@ -1,5 +1,5 @@
 # Touhou Danmakufu-V
-A fork of Danmakufu ph3.5 aiming to provide new features to the engine, such as general improvements and other functionalities, such as Netplay.<br>
+A fork of Danmakufu ph3.5 aiming to provide new features to the engine, such as general improvements and other functionalities, like Netplay.<br>
 Multiplatform support is also planned for Windows, macOS and Linux; this linux branch is in development and is set to be used for the last one, but is still a heavy work in progress. Currently only Windows is supported with the [master](https://github.com/gmestanley/DNH-V/) branch.
 
 ## Requirements (for compiling)
