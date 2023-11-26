@@ -44,8 +44,4 @@ Unlike the original source(s), this version is in stable development so pull req
 
 ## License
 zlib library has its own license, please check zlib.h in the repo for that information.</br></br>
-(quoted from James7132's repo of the original source, maintaining the same license.) </br>This code is licensed under the NYSL (Niru nari Yaku nari Suki ni shiro License'). Main translated points:
-
- * "No warranty" disclaimer is explicitly included.
- * Modified version of the software MUST be distributed under the responsibility of the distributer.
- * Official version is written in Japanese.
+This fork is licensed under the MIT license. However, the author acknowledges the problems that copyright law brings, and welcomes suggestions to use a better license.
