@@ -44,4 +44,4 @@ Unlike the original source(s), this version is in stable development so pull req
 
 ## License
 zlib library has its own license, please check zlib.h in the repo for that information.</br></br>
-This fork is licensed under the MIT license. However, the author acknowledges the problems that copyright law brings, and welcomes suggestions to use a better license.
+This fork is licensed under the MIT license. While GPL has been considered, it was ultimately chosen to save space due to the somewhat infamous "infectious license" problem of it. However, the author acknowledges the problems that copyright law brings, and welcomes suggestions to use a better license.
