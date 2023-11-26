@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ExeTrimmer" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="../../Debug/ExeTrimmer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug/" />
+				<Option deps_output="../../Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug x64">
+				<Option output="../../Debug/ExeTrimmer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug/" />
+				<Option deps_output="../../Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+				</Linker>
+			</Target>
+			<Target title="Release x64">
+				<Option output="../../Release/ExeTrimmer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release/" />
+				<Option deps_output="../../Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="../../Release/ExeTrimmer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release/" />
+				<Option deps_output="../../Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../GcLib/gstd/Application.cpp" />
+		<Unit filename="../GcLib/gstd/Application.hpp" />
+		<Unit filename="../GcLib/gstd/File.cpp" />
+		<Unit filename="../GcLib/gstd/File.hpp" />
+		<Unit filename="../GcLib/gstd/FpsController.cpp" />
+		<Unit filename="../GcLib/gstd/FpsController.hpp" />
+		<Unit filename="../GcLib/gstd/GstdConstant.hpp" />
+		<Unit filename="../GcLib/gstd/GstdLib.hpp" />
+		<Unit filename="../GcLib/gstd/GstdUtility.cpp" />
+		<Unit filename="../GcLib/gstd/GstdUtility.hpp" />
+		<Unit filename="../GcLib/gstd/Logger.cpp" />
+		<Unit filename="../GcLib/gstd/Logger.hpp" />
+		<Unit filename="../GcLib/gstd/MersenneTwister.cpp" />
+		<Unit filename="../GcLib/gstd/MersenneTwister.hpp" />
+		<Unit filename="../GcLib/gstd/Script.cpp" />
+		<Unit filename="../GcLib/gstd/Script.hpp" />
+		<Unit filename="../GcLib/gstd/ScriptClient.cpp" />
+		<Unit filename="../GcLib/gstd/ScriptClient.hpp" />
+		<Unit filename="../GcLib/gstd/Task.cpp" />
+		<Unit filename="../GcLib/gstd/Task.hpp" />
+		<Unit filename="../GcLib/gstd/Thread.cpp" />
+		<Unit filename="../GcLib/gstd/Thread.hpp" />
+		<Unit filename="../GcLib/gstd/Window.cpp" />
+		<Unit filename="../GcLib/gstd/Window.hpp" />
+		<Unit filename="Constant.hpp" />
+		<Unit filename="ExeTrimmer.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="LibImpl.cpp" />
+		<Unit filename="LibImpl.hpp" />
+		<Unit filename="MainWindow.cpp" />
+		<Unit filename="MainWindow.hpp" />
+		<Unit filename="WinMain.cpp" />
+		<Unit filename="resource.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

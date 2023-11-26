@@ -32,8 +32,12 @@ Aside from the current releases, there were changes made in older versions; chec
  * The exe will crash when trying to load a sound file that is both: not 1411kbs and is stereo (fixed in Woo; fix will be brought over soon)
 
 ## Special Thanks
-WishMakers - for making Danmakufu Woo and helping me with this project
+WishMakers - for making Danmakufu Woo and helping me with this project<br>
 Mana - provided the fix for ItoA and IntToString's int range
+
+## Contact
+If you want to talk about the project, check out its Discord server: https://discord.gg/W93pV9XuB5<br>
+A Matrix space is also planned but is currently not going to exist as full sync with Discord (with all the previous messages being posted) is not possible yet.
 
 ## Contributions
 Unlike the original source(s), this version is in stable development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.

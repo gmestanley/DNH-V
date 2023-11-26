@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="FileArchiver" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="../bin_th_dnh/FileArchiver_dbg" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug/FileArchiver/" />
+				<Option deps_output="../bin_th_dnh/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-DUNICODE" />
+					<Add option="-O0" />
+					<Add option="-Wall" />
+					<Add directory="$(VC_IncludePath)/" />
+					<Add directory="$(WindowsSDK_IncludePath)/" />
+				</Compiler>
+				<Linker>
+					<Add library="legacy_stdio_definitions.lib" />
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(VC_LibraryPath_x86)/" />
+					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
+					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="../bin_th_dnh/FileArchiver" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release/FileArchiver/" />
+				<Option deps_output="../bin_th_dnh/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-DUNICODE" />
+					<Add option="-O1" />
+					<Add option="-Wall" />
+					<Add directory="$(VC_IncludePath)/" />
+					<Add directory="$(WindowsSDK_IncludePath)/" />
+					<Add directory="../SFML-2.5.1/include/" />
+					<Add directory="../zlib/zlib-1.2.13/" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="zlib.lib" />
+					<Add library="sfml-network.lib" />
+					<Add library="sfml-system.lib" />
+					<Add library="legacy_stdio_definitions.lib" />
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(VC_LibraryPath_x86)/" />
+					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
+					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
+					<Add directory="../SFML-2.5.1/lib/" />
+					<Add directory="../zlib/library/" />
+				</Linker>
+			</Target>
+			<Target title="Template Win32">
+				<Option output="./bin_th_dnh/FileArchiver" prefix_auto="1" extension_auto="1" />
+				<Option object_output="/" />
+				<Option deps_output="./bin_th_dnh/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add directory="$(VC_IncludePath)/" />
+					<Add directory="$(WindowsSDK_IncludePath)/" />
+				</Compiler>
+				<Linker>
+					<Add library="legacy_stdio_definitions.lib" />
+					<Add library="winmm.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(VC_LibraryPath_x86)/" />
+					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
+					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="source/FileArchiver/Constant.hpp" />
+		<Unit filename="source/FileArchiver/FileArchiver.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="source/FileArchiver/LibImpl.cpp" />
+		<Unit filename="source/FileArchiver/LibImpl.hpp" />
+		<Unit filename="source/FileArchiver/MainWindow.cpp" />
+		<Unit filename="source/FileArchiver/MainWindow.hpp" />
+		<Unit filename="source/FileArchiver/WinMain.cpp" />
+		<Unit filename="source/GcLib/gstd/Application.cpp" />
+		<Unit filename="source/GcLib/gstd/Application.hpp" />
+		<Unit filename="source/GcLib/gstd/File.cpp" />
+		<Unit filename="source/GcLib/gstd/File.hpp" />
+		<Unit filename="source/GcLib/gstd/FpsController.cpp" />
+		<Unit filename="source/GcLib/gstd/FpsController.hpp" />
+		<Unit filename="source/GcLib/gstd/GstdConstant.hpp" />
+		<Unit filename="source/GcLib/gstd/GstdLib.hpp" />
+		<Unit filename="source/GcLib/gstd/GstdUtility.cpp" />
+		<Unit filename="source/GcLib/gstd/GstdUtility.hpp" />
+		<Unit filename="source/GcLib/gstd/Logger.cpp" />
+		<Unit filename="source/GcLib/gstd/Logger.hpp" />
+		<Unit filename="source/GcLib/gstd/MersenneTwister.cpp" />
+		<Unit filename="source/GcLib/gstd/MersenneTwister.hpp" />
+		<Unit filename="source/GcLib/gstd/Script.cpp" />
+		<Unit filename="source/GcLib/gstd/Script.hpp" />
+		<Unit filename="source/GcLib/gstd/ScriptClient.cpp" />
+		<Unit filename="source/GcLib/gstd/ScriptClient.hpp" />
+		<Unit filename="source/GcLib/gstd/Task.cpp" />
+		<Unit filename="source/GcLib/gstd/Task.hpp" />
+		<Unit filename="source/GcLib/gstd/Thread.cpp" />
+		<Unit filename="source/GcLib/gstd/Thread.hpp" />
+		<Unit filename="source/GcLib/gstd/Window.cpp" />
+		<Unit filename="source/GcLib/gstd/Window.hpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
