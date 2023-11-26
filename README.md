@@ -17,6 +17,10 @@ Multiplatform support is also planned for Windows, macOS and Linux; this linux b
 ## Special Thanks
 WishMakers - for making Danmakufu Woo and helping me with this project
 
+## Contact
+If you want to talk about the project, check out its Discord server: https://discord.gg/W93pV9XuB5
+A Matrix space is also planned but is currently not going to exist as full sync with Discord (with all the previous messages being posted) is not possible yet.
+
 ## Contributions
 Unlike the original source(s), this version is in active development so pull requests are absolutely accepted, provided they don't break the engine. Bear in mind though that this version of DNH still relies on mkm's original source code, most of which is either very unoptimized even with optimization flags or very outdated in execution.
 
