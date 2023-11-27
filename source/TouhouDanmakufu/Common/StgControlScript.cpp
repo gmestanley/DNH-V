@@ -261,7 +261,7 @@ gstd::value StgControlScript::Func_LoadCommonDataAreaA2(gstd::script_machine* ma
 //STG制御共通関数：キー系
 gstd::value StgControlScript::Func_AddVirtualKey(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	int padIndex = input->GetPadIndex();
 
 	int id = (int)argv[0].as_real();

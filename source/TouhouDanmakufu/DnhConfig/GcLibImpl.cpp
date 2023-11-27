@@ -23,7 +23,7 @@ bool EApplication::_Initialize()
 	// ::SetWindowText(hWndMain, "DnhViewer");
 	// ::SetClassLong(hWndMain, GCL_HICON, (LONG)LoadIcon(GetApplicationHandle(), MAKEINTRESOURCE(IDI_ICON)));
 
-	EDirectInput* input = EDirectInput::CreateInstance();
+	ESimpleInput* input = ESimpleInput::CreateInstance();
 	input->Initialize(hWndMain);
 
 	MainWindow* wndMain = MainWindow::GetInstance();
@@ -48,7 +48,7 @@ bool EApplication::_Loop()
 		return true;
 	}
 
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->Update();
 	mainWindow->UpdateKeyAssign();
 
@@ -60,7 +60,7 @@ bool EApplication::_Finalize()
 {
 	Logger::WriteTop(L"アプリケーション終了処理開始");
 	EFileManager::GetInstance()->EndLoadThread();
-	EDirectInput::DeleteInstance();
+	ESimpleInput::DeleteInstance();
 	EFileManager::DeleteInstance();
 	Logger::WriteTop(L"アプリケーション終了処理完了");
 	return true;

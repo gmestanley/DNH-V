@@ -74,7 +74,7 @@ void DebugTask::Work()
 	ref_count_ptr<StgControllerForViewer> controller = mainWindow->GetStgController();
 	DebugWindow* wndDebug = mainWindow->GetDebugWindow();
 
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	if (input->GetKeyState(DIK_I) == KEY_PUSH) {
 		bool bPlayerInvincivility = wndDebug->IsPlayerInvincivility();
 		wndDebug->SetPlayerInvincivility(!bPlayerInvincivility);

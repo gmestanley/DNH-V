@@ -18,7 +18,7 @@ bool MainWindow::Initialize()
 							MAKEINTRESOURCE(IDD_DIALOG_MAIN),
 							NULL,(DLGPROC)_StaticWindowProcedure);
 
-//	::SetClassLong(hWnd_, GCL_HICON, 
+//	::SetClassLong(hWnd_, GCL_HICON,
 //		( LONG )(HICON)LoadImage(Application::GetApplicationHandle(), MAKEINTRESOURCE(IDI_ICON), IMAGE_ICON, 32, 32, 0));
 
 	Attach(hWnd_);
@@ -221,7 +221,7 @@ bool DevicePanel::Initialize(HWND hParent)
 	comboWindowSize_.AddString(L"800x600");
 	comboWindowSize_.AddString(L"960x720");
 	comboWindowSize_.AddString(L"1280x960");
-	SetWindowPos(comboWindowSize_.GetWindowHandle(), NULL, 0, 0, 
+	SetWindowPos(comboWindowSize_.GetWindowHandle(), NULL, 0, 0,
 		comboWindowSize_.GetClientWidth(), 200, SWP_NOMOVE);
 
 	return true;
@@ -321,18 +321,18 @@ bool KeyPanel::Initialize(HWND hParent)
 	viewKey_->AddColumn(200, COL_PAD_ASSIGN, L"Pad(パッド) [手柄按键]"); //100
 
 	std::map<int, std::wstring> mapViewText;
-	mapViewText[EDirectInput::KEY_LEFT] = L"Left(左)";
-	mapViewText[EDirectInput::KEY_RIGHT] = L"Right(右)";
-	mapViewText[EDirectInput::KEY_UP] = L"Up(上)";
-	mapViewText[EDirectInput::KEY_DOWN] = L"Down(下)";
-	mapViewText[EDirectInput::KEY_OK] = L"Decide(決定) [确认]";
-	mapViewText[EDirectInput::KEY_CANCEL] = L"Cancel(キャンセル) [取消]";
-	mapViewText[EDirectInput::KEY_SHOT] = L"Shot(ショット) [射击键]";
-	mapViewText[EDirectInput::KEY_BOMB] = L"Spell(スペル) [施放符卡]";
-	mapViewText[EDirectInput::KEY_SLOWMOVE] = L"Slow-Moving(低速移動) [低速移动]";
-	mapViewText[EDirectInput::KEY_USER1] = L"User1(ユーザ定義1) [自定义按键1]";
-	mapViewText[EDirectInput::KEY_USER2] = L"User2(ユーザ定義2) [自定义按键2]";
-	mapViewText[EDirectInput::KEY_PAUSE] = L"Pause(ポーズ) [暂停]";
+	mapViewText[ESimpleInput::KEY_LEFT] = L"Left(左)";
+	mapViewText[ESimpleInput::KEY_RIGHT] = L"Right(右)";
+	mapViewText[ESimpleInput::KEY_UP] = L"Up(上)";
+	mapViewText[ESimpleInput::KEY_DOWN] = L"Down(下)";
+	mapViewText[ESimpleInput::KEY_OK] = L"Decide(決定) [确认]";
+	mapViewText[ESimpleInput::KEY_CANCEL] = L"Cancel(キャンセル) [取消]";
+	mapViewText[ESimpleInput::KEY_SHOT] = L"Shot(ショット) [射击键]";
+	mapViewText[ESimpleInput::KEY_BOMB] = L"Spell(スペル) [施放符卡]";
+	mapViewText[ESimpleInput::KEY_SLOWMOVE] = L"Slow-Moving(低速移動) [低速移动]";
+	mapViewText[ESimpleInput::KEY_USER1] = L"User1(ユーザ定義1) [自定义按键1]";
+	mapViewText[ESimpleInput::KEY_USER2] = L"User2(ユーザ定義2) [自定义按键2]";
+	mapViewText[ESimpleInput::KEY_PAUSE] = L"Pause(ポーズ) [暂停]";
 	for(int iView = 0 ; iView < mapViewText.size() ; iView++)
 	{
 		std::wstring text = mapViewText[iView];
@@ -345,7 +345,7 @@ bool KeyPanel::Initialize(HWND hParent)
 bool KeyPanel::StartUp()
 {
 	int padDeviceTextWidth = comboPadIndex_.GetClientWidth();
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	int padCount = input->GetPadDeviceCount();
 	for(int iPad = 0; iPad < padCount ; iPad++)
 	{
@@ -361,7 +361,7 @@ bool KeyPanel::StartUp()
 		comboPadIndex_.AddString(L"(none)");
 		comboPadIndex_.SetWindowEnable(false);
 	}
-	SetWindowPos(comboPadIndex_.GetWindowHandle(), NULL, 0, 0, 
+	SetWindowPos(comboPadIndex_.GetWindowHandle(), NULL, 0, 0,
 		padDeviceTextWidth, 200, SWP_NOMOVE);
 
 	DnhConfiguration* config = DnhConfiguration::GetInstance();
@@ -390,7 +390,7 @@ void KeyPanel::_UpdateText(int row)
 	int padButton = vk->GetPadButton();
 	std::wstring strPad = StringUtility::Format(L"PAD %02d", padButton);
 	viewKey_->SetText(row, COL_PAD_ASSIGN, strPad);
-	
+
 }
 void KeyPanel::UpdateKeyAssign()
 {
@@ -399,7 +399,7 @@ void KeyPanel::UpdateKeyAssign()
 
 	DnhConfiguration* config = DnhConfiguration::GetInstance();
 	ref_count_ptr<VirtualKey> vk = config->GetVirtualKey(row);
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 
 	bool bChange = false;
 	int pushKeyCode = -1;

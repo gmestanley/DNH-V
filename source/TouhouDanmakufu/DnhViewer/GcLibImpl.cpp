@@ -45,7 +45,7 @@ bool EApplication::_Initialize()
 	EDirectSoundManager* soundManager = EDirectSoundManager::CreateInstance();
 	soundManager->Initialize(hWndMain);
 
-	EDirectInput* input = EDirectInput::CreateInstance();
+	ESimpleInput* input = ESimpleInput::CreateInstance();
 	input->Initialize(hWndMain);
 
 	ETaskManager* taskManager = ETaskManager::CreateInstance();
@@ -123,7 +123,7 @@ bool EApplication::_Loop()
 		return true;
 	}
 
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->Update();
 	if (input->GetKeyState(DIK_R) == KEY_PUSH) {
 		//リセット
@@ -179,7 +179,7 @@ bool EApplication::_Finalize()
 	MainWindow::GetInstance()->SetStgController(NULL);
 	ETaskManager::DeleteInstance();
 	EFileManager::GetInstance()->EndLoadThread();
-	EDirectInput::DeleteInstance();
+	ESimpleInput::DeleteInstance();
 	EDirectSoundManager::DeleteInstance();
 	EDxTextRenderer::DeleteInstance();
 	EMeshManager::DeleteInstance();

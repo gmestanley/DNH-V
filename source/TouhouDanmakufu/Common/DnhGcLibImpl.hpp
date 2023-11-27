@@ -128,9 +128,9 @@ class EDirectSoundManager : public Singleton<EDirectSoundManager>, public Direct
 };
 
 /**********************************************************
-//EDirectInput
+//ESimpleInput
 **********************************************************/
-class EDirectInput : public Singleton<EDirectInput>, public VirtualKeyManager {
+class ESimpleInput : public Singleton<ESimpleInput>, public VirtualKeyManager {
 public:
 	enum {
 		KEY_INVALID = -1,

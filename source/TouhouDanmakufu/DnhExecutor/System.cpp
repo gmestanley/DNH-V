@@ -68,7 +68,7 @@ SceneManager::~SceneManager()
 }
 void SceneManager::TransTitleScene()
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
 	TransitionManager* transitionManager = SystemController::GetInstance()->GetTransitionManager();
@@ -85,7 +85,7 @@ void SceneManager::TransTitleScene()
 }
 void SceneManager::TransScriptSelectScene(int type)
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
 	TransitionManager* transitionManager = SystemController::GetInstance()->GetTransitionManager();
@@ -149,7 +149,7 @@ void SceneManager::TransScriptSelectScene_Last()
 }
 void SceneManager::TransStgScene(ref_count_ptr<ScriptInformation> infoMain, ref_count_ptr<ScriptInformation> infoPlayer, ref_count_ptr<ReplayInformation> infoReplay)
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
 	try {
@@ -227,7 +227,7 @@ void SceneManager::TransStgScene(ref_count_ptr<ScriptInformation> infoMain, ref_
 }
 void SceneManager::TransPackageScene(ref_count_ptr<ScriptInformation> infoMain, bool bOnlyPackage)
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
 	try {

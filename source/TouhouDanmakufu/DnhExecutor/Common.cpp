@@ -27,9 +27,9 @@ void MenuTask::Clear()
 }
 int MenuTask::_GetCursorKeyState()
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	int res = CURSOR_NONE;
-	int vkeys[] = { EDirectInput::KEY_LEFT, EDirectInput::KEY_RIGHT, EDirectInput::KEY_UP, EDirectInput::KEY_DOWN };
+	int vkeys[] = { ESimpleInput::KEY_LEFT, ESimpleInput::KEY_RIGHT, ESimpleInput::KEY_UP, ESimpleInput::KEY_DOWN };
 	for (int iKey = 0; iKey < CURSOR_COUNT && res == CURSOR_NONE; iKey++) {
 		int state = input->GetVirtualKeyState(vkeys[iKey]);
 		if (state == KEY_PUSH) {
@@ -111,8 +111,8 @@ void MenuTask::Work()
 		return;
 	}
 
-	EDirectInput* input = EDirectInput::GetInstance();
-	if (input->GetVirtualKeyState(EDirectInput::KEY_OK) == KEY_FREE && input->GetVirtualKeyState(EDirectInput::KEY_CANCEL) == KEY_FREE) {
+	ESimpleInput* input = ESimpleInput::GetInstance();
+	if (input->GetVirtualKeyState(ESimpleInput::KEY_OK) == KEY_FREE && input->GetVirtualKeyState(ESimpleInput::KEY_CANCEL) == KEY_FREE) {
 		bWaitedKeyFree_ = true;
 	}
 

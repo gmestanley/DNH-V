@@ -206,7 +206,7 @@ void StgPauseScene::Work()
 			if (!infoStage->IsReplay())
 				infoSystem->SetRetry();
 		}
-		EDirectInput::GetInstance()->ResetInputState();
+		ESimpleInput::GetInstance()->ResetInputState();
 		Finish();
 	}
 }
@@ -299,7 +299,7 @@ void StgEndScene::Work()
 		} else if (result == StgControlScript::RESULT_RETRY) {
 			infoSystem->SetRetry();
 		}
-		EDirectInput::GetInstance()->ResetInputState();
+		ESimpleInput::GetInstance()->ResetInputState();
 		Finish();
 	}
 }
@@ -374,7 +374,7 @@ void StgReplaySaveScene::Work()
 			systemController_->TransStgEndScene();
 		}
 
-		EDirectInput::GetInstance()->ResetInputState();
+		ESimpleInput::GetInstance()->ResetInputState();
 		Finish();
 	}
 }

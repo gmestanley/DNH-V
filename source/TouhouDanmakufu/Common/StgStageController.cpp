@@ -24,7 +24,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 	Math::InitializeFPU();
 
 	//キー初期化
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
 	//3Dカメラ
@@ -47,19 +47,19 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 
 	//リプレイキー設定
 	int replayState = infoStage_->IsReplay() ? KeyReplayManager::STATE_REPLAY : KeyReplayManager::STATE_RECORD;
-	keyReplayManager_ = new KeyReplayManager(EDirectInput::GetInstance());
+	keyReplayManager_ = new KeyReplayManager(ESimpleInput::GetInstance());
 	keyReplayManager_->SetManageState(replayState);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_LEFT);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_RIGHT);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_UP);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_DOWN);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_SHOT);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_BOMB);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_SLOWMOVE);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_USER1);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_USER2);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_OK);
-	keyReplayManager_->AddTarget(EDirectInput::KEY_CANCEL);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_LEFT);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_RIGHT);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_UP);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_DOWN);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_SHOT);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_BOMB);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_SLOWMOVE);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_USER1);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_USER2);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_OK);
+	keyReplayManager_->AddTarget(ESimpleInput::KEY_CANCEL);
 	std::set<int> listReplayTargetKey = infoSystem_->GetReplayTargetKeyList();
 	std::set<int>::iterator itrKey = listReplayTargetKey.begin();
 	for (; itrKey != listReplayTargetKey.end(); itrKey++) {
@@ -311,7 +311,7 @@ void StgStageController::_SetupReplayTargetCommonDataArea(_int64 idScript)
 
 void StgStageController::Work()
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	ref_count_ptr<StgSystemInformation> infoSystem = systemController_->GetSystemInformation();
 	bool bPackageMode = infoSystem->IsPackageMode();
 
@@ -331,7 +331,7 @@ void StgStageController::Work()
 		return;
 	}
 
-	bool bPauseKey = (input->GetVirtualKeyState(EDirectInput::KEY_PAUSE) == KEY_PUSH);
+	bool bPauseKey = (input->GetVirtualKeyState(ESimpleInput::KEY_PAUSE) == KEY_PUSH);
 	if (bPauseKey && !bPackageMode) {
 		//停止キー押下
 		if (!bCurrentPause)

@@ -162,9 +162,9 @@ std::wstring ETextureManager::GetReservedRenderTargetName(int index)
 }
 
 /**********************************************************
-//EDirectInput
+//ESimpleInput
 **********************************************************/
-bool EDirectInput::Initialize(HWND hWnd)
+bool ESimpleInput::Initialize(HWND hWnd)
 {
 	padIndex_ = 0;
 
@@ -174,7 +174,7 @@ bool EDirectInput::Initialize(HWND hWnd)
 
 	return true;
 }
-void EDirectInput::ResetVirtualKeyMap()
+void ESimpleInput::ResetVirtualKeyMap()
 {
 	ClearKeyMap();
 

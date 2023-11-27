@@ -38,8 +38,8 @@ void TitleScene::Work()
 	if (!_IsWaitedKeyFree())
 		return;
 
-	EDirectInput* input = EDirectInput::GetInstance();
-	if (input->GetVirtualKeyState(EDirectInput::KEY_OK) == KEY_PUSH) {
+	ESimpleInput* input = ESimpleInput::GetInstance();
+	if (input->GetVirtualKeyState(ESimpleInput::KEY_OK) == KEY_PUSH) {
 		SceneManager* sceneManager = SystemController::GetInstance()->GetSceneManager();
 
 		//選択インデックス保存
@@ -69,7 +69,7 @@ void TitleScene::Work()
 			break;
 		}
 		return;
-	} else if (input->GetVirtualKeyState(EDirectInput::KEY_CANCEL) == KEY_PUSH) {
+	} else if (input->GetVirtualKeyState(ESimpleInput::KEY_CANCEL) == KEY_PUSH) {
 		cursorY_ = ITEM_QUIT;
 	}
 }

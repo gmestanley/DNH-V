@@ -34,7 +34,7 @@ void StgSystemController::Start(ref_count_ptr<ScriptInformation> infoPlayer, ref
 	scriptEngineCache_->Clear();
 
 	//キー設定
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ResetVirtualKeyMap();
 
 	ref_count_ptr<ScriptInformation> infoMain = infoSystem_->GetMainScriptInformation();
@@ -78,7 +78,7 @@ void StgSystemController::Work()
 		infoSystem_->SetError(e.what());
 	}
 
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	if (infoSystem_->IsRetry()) {
 		infoSystem_->SetError(L"Retry");
 
@@ -586,7 +586,7 @@ void StgSystemController::StartStgScene(ref_count_ptr<StgStageInformation> infoS
 }
 void StgSystemController::StartStgScene(ref_count_ptr<StgStageStartData> startData)
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
 	infoSystem_->SetScene(StgSystemInformation::SCENE_STG);

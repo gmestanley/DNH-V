@@ -97,8 +97,8 @@ void ScriptSelectScene::Work()
 	MenuTask::Work();
 	if(!_IsWaitedKeyFree())return;
 
-	EDirectInput* input = EDirectInput::GetInstance();
-	if(input->GetVirtualKeyState(EDirectInput::KEY_OK) == KEY_PUSH)
+	ESimpleInput* input = ESimpleInput::GetInstance();
+	if(input->GetVirtualKeyState(ESimpleInput::KEY_OK) == KEY_PUSH)
 	{
 		ref_count_ptr<MenuItem> tItem = GetSelectedMenuItem();
 		ref_count_ptr<ScriptSelectSceneMenuItem> item = ref_count_ptr<ScriptSelectSceneMenuItem>::DownCast(tItem);
@@ -148,7 +148,7 @@ void ScriptSelectScene::Work()
 			}
 		}
 	}
-	else if(input->GetVirtualKeyState(EDirectInput::KEY_CANCEL) == KEY_PUSH)
+	else if(input->GetVirtualKeyState(ESimpleInput::KEY_CANCEL) == KEY_PUSH)
 	{
 		bool bTitle = true;
 
@@ -706,8 +706,8 @@ void PlayTypeSelectScene::Work()
 	MenuTask::Work();
 	if(!_IsWaitedKeyFree())return;
 
-	EDirectInput* input = EDirectInput::GetInstance();
-	if(input->GetVirtualKeyState(EDirectInput::KEY_OK) == KEY_PUSH)
+	ESimpleInput* input = ESimpleInput::GetInstance();
+	if(input->GetVirtualKeyState(ESimpleInput::KEY_OK) == KEY_PUSH)
 	{
 		if(info_->GetType() == ScriptInformation::TYPE_PACKAGE)
 		{
@@ -751,7 +751,7 @@ void PlayTypeSelectScene::Work()
 
 		return;
 	}
-	else if(input->GetVirtualKeyState(EDirectInput::KEY_CANCEL) == KEY_PUSH)
+	else if(input->GetVirtualKeyState(ESimpleInput::KEY_CANCEL) == KEY_PUSH)
 	{
 		ETaskManager* taskManager = ETaskManager::GetInstance();
 		ref_count_ptr<ScriptSelectScene> scriptSelectScene =
@@ -881,8 +881,8 @@ void PlayerSelectScene::Work()
 	MenuTask::Work();
 	if(!_IsWaitedKeyFree())return;
 
-	EDirectInput* input = EDirectInput::GetInstance();
-	if(input->GetVirtualKeyState(EDirectInput::KEY_OK) == KEY_PUSH)
+	ESimpleInput* input = ESimpleInput::GetInstance();
+	if(input->GetVirtualKeyState(ESimpleInput::KEY_OK) == KEY_PUSH)
 	{
 		int index = GetSelectedItemIndex();
 		ref_count_ptr<ScriptInformation> infoPlayer = listPlayer_[index];
@@ -893,7 +893,7 @@ void PlayerSelectScene::Work()
 
 		return;
 	}
-	else if(input->GetVirtualKeyState(EDirectInput::KEY_CANCEL) == KEY_PUSH)
+	else if(input->GetVirtualKeyState(ESimpleInput::KEY_CANCEL) == KEY_PUSH)
 	{
 		ETaskManager* taskManager = ETaskManager::GetInstance();
 		taskManager->SetRenderFunctionEnable(true, typeid(ScriptSelectScene));

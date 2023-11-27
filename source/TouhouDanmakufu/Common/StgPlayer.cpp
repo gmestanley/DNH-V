@@ -66,7 +66,7 @@ void StgPlayerObject::_InitializeRebirth()
 }
 void StgPlayerObject::Work()
 {
-	EDirectInput* input = EDirectInput::GetInstance();
+	ESimpleInput* input = ESimpleInput::GetInstance();
 	StgStageScriptManager* scriptManager = stageController_->GetScriptManagerP();
 	StgEnemyManager* enemyManager = stageController_->GetEnemyManager();
 
@@ -114,7 +114,7 @@ void StgPlayerObject::Work()
 				}
 			}
 			// _Move();
-			if (input->GetVirtualKeyState(EDirectInput::KEY_BOMB) == KEY_PUSH)
+			if (input->GetVirtualKeyState(ESimpleInput::KEY_BOMB) == KEY_PUSH)
 				CallSpell();
 
 			_AddIntersection();
@@ -122,7 +122,7 @@ void StgPlayerObject::Work()
 	}
 	if (state_ == STATE_HIT) {
 		//くらいボム待機
-		if (input->GetVirtualKeyState(EDirectInput::KEY_BOMB) == KEY_PUSH)
+		if (input->GetVirtualKeyState(ESimpleInput::KEY_BOMB) == KEY_PUSH)
 			CallSpell();
 
 		if (state_ == STATE_HIT) {
@@ -192,12 +192,12 @@ void StgPlayerObject::_Move()
 {
 	double sx = 0;
 	double sy = 0;
-	EDirectInput* input = EDirectInput::GetInstance();
-	int keyLeft = input->GetVirtualKeyState(EDirectInput::KEY_LEFT);
-	int keyRight = input->GetVirtualKeyState(EDirectInput::KEY_RIGHT);
-	int keyUp = input->GetVirtualKeyState(EDirectInput::KEY_UP);
-	int keyDown = input->GetVirtualKeyState(EDirectInput::KEY_DOWN);
-	int keySlow = input->GetVirtualKeyState(EDirectInput::KEY_SLOWMOVE);
+	ESimpleInput* input = ESimpleInput::GetInstance();
+	int keyLeft = input->GetVirtualKeyState(ESimpleInput::KEY_LEFT);
+	int keyRight = input->GetVirtualKeyState(ESimpleInput::KEY_RIGHT);
+	int keyUp = input->GetVirtualKeyState(ESimpleInput::KEY_UP);
+	int keyDown = input->GetVirtualKeyState(ESimpleInput::KEY_DOWN);
+	int keySlow = input->GetVirtualKeyState(ESimpleInput::KEY_SLOWMOVE);
 
 	double speed = speedFast_;
 	if (keySlow == KEY_PUSH || keySlow == KEY_HOLD)
