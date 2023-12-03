@@ -21,7 +21,7 @@ bool EApplication::_Initialize()
 
 	EFpsController* fpsController = EFpsController::CreateInstance();
 
-	std::wstring appName = L"DNH Netplay Edition";
+	std::wstring appName = L"Touhou Danmakufu-V";
 	appName += DNH_VERSION;
 
 	DnhConfiguration* config = DnhConfiguration::CreateInstance();

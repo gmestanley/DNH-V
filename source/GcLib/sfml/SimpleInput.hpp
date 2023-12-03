@@ -12,10 +12,10 @@ enum {
 };
 
 enum {
-	KEY_FREE = 0, // キーが押されていない状態
-	KEY_PUSH = 1, // キーを押した瞬間
-	KEY_PULL = 2, // キーが離された瞬間
-	KEY_HOLD = 3, // キーが押されている状態
+	KEY_FREE = 0, // キーが押されていない状態/No key being pressed state
+	KEY_PUSH = 1, // キーを押した瞬間/Moment where a key was pressed
+	KEY_PULL = 2, // キーが離された瞬間/Moment where a key was released
+	KEY_HOLD = 3, // キーが押されている状態/Key being pressed state
 };
 
 /**********************************************************
