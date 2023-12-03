@@ -38,11 +38,11 @@ void ByteBuffer::_Resize(int size)
 	data_ = new char[size];
 	ZeroMemory(data_, size);
 
-	//元のデータをコピー
+	//元のデータをコピー/Copy original data
 	int sizeCopy = min(size, oldSize);
 	if (oldData != NULL) {
 		memcpy(data_, oldData, sizeCopy);
-		//古いデータを削除
+		//古いデータを削除/Delete old data
 		delete[] oldData;
 	}
 	reserve_ = size;
@@ -89,7 +89,7 @@ DWORD ByteBuffer::Write(LPVOID buf, DWORD size)
 	if (offset_ + size > reserve_) {
 		int sizeNew = (offset_ + size) * 2;
 		_Resize(sizeNew);
-		size_ = 0; //あとで再計算
+		size_ = 0; //あとで再計算/Recalculate after
 	}
 
 	memcpy(&data_[offset_], buf, size);
@@ -106,7 +106,7 @@ DWORD ByteBuffer::Read(LPVOID buf, DWORD size)
 char* ByteBuffer::GetPointer(int offset)
 {
 	if (offset > size_) {
-		throw gstd::wexception(L"ByteBuffer:インデックスエラー");
+		throw gstd::wexception(L"ByteBuffer:インデックスエラー/Index error");
 	}
 	return &data_[offset];
 }
@@ -306,7 +306,7 @@ std::vector<std::wstring> File::GetFilePathList(std::wstring dir)
 		std::wstring name = data.cFileName;
 		if ((data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
 			&& (name != L".." && name != L".")) {
-			//ディレクトリ
+			//ディレクトリ/Directory
 			std::wstring tDir = dir + name;
 			tDir += L"\\";
 
@@ -315,7 +315,7 @@ std::vector<std::wstring> File::GetFilePathList(std::wstring dir)
 		if (wcscmp(data.cFileName, L"..") == 0 || wcscmp(data.cFileName, L".") == 0)
 			continue;
 
-		//ファイル
+		//ファイル/File
 		std::wstring path = dir + name;
 
 		res.push_back(path);
@@ -336,7 +336,7 @@ std::vector<std::wstring> File::GetDirectoryPathList(std::wstring dir)
 	do {
 		std::wstring name = data.cFileName;
 		if ((data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) && (name != L".." && name != L".")) {
-			//ディレクトリ
+			//ディレクトリ/Directory
 			std::wstring tDir = dir + name;
 			tDir += L"\\";
 			res.push_back(tDir);
@@ -345,7 +345,7 @@ std::vector<std::wstring> File::GetDirectoryPathList(std::wstring dir)
 		if (wcscmp(data.cFileName, L"..") == 0 || wcscmp(data.cFileName, L".") == 0)
 			continue;
 
-		//ファイル
+		//ファイル/File
 
 	} while (FindNextFile(hFind, &data));
 	FindClose(hFind);
@@ -417,7 +417,7 @@ bool FileArchiver::CreateArchiveFile(std::wstring path)
 	bool res = true;
 	File fileArchive(path);
 	if (!fileArchive.Create())
-		throw gstd::wexception(StringUtility::Format(L"ファイル作成失敗[%s]", path.c_str()).c_str());
+		throw gstd::wexception(StringUtility::Format(L"ファイル作成失敗/File creation error[%s]", path.c_str()).c_str());
 
 	fileArchive.Write((char*)&HEADER_ARCHIVEFILE[0], HEADER_ARCHIVEFILE.size());
 	fileArchive.WriteInteger(listEntry_.size());
@@ -450,7 +450,7 @@ bool FileArchiver::CreateArchiveFile(std::wstring path)
 		std::wstring path = entry->GetName();
 		File file(path);
 		if (!file.Open())
-			throw gstd::wexception(StringUtility::Format(L"ファイルオープン失敗[%s]", path.c_str()).c_str());
+			throw gstd::wexception(StringUtility::Format(L"ファイルオープン失敗/File opening error[%s]", path.c_str()).c_str());
 
 		entry->_SetDataSize(file.GetSize());
 		entry->_SetOffset(fileArchive.GetFilePointer());
@@ -471,7 +471,7 @@ bool FileArchiver::CreateArchiveFile(std::wstring path)
 		}
 	}
 
-	//とりあえず非圧縮で書き込む
+	//とりあえず非圧縮で書き込む/Writes uncompressedly for the time being
 	fileArchive.Seek(posArchiveEntryHeaderStart);
 	fileArchive.WriteBoolean(false);
 	fileArchive.WriteInteger(0);
@@ -490,7 +490,7 @@ bool FileArchiver::CreateArchiveFile(std::wstring path)
 		entry->SetName(name);
 	}
 
-	//圧縮可能か調べる
+	//圧縮可能か調べる/Examines whether compression is possible
 	fileArchive.Seek(posEntryStart);
 	int sizeEntry = posEntryEnd - posEntryStart;
 	ByteBuffer bufEntryIn;
@@ -501,7 +501,7 @@ bool FileArchiver::CreateArchiveFile(std::wstring path)
 	Compressor compEntry;
 	compEntry.Compress(bufEntryIn, bufEntryOut);
 	if (bufEntryOut.GetSize() < sizeEntry) {
-		//エントリ圧縮
+		//エントリ圧縮/Entry compression
 		fileArchive.Seek(posArchiveEntryHeaderStart);
 		fileArchive.WriteBoolean(true);
 		fileArchive.WriteInteger(bufEntryOut.GetSize());
@@ -882,9 +882,9 @@ void FileManager::LoadThread::_Run()
 				//listPath_.erase(event->GetPath());
 				listEvent_.pop_front();
 			}
-			// Logger::WriteTop(StringUtility::Format("ロードイベント取り出し完了：%s", event->GetPath().c_str()));
+			// Logger::WriteTop(StringUtility::Format("ロードイベント取り出し完了/Finished fetching load event：%s", event->GetPath().c_str()));
 
-			// Logger::WriteTop(StringUtility::Format("ロード開始：%s", event->GetPath().c_str()));
+			// Logger::WriteTop(StringUtility::Format("ロード開始/Started loaing：%s", event->GetPath().c_str()));
 			{
 				Lock lock(lockListener_);
 				std::list<FileManager::LoadThreadListener*>::iterator itr;
@@ -894,9 +894,9 @@ void FileManager::LoadThread::_Run()
 						listener->CallFromLoadThread(event);
 				}
 			}
-			// Logger::WriteTop(StringUtility::Format("ロード完了：%s", event->GetPath().c_str()));
+			// Logger::WriteTop(StringUtility::Format("ロード完了/Loading finished：%s", event->GetPath().c_str()));
 		}
-		Sleep(1); //TODO なぜか待機入れると落ちづらい？
+		Sleep(1); //TODO なぜか待機入れると落ちづらい？/Why is it hard to enter and leave standby?
 	}
 
 	{
@@ -1512,11 +1512,11 @@ DeCompressor::~DeCompressor()
 
 bool DeCompressor::DeCompress(ByteBuffer& bufIn, ByteBuffer& bufOut)
 {
-	//TODO 要独自の圧縮を実装
-	//公開ソースでは、受け渡されたデータをそのまま返す
-	//why mkm why
+	//TODO 要独自の圧縮を実装/Implements compression of the original data needed
+	//公開ソースでは、受け渡されたデータをそのまま返す/In the public source (code), it returns the transited data at that point
+	//why mkm why (Wishmakers)
 	bool res = true;
-	//zlib stuff
+	//zlib stuff  (Wishmakers)
 	/*
 	if (!Compressed)
 		return 0;*/
@@ -1528,7 +1528,7 @@ bool DeCompressor::DeCompressHeader(ByteBuffer& bufIn, ByteBuffer& bufOut)
 {
 	//TODO 要独自の圧縮を実装
 	//公開ソースでは、受け渡されたデータをそのまま返す
-	//why mkm why
+	//why mkm why (Wishmakers)
 	bool res = true;
 	int inputSize = bufIn.GetSize();
 	bufOut.SetSize(inputSize);
