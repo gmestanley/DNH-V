@@ -22,7 +22,7 @@ void StgSystemController::Initialize(ref_count_ptr<StgSystemInformation> infoSys
 }
 void StgSystemController::Start(ref_count_ptr<ScriptInformation> infoPlayer, ref_count_ptr<ReplayInformation> infoReplay)
 {
-	//DirectX
+	//SFML
 	DirectGraphics* graphics = DirectGraphics::GetBase();
 	gstd::ref_count_ptr<DxCamera> camera3D = graphics->GetCamera();
 	gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
