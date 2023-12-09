@@ -23,7 +23,7 @@ int main(/*HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int n
 		Logger::WriteTop(e.what());
 	}
 	// catch(...) {
-	// 	Logger::WriteTop("不明なエラー");
+	// 	Logger::WriteTop("不明なエラー/Unexpected error");
 	// }
 
 	EApplication::DeleteInstance();
