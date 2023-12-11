@@ -226,7 +226,7 @@ public:
 	virtual ~StgIntersectionTarget_Circle() {}
 	virtual RECT GetIntersectionSapceRect()
 	{
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		int screenWidth = graphics->GetScreenWidth();
 		int screenHeight = graphics->GetScreenWidth();
 
@@ -284,7 +284,7 @@ public:
 		y1 -= width;
 		y2 += width;
 
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		int screenWidth = graphics->GetScreenWidth();
 		int screenHeight = graphics->GetScreenWidth();
 		x1 = min(x1, screenWidth);

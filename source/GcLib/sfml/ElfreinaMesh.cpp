@@ -1,5 +1,5 @@
 #include "ElfreinaMesh.hpp"
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "DxUtility.hpp"
 
 using namespace gstd;
@@ -661,7 +661,7 @@ ElfreinaMeshData::Mesh::~Mesh()
 }
 void ElfreinaMeshData::Mesh::Render()
 {
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	ElfreinaMeshData::Material* material = material_.GetPointer();
 	SetTexture(material->texture_);
 	materialBNX_ = material->mat_;
@@ -823,7 +823,7 @@ bool RenderObjectElfreinaBlock::IsTranslucent()
 }
 void RenderObjectElfreinaBlock::CalculateZValue()
 {
-	DirectGraphics* graph = DirectGraphics::GetBase();
+	SimpleGraphics* graph = SimpleGraphics::GetBase();
 	IDirect3DDevice9* pDevice = graph->GetDevice();
 	ElfreinaMeshData::Mesh* obj = (ElfreinaMeshData::Mesh*)obj_.GetPointer();
 

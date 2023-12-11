@@ -187,7 +187,7 @@ public:
 	int GetScreenHeight() { return screenHeight_; }
 
 private:
-	int modeScreen_; //DirectGraphics::SCREENMODE_FULLSCREEN,SCREENMODE_WINDOW
+	int modeScreen_; //SimpleGraphics::SCREENMODE_FULLSCREEN,SCREENMODE_WINDOW
 	int sizeWindow_;
 	int fpsType_;
 

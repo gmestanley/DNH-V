@@ -405,7 +405,7 @@ bool ErrorDialog::ShowModal(std::wstring msg)
 const int DnhConfiguration::VERSION = 1;
 DnhConfiguration::DnhConfiguration()
 {
-	modeScreen_ = DirectGraphics::SCREENMODE_WINDOW;
+	modeScreen_ = SimpleGraphics::SCREENMODE_WINDOW;
 	sizeWindow_ = WINDOW_SIZE_640x480;
 	fpsType_ = FPS_NORMAL;
 

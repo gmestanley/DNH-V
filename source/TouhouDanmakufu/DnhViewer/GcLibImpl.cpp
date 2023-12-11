@@ -21,7 +21,7 @@ bool EApplication::_Initialize()
 
 	EFpsController* fpsController = EFpsController::CreateInstance();
 
-	EDirectGraphics* graphics = EDirectGraphics::CreateInstance();
+	ESimpleGraphics* graphics = ESimpleGraphics::CreateInstance();
 	graphics->Initialize();
 	HWND hWndMain = MainWindow::GetInstance()->GetWindowHandle();
 	WindowLogger::InsertOpenCommandInSystemMenu(hWndMain);
@@ -110,7 +110,7 @@ bool EApplication::_Loop()
 	ELogger* logger = ELogger::GetInstance();
 	ETaskManager* taskManager = ETaskManager::GetInstance();
 	EFpsController* fpsController = EFpsController::GetInstance();
-	EDirectGraphics* graphics = EDirectGraphics::GetInstance();
+	ESimpleGraphics* graphics = ESimpleGraphics::GetInstance();
 
 	MainWindow* mainWindow = MainWindow::GetInstance();
 	HWND hWndFocused = ::GetForegroundWindow();
@@ -185,7 +185,7 @@ bool EApplication::_Finalize()
 	EMeshManager::DeleteInstance();
 	EShaderManager::DeleteInstance();
 	ETextureManager::DeleteInstance();
-	EDirectGraphics::DeleteInstance();
+	ESimpleGraphics::DeleteInstance();
 	EFpsController::DeleteInstance();
 	EFileManager::DeleteInstance();
 
@@ -198,29 +198,29 @@ bool EApplication::_Finalize()
 }
 
 /**********************************************************
-//EDirectGraphics
+//ESimpleGraphics
 **********************************************************/
-EDirectGraphics::EDirectGraphics()
+ESimpleGraphics::ESimpleGraphics()
 {
 }
-EDirectGraphics::~EDirectGraphics()
+ESimpleGraphics::~ESimpleGraphics()
 {
 }
-bool EDirectGraphics::Initialize()
+bool ESimpleGraphics::Initialize()
 {
 	DnhConfiguration* dnhConfig = DnhConfiguration::GetInstance();
 	int screenWidth = dnhConfig->GetScreenWidth();
 	int screenHeight = dnhConfig->GetScreenHeight();
 
 	HWND hWndGraph = MainWindow::GetInstance()->GetGraphicsWindow()->GetWindowHandle();
-	DirectGraphicsConfig config;
+	SimpleGraphicsConfig config;
 	config.SetScreenWidth(screenWidth);
 	config.SetScreenHeight(screenHeight);
-	return DirectGraphics::Initialize(hWndGraph, config);
+	return SimpleGraphics::Initialize(hWndGraph, config);
 }
-void EDirectGraphics::SetRenderStateFor2D(int blend)
+void ESimpleGraphics::SetRenderStateFor2D(int blend)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetBlendMode(blend);
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);

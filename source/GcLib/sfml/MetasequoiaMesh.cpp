@@ -329,7 +329,7 @@ void MetasequoiaMeshData::_ReadObject(gstd::Scanner& scanner)
 //MetasequoiaMeshData::RenderObject
 void MetasequoiaMeshData::RenderObject::Render()
 {
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	MetasequoiaMeshData::Material* material = material_.GetPointer();
 	if (material != NULL) {
 		if (material->texture_ != NULL)

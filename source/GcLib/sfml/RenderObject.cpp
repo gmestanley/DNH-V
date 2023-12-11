@@ -1,6 +1,6 @@
 #include "RenderObject.hpp"
 
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "Shader.hpp"
 
 #include "ElfreinaMesh.hpp"
@@ -43,7 +43,7 @@ RenderManager::~RenderManager()
 }
 void RenderManager::Render()
 {
-	DirectGraphics* graph = DirectGraphics::GetBase();
+	SimpleGraphics* graph = SimpleGraphics::GetBase();
 
 	//不透明
 	graph->SetZBufferEnable(true);
@@ -106,7 +106,7 @@ void RenderStateFunction::CallRenderStateFunction()
 		args->Seek(0);
 		if (type == RenderStateFunction::FUNC_LIGHTING) {
 			bool bEnable = args->ReadBoolean();
-			DirectGraphics::GetBase()->SetLightingEnable(bEnable);
+			SimpleGraphics::GetBase()->SetLightingEnable(bEnable);
 		}
 		//TODO
 	}
@@ -258,7 +258,7 @@ D3DXMATRIX RenderObject::_CreateWorldTransformMaxtrix()
 	mat = mat * matRelative_;
 
 	if (bCoordinate2D_) {
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		IDirect3DDevice9* device = graphics->GetDevice();
 
 		D3DVIEWPORT9 viewPort;
@@ -309,7 +309,7 @@ void RenderObject::_SetCoordinate2dDeviceMatrix()
 	if (!bCoordinate2D_)
 		return;
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	float width = graphics->GetScreenWidth();
 	float height = graphics->GetScreenHeight();
@@ -357,7 +357,7 @@ void RenderObject::BeginShader()
 
 	shader_->Begin();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	// device->SetVertexDeclaration(pVertexDecl_);
 }
@@ -367,7 +367,7 @@ void RenderObject::EndShader()
 		return;
 	shader_->End();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	device->SetVertexDeclaration(NULL);
 }
@@ -391,7 +391,7 @@ void RenderObjectTLX::_CreateVertexDeclaration()
 		return;
 
 	//D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX1
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	D3DVERTEXELEMENT9 element[] = {
 		{ 0, 0, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITIONT, 0 },
 		{ 0, 16, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR, 0 },
@@ -402,7 +402,7 @@ void RenderObjectTLX::_CreateVertexDeclaration()
 }
 void RenderObjectTLX::Render()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	DxCamera2D* camera = graphics->GetCamera2D().GetPointer();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	ref_count_ptr<Texture>& texture = texture_[0];
@@ -587,7 +587,7 @@ void RenderObjectLX::_CreateVertexDeclaration()
 		return;
 
 	//D3DFVF_XYZ|D3DFVF_DIFFUSE|D3DFVF_TEX1
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	D3DVERTEXELEMENT9 element[] = {
 		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
 		{ 0, 12, D3DDECLTYPE_D3DCOLOR, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR, 0 },
@@ -598,7 +598,7 @@ void RenderObjectLX::_CreateVertexDeclaration()
 }
 void RenderObjectLX::Render()
 {
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	ref_count_ptr<Texture>& texture = texture_[0];
 	if (texture != NULL)
 		device->SetTexture(0, texture->GetD3DTexture());
@@ -724,7 +724,7 @@ void RenderObjectNX::_CreateVertexDeclaration()
 		return;
 
 	//D3DFVF_XYZ|D3DFVF_NORMAL|D3DFVF_TEX1
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	D3DVERTEXELEMENT9 element[] = {
 		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
 		{ 0, 12, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_NORMAL, 0 },
@@ -735,7 +735,7 @@ void RenderObjectNX::_CreateVertexDeclaration()
 }
 void RenderObjectNX::Render()
 {
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	ref_count_ptr<Texture>& texture = texture_[0];
 	if (texture != NULL)
 		device->SetTexture(0, texture->GetD3DTexture());
@@ -850,7 +850,7 @@ void RenderObjectBNX::_CreateVertexDeclaration()
 {
 	if (pVertexDecl_ != NULL)
 		return;
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	D3DVERTEXELEMENT9 element[] = {
 		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
 		{ 0, 12, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_BLENDWEIGHT, 0 },
@@ -864,7 +864,7 @@ void RenderObjectBNX::_CreateVertexDeclaration()
 void RenderObjectBNX::InitializeVertexBuffer()
 {
 	int countVertex = GetVertexCount();
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	device->CreateVertexBuffer(countVertex * sizeof(Vertex), 0, 0, D3DPOOL_MANAGED, &pVertexBuffer_, NULL);
 
 	//コピー
@@ -885,7 +885,7 @@ void RenderObjectBNX::InitializeVertexBuffer()
 }
 void RenderObjectBNX::Render()
 {
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	ref_count_ptr<Texture>& texture = texture_[0];
 	if (texture != NULL)
 		device->SetTexture(0, texture->GetD3DTexture());
@@ -1362,7 +1362,7 @@ SpriteList2D::SpriteList2D()
 }
 void SpriteList2D::Render()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	DxCamera2D* camera = graphics->GetCamera2D().GetPointer();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	ref_count_ptr<Texture>& texture = texture_[0];
@@ -1480,7 +1480,7 @@ void SpriteList2D::AddVertex()
 	D3DXMATRIX mat;
 	D3DXMatrixIdentity(&mat);
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	bool bPos = position_.x != 0.0f || position_.y != 0.0f || position_.z != 0.0f;
 	bool bAngle = angle_.x != 0.0f || angle_.y != 0.0f || angle_.z != 0.0f;
 	bool bScale = scale_.x != 1.0f || scale_.y != 1.0f || scale_.z != 1.0f;
@@ -1586,7 +1586,7 @@ D3DXMATRIX Sprite3D::_CreateWorldTransformMaxtrix()
 			mat = mat * matRot;
 		}
 		if (bBillboard_) {
-			DirectGraphics* graph = DirectGraphics::GetBase();
+			SimpleGraphics* graph = SimpleGraphics::GetBase();
 			IDirect3DDevice9* device = graph->GetDevice();
 			D3DXMATRIX matView;
 			device->GetTransform(D3DTS_VIEW, &matView);

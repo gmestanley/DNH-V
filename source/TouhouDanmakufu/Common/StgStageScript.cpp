@@ -118,7 +118,7 @@ void StgStageScriptObjectManager::RenderObject(int priMin, int priMax)
 		AddRenderObject(obj);
 	}
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	gstd::ref_count_ptr<DxCamera> camera3D = graphics->GetCamera();
 	gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
 

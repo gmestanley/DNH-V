@@ -23,19 +23,19 @@ public:
 };
 
 /**********************************************************
-//EDirectGraphics
+//ESimpleGraphics
 **********************************************************/
-class EDirectGraphics : public Singleton<EDirectGraphics>, public DirectGraphicsPrimaryWindow {
-	friend Singleton<EDirectGraphics>;
+class ESimpleGraphics : public Singleton<ESimpleGraphics>, public SimpleGraphicsPrimaryWindow {
+	friend Singleton<ESimpleGraphics>;
 
 private:
-	EDirectGraphics();
+	ESimpleGraphics();
 
 protected:
 	virtual LRESULT _WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 public:
-	~EDirectGraphics();
+	~ESimpleGraphics();
 	virtual bool Initialize();
 	void SetRenderStateFor2D(int blend);
 };

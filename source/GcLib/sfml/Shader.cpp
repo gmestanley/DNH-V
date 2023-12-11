@@ -28,8 +28,8 @@ ShaderManager::ShaderManager()
 }
 ShaderManager::~ShaderManager()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->RemoveDirectGraphicsListener(this);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->RemoveSimpleGraphicsListener(this);
 
 	Clear();
 }
@@ -40,8 +40,8 @@ bool ShaderManager::Initialize()
 
 	bool res = true;
 	thisBase_ = this;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->AddDirectGraphicsListener(this);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->AddSimpleGraphicsListener(this);
 
 	ref_count_ptr<Shader> shaderSkinedMesh = new Shader();
 	std::string sourceSkinedMesh = GLSL_DEFAULT_SKINED_MESH;
@@ -117,7 +117,7 @@ bool ShaderManager::_CreateFromFile(std::wstring path)
 
 	gstd::ref_count_ptr<ShaderData> data(new ShaderData());
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ID3DXBuffer* pErr = NULL;
 	HRESULT hr = D3DXCreateEffect(
 		graphics->GetDevice(),
@@ -159,7 +159,7 @@ bool ShaderManager::_CreateFromText(std::string& source)
 	}
 
 	bool res = true;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 
 	gstd::ref_count_ptr<ShaderData> data(new ShaderData());
 	ID3DXBuffer* pErr = NULL;
@@ -620,7 +620,7 @@ void Shader::_BeginPass(int pass)
 		return;
 	effect->BeginPass(pass);
 	/*
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	if(!bLoadShader_)
 	{
 		//http://www.gamedev.net/topic/646178-given-an-effect-technique-pass-handle-how-to-get-the-pixelshader/
@@ -648,7 +648,7 @@ void Shader::_EndPass()
 	effect->EndPass();
 
 	/*
-	IDirect3DDevice9* device = DirectGraphics::GetBase()->GetDevice();
+	IDirect3DDevice9* device = SimpleGraphics::GetBase()->GetDevice();
 	// device->SetVertexShader(NULL);
 	device->SetPixelShader(NULL);
 	*/

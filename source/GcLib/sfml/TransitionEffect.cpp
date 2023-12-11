@@ -28,8 +28,8 @@ void TransitionEffect_FadeOut::Render()
 {
 	if (sprite_ == NULL)
 		return;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);
 	sprite_->Render();
@@ -43,7 +43,7 @@ void TransitionEffect_FadeOut::Initialize(int frame, gstd::ref_count_ptr<Texture
 {
 	diffAlpha_ = 255.0 / frame;
 	alpha_ = 255.0;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int width = graphics->GetScreenWidth();
 	int height = graphics->GetScreenHeight();
 	RECT_D rect = { 0., 0., (double)width, (double)height };

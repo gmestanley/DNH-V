@@ -1856,7 +1856,7 @@ value DxScript::Func_SetTextureRenderMethod(script_machine* machine, int argc, v
 {
 	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int newvalue = (int)(argv[0].as_real());
-	graphics->SetDirectXRenderMethod(newvalue);
+	graphics->SetSFMLRenderMethod(newvalue);
 
 	return value();
 }

@@ -236,7 +236,7 @@ void DevicePanel::ReadConfiguration()
 	int screenMode = config->GetScreenMode();
 	switch(screenMode)
 	{
-	case DirectGraphics::SCREENMODE_FULLSCREEN:
+	case SimpleGraphics::SCREENMODE_FULLSCREEN:
 		SendDlgItemMessage(hWnd_, IDC_RADIO_FULLSCREEN ,BM_SETCHECK, 1, 0);
 		break;
 	default:
@@ -268,9 +268,9 @@ void DevicePanel::ReadConfiguration()
 void DevicePanel::WriteConfiguration()
 {
 	DnhConfiguration* config = DnhConfiguration::GetInstance();
-	int screenMode = DirectGraphics::SCREENMODE_WINDOW;
+	int screenMode = SimpleGraphics::SCREENMODE_WINDOW;
 	if(SendDlgItemMessage(hWnd_, IDC_RADIO_FULLSCREEN, BM_GETCHECK, 0, 0))
-		screenMode = DirectGraphics::SCREENMODE_FULLSCREEN;
+		screenMode = SimpleGraphics::SCREENMODE_FULLSCREEN;
 	config->SetScreenMode(screenMode);
 
 	int windowSize = comboWindowSize_.GetSelectedIndex();

@@ -28,7 +28,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 	input->ClearKeyState();
 
 	//3Dカメラ
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<DxCamera> camera3D = graphics->GetCamera();
 	camera3D->Reset();
 	camera3D->SetProjectionMatrix(384, 448, 10, 2000);
@@ -410,7 +410,7 @@ void StgStageController::Render()
 }
 void StgStageController::RenderToTransitionTexture()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	TextureManager* textureManager = ETextureManager::GetInstance();
 	ref_count_ptr<Texture> texture = textureManager->GetTexture(TextureManager::TARGET_TRANSITION);
 
@@ -453,7 +453,7 @@ StgStageInformation::StgStageInformation()
 	priMinStgFrame_ = 20;
 	priMaxStgFrame_ = 80;
 	priShotObject_ = 50;
-	priShotDelayBlend_ = DirectGraphics::MODE_BLEND_NONE;
+	priShotDelayBlend_ = SimpleGraphics::MODE_BLEND_NONE;
 	invShotGrazeFrame_ = INT_MAX;
 	invShotIntersectionDist_ = 0;
 	priItemObject_ = 60;
@@ -480,7 +480,7 @@ void StgStageInformation::SetStgFrameRect(RECT rect, bool bUpdateFocusResetValue
 	pos->y = (rect.bottom - rect.top) / 2;
 
 	if (bUpdateFocusResetValue) {
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
 		camera2D->SetResetFocus(pos);
 		camera2D->Reset();

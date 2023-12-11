@@ -1,7 +1,7 @@
 #ifndef __DIRECTX_TEXTURE__
 #define __DIRECTX_TEXTURE__
 
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "DxConstant.hpp"
 
 namespace directx {
@@ -76,7 +76,7 @@ protected:
 /**********************************************************
 	//TextureManager
 	**********************************************************/
-class TextureManager : public DirectGraphicsListener, public gstd::FileManager::LoadThreadListener {
+class TextureManager : public SimpleGraphicsListener, public gstd::FileManager::LoadThreadListener {
 	friend Texture;
 	friend TextureData;
 	friend TextureInfoPanel;
@@ -97,8 +97,8 @@ public:
 	virtual void Release(std::wstring name); //保持している参照を解放します
 	virtual bool IsDataExists(std::wstring name);
 
-	virtual void ReleaseDirectGraphics() { ReleaseDxResource(); }
-	virtual void RestoreDirectGraphics() { RestoreDxResource(); }
+	virtual void ReleaseSimpleGraphics() { ReleaseDxResource(); }
+	virtual void RestoreSimpleGraphics() { RestoreDxResource(); }
 	void ReleaseDxResource();
 	void RestoreDxResource();
 

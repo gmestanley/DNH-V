@@ -5,7 +5,7 @@
 **********************************************************/
 SystemResidentTask::SystemResidentTask()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int screenWidth = graphics->GetScreenWidth();
 	int screenHeight = graphics->GetScreenHeight();
 
@@ -25,8 +25,8 @@ SystemResidentTask::~SystemResidentTask()
 }
 void SystemResidentTask::RenderFps()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);
 	graphics->SetFogEnable(false);

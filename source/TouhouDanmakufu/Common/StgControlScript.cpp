@@ -610,7 +610,7 @@ gstd::value StgControlScript::Func_RenderToTextureA1(gstd::script_machine* machi
 	int priMax = (int)argv[2].as_real();
 	bool bClear = argv[3].as_boolean();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<Texture> texture = script->_GetTexture(name);
 	if (texture == NULL)
 		textureManager->GetTexture(name);
@@ -653,7 +653,7 @@ gstd::value StgControlScript::Func_RenderToTextureB1(gstd::script_machine* machi
 	if (obj == NULL)
 		return value();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<Texture> texture = script->_GetTexture(name);
 	if (texture == NULL)
 		textureManager->GetTexture(name);
@@ -681,7 +681,7 @@ gstd::value StgControlScript::Func_SaveSnapShotA1(gstd::script_machine* machine,
 	StgSystemController* systemController = script->systemController_;
 
 	std::wstring path = argv[0].as_string();
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<Texture> texture = textureManager->GetTexture(TextureManager::TARGET_TRANSITION);
 
 	graphics->SetRenderTarget(texture);
@@ -716,7 +716,7 @@ gstd::value StgControlScript::Func_SaveSnapShotA2(gstd::script_machine* machine,
 	int rcRight = (int)argv[3].as_real();
 	int rcBottom = (int)argv[4].as_real();
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<Texture> texture = textureManager->GetTexture(TextureManager::TARGET_TRANSITION);
 
 	graphics->SetRenderTarget(texture);

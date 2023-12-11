@@ -189,7 +189,7 @@ void MainWindow::SetStgController(ref_count_ptr<StgControllerForViewer> controll
 	if (controller_ != NULL) {
 		Logger::WriteTop(L"STGシーン開始");
 		try {
-			DirectGraphics* graphics = DirectGraphics::GetBase();
+			SimpleGraphics* graphics = SimpleGraphics::GetBase();
 			graphics->GetCamera2D()->Reset();
 
 			// controller_->Initialize();

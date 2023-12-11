@@ -1,5 +1,5 @@
 #include "Texture.hpp"
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 
 using namespace gstd;
 using namespace directx;
@@ -230,8 +230,8 @@ TextureManager::TextureManager()
 }
 TextureManager::~TextureManager()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->RemoveDirectGraphicsListener(this);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->RemoveSimpleGraphicsListener(this);
 	this->Clear();
 
 	FileManager::GetBase()->RemoveLoadThreadListener(this);
@@ -245,8 +245,8 @@ bool TextureManager::Initialize()
 		return false;
 
 	thisBase_ = this;
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->AddDirectGraphicsListener(this);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->AddSimpleGraphicsListener(this);
 
 	ref_count_ptr<Texture> texTransition = new Texture();
 	bool res = texTransition->CreateRenderTarget(TARGET_TRANSITION);
@@ -296,7 +296,7 @@ void TextureManager::ReleaseDxResource()
 }
 void TextureManager::RestoreDxResource()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	std::map<std::wstring, gstd::ref_count_ptr<TextureData>>::iterator itrMap;
 	{
 		Lock lock(GetLock());
@@ -312,7 +312,7 @@ void TextureManager::RestoreDxResource()
 				hr = graphics->GetDevice()->CreateDepthStencilSurface(width, height, D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, FALSE, &data->lpRenderZ_, NULL);
 				//テクスチャ作成
 				D3DFORMAT fmt;
-				if (graphics->GetScreenMode() == DirectGraphics::SCREENMODE_FULLSCREEN)
+				if (graphics->GetScreenMode() == SimpleGraphics::SCREENMODE_FULLSCREEN)
 					fmt = graphics->GetFullScreenPresentParameter().BackBufferFormat;
 				else
 					fmt = graphics->GetWindowPresentParameter().BackBufferFormat;
@@ -352,15 +352,15 @@ bool TextureManager::_CreateFromFile(std::wstring path)
 		D3DFORMAT pixelFormat = D3DFMT_A8R8G8B8;
 
 		ref_count_ptr<TextureData> data(new TextureData());
-		
-		DirectGraphics* graphics = DirectGraphics::GetBase();
-		UINT renderType = graphics->GetDirectXRenderMethod();
-		
+
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
+		UINT renderType = graphics->GetSFMLRenderMethod();
+
 		if(renderType != D3DX_DEFAULT && renderType != D3DX_DEFAULT_NONPOW2){
 			renderType = D3DX_DEFAULT;
 		}
 
-		HRESULT hr = D3DXCreateTextureFromFileInMemoryEx(DirectGraphics::GetBase()->GetDevice(),
+		HRESULT hr = D3DXCreateTextureFromFileInMemoryEx(SimpleGraphics::GetBase()->GetDevice(),
 			buf.GetPointer(), size,
 			renderType, renderType,
 			//info.Width, info.Height,
@@ -400,7 +400,7 @@ bool TextureManager::_CreateRenderTarget(std::wstring name)
 	bool res = true;
 	try {
 		ref_count_ptr<TextureData> data = new TextureData();
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		int screenWidth = graphics->GetScreenWidth();
 		int screenHeight = graphics->GetScreenHeight();
 		int width = 2;
@@ -585,15 +585,15 @@ void TextureManager::CallFromLoadThread(ref_count_ptr<FileManager::LoadThreadEve
 				colorKey = 0;
 
 			D3DFORMAT pixelFormat = D3DFMT_A8R8G8B8;
-			
-			DirectGraphics* graphics = DirectGraphics::GetBase();
-			UINT renderType = graphics->GetDirectXRenderMethod();
-			
+
+			SimpleGraphics* graphics = SimpleGraphics::GetBase();
+			UINT renderType = graphics->GetSFMLRenderMethod();
+
 			if(renderType != D3DX_DEFAULT && renderType != D3DX_DEFAULT_NONPOW2){
 				renderType = D3DX_DEFAULT;
 			}
 
-			HRESULT hr = D3DXCreateTextureFromFileInMemoryEx(DirectGraphics::GetBase()->GetDevice(),
+			HRESULT hr = D3DXCreateTextureFromFileInMemoryEx(SimpleGraphics::GetBase()->GetDevice(),
 				buf.GetPointer(), size,
 				renderType, renderType,
 				0,

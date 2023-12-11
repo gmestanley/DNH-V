@@ -41,7 +41,7 @@ void StgPackageController::Render()
 }
 void StgPackageController::RenderToTransitionTexture()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	TextureManager* textureManager = ETextureManager::GetInstance();
 	ref_count_ptr<Texture> texture = textureManager->GetTexture(TextureManager::TARGET_TRANSITION);
 

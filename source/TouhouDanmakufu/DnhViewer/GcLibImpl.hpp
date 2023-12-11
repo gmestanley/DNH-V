@@ -23,16 +23,16 @@ public:
 };
 
 /**********************************************************
-//EDirectGraphics
+//ESimpleGraphics
 **********************************************************/
-class EDirectGraphics : public Singleton<EDirectGraphics>, public DirectGraphics {
-	friend Singleton<EDirectGraphics>;
+class ESimpleGraphics : public Singleton<ESimpleGraphics>, public SimpleGraphics {
+	friend Singleton<ESimpleGraphics>;
 
 private:
-	EDirectGraphics();
+	ESimpleGraphics();
 
 public:
-	~EDirectGraphics();
+	~ESimpleGraphics();
 	virtual bool Initialize();
 	void SetRenderStateFor2D(int blend);
 };

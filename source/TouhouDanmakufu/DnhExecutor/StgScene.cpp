@@ -20,7 +20,7 @@ void EStgSystemController::DoRetry()
 **********************************************************/
 void PStgSystemController::DoEnd()
 {
-	EDirectGraphics* graphics = EDirectGraphics::CreateInstance();
+	ESimpleGraphics* graphics = ESimpleGraphics::CreateInstance();
 	graphics->SetWindowVisible(false);
 	EApplication::GetInstance()->End();
 }

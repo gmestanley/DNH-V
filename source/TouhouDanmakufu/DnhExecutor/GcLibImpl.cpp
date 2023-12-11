@@ -33,8 +33,8 @@ bool EApplication::_Initialize()
 	if (!config->IsMouseVisible())
 		WindowUtility::SetMouseVisible(false);
 
-	//DirectX初期化
-	EDirectGraphics* graphics = EDirectGraphics::CreateInstance();
+	//SFML初期化
+	ESimpleGraphics* graphics = ESimpleGraphics::CreateInstance();
 	graphics->Initialize();
 	HWND hWndMain = graphics->GetWindowHandle();
 	WindowLogger::InsertOpenCommandInSystemMenu(hWndMain);
@@ -107,7 +107,7 @@ bool EApplication::_Loop()
 	ELogger* logger = ELogger::GetInstance();
 	ETaskManager* taskManager = ETaskManager::GetInstance();
 	EFpsController* fpsController = EFpsController::GetInstance();
-	EDirectGraphics* graphics = EDirectGraphics::GetInstance();
+	ESimpleGraphics* graphics = ESimpleGraphics::GetInstance();
 
 	HWND hWndFocused = ::GetForegroundWindow();
 	HWND hWndGraphics = graphics->GetWindowHandle();
@@ -180,7 +180,7 @@ bool EApplication::_Finalize()
 	EMeshManager::DeleteInstance();
 	EShaderManager::DeleteInstance();
 	ETextureManager::DeleteInstance();
-	EDirectGraphics::DeleteInstance();
+	ESimpleGraphics::DeleteInstance();
 	EFpsController::DeleteInstance();
 	EFileManager::DeleteInstance();
 
@@ -192,15 +192,15 @@ bool EApplication::_Finalize()
 }
 
 /**********************************************************
-//EDirectGraphics
+//ESimpleGraphics
 **********************************************************/
-EDirectGraphics::EDirectGraphics()
+ESimpleGraphics::ESimpleGraphics()
 {
 }
-EDirectGraphics::~EDirectGraphics()
+ESimpleGraphics::~ESimpleGraphics()
 {
 }
-bool EDirectGraphics::Initialize()
+bool ESimpleGraphics::Initialize()
 {
 	DnhConfiguration* dnhConfig = DnhConfiguration::GetInstance();
 	int screenWidth = dnhConfig->GetScreenWidth();
@@ -222,20 +222,20 @@ bool EDirectGraphics::Initialize()
 			windowSize = DnhConfiguration::WINDOW_SIZE_1920x1200;
 	}
 
-	bool bShowWindow = screenMode == DirectGraphics::SCREENMODE_FULLSCREEN || windowSize == DnhConfiguration::WINDOW_SIZE_640x480;
+	bool bShowWindow = screenMode == SimpleGraphics::SCREENMODE_FULLSCREEN || windowSize == DnhConfiguration::WINDOW_SIZE_640x480;
 
-	DirectGraphicsConfig dxConfig;
+	SimpleGraphicsConfig dxConfig;
 	dxConfig.SetScreenWidth(screenWidth);
 	dxConfig.SetScreenHeight(screenHeight);
 	dxConfig.SetShowWindow(bShowWindow);
-	bool res = DirectGraphicsPrimaryWindow::Initialize(dxConfig);
+	bool res = SimpleGraphicsPrimaryWindow::Initialize(dxConfig);
 
 	int wWidth = ::GetSystemMetrics(SM_CXFULLSCREEN);
 	int wHeight = ::GetSystemMetrics(SM_CYFULLSCREEN);
 	bool bFullScreenEnable = screenWidth <= wWidth && screenHeight <= wHeight;
 
 	//コンフィグ反映
-	if (screenMode == DirectGraphics::SCREENMODE_FULLSCREEN && bFullScreenEnable) {
+	if (screenMode == SimpleGraphics::SCREENMODE_FULLSCREEN && bFullScreenEnable) {
 		ChangeScreenMode();
 	} else {
 		if (windowSize != DnhConfiguration::WINDOW_SIZE_640x480 || bUserSize) {
@@ -289,14 +289,14 @@ bool EDirectGraphics::Initialize()
 
 	return res;
 }
-void EDirectGraphics::SetRenderStateFor2D(int blend)
+void ESimpleGraphics::SetRenderStateFor2D(int blend)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetBlendMode(blend);
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);
 }
-LRESULT EDirectGraphics::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LRESULT ESimpleGraphics::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg) {
 	case WM_SYSCOMMAND:
@@ -305,5 +305,5 @@ LRESULT EDirectGraphics::_WindowProcedure(HWND hWnd, UINT uMsg, WPARAM wParam, L
 			ELogger::GetInstance()->ShowLogWindow();
 		break;
 	}
-	return DirectGraphicsPrimaryWindow::_WindowProcedure(hWnd, uMsg, wParam, lParam);
+	return SimpleGraphicsPrimaryWindow::_WindowProcedure(hWnd, uMsg, wParam, lParam);
 }

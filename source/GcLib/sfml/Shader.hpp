@@ -1,7 +1,7 @@
 #ifndef __DIRECTX_SHADER__
 #define __DIRECTX_SHADER__
 
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "DxConstant.hpp"
 #include "Texture.hpp"
 
@@ -36,7 +36,7 @@ private:
 /**********************************************************
 //ShaderManager
 **********************************************************/
-class ShaderManager : public DirectGraphicsListener {
+class ShaderManager : public SimpleGraphicsListener {
 	friend Shader;
 	friend ShaderData;
 
@@ -48,8 +48,8 @@ public:
 	gstd::CriticalSection& GetLock() { return lock_; }
 	void Clear();
 
-	virtual void ReleaseDirectGraphics() { ReleaseDxResource(); }
-	virtual void RestoreDirectGraphics() { RestoreDxResource(); }
+	virtual void ReleaseSimpleGraphics() { ReleaseDxResource(); }
+	virtual void RestoreSimpleGraphics() { RestoreDxResource(); }
 	void ReleaseDxResource();
 	void RestoreDxResource();
 

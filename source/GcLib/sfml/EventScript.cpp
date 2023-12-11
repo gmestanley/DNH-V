@@ -1,5 +1,5 @@
 #include "EventScript.hpp"
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "DirectInput.hpp"
 
 using namespace gstd;
@@ -1252,7 +1252,7 @@ EventScriptCodeExecuter_Transition::EventScriptCodeExecuter_Transition(EventEngi
 void EventScriptCodeExecuter_Transition::Execute()
 {
 	if (frame_ == 0) {
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		TextureManager* manager = TextureManager::GetBase();
 		gstd::ref_count_ptr<EventImage> image = engine_->GetEventImage();
 
@@ -1544,7 +1544,7 @@ void EventWindowManager::Write(gstd::RecordBuffer& record)
 //EventMouseCaptureLayer
 void EventMouseCaptureLayer::AddedManager()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	RECT rect = { 0, 0, graphics->GetScreenWidth(), graphics->GetScreenHeight() };
 	SetWindowRect(rect);
 }
@@ -1603,7 +1603,7 @@ EventTextWindow::EventTextWindow()
 }
 void EventTextWindow::AddedManager()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	RECT rect = { 0, 440, graphics->GetScreenWidth(), 600 };
 	SetWindowRect(rect);
 
@@ -1711,7 +1711,7 @@ EventLogWindow::EventLogWindow()
 }
 void EventLogWindow::AddedManager()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	RECT rect = { 20, 20, graphics->GetScreenWidth() - 20, 580 };
 	SetWindowRect(rect);
 
@@ -1783,7 +1783,7 @@ void EventLogWindow::Render()
 			break;
 	}
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetViewPort(left, top, rect.right - rect.left, maxHeight);
 	std::list<int>::iterator itrHeight = listHeight.begin();
 	;
@@ -2878,7 +2878,7 @@ void EventEngine::Work()
 }
 void EventEngine::Render()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<DxCamera2D> camera = graphics->GetCamera2D();
 
 	camera->SetEnable(true);

@@ -8,7 +8,7 @@
 **********************************************************/
 StgIntersectionManager::StgIntersectionManager()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int screenWidth = graphics->GetScreenWidth();
 	int screenHeight = graphics->GetScreenWidth();
 

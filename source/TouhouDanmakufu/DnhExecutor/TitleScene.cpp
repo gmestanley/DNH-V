@@ -12,7 +12,7 @@ TitleScene::TitleScene()
 	ref_count_ptr<Texture> textureBack = new Texture();
 	textureBack->CreateFromFile(pathBack);
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int screenWidth = graphics->GetScreenWidth();
 	int screenHeight = graphics->GetScreenHeight();
 	RECT_D srcBack = { 0., 0., 640., 480. };
@@ -75,8 +75,8 @@ void TitleScene::Work()
 }
 void TitleScene::Render()
 {
-	EDirectGraphics* graphics = EDirectGraphics::GetInstance();
-	graphics->SetRenderStateFor2D(DirectGraphics::MODE_BLEND_ALPHA);
+	ESimpleGraphics* graphics = ESimpleGraphics::GetInstance();
+	graphics->SetRenderStateFor2D(SimpleGraphics::MODE_BLEND_ALPHA);
 
 	spriteBack_->Render();
 
@@ -113,13 +113,13 @@ void TitleSceneMenuItem::Render()
 	objText_->Render();
 
 	if (menu_->GetSelectedMenuItem() == this) {
-		DirectGraphics* graphics = DirectGraphics::GetBase();
-		graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ADD_RGB);
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
+		graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ADD_RGB);
 
 		int alpha = _GetSelectedItemAlpha();
 		objText_->SetVertexColor(D3DCOLOR_ARGB(255, alpha, alpha, alpha));
 		objText_->Render();
 		objText_->SetVertexColor(D3DCOLOR_ARGB(255, 255, 255, 255));
-		graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+		graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 	}
 }

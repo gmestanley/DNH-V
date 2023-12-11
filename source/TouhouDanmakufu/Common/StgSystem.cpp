@@ -23,7 +23,7 @@ void StgSystemController::Initialize(ref_count_ptr<StgSystemInformation> infoSys
 void StgSystemController::Start(ref_count_ptr<ScriptInformation> infoPlayer, ref_count_ptr<ReplayInformation> infoReplay)
 {
 	//SFML
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	gstd::ref_count_ptr<DxCamera> camera3D = graphics->GetCamera();
 	gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
 
@@ -171,7 +171,7 @@ void StgSystemController::Render()
 		}
 		}
 	} catch (gstd::wexception e) {
-		DirectGraphics* graphics = DirectGraphics::GetBase();
+		SimpleGraphics* graphics = SimpleGraphics::GetBase();
 		gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
 		camera2D->SetEnable(false);
 		camera2D->Reset();
@@ -222,8 +222,8 @@ void StgSystemController::RenderScriptObject()
 /*
 			ref_count_ptr<StgStageInformation> infoStage = stageController_->GetStageInformation();
 			ref_count_ptr<ReplayInformation::StageData> replayStageData = infoStage->GetReplayData();
-			DirectGraphics* graphics = DirectGraphics::GetBase();
-			graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+			SimpleGraphics* graphics = SimpleGraphics::GetBase();
+			graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 			graphics->SetZBufferEnable(false);
 			graphics->SetZWriteEnalbe(false);
 			graphics->SetFogEnable(false);
@@ -280,7 +280,7 @@ void StgSystemController::RenderScriptObject(int priMin, int priMax)
 
 	//--------------------------------
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	gstd::ref_count_ptr<DxCamera> camera3D = graphics->GetCamera();
 	gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
 	double focusRatioX = camera2D->GetRatioX();

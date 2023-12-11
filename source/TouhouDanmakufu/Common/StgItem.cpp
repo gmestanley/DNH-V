@@ -107,7 +107,7 @@ void StgItemManager::Work()
 }
 void StgItemManager::Render(int targetPriority)
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);
 	graphics->SetCullingMode(D3DCULL_NONE);
@@ -135,15 +135,15 @@ void StgItemManager::Render(int targetPriority)
 	}
 
 	int countBlendType = StgItemDataList::RENDER_TYPE_COUNT;
-	int blendMode[] = { DirectGraphics::MODE_BLEND_ADD_ARGB, DirectGraphics::MODE_BLEND_ADD_RGB, DirectGraphics::MODE_BLEND_ALPHA };
+	int blendMode[] = { SimpleGraphics::MODE_BLEND_ADD_ARGB, SimpleGraphics::MODE_BLEND_ADD_RGB, SimpleGraphics::MODE_BLEND_ALPHA };
 	int typeRender[] = { StgShotDataList::RENDER_ADD_ARGB, StgShotDataList::RENDER_ADD_RGB, StgShotDataList::RENDER_ALPHA };
 	ref_count_ptr<SpriteList2D>::unsync listSprite[] = { listSpriteDigit_, listSpriteItem_ };
 	for (int iBlend = 0; iBlend < countBlendType; iBlend++) {
 		graphics->SetBlendMode(blendMode[iBlend]);
-		if (blendMode[iBlend] == DirectGraphics::MODE_BLEND_ADD_ARGB) {
+		if (blendMode[iBlend] == SimpleGraphics::MODE_BLEND_ADD_ARGB) {
 			listSpriteDigit_->Render();
 			listSpriteDigit_->ClearVertexCount();
-		} else if (blendMode[iBlend] == DirectGraphics::MODE_BLEND_ALPHA) {
+		} else if (blendMode[iBlend] == SimpleGraphics::MODE_BLEND_ALPHA) {
 			listSpriteItem_->Render();
 			listSpriteItem_->ClearVertexCount();
 		}
@@ -369,9 +369,9 @@ void StgItemDataList::_ScanItem(std::vector<ref_count_ptr<StgItemData>::unsync>&
 				scanner.CheckType(scanner.Next(), Token::TK_EQUAL);
 				std::wstring render = scanner.Next().GetElement();
 				if (render == L"ADD" || render == L"ADD_RGB")
-					data->typeRender_ = DirectGraphics::MODE_BLEND_ADD_RGB;
+					data->typeRender_ = SimpleGraphics::MODE_BLEND_ADD_RGB;
 				else if (render == L"ADD_ARGB")
-					data->typeRender_ = DirectGraphics::MODE_BLEND_ADD_ARGB;
+					data->typeRender_ = SimpleGraphics::MODE_BLEND_ADD_ARGB;
 			} else if (element == L"alpha") {
 				scanner.CheckType(scanner.Next(), Token::TK_EQUAL);
 				data->alpha_ = scanner.Next().GetInteger();
@@ -456,7 +456,7 @@ std::vector<std::wstring> StgItemDataList::_GetArgumentList(Scanner& scanner)
 StgItemData::StgItemData(StgItemDataList* listItemData)
 {
 	listItemData_ = listItemData;
-	typeRender_ = DirectGraphics::MODE_BLEND_ALPHA;
+	typeRender_ = SimpleGraphics::MODE_BLEND_ALPHA;
 	SetRect(&rcSrc_, 0, 0, 0, 0);
 	SetRect(&rcOut_, 0, 0, 0, 0);
 	alpha_ = 255;
@@ -493,11 +493,11 @@ ref_count_ptr<Texture> StgItemData::GetTexture()
 StgItemRenderer* StgItemData::GetRenderer()
 {
 	StgItemRenderer* res = NULL;
-	if (typeRender_ == DirectGraphics::MODE_BLEND_ALPHA)
+	if (typeRender_ == SimpleGraphics::MODE_BLEND_ALPHA)
 		res = listItemData_->GetRenderer(indexTexture_, StgItemDataList::RENDER_ALPHA).GetPointer();
-	else if (typeRender_ == DirectGraphics::MODE_BLEND_ADD_RGB)
+	else if (typeRender_ == SimpleGraphics::MODE_BLEND_ADD_RGB)
 		res = listItemData_->GetRenderer(indexTexture_, StgItemDataList::RENDER_ADD_RGB).GetPointer();
-	else if (typeRender_ == DirectGraphics::MODE_BLEND_ADD_ARGB)
+	else if (typeRender_ == SimpleGraphics::MODE_BLEND_ADD_ARGB)
 		res = listItemData_->GetRenderer(indexTexture_, StgItemDataList::RENDER_ADD_ARGB).GetPointer();
 	return res;
 }
@@ -522,7 +522,7 @@ int StgItemRenderer::GetVertexCount()
 }
 void StgItemRenderer::Render()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	IDirect3DDevice9* device = graphics->GetDevice();
 	ref_count_ptr<Texture>& texture = texture_[0];
 	if (texture != NULL)
@@ -701,7 +701,7 @@ void StgItemObject::RenderOnItemManager(D3DXMATRIX mat)
 }
 void StgItemObject::_DeleteInAutoClip()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 
 	RECT rcClip;
 	ZeroMemory(&rcClip, sizeof(RECT));
@@ -1036,7 +1036,7 @@ void StgItemObject_User::RenderOnItemManager(D3DXMATRIX mat)
 
 		mat = matScale * matRot * matTrans * mat;
 
-		bool bBlendAddRGB = (objBlendType == DirectGraphics::MODE_BLEND_ADD_RGB);
+		bool bBlendAddRGB = (objBlendType == SimpleGraphics::MODE_BLEND_ADD_RGB);
 
 		color = color_;
 		double alpha = itemData->GetAlpha() / 255.0;

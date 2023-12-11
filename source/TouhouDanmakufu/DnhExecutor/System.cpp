@@ -52,7 +52,7 @@ void SystemController::ClearTaskWithoutSystem()
 }
 void SystemController::ShowErrorDialog(std::wstring msg)
 {
-	HWND hParent = EDirectGraphics::GetInstance()->GetAttachedWindowHandle();
+	HWND hParent = ESimpleGraphics::GetInstance()->GetAttachedWindowHandle();
 	ErrorDialog dialog(hParent);
 	dialog.ShowModal(msg);
 }
@@ -280,7 +280,7 @@ TransitionManager::~TransitionManager()
 }
 void TransitionManager::_CreateCurrentSceneTexture()
 {
-	DirectGraphics* graphics = EDirectGraphics::GetInstance();
+	SimpleGraphics* graphics = ESimpleGraphics::GetInstance();
 	WorkRenderTaskManager* taskManager = ETaskManager::GetInstance();
 	TextureManager* textureManager = ETextureManager::GetInstance();
 	ref_count_ptr<Texture> texture = textureManager->GetTexture(TextureManager::TARGET_TRANSITION);
@@ -372,7 +372,7 @@ void SystemInformation::UpdateFreePlayerScriptInformationList()
 **********************************************************/
 SystemResidentTask::SystemResidentTask()
 {
-	DirectGraphics* graphics = DirectGraphics::GetBase();
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	int screenWidth = graphics->GetScreenWidth();
 	int screenHeight = graphics->GetScreenHeight();
 
@@ -398,8 +398,8 @@ void SystemResidentTask::RenderFps()
 	if (taskManager->GetTask(typeid(PStgSystemController)) != NULL)
 		return;
 
-	DirectGraphics* graphics = DirectGraphics::GetBase();
-	graphics->SetBlendMode(DirectGraphics::MODE_BLEND_ALPHA);
+	SimpleGraphics* graphics = SimpleGraphics::GetBase();
+	graphics->SetBlendMode(SimpleGraphics::MODE_BLEND_ALPHA);
 	graphics->SetZBufferEnable(false);
 	graphics->SetZWriteEnalbe(false);
 	graphics->SetFogEnable(false);

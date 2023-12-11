@@ -5,7 +5,7 @@
 
 #include "DxUtility.hpp"
 
-#include "DirectGraphics.hpp"
+#include "SimpleGraphics.hpp"
 #include "DxText.hpp"
 #include "ElfreinaMesh.hpp"
 #include "MetasequoiaMesh.hpp"

@@ -77,7 +77,7 @@ public:
 		MODE_BLEND_MULTIPLY, //乗算合成/Multiplication Composition
 		MODE_BLEND_SUBTRACT, //減算合成/Subtraction Composition
 		MODE_BLEND_SHADOW, //影描画用/For drawing shadows
-		MODE_BLEND_INV_DESTRGB, //描画先色反転合成/Color Inversion Before Drawing Composition 
+		MODE_BLEND_INV_DESTRGB, //描画先色反転合成/Color Inversion Before Drawing Composition
 
 		MODE_TEXTURE_FILTER_NONE, //フィルタなし/No filter
 		MODE_TEXTURE_FILTER_POINT, //補間なし/No interpolation
@@ -140,9 +140,9 @@ public:
 
 	void SaveBackSurfaceToFile(std::wstring path);
 	bool IsPixelShaderSupported(int major, int minor);
-	
-	int GetDirectXRenderMethod() { return renderMode_; };
-	void SetDirectXRenderMethod(int type) { renderMode_ = type; };
+
+	int GetSFMLRenderMethod() { return renderMode_; };
+	void SetSFMLRenderMethod(int type) { renderMode_ = type; };
 
 protected:
 	IDirect3D9* pDirect3D_;
@@ -290,7 +290,7 @@ public:
 	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratio);
 	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratioX, double ratioY);
 	inline static sf::Vector2f GetLeftTopPosition(sf::Vector2f focus, double ratioX, double ratioY, RECT rcClip);
-	
+
 	D3DXMATRIX GetMatrix();
 
 private:
