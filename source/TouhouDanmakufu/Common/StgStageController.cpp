@@ -20,20 +20,20 @@ StgStageController::~StgStageController()
 }
 void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 {
-	//FPU初期化
+	//FPU初期化/FPU Initialization
 	Math::InitializeFPU();
 
-	//キー初期化
+	//キー初期化/Key Initialization
 	ESimpleInput* input = ESimpleInput::GetInstance();
 	input->ClearKeyState();
 
-	//3Dカメラ
+	//3Dカメラ/3D Camera
 	SimpleGraphics* graphics = SimpleGraphics::GetBase();
 	ref_count_ptr<DxCamera> camera3D = graphics->GetCamera();
 	camera3D->Reset();
 	camera3D->SetProjectionMatrix(384, 448, 10, 2000);
 
-	//2Dカメラ
+	//2Dカメラ/2D Camera
 	gstd::ref_count_ptr<DxCamera2D> camera2D = graphics->GetCamera2D();
 	camera2D->Reset();
 
@@ -45,7 +45,7 @@ void StgStageController::Initialize(ref_count_ptr<StgStageStartData> startData)
 	infoStage_ = infoStage;
 	infoStage_->SetReplay(replayStageData != NULL);
 
-	//リプレイキー設定
+	//リプレイキー設定/Replay Key Settings
 	int replayState = infoStage_->IsReplay() ? KeyReplayManager::STATE_REPLAY : KeyReplayManager::STATE_RECORD;
 	keyReplayManager_ = new KeyReplayManager(ESimpleInput::GetInstance());
 	keyReplayManager_->SetManageState(replayState);
