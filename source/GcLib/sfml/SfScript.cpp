@@ -1784,7 +1784,7 @@ value DxScript::Func_StopSound(script_machine* machine, int argc, value const* a
 	return value();
 }
 
-//Dx関数：キー系
+//Dx関数：キー系/Dx Functions: Key Type
 gstd::value DxScript::Func_GetKeyState(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	SimpleInput* input = SimpleInput::GetBase();
@@ -1839,7 +1839,7 @@ gstd::value DxScript::Func_SetVirtualKeyState(gstd::script_machine* machine, int
 	}
 	return value();
 }
-//Dx関数：描画系
+//Dx関数：描画系/Dx Functions: Drawing Type
 gstd::value DxScript::Func_GetScreenWidth(gstd::script_machine* machine, int argc, gstd::value const* argv)
 {
 	SimpleGraphics* graphics = SimpleGraphics::GetBase();
