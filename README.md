@@ -1,9 +1,7 @@
-# Touhou Danmakufū V
-A modified version of Danmakufu ph3.5 "Woo" aiming to provide better functionality to the engine, such as general improvements and others including new features, like Netplay.<br>
+# Touhou Danmakufū-V
+A modified version of Danmakufu Woo "ph3.5" aiming to provide better functionality to the engine, such as general improvements and others including new features, like Netplay.<br>
 All documents have been translated from Japanese to English by me.<br>
 Crossplatform support is also planned for GNU (Hurd, Linux-libre), PE-running systems like Windows, and Mach-O-running systems like macOS. The [linux](https://github.com/gmestanley/DNH-V/tree/linux/) branch was a work in progress and set to be used for GNU+Linux or the OS commonly called "Linux", but was soon to be merged with main and is now scrapped, as is support for the variant (users please use Linux-libre version; the ABIs are the same). Currently, only Windows is supported by the engine; this will change.
-
-<abbr style="color:red">* This legacy repository is no longer being maintained. Please check out [the main repository dmf-v](codeberg.org/gmestanley/dmf-v) instead.*</abbr>
 
 ## Changelog
 Aside from the current releases, there were changes made in older versions; check the older repository [DNH-Netplay](github.com/gmestanley/DNH-Netplay) to see a log of them.
@@ -25,7 +23,6 @@ Aside from the current releases, there were changes made in older versions; chec
  * zlib
  * sfml
 <br>Get it here: https://sfml-dev.org
-<br>Also deserves credit because it was used to implement netplay in the first place.
 
 ## Known Issues
  * Script functions do not work (top priority, is being fixed)
@@ -40,3 +37,8 @@ Mana - provided the fix for ItoA and IntToString's int range
 ## Contact
 This project has a Discord server. If you want to talk about it in there, use this ID on Discord: W93pV9XuB5<br>
 A Matrix space is also planned but is currently not going to exist as full sync with Discord (with all the previous messages being posted) is not possible yet.
+
+## License
+zlib has its own license, please check zlib.h in the repo for that information.</br></br>
+This fork is licensed under the Expat license, commonly called "the MIT license".
+The license text was taken from https://directory.fsf.org/wiki/License:Expat.
