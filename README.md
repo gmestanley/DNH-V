@@ -1,4 +1,4 @@
-# Touhou Danmakufū-V
+﻿# Touhou Danmakufū-V
 A modified version of Danmakufu Woo "ph3.5" aiming to provide better functionality to the engine, such as general improvements and others including new features, like Netplay.<br>
 All documents have been translated from Japanese to English by me.<br>
 Crossplatform support is also planned for GNU (Hurd, Linux-libre), PE-running systems like Windows, and Mach-O-running systems like macOS. The [linux](https://github.com/gmestanley/DNH-V/tree/linux/) branch was a work in progress and set to be used for GNU+Linux or the OS commonly called "Linux", but was soon to be merged with main and is now scrapped, as is support for the variant (users please use Linux-libre version; the ABIs are the same). Currently, only Windows is supported by the engine; this will change.
