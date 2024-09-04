@@ -13,17 +13,16 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add option="-O0" />
 					<Add option="-DWIN32" />
 					<Add option="-D_DEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-DUNICODE" />
-					<Add option="-O0" />
-					<Add option="-Wall" />
 					<Add directory="$(VC_IncludePath)/" />
 					<Add directory="$(WindowsSDK_IncludePath)/" />
-					<Add directory="./DirectX9c/Include/" />
-					<Add directory="../SFML-2.5.1/include/" />
+					<Add directory="../REPOS/SFML-2.5.1/include/" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-network-d.lib" />
@@ -46,8 +45,7 @@
 					<Add directory="$(VC_LibraryPath_x86)/" />
 					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
 					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
-					<Add directory="./DirectX9c/Lib/" />
-					<Add directory="../SFML-2.5.1/lib/" />
+					<Add directory="../REPOS/SFML-2.5.1/lib/" />
 				</Linker>
 			</Target>
 			<Target title="Release Win32">
@@ -57,15 +55,14 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-O1" />
+					<Add option="-Wall" />
 					<Add option="-DWIN32" />
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
-					<Add option="-O1" />
-					<Add option="-Wall" />
 					<Add directory="$(VC_IncludePath)/" />
 					<Add directory="$(WindowsSDK_IncludePath)/" />
-					<Add directory="./DirectX9c/Include/" />
-					<Add directory="../SFML-2.5.1/include/" />
+					<Add directory="../REPOS/SFML-2.5.1/include/" />
 					<Add directory="source/GcLib/" />
 				</Compiler>
 				<Linker>
@@ -90,8 +87,7 @@
 					<Add directory="$(VC_LibraryPath_x86)/" />
 					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
 					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
-					<Add directory="./DirectX9c/Lib/" />
-					<Add directory="../SFML-2.5.1/lib/" />
+					<Add directory="../REPOS/SFML-2.5.1/lib/" />
 					<Add directory="../zlib/library/" />
 				</Linker>
 			</Target>
@@ -104,8 +100,7 @@
 				<Compiler>
 					<Add directory="$(VC_IncludePath)/" />
 					<Add directory="$(WindowsSDK_IncludePath)/" />
-					<Add directory="./DirectX9c/Include/" />
-					<Add directory="C:/Users/Adrian/Desktop/SFML-2.5.1/include/" />
+					<Add directory="../REPOS/SFML-2.5.1/include/" />
 					<Add directory="source/GcLib/" />
 				</Compiler>
 				<Linker>
@@ -129,8 +124,7 @@
 					<Add directory="$(VC_LibraryPath_x86)/" />
 					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
 					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
-					<Add directory="./DirectX9c/Lib/" />
-					<Add directory="C:/Users/Adrian/Desktop/SFML-2.5.1/lib/" />
+					<Add directory="../REPOS/SFML-2.5.1/lib/" />
 				</Linker>
 			</Target>
 		</Build>
@@ -294,6 +288,7 @@
 		</Unit>
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/GcLibImpl.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/GcLibImpl.hpp" />
+		<Unit filename="source/TouhouDanmakufu/DnhExecutor/Main.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/ScriptSelectScene.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/ScriptSelectScene.hpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/StgScene.cpp" />
@@ -302,7 +297,6 @@
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/System.hpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/TitleScene.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/TitleScene.hpp" />
-		<Unit filename="source/TouhouDanmakufu/DnhExecutor/WinMain.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhExecutor/resource.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
