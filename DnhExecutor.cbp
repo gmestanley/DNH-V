@@ -13,17 +13,14 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add option="-O0" />
 					<Add option="-DWIN32" />
 					<Add option="-D_DEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-DUNICODE" />
-					<Add option="-O0" />
-					<Add option="-Wall" />
-					<Add directory="$(VC_IncludePath)/" />
-					<Add directory="$(WindowsSDK_IncludePath)/" />
-					<Add directory="./DirectX9c/Include/" />
-					<Add directory="../SFML-2.5.1/include/" />
+					<Add directory="../../../REPOS/SFML-2.5.1/include/" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-network-d.lib" />
@@ -43,11 +40,7 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
-					<Add directory="$(VC_LibraryPath_x86)/" />
-					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
-					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
-					<Add directory="./DirectX9c/Lib/" />
-					<Add directory="../SFML-2.5.1/lib/" />
+					<Add directory="../../../REPOS/SFML-2.5.1/lib/" />
 				</Linker>
 			</Target>
 			<Target title="Release Win32">
@@ -57,17 +50,13 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-O1" />
+					<Add option="-Wall" />
 					<Add option="-DWIN32" />
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-DUNICODE" />
-					<Add option="-O1" />
-					<Add option="-Wall" />
-					<Add directory="$(VC_IncludePath)/" />
-					<Add directory="$(WindowsSDK_IncludePath)/" />
-					<Add directory="./DirectX9c/Include/" />
-					<Add directory="../SFML-2.5.1/include/" />
-					<Add directory="source/GcLib/" />
+					<Add directory="../../../REPOS/SFML-2.5.1/include/" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -88,12 +77,8 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
-					<Add directory="$(VC_LibraryPath_x86)/" />
-					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
-					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
-					<Add directory="./DirectX9c/Lib/" />
-					<Add directory="../SFML-2.5.1/lib/" />
-					<Add directory="../zlib/library/" />
+					<Add directory="../../../REPOS/SFML-2.5.1/lib/" />
+					<Add directory="../../../REPOS/zlib/library/" />
 				</Linker>
 			</Target>
 			<Target title="Template Win32">
@@ -103,11 +88,7 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add directory="$(VC_IncludePath)/" />
-					<Add directory="$(WindowsSDK_IncludePath)/" />
-					<Add directory="./DirectX9c/Include/" />
-					<Add directory="C:/Users/Adrian/Desktop/SFML-2.5.1/include/" />
-					<Add directory="source/GcLib/" />
+					<Add directory="../../../REPOS/SFML-2.5.1/include/" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-network.lib" />
@@ -127,11 +108,7 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
-					<Add directory="$(VC_LibraryPath_x86)/" />
-					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
-					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
-					<Add directory="./DirectX9c/Lib/" />
-					<Add directory="C:/Users/Adrian/Desktop/SFML-2.5.1/lib/" />
+					<Add directory="../../../REPOS/SFML-2.5.1/lib/" />
 				</Linker>
 			</Target>
 		</Build>

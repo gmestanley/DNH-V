@@ -2,84 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug Win32" />
-	<File name="source\GcLib\sfml\Shader.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1333" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\gstd\GstdConstant.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="203" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\StgUserExtendScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="10941" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="source\GcLib\sfml\SimpleGraphics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5470" topLine="122" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\SfScript.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="217" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\DnhScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1220" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\Shader.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="15929" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\StgPlayer.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5960" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\StgPackageController.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1561" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\StgItem.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="32004" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\TitleScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3786" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\StgIntersection.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="342" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\ScriptSelectScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="33446" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\DnhCommon.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2208" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\ElfreinaMesh.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="29343" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\SimpleInput.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="178" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\GcLib\sfml\MetasequoiaMesh.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -87,39 +12,9 @@
 			<Cursor1 position="12388" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\TouhouDanmakufu\Common\StgStageScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\GcLib\sfml\TransitionEffect.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3573" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\System.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="14389" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\EventScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="90085" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\Common.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2798" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\Main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="808" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\Common\StgStageController.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3279" topLine="70" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\Texture.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2863" topLine="0" />
+			<Cursor1 position="1197" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\GcLib\sfml\RenderObject.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -127,39 +22,34 @@
 			<Cursor1 position="48731" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\ScriptSelectScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="33446" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\Common.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2798" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\gstd\GstdConstant.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="203" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\SfScript.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="217" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="source\TouhouDanmakufu\DnhExecutor\GcLibImpl.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1102" topLine="33" />
 		</Cursor>
 	</File>
-	<File name="source\TouhouDanmakufu\Common\StgIntersection.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\TouhouDanmakufu\Common\StgStageScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9507" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\StgScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="866" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\TouhouDanmakufu\DnhExecutor\GcLibImpl.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="977" topLine="4" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\Texture.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="16891" topLine="567" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\sfml\TransitionEffect.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1197" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\GcLib\gstd\Window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="394" topLine="6" />
+			<Cursor1 position="3573" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\TouhouDanmakufu\Common\StgSystem.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -167,14 +57,124 @@
 			<Cursor1 position="9790" topLine="260" />
 		</Cursor>
 	</File>
-	<File name="source\TouhouDanmakufu\Common\StgControlScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\GcLib\sfml\Texture.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="29851" topLine="0" />
+			<Cursor1 position="16891" topLine="567" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\Main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="281" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\Shader.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1333" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\SimpleInput.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="178" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\TouhouDanmakufu\Common\StgShot.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="73698" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgItem.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="32004" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgPlayer.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5960" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgIntersection.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="342" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\gstd\Window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="394" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\EventScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="90085" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\DnhCommon.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2208" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\StgScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="866" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\Shader.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15929" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\TitleScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3786" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\System.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14389" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgUserExtendScene.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10941" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgControlScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="29851" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\Texture.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2863" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\DnhScript.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1220" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgStageController.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3279" topLine="70" />
+		</Cursor>
+	</File>
+	<File name="source\GcLib\sfml\ElfreinaMesh.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="29343" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgPackageController.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1561" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\Common\StgIntersection.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9507" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\TouhouDanmakufu\DnhExecutor\GcLibImpl.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="977" topLine="4" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

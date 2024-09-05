@@ -13,15 +13,13 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add option="-O0" />
 					<Add option="-DWIN32" />
 					<Add option="-D_DEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-DUNICODE" />
-					<Add option="-O0" />
-					<Add option="-Wall" />
-					<Add directory="$(VC_IncludePath)/" />
-					<Add directory="$(WindowsSDK_IncludePath)/" />
 				</Compiler>
 				<Linker>
 					<Add library="legacy_stdio_definitions.lib" />
@@ -39,9 +37,6 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
-					<Add directory="$(VC_LibraryPath_x86)/" />
-					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
-					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
 				</Linker>
 			</Target>
 			<Target title="Release Win32">
@@ -51,14 +46,12 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-O1" />
+					<Add option="-Wall" />
 					<Add option="-DWIN32" />
 					<Add option="-DNDEBUG" />
 					<Add option="-D_WINDOWS" />
 					<Add option="-DUNICODE" />
-					<Add option="-O1" />
-					<Add option="-Wall" />
-					<Add directory="$(VC_IncludePath)/" />
-					<Add directory="$(WindowsSDK_IncludePath)/" />
 					<Add directory="../SFML-2.5.1/include/" />
 					<Add directory="../zlib/zlib-1.2.13/" />
 				</Compiler>
@@ -82,9 +75,6 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
-					<Add directory="$(VC_LibraryPath_x86)/" />
-					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
-					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
 					<Add directory="../SFML-2.5.1/lib/" />
 					<Add directory="../zlib/library/" />
 				</Linker>
@@ -95,10 +85,6 @@
 				<Option deps_output="./bin_th_dnh/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
-				<Compiler>
-					<Add directory="$(VC_IncludePath)/" />
-					<Add directory="$(WindowsSDK_IncludePath)/" />
-				</Compiler>
 				<Linker>
 					<Add library="legacy_stdio_definitions.lib" />
 					<Add library="winmm.lib" />
@@ -115,9 +101,6 @@
 					<Add library="uuid.lib" />
 					<Add library="odbc32.lib" />
 					<Add library="odbccp32.lib" />
-					<Add directory="$(VC_LibraryPath_x86)/" />
-					<Add directory="$(WindowsSDK_LibraryPath_x86)/" />
-					<Add directory="$(NETFXKitsDir)Lib/um/x86/" />
 				</Linker>
 			</Target>
 		</Build>
