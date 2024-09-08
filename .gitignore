@@ -251,8 +251,6 @@ paket-files/
 # CodeRush
 .cr/
 
-# Danmakufū Build directory
-bin_dmf/
-
 # Emacs files
 .#*
+*~
