@@ -261,3 +261,7 @@ __pycache__/
 
 # Code::Blocks files
 *.layout
+
+# Emacs files
+.#*
+*~
