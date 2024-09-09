@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
-	<Workspace title="DNH-V workspace" >
-		<Project filename="DnhConfig.cbp" />
-		<Project filename="DnhExecutor.cbp" />
-		<Project filename="DnhViewer.cbp" />
+	<Workspace title="DMF-V workspace" >
+		<Project filename="DmfConfig.cbp" />
+		<Project filename="DmfExecutor.cbp" />
+		<Project filename="DmfViewer.cbp" />
 		<Project filename="FileArchiver.cbp" />
-	<Workspace/>
+	</Workspace>
 </CodeBlocks_workspace_file>
