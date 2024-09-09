@@ -5,5 +5,5 @@
 		<Project filename="DnhExecutor.cbp" />
 		<Project filename="DnhViewer.cbp" />
 		<Project filename="FileArchiver.cbp" />
-	<Workspace title="DNH-V workspace" />
+	<Workspace/>
 </CodeBlocks_workspace_file>
