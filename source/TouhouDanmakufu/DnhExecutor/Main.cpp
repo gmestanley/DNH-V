@@ -1,9 +1,9 @@
 #include "GcLibImpl.hpp"
 
 /**********************************************************
-WinMain
+Main
 **********************************************************/
-int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
+int main(/*HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow*/) {
 	gstd::DebugUtility::DumpMemoryLeaksOnExit();
 	try {
 		DnhConfiguration* config = DnhConfiguration::CreateInstance();
