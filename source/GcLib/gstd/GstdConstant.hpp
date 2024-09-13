@@ -2,8 +2,8 @@
 #define __GSTD_GAMESTDCONSTANT__
 
 //Unicode
-#ifdef _MBCS
-#undef _MBCS
+#ifndef _MBCS
+#define _MBCS
 #endif
 #ifndef UNICODE
 #define UNICODE
@@ -19,12 +19,14 @@
 #define _WIN32_WINNT 0x0500
 
 //lib
+#ifdef _WIN32_WINNT
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(lib, "pdh.lib")
 #pragma comment(lib, "gdi32.lib")
 #pragma comment(lib, "shlwapi.lib")
 #pragma comment(lib, "psapi.lib")
+#endif
 
 //pragma
 #pragma warning(disable : 4786) //STL Warning抑止

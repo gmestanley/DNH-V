@@ -246,9 +246,9 @@
 		</Unit>
 		<Unit filename="source/TouhouDanmakufu/DnhConfig/GcLibImpl.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhConfig/GcLibImpl.hpp" />
+		<Unit filename="source/TouhouDanmakufu/DnhConfig/Main.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhConfig/MainWindow.cpp" />
 		<Unit filename="source/TouhouDanmakufu/DnhConfig/MainWindow.hpp" />
-		<Unit filename="source/TouhouDanmakufu/DnhConfig/WinMain.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

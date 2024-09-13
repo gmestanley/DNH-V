@@ -2,7 +2,7 @@
 #include "MainWindow.hpp"
 
 /**********************************************************
-WinMain
+Main
 **********************************************************/
 int main(/*HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow*/) {
 	gstd::DebugUtility::DumpMemoryLeaksOnExit();

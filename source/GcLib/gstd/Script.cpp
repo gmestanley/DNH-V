@@ -9,27 +9,9 @@
 #include <cmath>
 #include <cstdio>
 #include <vector>
+
+#ifdef _WIN32_WINNT
 #include <windows.h>
-
-#ifdef _MSC_VER
-#define for if (0); else for
-namespace std {
-using ::atof;
-using ::ceill;
-using ::fabsl;
-using ::floorl;
-using ::fmodl;
-using ::isalpha;
-using ::isdigit;
-using ::iswalpha;
-using ::iswdigit;
-using ::isxdigit;
-using ::mbstowcs;
-using ::powl;
-using ::swprintf;
-using ::wcstombs;
-}
-
 #endif
 
 using namespace gstd;
