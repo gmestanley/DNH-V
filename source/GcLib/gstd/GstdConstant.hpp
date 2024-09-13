@@ -4,12 +4,12 @@
 //Unicode
 #ifndef _MBCS
 #define _MBCS
-#endif
 #ifndef UNICODE
 #define UNICODE
 #endif
 #ifndef _UNICODE
 #define _UNICODE
+#endif
 #endif
 
 //標準関数対応表
